@@ -4,6 +4,8 @@ import {
   AiOutlineGithub,
   AiFillLinkedin,
   AiFillInstagram,
+  AiFillTwitterCircle,
+  AiFillMail,
   AiOutlineUp,
   AiOutlineDown,
   AiOutlineMenu,
@@ -25,7 +27,7 @@ const Layout = () => {
   return (
     <div className={darkMode ? "dark" : ""}>
       <header className="bg-white dark:bg-gray-900 px-10 md:px-20 lg:px-40">
-        <nav className="py-10 flex justify-between items-center dark:text-white">
+        <nav className="py-8 flex justify-between items-center dark:text-white">
           <ul className="flex items-center gap-5">
             <li>
               <div className="relative">
@@ -61,13 +63,20 @@ const Layout = () => {
                         Certifications
                       </Link>
                     </li>
-
                     <li>
                       <Link
                         to="/experiences"
                         className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
                         Experiences
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/contact"
+                        className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        Contact Me!
                       </Link>
                     </li>
                   </ul>
@@ -125,12 +134,12 @@ const Layout = () => {
         </nav>
       </header>
 
-      <main className="bg-white py-5 dark:bg-gray-900 md:px-20 lg:px-40">
+      <main className="bg-white py-4 dark:bg-gray-900 md:px-20 lg:px-40">
         <Outlet />
       </main>
 
-      <footer className="py-5 text-center bg-white dark:bg-gray-900">
-        <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
+      <footer className="py-4 text-center bg-white dark:bg-gray-900">
+        <div className="text-5xl flex justify-center gap-3 lg:gap-10 py-3 text-gray-600 dark:text-gray-400">
           <a
             href="https://github.com/Usamafuward"
             target="_blank"
@@ -150,7 +159,21 @@ const Layout = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
+            <AiFillTwitterCircle />
+          </a>
+          <a
+            href="https://www.x.com/usamafuward"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <AiFillInstagram />
+          </a>
+          <a
+            href="mailto:usamafuward2001@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <AiFillMail />
           </a>
         </div>
         <p className="text-md py-2 dark:text-white">

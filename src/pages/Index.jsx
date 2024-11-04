@@ -3,6 +3,8 @@ import {
   AiOutlineGithub,
   AiFillLinkedin,
   AiFillInstagram,
+  AiFillTwitterCircle,
+  AiFillMail,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import profile from "../assets/profile.jpg";
@@ -15,7 +17,7 @@ const Index = () => {
     <div>
       <section className="text-center p-5 py-5 lg:flex md:justify-between">
         <div>
-          <h2 className="text-5xl py-3 pb-9 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
+          <h2 className="text-5xl py-3 pb-5 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
             Usama Puward
           </h2>
           <h3 className="text-2xl py-2 dark:text-white md:text-3xl">
@@ -29,7 +31,7 @@ const Index = () => {
             challenges in software development and innovate within the field of
             ML and AI.
           </p>
-          <div className="text-5xl flex justify-center gap-16 py-5 text-gray-600 dark:text-gray-400">
+          <div className="text-5xl flex justify-center gap-3 lg:gap-14 py-5 text-gray-600 dark:text-gray-400">
             <a
               href="https://github.com/Usamafuward"
               target="_blank"
@@ -49,9 +51,30 @@ const Index = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
+              <AiFillTwitterCircle />
+            </a>
+            <a
+              href="https://www.x.com/usamafuward"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <AiFillInstagram />
             </a>
+            <a
+              href="mailto:usamafuward2001@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiFillMail />
+            </a>
           </div>
+          <Link to="/contact">
+            <div>
+              <button className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 mt-3 border-none rounded-md flex items-center mx-auto">
+                Contact Me!
+              </button>
+            </div>
+          </Link>
         </div>
         <div className="relative mx-auto mt-10 md:mt-0 flex items-center justify-center pt-7 md:pt-0">
           <div className="relative rounded-full w-80 h-80 md:w-96 md:h-96 overflow-hidden shadow-lg">
@@ -124,6 +147,67 @@ const Index = () => {
               </p>
             </div>
           </Link>
+        </div>
+      </section>
+      <section className=" py-10 px-5">
+        <h2 className="text-4xl font-bold text-center text-teal-600 dark:text-teal-400 mb-10">
+          Technical Skills
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+            <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
+              Languages
+            </h3>
+            <p>JavaScript, Python, Java, C++</p>
+          </div>
+          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+            <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
+              ML Tools & Libraries
+            </h3>
+            <p>scikit-learn, TensorFlow, Pandas, NumPy, Matplotlib</p>
+          </div>
+          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+            <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
+              DevOps & Containerization
+            </h3>
+            <p>Docker</p>
+          </div>
+          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+            <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
+              Cloud Platforms
+            </h3>
+            <p>Microsoft Azure</p>
+          </div>
+          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+            <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
+              Version Control
+            </h3>
+            <p>Git, GitHub</p>
+          </div>
+          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+            <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
+              Frontend Libraries/Frameworks
+            </h3>
+            <p>React, React Native, SCSS, Tailwind CSS, Bootstrap</p>
+          </div>
+          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+            <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
+              Backend Frameworks
+            </h3>
+            <p>Node.js, Express.js, Spring Boot, Python FastAPI, Django</p>
+          </div>
+          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+            <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
+              Databases
+            </h3>
+            <p>MySQL, PostgreSQL, MongoDB</p>
+          </div>
+          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+            <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
+              Other Skills
+            </h3>
+            <p>Team Work</p>
+          </div>
         </div>
       </section>
     </div>
