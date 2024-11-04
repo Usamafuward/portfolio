@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.7b8790b4.css",
-    "main.js": "/portfolio/static/js/main.315991a6.js",
+    "main.js": "/portfolio/static/js/main.174b3fdd.js",
     "static/media/profile.jpg": "/portfolio/static/media/profile.6fffab715e8bca4dd0b1.jpg",
     "static/media/resume_ml_ai_engineering.pdf": "/portfolio/static/media/resume_ml_ai_engineering.6e1fd963621d95afd3b4.pdf",
     "static/media/resume_software_engineering.pdf": "/portfolio/static/media/resume_software_engineering.333ef93e581099a3a3cb.pdf",
@@ -11,10 +11,10 @@
     "static/media/code.png": "/portfolio/static/media/code.f4f54b48494bb8e30d1a.png",
     "index.html": "/portfolio/index.html",
     "main.7b8790b4.css.map": "/portfolio/static/css/main.7b8790b4.css.map",
-    "main.315991a6.js.map": "/portfolio/static/js/main.315991a6.js.map"
+    "main.174b3fdd.js.map": "/portfolio/static/js/main.174b3fdd.js.map"
   },
   "entrypoints": [
     "static/css/main.7b8790b4.css",
-    "static/js/main.315991a6.js"
+    "static/js/main.174b3fdd.js"
   ]
 }
