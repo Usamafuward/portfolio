@@ -32,7 +32,7 @@ export default function Experiences() {
           {Experiences.map((experience, index) => (
             <div
               key={index}
-              className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100 flex-1 flex flex-col justify-normal card"
+              className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-normal card"
             >
               <h3 className="text-2xl font-bold pt-5 pb-2">
                 {experience.title}

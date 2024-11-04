@@ -15,7 +15,7 @@ import consulting from "../assets/consulting.png";
 const Index = () => {
   return (
     <div>
-      <section className="text-center p-5 py-5 lg:flex md:justify-between">
+      <section className="text-center p-5 lg:flex md:justify-between">
         <div>
           <h2 className="text-5xl py-3 pb-5 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
             Usama Puward
@@ -94,7 +94,7 @@ const Index = () => {
         </h1>
         <div className="lg:flex gap-10 p-7">
           <Link to="/projects">
-            <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-normal card">
+            <div className="text-center shadow-lg dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-normal card">
               <img
                 src={design}
                 alt="Projects"
@@ -112,7 +112,7 @@ const Index = () => {
             </div>
           </Link>
           <Link to="/certifications">
-            <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-normal card">
+            <div className="text-center shadow-lg dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-normal card">
               <img
                 src={code}
                 alt="Certifications"
@@ -130,7 +130,7 @@ const Index = () => {
             </div>
           </Link>
           <Link to="/experiences">
-            <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-normal card">
+            <div className="text-center shadow-lg dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-normal card">
               <img
                 src={consulting}
                 alt="Experiences"
@@ -149,64 +149,67 @@ const Index = () => {
           </Link>
         </div>
       </section>
-      <section className=" py-10 px-5">
-        <h2 className="text-4xl font-bold text-center text-teal-600 dark:text-teal-400 mb-10">
+      <section className="px-5 py-2">
+        <h2 className="text-4xl font-bold text-center text-teal-600 dark:text-teal-400 mb-14">
           Technical Skills
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+          <div className="text-center shadow-lg  p-10 m-2 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
               Languages
             </h3>
             <p>JavaScript, Python, Java, C++</p>
           </div>
-          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+          <div className="text-center shadow-lg  p-10 m-2 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
               ML Tools & Libraries
             </h3>
             <p>scikit-learn, TensorFlow, Pandas, NumPy, Matplotlib</p>
           </div>
-          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+          <div className="text-center shadow-lg  p-10 m-2 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
               DevOps & Containerization
             </h3>
             <p>Docker</p>
           </div>
-          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+          <div className="text-center shadow-lg  p-10 m-2 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
               Cloud Platforms
             </h3>
             <p>Microsoft Azure</p>
           </div>
-          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+          <div className="text-center shadow-lg  p-10 m-2 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
               Version Control
             </h3>
             <p>Git, GitHub</p>
           </div>
-          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+          <div className="text-center shadow-lg p-10 m-2 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
               Frontend Libraries/Frameworks
             </h3>
             <p>React, React Native, SCSS, Tailwind CSS, Bootstrap</p>
           </div>
-          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+          <div className="text-center shadow-lg  p-10 m-2 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
               Backend Frameworks
             </h3>
             <p>Node.js, Express.js, Spring Boot, Python FastAPI, Django</p>
           </div>
-          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+          <div className="text-center shadow-lg  p-10 m-2 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
               Databases
             </h3>
             <p>MySQL, PostgreSQL, MongoDB</p>
           </div>
-          <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100">
+          <div className="text-center shadow-lg  p-10 m-2 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
               Other Skills
             </h3>
-            <p>Team Work</p>
+            <p>
+              Team Work, Problem Solving, Analytical Thinking, Adaptability,
+              Communication (English, Sinhala, Tamil)
+            </p>
           </div>
         </div>
       </section>
