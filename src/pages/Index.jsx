@@ -13,9 +13,9 @@ import consulting from "../assets/consulting.png";
 const Index = () => {
   return (
     <div>
-      <section className="text-center p-5 py-5 md:flex md:justify-between">
+      <section className="text-center p-5 py-5 lg:flex md:justify-between">
         <div>
-          <h2 className="text-5xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
+          <h2 className="text-5xl py-3 pb-8 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
             Usama Puward
           </h2>
           <h3 className="text-2xl py-2 dark:text-white md:text-3xl">
@@ -29,7 +29,7 @@ const Index = () => {
             challenges in software development and innovate within the field of
             ML and AI.
           </p>
-          <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
+          <div className="text-5xl flex justify-center gap-16 py-4 text-gray-600 dark:text-gray-400">
             <a
               href="https://github.com/Usamafuward"
               target="_blank"
@@ -53,7 +53,7 @@ const Index = () => {
             </a>
           </div>
         </div>
-        <div className="relative mx-auto mt-10 md:mt-0 flex items-center justify-center">
+        <div className="relative mx-auto mt-10 md:mt-0 flex items-center justify-center pt-6 md:pt-0">
           <div className="relative rounded-full w-80 h-80 md:w-96 md:h-96 overflow-hidden shadow-lg">
             <img
               src={profile}
@@ -71,63 +71,57 @@ const Index = () => {
         </h1>
         <div className="lg:flex gap-10 p-5">
           <Link to="/projects">
-            <div className="card experiences-card">
-              <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl my-10 bg-green-100 flex-1">
-                <img
-                  src={design}
-                  alt="Projects"
-                  width={100}
-                  height={100}
-                  className="mx-auto"
-                />
-                <h5 className="text-lg font-medium font-bold pt-8 pb-2">
-                  Projects
-                </h5>
-                <p className="py-2">
-                  Explore my portfolio, showcasing innovative solutions and
-                  technical expertise across various applications.
-                </p>
-              </div>
+            <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-normal card">
+              <img
+                src={design}
+                alt="Projects"
+                width={100}
+                height={100}
+                className="mx-auto"
+              />
+              <h5 className="text-lg font-medium font-bold pt-8 pb-2">
+                Projects
+              </h5>
+              <p className="py-2">
+                Explore my portfolio, showcasing innovative solutions and
+                technical expertise across various applications.
+              </p>
             </div>
           </Link>
           <Link to="/certifications">
-            <div className="card experiences-card">
-              <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl my-10 bg-green-100 flex-1">
-                <img
-                  src={code}
-                  alt="Certifications"
-                  width={100}
-                  height={100}
-                  className="mx-auto"
-                />
-                <h5 className="text-lg font-medium font-bold pt-8 pb-2 ">
-                  Certifications
-                </h5>
-                <p className="py-2">
-                  A collection of certifications that reflect my commitment to
-                  skill-building and mastery of essential tools.
-                </p>
-              </div>
+            <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-normal card">
+              <img
+                src={code}
+                alt="Certifications"
+                width={100}
+                height={100}
+                className="mx-auto"
+              />
+              <h5 className="text-lg font-medium font-bold pt-8 pb-2 ">
+                Certifications
+              </h5>
+              <p className="py-2">
+                A collection of certifications that reflect my commitment to
+                skill-building and mastery of essential tools.
+              </p>
             </div>
           </Link>
           <Link to="/experiences">
-            <div className="card experiences-card">
-              <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl my-10 bg-green-100 flex-1">
-                <img
-                  src={consulting}
-                  alt="Experiences"
-                  width={100}
-                  height={100}
-                  className="mx-auto"
-                />
-                <h5 className="text-lg font-medium font-bold pt-8 pb-2 ">
-                  Experiences
-                </h5>
-                <p className="py-2">
-                  Discover my professional journey, with roles that have shaped
-                  my skills and approach to problem-solving.
-                </p>
-              </div>
+            <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-normal card">
+              <img
+                src={consulting}
+                alt="Experiences"
+                width={100}
+                height={100}
+                className="mx-auto"
+              />
+              <h5 className="text-lg font-medium font-bold pt-8 pb-2 ">
+                Experiences
+              </h5>
+              <p className="py-2">
+                Discover my professional journey, with roles that have shaped my
+                skills and approach to problem-solving.
+              </p>
             </div>
           </Link>
         </div>
