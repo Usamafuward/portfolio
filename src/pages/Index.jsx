@@ -57,6 +57,7 @@ const Index = () => {
           <div className="relative rounded-full w-80 h-80 md:w-96 md:h-96 overflow-hidden shadow-lg">
             <img
               src={profile}
+              alt="profile"
               layout="fill"
               objectFit="cover"
               className="rounded-full"
