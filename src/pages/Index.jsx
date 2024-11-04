@@ -15,7 +15,7 @@ const Index = () => {
     <div>
       <section className="text-center p-5 py-5 lg:flex md:justify-between">
         <div>
-          <h2 className="text-5xl py-3 pb-8 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
+          <h2 className="text-5xl py-3 pb-9 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
             Usama Puward
           </h2>
           <h3 className="text-2xl py-2 dark:text-white md:text-3xl">
@@ -29,7 +29,7 @@ const Index = () => {
             challenges in software development and innovate within the field of
             ML and AI.
           </p>
-          <div className="text-5xl flex justify-center gap-16 py-4 text-gray-600 dark:text-gray-400">
+          <div className="text-5xl flex justify-center gap-16 py-5 text-gray-600 dark:text-gray-400">
             <a
               href="https://github.com/Usamafuward"
               target="_blank"
@@ -53,7 +53,7 @@ const Index = () => {
             </a>
           </div>
         </div>
-        <div className="relative mx-auto mt-10 md:mt-0 flex items-center justify-center pt-6 md:pt-0">
+        <div className="relative mx-auto mt-10 md:mt-0 flex items-center justify-center pt-7 md:pt-0">
           <div className="relative rounded-full w-80 h-80 md:w-96 md:h-96 overflow-hidden shadow-lg">
             <img
               src={profile}
