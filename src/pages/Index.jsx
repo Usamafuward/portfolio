@@ -69,7 +69,7 @@ const Index = () => {
         <h1 className="text-5xl font-bold text-center pt-20 text-teal-600 dark:text-teal-400 mb-10">
           Welcome to My Portfolio
         </h1>
-        <div className="lg:flex gap-10 p-5">
+        <div className="lg:flex gap-10 p-7">
           <Link to="/projects">
             <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-normal card">
               <img
