@@ -19,7 +19,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="text-center">
+    <section className="text-center px-7">
       <h1 className="text-5xl font-bold text-teal-600 dark:text-teal-400 mb-10">
         Contact Me
       </h1>
@@ -28,7 +28,7 @@ export default function Contact() {
       </p>
       <form
         onSubmit={handleSubmit}
-        className="max-w-4xl mx-auto bg-green-100 dark:bg-gray-700 p-10 rounded-lg shadow-lg"
+        className="max-w-4xl mx-auto bg-green-100 dark:bg-gray-700 p-10 m-10 rounded-lg shadow-lg"
       >
         <div className="md:flex mb-6 justify-between grid grid-cols-1 md:grid-cols-2">
           <div className="mb-5">

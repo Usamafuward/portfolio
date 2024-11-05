@@ -11,8 +11,8 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import SE from "../assets/resume_software_engineering.pdf";
-import ML_AI from "../assets/resume_ml_ai_engineering.pdf";
+import SE from "../assets/Resume_SE.pdf";
+import ML_AI from "../assets/Resume_ML.pdf";
 
 const Layout = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -115,14 +115,14 @@ const Layout = () => {
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg">
                   <a
                     href={SE}
-                    download="Usama_Puward_Resume_Software_Engineering.pdf"
+                    download="Resume_Software_Engineering.pdf"
                     className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     Software Engineering
                   </a>
                   <a
                     href={ML_AI}
-                    download="Usama_Puward_Resume_ML_AI_Engineering.pdf"
+                    download="Resume_ML_AI_Engineering.pdf"
                     className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     ML/AI Engineering
