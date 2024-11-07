@@ -90,21 +90,23 @@ export default function Certifications() {
 
   return (
     <div>
-      <section>
+      <section className="min-h-screen">
         <h1 className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-16">
           Certifications
         </h1>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
           {dummyCertifications.map((certification, index) => (
             <Link key={index} to={certification.to} className="flex">
-              <div className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-normal card">
-                <h3 className="text-2xl font-bold pt-5 pb-2">
+              <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card">
+                <h3 className="text-2xl font-bold pb-2">
                   {certification.title}
                 </h3>
-                <p className="py-2">{certification.description}</p>
                 <p className="font-semibold mt-1">
                   - {certification.organization}
                 </p>
+                <div className="overlay">
+                  <p className="p-2 text-white">{certification.description}</p>
+                </div>
               </div>
             </Link>
           ))}

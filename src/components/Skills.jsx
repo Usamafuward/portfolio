@@ -1,0 +1,63 @@
+import meter1 from "../assets/meter1.svg";
+import meter2 from "../assets/meter2.svg";
+import meter3 from "../assets/meter3.svg";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+export const Skills = () => {
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
+
+  return (
+    <section className="skill" id="skills">
+        <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <div className="skill-bx wow zoomIn bg-green-100 dark:bg-gray-700 rounded-xl shadow-lg">
+                        <h2 className="mb-6 text-teal-600 dark:text-teal-400">Skills</h2>
+                        <p className="dark:text-white">I have a diverse background in various domains of software development and machine learning. My expertise allows me to create visually appealing interfaces, build robust server-side applications, and develop intelligent systems using modern tools and frameworks.</p>
+                        <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
+                            <div className="item">
+                                <img src={meter2} alt="Image" />
+                                <h5 className="dark:text-white">Front-End Development</h5>
+                            </div>
+                            <div className="item">
+                                <img src={meter1} alt="Image" />
+                                <h5 className="dark:text-white">Back-End Development</h5>
+                            </div>
+                            <div className="item">
+                                <img src={meter3} alt="Image" />
+                                <h5 className="dark:text-white">Machine Learning</h5>
+                            </div>
+                            <div className="item">
+                                <img src={meter1} alt="Image" />
+                                <h5 className="dark:text-white">Database Ops</h5>
+                            </div>
+                            <div className="item">
+                                <img src={meter3} alt="Image" />
+                                <h5 className="dark:text-white">Artificial Intelligence</h5>
+                            </div>
+                        </Carousel>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  )
+}

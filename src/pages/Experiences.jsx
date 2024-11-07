@@ -24,7 +24,7 @@ export default function Experiences() {
 
   return (
     <div>
-      <section>
+      <section className="min-h-screen">
         <h1 className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-16">
           Experiences
         </h1>
@@ -32,14 +32,14 @@ export default function Experiences() {
           {Experiences.map((experience, index) => (
             <div
               key={index}
-              className="text-center shadow-lg dark:shadow-gray-400 p-10 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-normal card"
+              className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card"
             >
-              <h3 className="text-2xl font-bold pt-5 pb-2">
-                {experience.title}
-              </h3>
-              <p className="py-2">{experience.description}</p>
+              <h3 className="text-2xl font-bold pb-2">{experience.title}</h3>
               <p className="font-semibold mt-3">{experience.company}</p>
               <p className="text-sm font-extralight">({experience.duration})</p>
+              <div className="overlay">
+                <p className="p-2 text-white">{experience.description}</p>
+              </div>
             </div>
           ))}
         </div>

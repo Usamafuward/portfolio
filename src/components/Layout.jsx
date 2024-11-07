@@ -17,27 +17,47 @@ import ML_AI from "../assets/Resume_ML.pdf";
 const Layout = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const [showMenu, setShowMenu] = useState(false); // State for toggle menu
-  const location = useLocation(); // Get current location
+  const [showMenu, setShowMenu] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     setShowMenu(false);
   }, [location]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0); // Set `isScrolled` based on scroll position
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className={darkMode ? "dark" : ""}>
-      <header className="bg-white dark:bg-gray-900 px-10 md:px-20 lg:px-40">
-        <nav className="py-8 flex justify-between items-center dark:text-white">
+      <header
+        className={`px-8 md:px-16 lg:px-40 fixed top-0 w-full z-10 transition-colors duration-300 ${
+          isScrolled
+            ? "bg-green-100 dark:bg-gray-700"
+            : "bg-white dark:bg-gray-900"
+        }`}
+      >
+        <nav className="py-6 flex justify-between items-center dark:text-white">
           <ul className="flex items-center gap-5">
-            <li>
+            <li className="md:hidden">
+              {" "}
+              {/* Menu button for mobile only */}
               <div className="relative">
                 <button
-                  onClick={() => setShowMenu(!showMenu)} // Toggle menu visibility
+                  onClick={() => setShowMenu(!showMenu)}
                   className="flex items-center justify-center pb-1 text-3xl"
                 >
                   <AiOutlineMenu />
                 </button>
-                {showMenu && ( // Conditionally render menu items
+                {showMenu && (
                   <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg">
                     <li>
                       <Link
@@ -90,9 +110,36 @@ const Layout = () => {
                 </h1>
               </Link>
             </li>
+            {/* Inline links for medium-sized screens and up */}
           </ul>
 
           <ul className="flex items-center">
+            <li className="hidden md:flex gap-5 mr-6">
+              <Link
+                to="/"
+                className="text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400"
+              >
+                Home
+              </Link>
+              <Link
+                to="/projects"
+                className="text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400"
+              >
+                Projects
+              </Link>
+              <Link
+                to="/certifications"
+                className="text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400"
+              >
+                Certifications
+              </Link>
+              <Link
+                to="/experiences"
+                className="text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400"
+              >
+                Experiences
+              </Link>
+            </li>
             <li>
               <BsFillMoonStarsFill
                 onClick={() => setDarkMode(!darkMode)}
@@ -134,48 +181,59 @@ const Layout = () => {
         </nav>
       </header>
 
-      <main className="bg-white py-4 dark:bg-gray-900 md:px-20 lg:px-40">
+      <main className="bg-white py-4 dark:bg-gray-900 md:px-16 lg:px-32 pt-[120px]">
         <Outlet />
       </main>
 
       <footer className="py-4 text-center bg-white dark:bg-gray-900">
-        <div className="text-5xl flex justify-center gap-3 lg:gap-10 py-3 text-gray-600 dark:text-gray-400">
-          <a
-            href="https://github.com/Usamafuward"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <AiOutlineGithub />
-          </a>
-          <a
-            href="https://linkedin.com/in/usama-puward"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <AiFillLinkedin />
-          </a>
-          <a
-            href="https://www.instagram.com/usama._fuward"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <AiFillTwitterCircle />
-          </a>
-          <a
-            href="https://www.x.com/usamafuward"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <AiFillInstagram />
-          </a>
-          <a
-            href="mailto:usamafuward2001@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <AiFillMail />
-          </a>
+        <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-500">
+          <span>
+            <a
+              href="https://github.com/Usamafuward"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiOutlineGithub />
+            </a>
+          </span>
+          <span>
+            <a
+              href="https://linkedin.com/in/usama-puward"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiFillLinkedin />
+            </a>
+          </span>
+          <span>
+            <a
+              href="https://www.x.com/usamafuward"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiFillTwitterCircle />
+            </a>
+          </span>
+          <span>
+            <a
+              href="https://www.instagram.com/usama._fuward"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiFillInstagram />
+            </a>
+          </span>
+          <span>
+            <a
+              href="mailto:usamafuward2001@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiFillMail />
+            </a>
+          </span>
         </div>
+
         <p className="text-md py-2 dark:text-white">
           © 2024 Usama Puward | Computer Science Undergraduate @ UCSC
         </p>
@@ -185,4 +243,3 @@ const Layout = () => {
 };
 
 export default Layout;
-
