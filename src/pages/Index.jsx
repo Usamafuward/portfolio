@@ -32,7 +32,7 @@ const Index = () => {
     return () => {
       clearInterval(ticker);
     };
-  }, [text]);
+  }, [text, delta, index]);
 
   const tick = () => {
     let i = loopNum % toRotate.length;
