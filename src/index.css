@@ -150,7 +150,7 @@ a {
 }
 .skill-bx {
   text-align: center;
-  padding: 50px;
+  padding: 40px;
 }
 .skill h2 {
   font-size: 45px;
@@ -164,13 +164,13 @@ a {
   margin: 14px 0 75px 0;
 }
 .skill-slider {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   position: relative;
 }
 .skill-slider .item img {
   width: 50%;
-  margin: 0 auto 15px auto;
+  margin: 0 auto 25px auto;
 }
 .background-image-left {
   top: 28%;

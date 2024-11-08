@@ -171,7 +171,7 @@ const Index = () => {
         </h1>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
           <Link to="/projects">
-            <div className="text-center shadow-lg dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-center card-index">
+            <div className="text-center shadow-lg dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 p-10 rounded-xl my-5 bg-green-100 flex-1 flex flex-col justify-center card-index">
               <img
                 src={design}
                 alt="Projects"
@@ -194,7 +194,7 @@ const Index = () => {
             </div>
           </Link>
           <Link to="/certifications">
-            <div className="text-center shadow-lg dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-center card-index">
+            <div className="text-center shadow-lg dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 p-10 rounded-xl my-5 bg-green-100 flex-1 flex flex-col justify-center card-index">
               <img
                 src={code}
                 alt="Certifications"
@@ -217,7 +217,7 @@ const Index = () => {
             </div>
           </Link>
           <Link to="/experiences">
-            <div className="text-center shadow-lg dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 p-10 rounded-xl my-10 bg-green-100 flex-1 flex flex-col justify-center card-index">
+            <div className="text-center shadow-lg dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 p-10 rounded-xl my-5 bg-green-100 flex-1 flex flex-col justify-center card-index">
               <img
                 src={consulting}
                 alt="Experiences"
