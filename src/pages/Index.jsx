@@ -69,7 +69,7 @@ const Index = () => {
             <h2 className="text-5xl py-3 pb-5 text-teal-600 font-medium dark:text-teal-400 md:text-6xl border-gray-800 dark:border-gray-200 border-4 mx-14">
               Usama Puward
             </h2>
-            <h3 className="text-2xl py-2 pt-7 font-medium dark:text-white md:text-4xl">
+            <h3 className="text-4xl py-2 pt-7 font-medium dark:text-white md:text-4xl">
               {` `}
               <span
                 className="txt-rotate"
@@ -88,7 +88,7 @@ const Index = () => {
               challenges in software development and innovate within the field
               of ML and AI.
             </p>
-            <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-700 dark:text-gray-300">
+            <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-700 dark:text-gray-300 mb-7 md:mb-0">
               <span className="dark:hover:text-gray-800 hover:text-white">
                 <a
                   href="https://github.com/Usamafuward"
