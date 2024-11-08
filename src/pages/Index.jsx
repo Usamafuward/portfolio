@@ -14,6 +14,7 @@ import consulting from "../assets/consulting.png";
 import { Skills } from "../components/Skills";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
+import { HashLink } from "react-router-hash-link";
 
 const Index = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -65,7 +66,7 @@ const Index = () => {
       <section>
         <div className="text-center p-5 lg:flex md:justify-between">
           <div className="lg:w-7/12">
-            <h2 className="text-5xl py-3 pb-5 text-teal-600 font-medium dark:text-teal-400 md:text-6xl border-gray-600 dark:border-gray-400 border-4 mx-32">
+            <h2 className="text-5xl py-3 pb-5 text-teal-600 font-medium dark:text-teal-400 md:text-6xl border-gray-800 dark:border-gray-200 border-4 mx-14">
               Usama Puward
             </h2>
             <h3 className="text-2xl py-2 pt-7 font-medium dark:text-white md:text-4xl">
@@ -80,15 +81,15 @@ const Index = () => {
               {` !!`}
             </h3>
             <p className="text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
-              Computer Science Undergraduate with a strong passion for Software Engineering, Machine
-              Learning and AI. Skilled in developing
+              Computer Science Undergraduate with a strong passion for Software
+              Engineering, Machine Learning and AI. Skilled in developing
               efficient and innovative solutions for real-world projects and
               building high-quality applications. Eager to tackle real-world
               challenges in software development and innovate within the field
               of ML and AI.
             </p>
-            <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-500">
-              <span>
+            <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-700 dark:text-gray-300">
+              <span className="dark:hover:text-gray-800 hover:text-white">
                 <a
                   href="https://github.com/Usamafuward"
                   target="_blank"
@@ -97,7 +98,7 @@ const Index = () => {
                   <AiOutlineGithub />
                 </a>
               </span>
-              <span>
+              <span className="dark:hover:text-gray-800 hover:text-white">
                 <a
                   href="https://linkedin.com/in/usama-puward"
                   target="_blank"
@@ -106,7 +107,7 @@ const Index = () => {
                   <AiFillLinkedin />
                 </a>
               </span>
-              <span>
+              <span className="dark:hover:text-gray-800 hover:text-white">
                 <a
                   href="https://www.x.com/usamafuward"
                   target="_blank"
@@ -115,7 +116,7 @@ const Index = () => {
                   <AiFillTwitterCircle />
                 </a>
               </span>
-              <span>
+              <span className="dark:hover:text-gray-800 hover:text-white">
                 <a
                   href="https://www.instagram.com/usama._fuward"
                   target="_blank"
@@ -124,7 +125,7 @@ const Index = () => {
                   <AiFillInstagram />
                 </a>
               </span>
-              <span>
+              <span className="dark:hover:text-gray-800 hover:text-white">
                 <a
                   href="mailto:usamafuward2001@gmail.com"
                   target="_blank"
@@ -135,11 +136,16 @@ const Index = () => {
               </span>
             </div>
             <Link to="/contact">
-              <div>
-                <button className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 mt-3 border-none rounded-md flex items-center mx-auto">
-                  Contact Me!
-                </button>
-              </div>
+              <span className="contact">
+                <HashLink to="/contact">
+                  <button>
+                    <span className="text-black dark:text-white">Let’s Connect</span>
+                    <div className="overlay">
+                      <h3 className="text-white font-bold">Let’s Connect</h3>
+                    </div>
+                  </button>
+                </HashLink>
+              </span>
             </Link>
           </div>
           <div className="relative mx-auto mt-10 lg:mt-0 flex items-center justify-center pt-7 md:pt-0">

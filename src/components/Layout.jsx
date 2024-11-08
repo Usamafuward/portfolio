@@ -41,11 +41,15 @@ const Layout = () => {
       <header
         className={`px-8 md:px-16 lg:px-40 fixed top-0 w-full z-10 transition-colors duration-300 ${
           isScrolled
-            ? "bg-green-100 dark:bg-gray-700"
+            ? "bg-green-100 dark:bg-gray-700 shadow-lg"
             : "bg-white dark:bg-gray-900"
         }`}
       >
-        <nav className="py-6 flex justify-between items-center dark:text-white">
+        <nav
+          className={`flex justify-between items-center dark:text-white ${
+            isScrolled ? "py-4" : "py-7"
+          }`}
+        >
           <ul className="flex items-center gap-5">
             <li className="md:hidden">
               {" "}
@@ -186,8 +190,8 @@ const Layout = () => {
       </main>
 
       <footer className="py-4 text-center bg-white dark:bg-gray-900">
-        <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-500">
-          <span>
+        <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-700 dark:text-gray-300">
+          <span className="dark:hover:text-gray-800 hover:text-white">
             <a
               href="https://github.com/Usamafuward"
               target="_blank"
@@ -196,7 +200,7 @@ const Layout = () => {
               <AiOutlineGithub />
             </a>
           </span>
-          <span>
+          <span className="dark:hover:text-gray-800 hover:text-white">
             <a
               href="https://linkedin.com/in/usama-puward"
               target="_blank"
@@ -205,7 +209,7 @@ const Layout = () => {
               <AiFillLinkedin />
             </a>
           </span>
-          <span>
+          <span className="dark:hover:text-gray-800 hover:text-white">
             <a
               href="https://www.x.com/usamafuward"
               target="_blank"
@@ -214,7 +218,7 @@ const Layout = () => {
               <AiFillTwitterCircle />
             </a>
           </span>
-          <span>
+          <span className="dark:hover:text-gray-800 hover:text-white">
             <a
               href="https://www.instagram.com/usama._fuward"
               target="_blank"
@@ -223,7 +227,7 @@ const Layout = () => {
               <AiFillInstagram />
             </a>
           </span>
-          <span>
+          <span className="dark:hover:text-gray-800 hover:text-white">
             <a
               href="mailto:usamafuward2001@gmail.com"
               target="_blank"

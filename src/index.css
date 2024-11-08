@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html,
 body {
   padding: 0;
@@ -33,8 +32,6 @@ a {
     --svg-color: #fff; /* Dark mode - White */
   }
 }
-
-
 
 .card {
   position: relative;
@@ -156,15 +153,15 @@ a {
   padding: 50px;
 }
 .skill h2 {
-	font-size: 45px;
-	font-weight: 700;
+  font-size: 45px;
+  font-weight: 700;
 }
 .skill p {
-    color: #000000;
-    font-size: 18px;
-    letter-spacing: 0.8px;
-    line-height: 1.5em;
-    margin: 14px 0 75px 0;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px 0 75px 0;
 }
 .skill-slider {
   width: 80%;
@@ -226,10 +223,6 @@ a {
   transition: filter 0.3s ease-in-out;
 }
 
-.social-icon span a:hover svg {
-  filter: brightness(0) saturate(100%) invert(50%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
-}
-
 /* Dark Mode Styling */
 .dark .social-icon span a {
   background: rgba(55, 65, 81, 0.2); /* Dark mode background */
@@ -246,7 +239,71 @@ a {
   animation: updown 3s linear infinite;
 }
 
-/* .dark .social-icon span a:hover svg {
-  filter: brightness(0) saturate(100%) invert(100%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
-} */
+.tagline {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  background: linear-gradient(
+    90.21deg,
+    rgba(170, 54, 124, 0.5) -5.91%,
+    rgba(74, 47, 189, 0.5) 111.58%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
 
+.contact button {
+  font-weight: 700;
+  color: #000000;
+  border: 3px solid #000000;
+  padding: 18px 34px;
+  font-size: 18px;
+	position: relative;
+	transition: 0.3s ease-in-out;
+  margin-top: 12px;
+}
+.dark .contact button {
+  color: #ffffff;
+  border: 3px solid #ffffff;
+}
+.contact button::before {
+  content: "";
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(90.21deg, #3663aa -5.91%, #2fbda5 111.58%);
+  left: 0;
+  top: 0;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+}
+.contact button:hover::before {
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.contact button:hover .overlay {
+  top: 50%;
+  opacity: 1;
+}
+
+.overlays {
+  position: absolute;
+  text-align: center;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+  width: 100%;
+}
+
+.overlays span {
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.8px;
+}
