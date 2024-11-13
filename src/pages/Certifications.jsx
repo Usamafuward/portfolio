@@ -24,6 +24,13 @@ export default function Certifications() {
       organization: "DeepLearning.AI and Stanford University",
     },
     {
+      title: "Introduction to Generative AI",
+      description:
+        "An online course authorized by Google Cloud and offered through Coursera, providing foundational knowledge of generative AI concepts, tools, and applications.",
+      to: "https://coursera.org/verify/97FEMUSJ16AN",
+      organization: "Google Cloud",
+    },
+    {
       title: "Introduction to Mobile Development",
       description:
         "An online course authorized by Meta and offered through Coursera, providing foundational knowledge and skills in mobile application development using various technologies and frameworks.",
@@ -73,6 +80,13 @@ export default function Certifications() {
       organization: "Meta",
     },
     {
+      title: "Introduction to Large Language Models",
+      description:
+        "An online course authorized by Google Cloud and offered through Coursera. This course provides foundational knowledge of large language models (LLMs), their applications, and techniques to enhance their performance.",
+      to: "https://coursera.org/verify/WVOQZH3G9WIK",
+      organization: "Google Cloud",
+    },
+    {
       title: "Convolutional Neural Networks in TensorFlow",
       description:
         "An online course authorized by DeepLearning.AI and offered through Coursera, focusing on building and deploying convolutional neural networks (CNNs) using TensorFlow for image recognition and computer vision applications.",
@@ -85,6 +99,13 @@ export default function Certifications() {
         "An online course authorized by DeepLearning.AI and Stanford University, offered through Coursera, covering advanced machine learning algorithms and techniques to enhance model performance and tackle complex data challenges.",
       to: "https://coursera.org/verify/VZ4XLESMVTGF",
       organization: "DeepLearning.AI and Stanford University",
+    },
+    {
+      title: "Introduction to Responsible AI",
+      description:
+        "An online course authorized by Google Cloud and offered through Coursera. This course provides foundational knowledge of responsible AI practices, emphasizing the importance of ethical considerations and Google's AI principles.",
+      to: "https://coursera.org/verify/O43QCWPY75RY",
+      organization: "Google Cloud",
     },
   ];
 

@@ -30,6 +30,13 @@ export default function Projects() {
       technologies: ["React", "Node.js", "Express", "MongoDB", "Mongoose"],
     },
     {
+      title: "RAG Pipeline for PDF Analysis (Chatbot)",
+      description:
+        "This project is a RAG (Retrieval-Augmented Generation) pipeline that extracts and processes text, tables, and images from PDFs, enabling users to query the extracted information through a conversational interface. It combines multi-modal embeddings with a Google Generative AI-powered question-answering system.",
+      to: "https://github.com/Usamafuward/Rag-Pipeline-For-PDF-Analysis.git",
+      technologies: ["LangChain", "Google GEN AI", "FIASS", "Streamlit", "Python"],
+    },
+    {
       title: "Portfolio Website",
       description:
         "A personal portfolio built with React that showcases my projects and skills in software engineering and machine learning, providing an engaging platform for potential employers and collaborators.",
@@ -50,6 +57,13 @@ export default function Projects() {
       to: "https://github.com/Usamafuward/Django-blog.git",
       technologies: ["Python", "Django", "HTML", "CSS", "PostgreSQL"],
     },
+    {
+      title: "LangChain for LLM Application Development (coursera)",
+      description:
+        "The project uses the LangChain framework to build applications with advanced language models (LLMs), focusing on key features like prompts, memory management, creating operation chains, document-based question answering, and developing LLMs as reasoning agents.",
+      to: "https://www.coursera.org/learn/langchain-for-llm-application-development-project",
+      technologies: ["LangChain", "LLM", "OpenAI", "Python"],
+    },
   ];
 
   return (
@@ -68,9 +82,9 @@ export default function Projects() {
                 <p className="py-2" style={{ fontStyle: "italic" }}>
                   Tech Stack : {project.technologies.join(", ")}
                 </p>
-                <div className="overlay">
-                  <h5 className="font-bold text-white">{project.title}</h5>
-                  <p className="p-2 text-white">{project.description}</p>
+                <div className="overlay p-2">
+                  <h5 className="font-bold text-white text-lg">{project.title}</h5>
+                  <p className="text-white">{project.description}</p>
                 </div>
               </div>
             </Link>
