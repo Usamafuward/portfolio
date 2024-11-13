@@ -20,7 +20,7 @@ export default function Contact() {
 
   return (
     <section className="text-center px-7">
-      <h1 className="text-5xl font-bold text-teal-600 dark:text-teal-400 mb-10">
+      <h1 className="text-5xl font-bold text-teal-600 dark:text-teal-400 py-8">
         Contact Me
       </h1>
       <p className="text-3xl leading-8 text-gray-800 dark:text-gray-200 max-w-2xl mx-auto mb-10">

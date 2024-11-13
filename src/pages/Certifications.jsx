@@ -112,7 +112,7 @@ export default function Certifications() {
   return (
     <div>
       <section className="min-h-screen">
-        <h1 className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-16">
+        <h1 className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-8">
           Certifications
         </h1>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
