@@ -15,7 +15,7 @@ export default function Experiences() {
       company: "Unified Mentor India",
     },
     {
-      title: "Artifician Intelligence Intern",
+      title: "Artificial Intelligence Intern",
       description:
         "Completed a one-month internship in Artificial Intelligence at NoviTech R&D Pvt Ltd, , I worked on several AI projects, contributing to the development and implementation of machine learning models and AI solutions aimed at solving real-world challenges",
       duration: "June 2023 – July 2024",
