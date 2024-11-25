@@ -1,11 +1,25 @@
 export default function Experiences() {
   const Experiences = [
     {
+      title: "AI/ML Engineer Intern",
+      description:
+        "Contributing to transformative projects in AI, machine learning, and automation, leveraging data-driven insights to enhance business operations at Kainovation Technologies.",
+      duration: "November 2024 – Present",
+      company: "Kainovation Technologies",
+    },
+    {
       title: "Full Stack Developer Intern",
       description:
-        "Contributed to the development and maintenance of full-stack applications, working on both front-end and back-end components to support the company’s digital solutions. Collaborated with senior developers to enhance application functionality and user experience.",
+        "Contributing to the development and maintenance of full-stack applications, working on both front-end and back-end components to support the company’s digital solutions. Collaborated with senior developers to enhance application functionality and user experience.",
       duration: "October 2024 – Present",
       company: "Unified Mentor India",
+    },
+    {
+      title: "Artifician Intelligence Intern",
+      description:
+        "Completed a one-month internship in Artificial Intelligence at NoviTech R&D Pvt Ltd, , I worked on several AI projects, contributing to the development and implementation of machine learning models and AI solutions aimed at solving real-world challenges",
+      duration: "June 2023 – July 2024",
+      company: "NoviTech R&D Pvt Ltd",
     },
     {
       title: "Freelance Full Stack Developer",
