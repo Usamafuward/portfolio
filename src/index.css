@@ -28,16 +28,11 @@
 
 :root {
   --svg-color: #000; /* Light mode default - Black */
-  --background-image-light: url('assets/8758815.jpg');
-  --background-image-dark: url('assets/8758815.jpg');
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --svg-color: #fff; /* Dark mode - White */
-  }
-  body {
-    background-image: var(--background-image-dark); /* Dark mode background */
   }
 }
 
@@ -47,10 +42,6 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-image: var(--background-image-light);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 a {
