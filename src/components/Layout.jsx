@@ -186,7 +186,7 @@ const Layout = () => {
         </nav>
       </header>
 
-      <main className="bg-white py-4 dark:bg-gray-900 md:px-16 lg:px-32 pt-[120px]">
+      <main className="bg-white py-4 dark:bg-gray-900 md:px-16 lg:px-32 pt-[120px] w-full">
         <Outlet />
       </main>
 

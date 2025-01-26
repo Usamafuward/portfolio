@@ -28,12 +28,12 @@
 
 :root {
   --svg-color: #000; /* Light mode default - Black */
+  --background-color: white; /* Light mode background color */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+.dark :root {
     --svg-color: #fff; /* Dark mode - White */
-  }
+    --background-color: #111827; /* Dark mode background color */
 }
 
 html,
@@ -42,6 +42,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--background-color);
+  overflow-x: hidden;
 }
 
 a {
