@@ -1,0 +1,351 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .mask-horizontal {
+    @apply [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_20%,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]
+           [mask-size:cover]
+           [mask-repeat:no-repeat];
+  }
+
+  .mask-vertical {
+    @apply [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_20%,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]
+           [mask-size:cover]
+           [mask-repeat:no-repeat];
+  }
+
+  .paused .animate-scrollX,
+  .paused .animate-scrollY {
+    animation-play-state: paused !important;
+  }
+
+  .reverse-x {
+    animation-direction: reverse;
+    animation-delay: -3s;
+  }
+}
+
+:root {
+  --svg-color: #000; /* Light mode default - Black */
+  --background-image-light: url('assets/8758815.jpg');
+  --background-image-dark: url('assets/8758815.jpg');
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --svg-color: #fff; /* Dark mode - White */
+  }
+  body {
+    background-image: var(--background-image-dark); /* Dark mode background */
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: var(--background-image-light);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "burtons";
+  src: url("assets/Burtons.otf");
+}
+
+.card {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  text-align: center;
+  height: 240px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Overlay effect */
+.card::before {
+  content: "";
+  background: linear-gradient(90.21deg, #3663aa -5.91%, #2fbda5 111.58%);
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: 0;
+  transition: 0.4s ease-in-out;
+  border-radius: 10px;
+  inset: 0;
+}
+
+.card:hover::before {
+  height: 100%;
+}
+
+/* Text styling inside card */
+.overlay {
+  position: absolute;
+  text-align: center;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+  width: 100%;
+}
+
+.card:hover .overlay {
+  top: 50%;
+  opacity: 1;
+}
+
+.overlay h4 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1.1em;
+}
+
+.overlay span {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.8px;
+}
+
+.card-index {
+  flex: 1;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  height: 350px;
+}
+
+.card-index:hover {
+  transform: scale(1.05);
+}
+
+.card-index::before {
+  content: "";
+  background: linear-gradient(90.21deg, #3663aa -5.91%, #2fbda5 111.58%);
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: 0;
+  transition: 0.4s ease-in-out;
+  border-radius: 10px;
+  inset: 0;
+}
+
+.card-index:hover::before {
+  height: 100%;
+}
+
+/* Text styling inside card */
+.overlay {
+  position: absolute;
+  text-align: center;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+  width: 100%;
+}
+
+.card-index:hover .overlay {
+  top: 50%;
+  opacity: 1;
+}
+
+/************ Skills Css ************/
+.skill {
+  position: relative;
+}
+.skill-bx {
+  text-align: center;
+  padding: 40px;
+}
+.skill h2 {
+  font-size: 45px;
+  font-weight: 700;
+}
+.skill p {
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px 0 75px 0;
+}
+.skill-slider {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.skill-slider .item img {
+  width: 50%;
+  margin: 0 auto 25px auto;
+}
+.background-image-left {
+  top: 28%;
+  position: absolute;
+  bottom: 0;
+  width: 40%;
+  z-index: -4;
+}
+
+.social-icon span {
+  display: inline-block;
+}
+
+/* Light Mode Styling */
+.social-icon span a {
+  width: 60px;
+  height: 60px;
+  background: rgba(217, 217, 217, 0.1); /* Light mode background */
+  display: inline-flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.5); /* Light mode border color */
+  overflow: hidden;
+  transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.social-icon span a::before {
+  content: "";
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  background-color: #212935e1; /* Light mode hover background */
+  color: #ffffff;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.social-icon span a:hover::before {
+  transform: scale(1); /* Expand on hover */
+}
+
+.social-icon span a svg {
+  width: 60%;
+  height: 60%;
+  z-index: 1;
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Dark Mode Styling */
+.dark .social-icon span a {
+  background: rgba(55, 65, 81, 0.2); /* Dark mode background */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Dark mode border color */
+}
+
+.dark .social-icon span a::before {
+  background-color: #ffffff; /* Dark gray hover background */
+  color: #000000; /* Dark mode text color */
+  z-index: 0;
+}
+
+.profile img {
+  animation: updown 3s linear infinite;
+}
+
+.tagline {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  background: linear-gradient(
+    90.21deg,
+    rgba(170, 54, 124, 0.5) -5.91%,
+    rgba(74, 47, 189, 0.5) 111.58%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.contact button {
+  font-weight: 700;
+  color: #000000;
+  border: 3px solid #000000;
+  padding: 18px 34px;
+  font-size: 18px;
+	position: relative;
+	transition: 0.3s ease-in-out;
+  margin-top: 15px;
+}
+.dark .contact button {
+  color: #ffffff;
+  border: 3px solid #ffffff;
+}
+.contact button::before {
+  content: "";
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(90.21deg, #3663aa -5.91%, #2fbda5 111.58%);
+  left: 0;
+  top: 0;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+}
+.contact button:hover::before {
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.contact button:hover .overlay {
+  top: 50%;
+  opacity: 1;
+}
+
+.overlays {
+  position: absolute;
+  text-align: center;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+  width: 100%;
+}
+
+.overlays span {
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.8px;
+}
+
+.light-image-filter {
+  filter: brightness(1) invert(0); /* Default appearance */
+}
+
+/* Dark Theme Image Filter */
+.dark-image-filter {
+  filter: brightness(0.8) invert(1); /* Invert colors for dark theme */
+}
