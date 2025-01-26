@@ -118,7 +118,7 @@ export default function Certifications() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
           {dummyCertifications.map((certification, index) => (
             <Link key={index} to={certification.to} className="flex">
-              <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card">
+              <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card">
                 <h3 className="text-2xl font-bold pb-2">
                   {certification.title}
                 </h3>

@@ -2,12 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .mask-horizontal {
+    @apply [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_20%,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]
+           [mask-size:cover]
+           [mask-repeat:no-repeat];
+  }
+
+  .mask-vertical {
+    @apply [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_20%,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]
+           [mask-size:cover]
+           [mask-repeat:no-repeat];
+  }
+
+  .paused .animate-scrollX,
+  .paused .animate-scrollY {
+    animation-play-state: paused !important;
+  }
+
+  .reverse-x {
+    animation-direction: reverse;
+    animation-delay: -3s;
+  }
+}
+
+:root {
+  --svg-color: #000; /* Light mode default - Black */
+  --background-image-light: url('assets/8758815.jpg');
+  --background-image-dark: url('assets/8758815.jpg');
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --svg-color: #fff; /* Dark mode - White */
+  }
+  body {
+    background-image: var(--background-image-dark); /* Dark mode background */
+  }
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: var(--background-image-light);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 a {
@@ -21,16 +64,6 @@ a {
 @font-face {
   font-family: "burtons";
   src: url("assets/Burtons.otf");
-}
-
-:root {
-  --svg-color: #000; /* Light mode default - Black */
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --svg-color: #fff; /* Dark mode - White */
-  }
 }
 
 .card {
@@ -306,4 +339,13 @@ a {
   font-weight: 400;
   font-size: 15px;
   letter-spacing: 0.8px;
+}
+
+.light-image-filter {
+  filter: brightness(1) invert(0); /* Default appearance */
+}
+
+/* Dark Theme Image Filter */
+.dark-image-filter {
+  filter: brightness(0.8) invert(1); /* Invert colors for dark theme */
 }

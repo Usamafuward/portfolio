@@ -75,15 +75,15 @@ export default function Projects() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
           {dummyProjects.map((project, index) => (
             <Link key={index} to={project.to} className="flex">
-              <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card">
-                <h5 className="text-2xl font-bold pb-2">
-                  {project.title}
-                </h5>
+              <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card">
+                <h5 className="text-2xl font-bold pb-2">{project.title}</h5>
                 <p className="py-2" style={{ fontStyle: "italic" }}>
                   Tech Stack : {project.technologies.join(", ")}
                 </p>
                 <div className="overlay p-2">
-                  <h5 className="font-bold text-white text-lg">{project.title}</h5>
+                  <h5 className="font-bold text-white text-lg">
+                    {project.title}
+                  </h5>
                   <p className="text-white">{project.description}</p>
                 </div>
               </div>

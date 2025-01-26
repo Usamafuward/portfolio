@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import {
   AiOutlineGithub,
@@ -11,12 +11,13 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { Outlet, Link, useLocation } from "react-router-dom";
+import { DarkModeContext } from "../context/DarkModeContext";
 import SE from "../assets/Resume_SE.pdf";
 import ML_AI from "../assets/Resume_ML.pdf";
 
 const Layout = () => {
+  const { darkMode, setDarkMode } = useContext(DarkModeContext);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -109,7 +110,7 @@ const Layout = () => {
             </li>
             <li>
               <Link to="/">
-                <h1 className="font-burtons text-xl cursor-pointer">
+                <h1 className="font-bold font-serif text-xl cursor-pointer">
                   Portfolio
                 </h1>
               </Link>
