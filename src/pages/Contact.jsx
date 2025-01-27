@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -6,6 +7,7 @@ export default function Contact() {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,8 +16,26 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic (e.g., send email or save to database)
-    console.log("Form data:", formData);
+    setIsSubmitting(true);
+
+    // Replace these with your EmailJS credentials
+    const serviceID = "service_eejd23f";
+    const templateID = "template_oahayaf";
+    const publicKey = "jGzKqXLa-LoIaRfLd";
+
+    emailjs.send(serviceID, templateID, formData, publicKey)
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Message sent successfully!');
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch((err) => {
+        console.error('FAILED...', err);
+        alert('Oops! Something went wrong. Please try again.');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -84,9 +104,12 @@ export default function Contact() {
         </div>
         <button
           type="submit"
-          className="w-full bg-teal-600 text-white py-3 font-semibold hover:bg-teal-500 transition-colors rounded-xl"
+          disabled={isSubmitting}
+          className={`w-full bg-teal-600 text-white py-3 font-semibold rounded-xl transition-colors ${
+            isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-teal-500'
+          }`}
         >
-          Submit
+          {isSubmitting ? 'Sending...' : 'Submit'}
         </button>
       </form>
     </section>

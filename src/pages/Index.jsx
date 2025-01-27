@@ -289,7 +289,7 @@ const Index = () => {
         <h2 className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-12">
           Technologies
         </h2>
-        <div className="h-auto w-full relative my-6 shadow-lg border-r-4 border-l-4 border-teal-400 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
+        <div className="h-auto w-full relative my-6 shadow-lg border-r-4 border-l-4 border border-teal-400 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
           <LogoWall
             items={logoImgs}
             direction="horizontal"
