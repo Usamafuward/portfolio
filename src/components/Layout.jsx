@@ -73,15 +73,15 @@ const Layout = () => {
   return (
     <div className={darkMode ? "dark" : ""}>
       <header
-        className={`px-8 md:px-16 lg:px-40 fixed top-0 w-full z-10 transition-colors duration-300 ${
+        className={`px-8 md:px-16 lg:px-40 fixed top-0 w-full z-10 transition-colors duration-300 backdrop-filter backdrop-blur-md ${
           isScrolled
-            ? "bg-green-100 dark:bg-gray-700 shadow-lg"
-            : "bg-white dark:bg-gray-900"
+            ? "bg-green-100/80 dark:bg-gray-700/80 shadow-lg"
+            : "bg-white/80 dark:bg-gray-900/80"
         }`}
       >
         <nav
           className={`flex justify-between items-center dark:text-white ${
-            isScrolled ? "py-4" : "py-7"
+            isScrolled ? "py-5" : "py-7"
           }`}
         >
           <ul className="flex items-center gap-5">
@@ -119,7 +119,7 @@ const Layout = () => {
           </ul>
 
           <ul className="flex items-center">
-            <li className="hidden md:flex gap-5 mr-5">
+            <li className="hidden md:flex gap-5 mr-6">
               {menuItems.slice(0, -1).map((item) => (
                 <Link
                   key={item.to}
@@ -136,7 +136,7 @@ const Layout = () => {
                 className="cursor-pointer text-2xl text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
               />
             </li>
-            <li className="relative ml-5">
+            <li className="relative ml-8">
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
                 className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 border-none rounded-md flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
