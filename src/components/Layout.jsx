@@ -55,7 +55,8 @@ const Layout = () => {
   ];
 
   useEffect(() => {
-    setShowMenu(false);
+    setShowMenu(false); // Close the menu on location change
+    window.scrollTo(0, 0); // Scroll to the top of the page on navigation
   }, [location]);
 
   useEffect(() => {
