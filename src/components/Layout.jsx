@@ -22,6 +22,38 @@ const Layout = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
+  const menuItems = [
+    { to: "/", label: "Home" },
+    { to: "/projects", label: "Projects" },
+    { to: "/certifications", label: "Certifications" },
+    { to: "/experiences", label: "Experiences" },
+    { to: "/contact", label: "Contact Me!" },
+  ];
+
+  const socialLinks = [
+    { href: "https://github.com/Usamafuward", icon: <AiOutlineGithub /> },
+    { href: "https://linkedin.com/in/usama-puward", icon: <AiFillLinkedin /> },
+    { href: "https://www.x.com/usamafuward", icon: <AiFillTwitterCircle /> },
+    {
+      href: "https://www.instagram.com/usama._fuward",
+      icon: <AiFillInstagram />,
+    },
+    { href: "mailto:usamafuward2001@gmail.com", icon: <AiFillMail /> },
+  ];
+
+  const resumeLinks = [
+    {
+      href: SE,
+      label: "Software Engineering",
+      download: "Resume_Software_Engineering.pdf",
+    },
+    {
+      href: ML_AI,
+      label: "ML/AI Engineering",
+      download: "Resume_ML_AI_Engineering.pdf",
+    },
+  ];
+
   useEffect(() => {
     setShowMenu(false);
   }, [location]);
@@ -53,8 +85,6 @@ const Layout = () => {
         >
           <ul className="flex items-center gap-5">
             <li className="md:hidden">
-              {" "}
-              {/* Menu button for mobile only */}
               <div className="relative">
                 <button
                   onClick={() => setShowMenu(!showMenu)}
@@ -64,97 +94,51 @@ const Layout = () => {
                 </button>
                 {showMenu && (
                   <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg">
-                    <li>
-                      <Link
-                        to="/"
-                        className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                      >
-                        Home
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/projects"
-                        className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                      >
-                        Projects
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/certifications"
-                        className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                      >
-                        Certifications
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/experiences"
-                        className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                      >
-                        Experiences
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/contact"
-                        className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                      >
-                        Contact Me!
-                      </Link>
-                    </li>
+                    {menuItems.map((item) => (
+                      <li key={item.to}>
+                        <Link
+                          to={item.to}
+                          className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 )}
               </div>
             </li>
             <li>
               <Link to="/">
-                <h1 className="font-bold font-serif text-xl cursor-pointer">
+                <h1 className="font-bold font-serif text-2xl cursor-pointer text-gray-800 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200">
                   Portfolio
                 </h1>
               </Link>
             </li>
-            {/* Inline links for medium-sized screens and up */}
           </ul>
 
           <ul className="flex items-center">
-            <li className="hidden md:flex gap-5 mr-6">
-              <Link
-                to="/"
-                className="text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400"
-              >
-                Home
-              </Link>
-              <Link
-                to="/projects"
-                className="text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400"
-              >
-                Projects
-              </Link>
-              <Link
-                to="/certifications"
-                className="text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400"
-              >
-                Certifications
-              </Link>
-              <Link
-                to="/experiences"
-                className="text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400"
-              >
-                Experiences
-              </Link>
+            <li className="hidden md:flex gap-5 mr-5">
+              {menuItems.slice(0, -1).map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium transition-colors duration-200"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </li>
             <li>
               <BsFillMoonStarsFill
                 onClick={() => setDarkMode(!darkMode)}
-                className="cursor-pointer text-2xl"
+                className="cursor-pointer text-2xl text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
               />
             </li>
-            <li className="relative ml-8">
+            <li className="relative ml-5">
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 border-none rounded-md flex items-center"
+                className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 border-none rounded-md flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
               >
                 Resume{" "}
                 {showDropdown ? (
@@ -165,20 +149,16 @@ const Layout = () => {
               </button>
               {showDropdown && (
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg">
-                  <a
-                    href={SE}
-                    download="Resume_Software_Engineering.pdf"
-                    className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    Software Engineering
-                  </a>
-                  <a
-                    href={ML_AI}
-                    download="Resume_ML_AI_Engineering.pdf"
-                    className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    ML/AI Engineering
-                  </a>
+                  {resumeLinks.map((resume) => (
+                    <a
+                      key={resume.label}
+                      href={resume.href}
+                      download={resume.download}
+                      className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                    >
+                      {resume.label}
+                    </a>
+                  ))}
                 </div>
               )}
             </li>
@@ -192,51 +172,16 @@ const Layout = () => {
 
       <footer className="py-4 text-center bg-white dark:bg-gray-900">
         <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-700 dark:text-gray-300">
-          <span className="dark:hover:text-gray-800 hover:text-white">
-            <a
-              href="https://github.com/Usamafuward"
-              target="_blank"
-              rel="noopener noreferrer"
+          {socialLinks.map((link, index) => (
+            <span
+              key={index}
+              className="dark:hover:text-gray-800 hover:text-white"
             >
-              <AiOutlineGithub />
-            </a>
-          </span>
-          <span className="dark:hover:text-gray-800 hover:text-white">
-            <a
-              href="https://linkedin.com/in/usama-puward"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AiFillLinkedin />
-            </a>
-          </span>
-          <span className="dark:hover:text-gray-800 hover:text-white">
-            <a
-              href="https://www.x.com/usamafuward"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AiFillTwitterCircle />
-            </a>
-          </span>
-          <span className="dark:hover:text-gray-800 hover:text-white">
-            <a
-              href="https://www.instagram.com/usama._fuward"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AiFillInstagram />
-            </a>
-          </span>
-          <span className="dark:hover:text-gray-800 hover:text-white">
-            <a
-              href="mailto:usamafuward2001@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AiFillMail />
-            </a>
-          </span>
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.icon}
+              </a>
+            </span>
+          ))}
         </div>
 
         <p className="text-md py-2 dark:text-white">

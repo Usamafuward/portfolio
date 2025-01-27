@@ -44,15 +44,16 @@ export default function Experiences() {
         </h1>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
           {Experiences.map((experience, index) => (
-            <div
-              key={index}
-              className="text-center shadow-lg dark:shadow-gray-400 p-7 border-2 border-white dark:border-gray-500 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card"
-            >
-              <h3 className="text-2xl font-bold pb-2">{experience.title}</h3>
-              <p className="font-semibold mt-3">{experience.company}</p>
-              <p className="text-sm font-extralight">({experience.duration})</p>
-              <div className="overlay">
-                <p className="p-2 text-white">{experience.description}</p>
+            <div key={index} className="group relative flex-1">
+              <div className="text-center shadow-lg dark:shadow-gray-400 p-7 border-2 border-white dark:border-gray-500 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex flex-col justify-center card relative">
+                <h3 className="text-2xl font-bold pb-2">{experience.title}</h3>
+                <p className="font-semibold mt-3">{experience.company}</p>
+                <p className="text-sm font-extralight">
+                  ({experience.duration})
+                </p>
+                <div className="overlay absolute top-[65%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center duration-500 ease-in-out opacity-0 w-full group-hover:top-1/2 group-hover:opacity-100">
+                  <p className="p-2 text-white">{experience.description}</p>
+                </div>
               </div>
             </div>
           ))}

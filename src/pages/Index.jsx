@@ -15,6 +15,7 @@ import SplitText from "@/components/ui/SplitText";
 import LogoWall from "@/components/ui/LogoWall";
 import TiltedCard from "@/components/ui/TitleCard";
 import TrueFocus from "@/components/ui/TrueFocus";
+import PixelTransition from "@/components/ui/PixelTransition";
 import logoSvg from "@/assets/logo_svg";
 import flatIcon from "@/assets/flat_icon";
 
@@ -209,7 +210,7 @@ const Index = () => {
               </button>
             </HashLink>
           </div>
-          <div className="relative mx-auto my-auto flex items-top justify-center pt-7 md:pt-0">
+          <div className="relative mx-auto my-auto flex items-top justify-center">
             <TrackVisibility>
               {({ isVisible }) => (
                 <div className={isVisible ? "animate-zoomIn" : ""}>
@@ -238,7 +239,7 @@ const Index = () => {
 
       {/* Cards Section */}
       <section>
-        <div className="text-center pt-10 pb-5 xl:pb-0 px-7">
+        <div className="text-center pt-8 sm:pt-16 pb-5 xl:pb-0 px-7">
           <TrueFocus
             sentence="Welcome to My Portfolio"
             manualMode={false}
@@ -251,29 +252,65 @@ const Index = () => {
         </div>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
           {cards.map((card, index) => (
+            // <HashLink
+            //   key={index}
+            //   to={card.link}
+            //   className="group text-center p-10 rounded-xl my-5 border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 flex-1 flex flex-col justify-center relative overflow-hidden card-index"
+            // >
+            //   <img
+            //     src={card.image}
+            //     alt={card.title}
+            //     className="mx-auto h-[125px] w-auto filter grayscale group-hover:grayscale-0 transition-all duration-300"
+            //   />
+            //   <h3 className="text-2xl font-medium pt-8 pb-2">{card.title}</h3>
+            //   {/* Overlay */}
+            //   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl transform translate-y-[-100%] group-hover:translate-y-0">
+            //     {/* Description */}
+            //     <div className="transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+            //       <h5 className="text-xl font-bold pb-2 text-white">
+            //         {card.title}
+            //       </h5>
+            //       <p className="p-3 text-white text-center">
+            //         {card.description}
+            //       </p>
+            //     </div>
+            //   </div>
+            // </HashLink>
             <HashLink
               key={index}
               to={card.link}
-              className="group text-center p-10 rounded-xl my-5 border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 flex-1 flex flex-col justify-center relative overflow-hidden card-index"
+              className="group text-center flex-1 flex flex-col justify-center relative my-5"
             >
-              <img
-                src={card.image}
-                alt={card.title}
-                className="mx-auto h-[125px] w-auto filter grayscale group-hover:grayscale-0 transition-all duration-300"
+              <PixelTransition
+                firstContent={
+                  <div className="flex flex-col h-full items-center justify-center p-4 rounded-xl border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 ">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="mx-auto h-[125px] w-auto filter grayscale group-hover:grayscale-0 transition-all duration-300 "
+                    />
+                    <h3 className="text-2xl text-black dark:text-white font-medium pt-8 pb-2 text-">
+                      {card.title}
+                    </h3>
+                  </div>
+                }
+                secondContent={
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl transform translate-y-[-100%] group-hover:translate-y-0 border-2 border-white dark:border-gray-500">
+                    <div className="transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                      <h5 className="text-xl font-bold pb-2 text-white">
+                        {card.title}
+                      </h5>
+                      <p className="p-3 text-white text-center">
+                        {card.description}
+                      </p>
+                    </div>
+                  </div>
+                }
+                gridSize={12}
+                pixelColor="#ffffff"
+                animationStepDuration={0.3}
+                className="custom-pixel-card"
               />
-              <h3 className="text-2xl font-medium pt-8 pb-2">{card.title}</h3>
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl transform translate-y-[-100%] group-hover:translate-y-0">
-                {/* Description */}
-                <div className="transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                  <h5 className="text-xl font-bold pb-2 text-white">
-                    {card.title}
-                  </h5>
-                  <p className="p-3 text-white text-center">
-                    {card.description}
-                  </p>
-                </div>
-              </div>
             </HashLink>
           ))}
         </div>

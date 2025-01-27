@@ -14,8 +14,8 @@ export default function TiltedCard({
   captionText = "",
   containerHeight = "300px",
   containerWidth = "100%",
-  imageHeight = "300px",
-  imageWidth = "300px",
+  // imageHeight = "300px",
+  // imageWidth = "300px",
   scaleOnHover = 1.1,
   rotateAmplitude = 14,
   showMobileWarning = true,
@@ -91,10 +91,10 @@ export default function TiltedCard({
       )}
 
       <motion.div
-        className="relative [transform-style:preserve-3d]"
+        className="relative [transform-style:preserve-3d] w-[325px] sm:w-[360px] h-[325px] sm:h-[360px]"
         style={{
-          width: imageWidth,
-          height: imageHeight,
+          // width: imageWidth,
+          // height: imageHeight,
           rotateX,
           rotateY,
           scale,
@@ -103,10 +103,10 @@ export default function TiltedCard({
         <motion.img
           src={imageSrc}
           alt={altText}
-          className="absolute top-0 left-0 object-cover rounded-full will-change-transform [transform:translateZ(0)]"
+          className="absolute top-0 left-0 object-cover rounded-full will-change-transform [transform:translateZ(0)] w-[325px] sm:w-[360px] h-[325px] sm:h-[360px]"
           style={{
-            width: imageWidth,
-            height: imageHeight,
+            // width: imageWidth,
+            // height: imageHeight,
           }}
         />
 

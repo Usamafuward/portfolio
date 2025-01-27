@@ -68,12 +68,12 @@ a {
   cursor: pointer;
   transition: transform 0.3s ease;
   text-align: center;
-  height: 240px;
+  height: 280px;
 }
 
-.card:hover {
+/* .card:hover {
   transform: scale(1.05);
-}
+} */
 
 /* Overlay effect */
 .card::before {
@@ -93,21 +93,7 @@ a {
 }
 
 /* Text styling inside card */
-.overlay {
-  position: absolute;
-  text-align: center;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.5s ease-in-out;
-  opacity: 0;
-  width: 100%;
-}
 
-.card:hover .overlay {
-  top: 50%;
-  opacity: 1;
-}
 
 .overlay h4 {
   font-size: 24px;

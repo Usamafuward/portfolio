@@ -118,15 +118,19 @@ export default function Certifications() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
           {dummyCertifications.map((certification, index) => (
             <Link key={index} to={certification.to} className="flex">
-              <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card">
-                <h3 className="text-2xl font-bold pb-2">
-                  {certification.title}
-                </h3>
-                <p className="font-semibold mt-1">
-                  - {certification.organization}
-                </p>
-                <div className="overlay">
-                  <p className="p-2 text-white">{certification.description}</p>
+              <div className="group relative flex-1">
+                <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex flex-col justify-center card relative">
+                  <h3 className="text-2xl font-bold pb-2">
+                    {certification.title}
+                  </h3>
+                  <p className="font-semibold mt-1">
+                    - {certification.organization}
+                  </p>
+                  <div className="overlay absolute top-[65%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center duration-500 ease-in-out opacity-0 w-full group-hover:top-1/2 group-hover:opacity-100">
+                    <p className="p-3 text-white">
+                      {certification.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             </Link>
