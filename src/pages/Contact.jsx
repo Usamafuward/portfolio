@@ -54,7 +54,7 @@ export default function Contact() {
           <div className="mb-5">
             <label
               htmlFor="name"
-              className="block text-gray-800 dark:text-gray-200 text-left mb-2"
+              className="block font-semibold text-gray-800 dark:text-gray-200 text-left mb-2"
             >
               Name
             </label>
@@ -71,7 +71,7 @@ export default function Contact() {
           <div className="mb-5">
             <label
               htmlFor="email"
-              className="block text-gray-800 dark:text-gray-200 text-left mb-2"
+              className="block font-semibold text-gray-800 dark:text-gray-200 text-left mb-2"
             >
               Email
             </label>
@@ -89,7 +89,7 @@ export default function Contact() {
         <div className="mb-5">
           <label
             htmlFor="message"
-            className="block text-gray-800 dark:text-gray-200 text-left mb-2"
+            className="block font-semibold text-gray-800 dark:text-gray-200 text-left mb-2"
           >
             Message
           </label>
@@ -106,10 +106,10 @@ export default function Contact() {
           type="submit"
           disabled={isSubmitting}
           className={`w-full bg-teal-600 text-white py-3 font-semibold rounded-xl transition-colors ${
-            isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-teal-500'
+            isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-teal-500"
           }`}
         >
-          {isSubmitting ? 'Sending...' : 'Submit'}
+          {isSubmitting ? "Sending..." : "Submit"}
         </button>
       </form>
     </section>
