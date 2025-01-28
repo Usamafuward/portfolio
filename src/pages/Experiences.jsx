@@ -1,4 +1,32 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
 export default function Experiences() {
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const slideUpVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   const Experiences = [
     {
       title: "AI/ML Engineer Intern",
@@ -38,14 +66,29 @@ export default function Experiences() {
 
   return (
     <div>
-      <section className="min-h-screen">
-        <h1 className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-8">
+      <section className="min-h-screen" ref={ref}>
+        <motion.h1
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={slideUpVariants}
+          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-8"
+        >
           Experiences
-        </h1>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
+        </motion.h1>
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7"
+        >
           {Experiences.map((experience, index) => (
-            <div key={index} className="group relative flex-1">
-              <div className="text-center shadow-lg dark:shadow-gray-400 p-7 border-2 border-white dark:border-gray-500 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex flex-col justify-center card relative">
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="group text-center shadow-lg dark:shadow-gray-400 p-7 border-2 border-white dark:border-gray-500 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex flex-col justify-center card relative">
                 <h3 className="text-2xl font-bold pb-2">{experience.title}</h3>
                 <p className="font-semibold mt-3">{experience.company}</p>
                 <p className="text-sm font-extralight">
@@ -55,9 +98,9 @@ export default function Experiences() {
                   <p className="p-2 text-white">{experience.description}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
     </div>
   );

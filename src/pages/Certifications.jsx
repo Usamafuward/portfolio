@@ -1,6 +1,34 @@
 import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
 
 export default function Certifications() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const slideUpVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   const dummyCertifications = [
     {
       title: "React Basics",
@@ -109,33 +137,68 @@ export default function Certifications() {
     },
   ];
 
+  const filteredCertifications = dummyCertifications.filter((certification) =>
+    certification.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
-      <section className="min-h-screen">
-        <h1 className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-8">
+      <section className="min-h-screen" ref={ref}>
+        <motion.h1
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={slideUpVariants}
+          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-8"
+        >
           Certifications
-        </h1>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
-          {dummyCertifications.map((certification, index) => (
-            <Link key={index} to={certification.to} className="flex">
-              <div className="group relative flex-1">
-                <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex flex-col justify-center card relative">
-                  <h3 className="text-2xl font-bold pb-2">
-                    {certification.title}
-                  </h3>
-                  <p className="font-semibold mt-1">
-                    - {certification.organization}
-                  </p>
-                  <div className="overlay absolute top-[65%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center duration-500 ease-in-out opacity-0 w-full group-hover:top-1/2 group-hover:opacity-100">
-                    <p className="p-3 text-white">
-                      {certification.description}
+        </motion.h1>
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={slideUpVariants}
+          className="text-center px-7"
+        >
+          <input
+            type="text"
+            placeholder="Search certifications..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full p-3 my-5 border-2 border-gray-300 dark:border-gray-500 rounded-xl dark:bg-gray-800 text-gray-500 dark:text-gray-300 focus:outline-none focus:border-teal-500 max-w-4xl mx-auto block"
+          />
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7"
+        >
+          {filteredCertifications.map((certification, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Link key={index} to={certification.to} className="flex">
+                <div className="group relative flex-1">
+                  <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex flex-col justify-center card relative">
+                    <h3 className="text-2xl font-bold pb-2">
+                      {certification.title}
+                    </h3>
+                    <p className="font-semibold mt-1">
+                      - {certification.organization}
                     </p>
+                    <div className="overlay absolute top-[65%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center duration-500 ease-in-out opacity-0 w-full group-hover:top-1/2 group-hover:opacity-100">
+                      <p className="p-3 text-white">
+                        {certification.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
     </div>
   );

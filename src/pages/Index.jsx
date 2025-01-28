@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useMemo } from "react";
+import { useState, useEffect, useContext, useMemo, useRef } from "react";
 import { DarkModeContext } from "@/context/DarkModeContext";
 import {
   AiOutlineGithub,
@@ -7,6 +7,7 @@ import {
   AiFillTwitterCircle,
   AiFillMail,
 } from "react-icons/ai";
+import { motion, useInView } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
 import profile from "@/assets/Usama.jpg";
 import { Skills } from "@/components/Skills";
@@ -19,6 +20,24 @@ import PixelTransition from "@/components/ui/PixelTransition";
 import logoSvg from "@/assets/logo_svg";
 import flatIcon from "@/assets/flat_icon";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const slideUpVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const Index = () => {
   const { darkMode } = useContext(DarkModeContext);
   const [loopNum, setLoopNum] = useState(0);
@@ -26,6 +45,8 @@ const Index = () => {
   const [text, setText] = useState("");
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const toRotate = useMemo(() => ["AI / ML Engineer", "Software Engineer"], []);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const period = 2000;
 
   useEffect(() => {
@@ -139,9 +160,14 @@ const Index = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section>
+      <section ref={ref}>
         <div className="text-center p-5 xl:flex md:justify-between space-y-20">
-          <div className="items-center justify-center mx-auto">
+          <motion.div
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={containerVariants}
+            className="items-center justify-center mx-auto"
+          >
             <SplitText
               text="Usama Puward"
               className="text-5xl px-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl"
@@ -209,8 +235,13 @@ const Index = () => {
                 Let’s Connect
               </button>
             </HashLink>
-          </div>
-          <div className="relative mx-auto my-auto flex items-top justify-center">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5 }}
+            className="relative mx-auto my-auto flex items-top justify-center"
+          >
             <TrackVisibility>
               {({ isVisible }) => (
                 <div className={isVisible ? "animate-zoomIn" : ""}>
@@ -233,12 +264,17 @@ const Index = () => {
                 </div>
               )}
             </TrackVisibility>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Cards Section */}
-      <section>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
         <div className="text-center pt-8 sm:pt-16 pb-5 xl:pb-0 px-7">
           <TrueFocus
             sentence="Welcome to My Portfolio"
@@ -250,7 +286,10 @@ const Index = () => {
             pauseBetweenAnimations={1}
           />
         </div>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
+        <motion.div
+          className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7"
+          variants={containerVariants}
+        >
           {cards.map((card, index) => (
             // <HashLink
             //   key={index}
@@ -276,57 +315,77 @@ const Index = () => {
             //     </div>
             //   </div>
             // </HashLink>
-            <HashLink
-              key={index}
-              to={card.link}
-              className="group text-center flex-1 flex flex-col justify-center relative my-5"
-            >
-              <PixelTransition
-                firstContent={
-                  <div className="flex flex-col h-full items-center justify-center p-4 rounded-xl border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 ">
-                    <img
-                      src={card.image}
-                      alt={card.title}
-                      className="mx-auto h-[125px] w-auto filter grayscale group-hover:grayscale-0 transition-all duration-300 "
-                    />
-                    <h3 className="text-2xl text-black dark:text-white font-medium pt-8 pb-2 text-">
-                      {card.title}
-                    </h3>
-                  </div>
-                }
-                secondContent={
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl transform translate-y-[-100%] group-hover:translate-y-0 border-2 border-white dark:border-gray-500">
-                    <div className="transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                      <h5 className="text-xl font-bold pb-2 text-white">
+            <motion.div key={index} variants={itemVariants}>
+              <HashLink
+                key={index}
+                to={card.link}
+                className="group text-center flex-1 flex flex-col justify-center relative my-5"
+              >
+                <PixelTransition
+                  firstContent={
+                    <div className="flex flex-col h-full items-center justify-center p-4 rounded-xl border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 ">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="mx-auto h-[125px] w-auto filter grayscale group-hover:grayscale-0 transition-all duration-300 "
+                      />
+                      <h3 className="text-2xl text-black dark:text-white font-medium pt-8 pb-2 text-">
                         {card.title}
-                      </h5>
-                      <p className="p-3 text-white text-center">
-                        {card.description}
-                      </p>
+                      </h3>
                     </div>
-                  </div>
-                }
-                gridSize={12}
-                pixelColor="#ffffff"
-                animationStepDuration={0.3}
-                className="custom-pixel-card"
-              />
-            </HashLink>
+                  }
+                  secondContent={
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl transform translate-y-[-100%] group-hover:translate-y-0 border-2 border-white dark:border-gray-500">
+                      <div className="transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                        <h5 className="text-xl font-bold pb-2 text-white">
+                          {card.title}
+                        </h5>
+                        <p className="p-3 text-white text-center">
+                          {card.description}
+                        </p>
+                      </div>
+                    </div>
+                  }
+                  gridSize={12}
+                  pixelColor="#ffffff"
+                  animationStepDuration={0.3}
+                  className="custom-pixel-card"
+                />
+              </HashLink>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* Skills Section */}
-      <section className="p-7 my-7">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="p-7 my-7"
+      >
         <Skills />
-      </section>
+      </motion.section>
 
       {/* Technologies Section */}
-      <section className="p-7">
-        <h2 className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-12">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="p-7"
+      >
+        <motion.h2
+          variants={slideUpVariants}
+          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-12"
+        >
           Technologies
-        </h2>
-        <div className="h-auto w-full relative my-6 shadow-lg border-r-4 border-l-4 border border-teal-400 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200">
+        </motion.h2>
+        <motion.div
+          variants={slideUpVariants}
+          className="h-auto w-full relative my-6 shadow-lg border-x-4 border-teal-400 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200"
+        >
           <LogoWall
             items={logoImgs}
             direction="horizontal"
@@ -334,21 +393,25 @@ const Index = () => {
             duration="60s"
             bgAccentColor="#2DD4BF"
           />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto mb-10">
+        </motion.div>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto mb-10"
+          variants={containerVariants}
+        >
           {technologies.map((tech, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={itemVariants}
               className="text-center shadow-lg p-10 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2  border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
             >
               <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
                 {tech.title}
               </h3>
               <p>{tech.items.join(", ")}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </div>
   );
 };

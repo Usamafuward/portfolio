@@ -1,6 +1,34 @@
 import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function Projects() {
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const slideUpVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   const dummyProjects = [
     {
       title: "Travel Point",
@@ -34,7 +62,13 @@ export default function Projects() {
       description:
         "This project is a RAG (Retrieval-Augmented Generation) pipeline that extracts and processes text, tables, and images from PDFs, enabling users to query the extracted information through a conversational interface. It combines multi-modal embeddings with a Google Generative AI-powered question-answering system.",
       to: "https://github.com/Usamafuward/Rag-Pipeline-For-PDF-Analysis.git",
-      technologies: ["LangChain", "Google GEN AI", "FIASS", "Streamlit", "Python"],
+      technologies: [
+        "LangChain",
+        "Google GEN AI",
+        "FIASS",
+        "Streamlit",
+        "Python",
+      ],
     },
     {
       title: "Portfolio Website",
@@ -68,12 +102,28 @@ export default function Projects() {
 
   return (
     <div>
-      <section>
-        <h1 className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-8">
+      <section className="min-h-screen" ref={ref}>
+        <motion.h1
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={slideUpVariants}
+          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-8"
+        >
           Projects
-        </h1>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7">
+        </motion.h1>
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-7"
+        >
           {dummyProjects.map((project, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
             <Link key={index} to={project.to} className="flex-1 group relative">
               <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card">
                 <h5 className="text-2xl font-bold pb-2">{project.title}</h5>
@@ -88,8 +138,9 @@ export default function Projects() {
                 </div>
               </div>
             </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
     </div>
   );

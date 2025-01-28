@@ -1,7 +1,32 @@
-import { useState } from "react";
-import emailjs from '@emailjs/browser';
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { motion, useInView } from "framer-motion";
 
 export default function Contact() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const slideUpVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,15 +48,16 @@ export default function Contact() {
     const templateID = "template_oahayaf";
     const publicKey = "jGzKqXLa-LoIaRfLd";
 
-    emailjs.send(serviceID, templateID, formData, publicKey)
+    emailjs
+      .send(serviceID, templateID, formData, publicKey)
       .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-        alert('Message sent successfully!');
+        console.log("SUCCESS!", response.status, response.text);
+        alert("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
       })
       .catch((err) => {
-        console.error('FAILED...', err);
-        alert('Oops! Something went wrong. Please try again.');
+        console.error("FAILED...", err);
+        alert("Oops! Something went wrong. Please try again.");
       })
       .finally(() => {
         setIsSubmitting(false);
@@ -39,19 +65,36 @@ export default function Contact() {
   };
 
   return (
-    <section className="text-center px-7">
-      <h1 className="text-5xl font-bold text-teal-600 dark:text-teal-400 py-8">
+    <section className="text-center px-7" ref={ref}>
+      <motion.h1
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={slideUpVariants}
+        className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-8"
+      >
         Contact Me
-      </h1>
-      <p className="text-3xl leading-8 text-gray-800 dark:text-gray-200 max-w-2xl mx-auto mb-10">
+      </motion.h1>
+      <motion.p
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={slideUpVariants}
+        className="text-3xl leading-8 text-gray-800 dark:text-gray-200 max-w-2xl mx-auto mb-10"
+      >
         Thanks for taking the time to reach out.
-      </p>
-      <form
+      </motion.p>
+      <motion.form
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={containerVariants}
         onSubmit={handleSubmit}
         className="max-w-4xl mx-auto bg-green-100 dark:bg-gray-700 p-10 m-10 rounded-xl shadow-lg border-2 border-white dark:border-gray-500"
       >
-        <div className="md:flex mb-6 justify-between grid grid-cols-1 md:grid-cols-2">
-          <div className="mb-5">
+        <div className="md:flex justify-between grid grid-cols-1 md:grid-cols-2">
+          <motion.div
+            variants={itemVariants}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="mb-6"
+          >
             <label
               htmlFor="name"
               className="block font-semibold text-gray-800 dark:text-gray-200 text-left mb-2"
@@ -67,8 +110,12 @@ export default function Contact() {
               className="w-full md:w-72 lg:w-96 p-3 border rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 focus:outline-none focus:border-teal-500"
               required
             />
-          </div>
-          <div className="mb-5">
+          </motion.div>
+          <motion.div
+            variants={itemVariants}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="mb-6"
+          >
             <label
               htmlFor="email"
               className="block font-semibold text-gray-800 dark:text-gray-200 text-left mb-2"
@@ -84,9 +131,13 @@ export default function Contact() {
               className="w-full md:w-72 lg:w-96 p-3 border rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 focus:outline-none focus:border-teal-500"
               required
             />
-          </div>
+          </motion.div>
         </div>
-        <div className="mb-5">
+        <motion.div
+          variants={itemVariants}
+          transition={{ type: "spring", stiffness: 300 }}
+          className="mb-6"
+        >
           <label
             htmlFor="message"
             className="block font-semibold text-gray-800 dark:text-gray-200 text-left mb-2"
@@ -101,17 +152,21 @@ export default function Contact() {
             className="w-full p-3 h-32 border rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 focus:outline-none focus:border-teal-500"
             required
           ></textarea>
-        </div>
-        <button
+        </motion.div>
+        <motion.button
           type="submit"
           disabled={isSubmitting}
+          whileHover={{ scale: 1.005 }}
+          whileTap={{ scale: 0.995 }}
+          variants={itemVariants}
+          transition={{ type: "spring", stiffness: 300 }}
           className={`w-full bg-teal-600 text-white py-3 font-semibold rounded-xl transition-colors ${
             isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-teal-500"
           }`}
         >
           {isSubmitting ? "Sending..." : "Submit"}
-        </button>
-      </form>
+        </motion.button>
+      </motion.form>
     </section>
   );
 }

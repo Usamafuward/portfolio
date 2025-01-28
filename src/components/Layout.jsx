@@ -70,6 +70,10 @@ const Layout = () => {
     };
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className={darkMode ? "dark" : ""}>
       <header
@@ -189,6 +193,16 @@ const Layout = () => {
           © 2024 Usama Puward | Computer Science Undergraduate @ UCSC
         </p>
       </footer>
+      {isScrolled ? (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-10 right-10 lg:right-28 bg-teal-600 text-white p-3 rounded-full shadow-lg hover:bg-teal-500 transition-colors"
+        >
+          ↑
+        </button>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
