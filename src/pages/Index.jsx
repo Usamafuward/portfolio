@@ -236,12 +236,7 @@ const Index = () => {
               </button>
             </HashLink>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5 }}
-            className="relative mx-auto my-auto flex items-top justify-center"
-          >
+          <motion.div className="relative mx-auto my-auto flex items-top justify-center">
             <TrackVisibility>
               {({ isVisible }) => (
                 <div className={isVisible ? "animate-zoomIn" : ""}>
