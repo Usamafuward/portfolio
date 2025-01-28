@@ -11,10 +11,10 @@ import { motion, useInView } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
 import profile from "@/assets/Usama.jpg";
 import { Skills } from "@/components/Skills";
-import TrackVisibility from "react-on-screen";
+// import TrackVisibility from "react-on-screen";
 import SplitText from "@/components/ui/SplitText";
 import LogoWall from "@/components/ui/LogoWall";
-import TiltedCard from "@/components/ui/TitleCard";
+// import TiltedCard from "@/components/ui/TitleCard";
 import TrueFocus from "@/components/ui/TrueFocus";
 import PixelTransition from "@/components/ui/PixelTransition";
 import logoSvg from "@/assets/logo_svg";
@@ -161,7 +161,7 @@ const Index = () => {
     <div>
       {/* Hero Section */}
       <section ref={ref}>
-        <div className="text-center p-5 xl:flex md:justify-between space-y-20">
+        <div className="text-center p-5 flex flex-col xl:flex-row md:justify-between space-y-20">
           <motion.div
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -236,30 +236,92 @@ const Index = () => {
               </button>
             </HashLink>
           </motion.div>
-          <motion.div className="relative mx-auto my-auto flex items-top justify-center">
-            <TrackVisibility>
-              {({ isVisible }) => (
-                <div className={isVisible ? "animate-zoomIn" : ""}>
-                  <div className="relative rounded-full animate-updown">
-                    <TiltedCard
-                      imageSrc={profile}
-                      altText="Usama Puward"
-                      captionText="Usama Puward"
-                      containerHeight="325px"
-                      containerWidth="325px"
-                      imageHeight="325px"
-                      imageWidth="325px"
-                      rotateAmplitude={12}
-                      scaleOnHover={1.1}
-                      showMobileWarning={false}
-                      showTooltip={true}
-                      displayOverlayContent={true}
-                    />
-                  </div>
-                </div>
-              )}
-            </TrackVisibility>
+          <motion.div className="relative mx-auto my-auto flex xl:items-top justify-center animate-updown">
+            <motion.img
+              src={profile}
+              alt="Usama Puward"
+              className="rounded-full h-[325px] w-[325px] sm:h-[360px] sm:w-[360px]"
+            />
+            <motion.svg
+              className="absolute -inset-[15px] h-[355px] w-[355px] sm:h-[390px] sm:w-[390px]"
+              fill="transparent"
+              viewBox="0 0 390 390"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.circle
+                cx="195"
+                cy="195"
+                r="192"
+                stroke={darkMode ? "#2DD4BF" : "#0d9488"}
+                strokeWidth="6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{ strokeDasharray: "24 10 0 0" }}
+                animate={{
+                  strokeDasharray: [
+                    "15 120 25 25",
+                    "16 25 92 72",
+                    "4 250 22 22",
+                  ],
+                  rotate: [120, 360],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+            </motion.svg>
           </motion.div>
+          {/* <motion.div className="relative mx-auto my-auto flex xl:items-top justify-center">
+            <div className="absolute sm:-inset-x-[-33px] sm:-inset-y-[-15.5px] -inset-x-[-15px] -inset-y-[-16px]">
+              <TiltedCard
+                imageSrc={profile}
+                altText="Usama Puward"
+                captionText="Usama Puward"
+                containerHeight="325px"
+                containerWidth="325px"
+                imageHeight="325px"
+                imageWidth="325px"
+                rotateAmplitude={12}
+                scaleOnHover={1.1}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+              />
+            </div>
+            <motion.svg
+              className=" h-[355px] w-[355px] sm:h-[390px] sm:w-[390px]"
+              fill="transparent"
+              viewBox="0 0 390 390"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.circle
+                cx="195"
+                cy="195"
+                r="200"
+                whileHover={{ r: 200 }}
+                stroke={darkMode ? "#2DD4BF" : "#0d9488"}
+                strokeWidth="6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{ strokeDasharray: "24 10 0 0" }}
+                animate={{
+                  strokeDasharray: [
+                    "15 120 25 25",
+                    "16 25 92 72",
+                    "4 250 22 22",
+                  ],
+                  rotate: [120, 360],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+            </motion.svg>
+          </motion.div> */}
         </div>
       </section>
 

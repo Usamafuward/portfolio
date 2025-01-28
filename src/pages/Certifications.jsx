@@ -148,7 +148,7 @@ export default function Certifications() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={slideUpVariants}
-          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-8"
+          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-7"
         >
           Certifications
         </motion.h1>
@@ -163,7 +163,7 @@ export default function Certifications() {
             placeholder="Search certifications..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full p-3 my-5 border-2 border-gray-300 dark:border-gray-500 rounded-xl dark:bg-gray-800 text-gray-500 dark:text-gray-300 focus:outline-none focus:border-teal-500 max-w-4xl mx-auto block"
+            className="w-full p-3 my-5 border-2 border-gray-300 dark:border-gray-500 hover:border-teal-400 hover:dark:border-teal-400 rounded-xl dark:bg-gray-800 text-gray-500 dark:text-gray-300 focus:outline-none focus:border-teal-500 max-w-4xl mx-auto block"
           />
         </motion.div>
         <motion.div

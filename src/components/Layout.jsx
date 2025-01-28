@@ -62,6 +62,8 @@ const Layout = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0); // Set `isScrolled` based on scroll position
+      setShowDropdown(false); // Close dropdown on scroll
+      setShowMenu(false); // Close menu on scroll
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -74,10 +76,12 @@ const Layout = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const isActive = (path) => location.pathname === path;
+
   return (
     <div className={darkMode ? "dark" : ""}>
       <header
-        className={`px-8 md:px-16 lg:px-40 fixed top-0 w-full z-10 transition-colors duration-300 backdrop-filter backdrop-blur-md ${
+        className={`px-7 md:px-[92px] lg:px-[156px] fixed top-0 w-full z-10 transition-colors duration-300 backdrop-filter backdrop-blur-md ${
           isScrolled
             ? "bg-green-100/80 dark:bg-gray-700/80 shadow-lg"
             : "bg-white/80 dark:bg-gray-900/80"
@@ -86,10 +90,10 @@ const Layout = () => {
         <nav
           className={`flex justify-between items-center dark:text-white ${
             isScrolled ? "py-5" : "py-7"
-          }`}
+          } transition-all duration-300`}
         >
           <ul className="flex items-center gap-5">
-            <li className="md:hidden">
+            <li className="lg:hidden">
               <div className="relative">
                 <button
                   onClick={() => setShowMenu(!showMenu)}
@@ -98,12 +102,22 @@ const Layout = () => {
                   <AiOutlineMenu />
                 </button>
                 {showMenu && (
-                  <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg">
-                    {menuItems.map((item) => (
+                  <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-[5px] shadow-lg transition-all duration-300">
+                    {menuItems.map((item, index) => (
                       <li key={item.to}>
                         <Link
                           to={item.to}
-                          className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                          className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 ${
+                            index === 0
+                              ? "rounded-t-[5px]"
+                              : index === menuItems.length - 1
+                              ? "rounded-b-[5px]"
+                              : ""
+                          } ${
+                            isActive(item.to)
+                              ? "border-s-4 border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400"
+                              : "text-gray-700 dark:text-white"
+                          }`}
                         >
                           {item.label}
                         </Link>
@@ -123,12 +137,16 @@ const Layout = () => {
           </ul>
 
           <ul className="flex items-center">
-            <li className="hidden md:flex gap-5 mr-6">
+            <li className="hidden lg:flex gap-5 mr-6">
               {menuItems.slice(0, -1).map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}
-                  className="text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium transition-colors duration-200"
+                  className={`hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium transition-colors duration-300 ${
+                    isActive(item.to)
+                      ? "border-b-2 border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400"
+                      : "text-gray-700 dark:text-white"
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -143,7 +161,7 @@ const Layout = () => {
             <li className="relative ml-8">
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 border-none rounded-md flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
+                className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 border-none rounded-[5px] flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
               >
                 Resume{" "}
                 {showDropdown ? (
@@ -153,13 +171,19 @@ const Layout = () => {
                 )}
               </button>
               {showDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg">
-                  {resumeLinks.map((resume) => (
+                <div className="absolute right-0 mt-[5px] w-48 bg-white dark:bg-gray-800 rounded-[5px] shadow-lg transition-all duration-300">
+                  {resumeLinks.map((resume, index) => (
                     <a
                       key={resume.label}
                       href={resume.href}
                       download={resume.download}
-                      className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                      className={`block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 ${
+                        index === 0
+                          ? "rounded-t-[5px]"
+                          : index === resumeLinks.length - 1
+                          ? "rounded-b-[5px]"
+                          : ""
+                      }`}
                     >
                       {resume.label}
                     </a>
@@ -171,11 +195,11 @@ const Layout = () => {
         </nav>
       </header>
 
-      <main className="bg-white py-4 dark:bg-gray-900 md:px-16 lg:px-32 pt-[120px] w-full">
+      <main className="bg-white py-4 dark:bg-gray-900 md:px-16 lg:px-32 pt-[120px] w-full transition-all duration-300">
         <Outlet />
       </main>
 
-      <footer className="py-4 text-center bg-white dark:bg-gray-900">
+      <footer className="py-4 text-center bg-white dark:bg-gray-900 transition-all duration-300">
         <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-700 dark:text-gray-300">
           {socialLinks.map((link, index) => (
             <span

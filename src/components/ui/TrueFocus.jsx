@@ -7,7 +7,6 @@ const TrueFocus = ({
   manualMode = false,
   blurAmount = 4,
   borderColor = "#0d9488",
-  textColor = "#0d9488",
   glowColor = "rgba(13, 148, 136, 0.5)",
   animationDuration = 0.5,
   pauseBetweenAnimations = 1,
@@ -73,10 +72,9 @@ const TrueFocus = ({
           <span
             key={index}
             ref={(el) => (wordRefs.current[index] = el)}
-            className="relative text-[3rem] font-black cursor-pointer"
+            className="relative text-[3rem] font-black cursor-pointer text-teal-600 dark:text-teal-400"
             style={{
               filter: isActive ? "blur(0px)" : `blur(${blurAmount}px)`,
-              color: textColor,
               transition: `filter ${animationDuration}s ease`,
             }}
             onMouseEnter={() => handleMouseEnter(index)}
