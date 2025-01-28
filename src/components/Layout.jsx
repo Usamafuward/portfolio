@@ -196,7 +196,7 @@ const Layout = () => {
       {isScrolled ? (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-10 right-10 lg:right-28 bg-teal-600 text-white p-3 rounded-full shadow-lg hover:bg-teal-500 transition-colors"
+          className="fixed bottom-10 right-10 lg:right-28 bg-teal-600 text-white p-3 rounded-full shadow-lg hover:bg-teal-600 transition-colors backdrop-blur-lg backdrop-filter bg-opacity-30"
         >
           ↑
         </button>
