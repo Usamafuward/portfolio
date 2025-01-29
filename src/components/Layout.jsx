@@ -92,7 +92,7 @@ const Layout = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <div className={darkMode ? "dark" : ""}>
+    <div className={darkMode ? "dark dark:bg-gray-900" : "bg-white"}>
       <header
         className={`px-7 md:px-[92px] lg:px-[156px] fixed top-0 w-full z-10 transition-colors duration-300 backdrop-filter backdrop-blur-md ${
           isScrolled
@@ -209,7 +209,7 @@ const Layout = () => {
         </nav>
       </header>
 
-      <main className="bg-white py-4 dark:bg-gray-900 md:px-16 lg:px-32 pt-[120px] w-full transition-all duration-300">
+      <main className="bg-white py-4 dark:bg-gray-900 md:px-16 lg:px-32 pt-[100px] w-full transition-all duration-300">
         <Outlet />
       </main>
 

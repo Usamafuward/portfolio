@@ -38,6 +38,16 @@ const slideUpVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+// const slideRightVariants = {
+//   hidden: { opacity: 0, x: 50 },
+//   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+// };
+
+const slideLeftVariants = {
+  hidden: { opacity: 0, x: -100 },
+  visible: { opacity: 1, x: 0 },
+};
+
 const Index = () => {
   const { darkMode } = useContext(DarkModeContext);
   const [loopNum, setLoopNum] = useState(0);
@@ -192,10 +202,13 @@ const Index = () => {
             <motion.div
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              variants={containerVariants}
+              variants={
+                window.innerWidth > 1280 ? slideLeftVariants : slideUpVariants
+              }
+              transition={{ type: "spring", stiffness: 200, duration: 0.5 }}
               className="text-center xl:text-left items-center justify-between mx-auto mt-8 xl:mt-0 xl:ps-32 relative z-10"
             >
-              <h3 className="text-[32px] sm:text-xl py-2 font-medium text-gray-800 dark:text-white md:text-4xl">
+              <h3 className="text-xl py-2 font-medium text-gray-800 dark:text-white md:text-2xl">
                 {` `}
                 <span className="txt-rotate" data-period="1000">
                   {text}
@@ -271,10 +284,10 @@ const Index = () => {
             <motion.img
               src={profile}
               alt="Usama Puward"
-              className="rounded-full h-[305px] w-[305px] sm:h-[360px] sm:w-[360px]"
+              className="rounded-full h-[305px] w-[305px] sm:h-[360px] sm:w-[360px] animate-zoomIn"
             />
             <motion.svg
-              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-80px] h-[337px] w-[337px] sm:h-[390px] sm:w-[390px]"
+              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-75px] h-[337px] w-[337px] sm:h-[390px] sm:w-[390px]"
               fill="transparent"
               viewBox="0 0 390 390"
               xmlns="http://www.w3.org/2000/svg"

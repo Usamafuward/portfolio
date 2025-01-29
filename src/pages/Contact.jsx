@@ -78,7 +78,7 @@ export default function Contact() {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={slideUpVariants}
-        className="text-3xl leading-8 text-gray-800 dark:text-gray-200 max-w-2xl mx-auto mb-10"
+        className="text-[28px] leading-8 text-gray-800 dark:text-gray-200 max-w-2xl mx-auto mb-10"
       >
         Thanks for taking the time to reach out.
       </motion.p>
