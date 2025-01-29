@@ -19,6 +19,8 @@ import TrueFocus from "@/components/ui/TrueFocus";
 // import PixelTransition from "@/components/ui/PixelTransition";
 import logoSvg from "@/assets/logo_svg";
 import flatIcon from "@/assets/flat_icon";
+import { GraduationCap } from "lucide-react";
+import { School } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -188,6 +190,24 @@ const Index = () => {
     },
   ];
 
+  const educationData = [
+    {
+      icon: GraduationCap,
+      degree: "Bachelor of Science in Computer Science",
+      institution: "University of Colombo School of Computing",
+      year: "2022 - present(2025)",
+      description:
+        "Currently pursuing a degree in Computer Science, with a focus on software development, machine learning, and artificial intelligence.",
+    },
+    {
+      icon: School,
+      degree: "Secondary School Education",
+      institution: "Zahira College Mawanella",
+      year: "2012 - 2020",
+      description: "Completed GCE Ordinary Level and GCE Advanced Level in Physical Science Stream.",
+    },
+  ];
+
   return (
     <div>
       {/* Hero Section */}
@@ -204,9 +224,9 @@ const Index = () => {
                 window.innerWidth > 1280 ? slideLeftVariants : slideUpVariants
               }
               transition={{ type: "spring", stiffness: 200, duration: 0.5 }}
-              className="text-center xl:text-left items-center justify-between mx-auto mt-8 xl:mt-0 xl:ps-28 relative z-10"
+              className="text-center xl:text-left items-center justify-between mx-auto mt-6 xl:mt-0 xl:ps-28 relative z-10"
             >
-              <h3 className="text-xl py-2 font-medium text-gray-800 dark:text-white md:text-2xl">
+              <h3 className="text-xl py-2 font-medium text-gray-800 dark:text-gray-200 md:text-2xl">
                 {` `}
                 <span className="txt-rotate" data-period="1000">
                   {text}
@@ -282,10 +302,10 @@ const Index = () => {
             <motion.img
               src={profile}
               alt="Usama Puward"
-              className="rounded-full h-[305px] w-[305px] sm:h-[360px] sm:w-[360px] animate-zoomIn"
+              className="rounded-full h-[280px] w-[280px] sm:h-[360px] sm:w-[360px] animate-zoomIn"
             />
             <motion.svg
-              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-75px] h-[337px] w-[337px] sm:h-[390px] sm:w-[390px]"
+              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-75px] h-[320px] w-[320px] sm:h-[390px] sm:w-[390px]"
               fill="transparent"
               viewBox="0 0 390 390"
               xmlns="http://www.w3.org/2000/svg"
@@ -420,6 +440,46 @@ const Index = () => {
                 {tech.title}
               </h3>
               <p>{tech.items.join(", ")}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.section>
+
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="p-7"
+      >
+        <motion.h2
+          variants={slideUpVariants}
+          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-12"
+        >
+          Education
+        </motion.h2>
+        <motion.div variants={containerVariants} className="space-y-6">
+          {educationData.map((edu, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="p-6 rounded-xl shadow-lg bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
+            >
+              <div className="flex items-center space-x-4">
+                <edu.icon size={32} className="text-blue-400" />
+                <div>
+                  <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400">
+                    {edu.degree}
+                  </h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-200">
+                    {edu.institution} |{" "}
+                    <span className="text-gray-500 dark:text-gray-400">
+                      {edu.year}
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <p className="mt-3 dark:text-gray-200">{edu.description}</p>
             </motion.div>
           ))}
         </motion.div>
