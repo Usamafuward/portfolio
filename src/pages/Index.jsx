@@ -16,7 +16,7 @@ import SplitText from "@/components/ui/SplitText";
 import LogoWall from "@/components/ui/LogoWall";
 // import TiltedCard from "@/components/ui/TitleCard";
 import TrueFocus from "@/components/ui/TrueFocus";
-import PixelTransition from "@/components/ui/PixelTransition";
+// import PixelTransition from "@/components/ui/PixelTransition";
 import logoSvg from "@/assets/logo_svg";
 import flatIcon from "@/assets/flat_icon";
 
@@ -54,7 +54,10 @@ const Index = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState("");
   const [delta, setDelta] = useState(300 - Math.random() * 100);
-  const toRotate = useMemo(() => ["AI / ML Engineer", "Software Developer"], []);
+  const toRotate = useMemo(
+    () => ["AI / ML Engineer", "Software Developer"],
+    []
+  );
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const period = 2000;
@@ -131,12 +134,7 @@ const Index = () => {
     },
     {
       title: "Backend Frameworks",
-      items: [
-        "Node.js",
-        "Express.js",
-        "Python FastAPI",
-        "Django",
-      ],
+      items: ["Node.js", "Express.js", "Python FastAPI", "Django"],
     },
     { title: "Databases", items: ["MySQL", "PostgreSQL", "MongoDB"] },
   ];
@@ -317,55 +315,6 @@ const Index = () => {
               />
             </motion.svg>
           </motion.div>
-          {/* <motion.div className="relative mx-auto my-auto flex xl:items-top justify-center">
-            <div className="absolute sm:-inset-x-[-33px] sm:-inset-y-[-15.5px] -inset-x-[-15px] -inset-y-[-16px]">
-              <TiltedCard
-                imageSrc={profile}
-                altText="Usama Puward"
-                captionText="Usama Puward"
-                containerHeight="325px"
-                containerWidth="325px"
-                imageHeight="325px"
-                imageWidth="325px"
-                rotateAmplitude={12}
-                scaleOnHover={1.1}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-              />
-            </div>
-            <motion.svg
-              className=" h-[355px] w-[355px] sm:h-[390px] sm:w-[390px]"
-              fill="transparent"
-              viewBox="0 0 390 390"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <motion.circle
-                cx="195"
-                cy="195"
-                r="200"
-                whileHover={{ r: 200 }}
-                stroke={darkMode ? "#2DD4BF" : "#0d9488"}
-                strokeWidth="6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                initial={{ strokeDasharray: "24 10 0 0" }}
-                animate={{
-                  strokeDasharray: [
-                    "15 120 25 25",
-                    "16 25 92 72",
-                    "4 250 22 22",
-                  ],
-                  rotate: [120, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-            </motion.svg>
-          </motion.div> */}
         </div>
       </section>
 
@@ -392,66 +341,28 @@ const Index = () => {
           variants={containerVariants}
         >
           {cards.map((card, index) => (
-            // <HashLink
-            //   key={index}
-            //   to={card.link}
-            //   className="group text-center p-10 rounded-xl my-5 border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 flex-1 flex flex-col justify-center relative overflow-hidden card-index"
-            // >
-            //   <img
-            //     src={card.image}
-            //     alt={card.title}
-            //     className="mx-auto h-[125px] w-auto filter grayscale group-hover:grayscale-0 transition-all duration-300"
-            //   />
-            //   <h3 className="text-2xl font-medium pt-8 pb-2">{card.title}</h3>
-            //   {/* Overlay */}
-            //   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl transform translate-y-[-100%] group-hover:translate-y-0">
-            //     {/* Description */}
-            //     <div className="transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-            //       <h5 className="text-xl font-bold pb-2 text-white">
-            //         {card.title}
-            //       </h5>
-            //       <p className="p-3 text-white text-center">
-            //         {card.description}
-            //       </p>
-            //     </div>
-            //   </div>
-            // </HashLink>
             <motion.div key={index} variants={itemVariants}>
               <HashLink
                 key={index}
                 to={card.link}
-                className="group text-center flex-1 flex flex-col justify-center relative my-5"
+                className="group text-center p-10 rounded-xl my-5 border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 flex-1 flex flex-col justify-center relative overflow-hidden h-[360px]"
               >
-                <PixelTransition
-                  firstContent={
-                    <div className="flex flex-col h-full items-center justify-center p-4 rounded-xl border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 ">
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="mx-auto h-[125px] w-auto filter grayscale group-hover:grayscale-0 transition-all duration-300 "
-                      />
-                      <h3 className="text-2xl text-black dark:text-white font-medium pt-8 pb-2 text-">
-                        {card.title}
-                      </h3>
-                    </div>
-                  }
-                  secondContent={
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl transform translate-y-[-100%] group-hover:translate-y-0 border-2 border-white dark:border-gray-500">
-                      <div className="transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                        <h5 className="text-xl font-bold pb-2 text-white">
-                          {card.title}
-                        </h5>
-                        <p className="p-3 text-white text-center">
-                          {card.description}
-                        </p>
-                      </div>
-                    </div>
-                  }
-                  gridSize={12}
-                  pixelColor="#ffffff"
-                  animationStepDuration={0.3}
-                  className="custom-pixel-card"
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className=" mx-auto h-32 w-auto grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
+                <h3 className="text-2xl font-medium pt-8 pb-2">{card.title}</h3>
+                <div className=" absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl -translate-y-full group-hover:translate-y-0">
+                  <div className="translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                    <h5 className="text-xl font-bold pb-2 text-white">
+                      {card.title}
+                    </h5>
+                    <p className="p-3 text-white text-center">
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
               </HashLink>
             </motion.div>
           ))}

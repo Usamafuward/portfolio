@@ -102,7 +102,7 @@ const Layout = () => {
       >
         <nav
           className={`flex justify-between items-center dark:text-white ${
-            isScrolled ? "py-5" : "py-7"
+            isScrolled ? "py-[16px]" : "py-7"
           } transition-all duration-300`}
         >
           <ul className="flex items-center gap-4 sm:gap-5">
@@ -174,14 +174,14 @@ const Layout = () => {
             <li className="relative ml-4 sm:ml-5">
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white px-2 py-2 sm:px-4 sm:py-2 border-none rounded-[5px] flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
+                className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white px-2 py-[6px] sm:px-4 sm:py-2 border-none rounded-[5px] flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
               >
                 <span className="hidden sm:inline">Resume</span>
-                <TbFileCv className="sm:hidden h-6 w-6" />
+                <TbFileCv className="sm:hidden h-7 w-7" />
                 {showDropdown ? (
-                  <AiOutlineUp className="ml-1 sm:ml-2" />
+                  <AiOutlineUp className="ml-1 sm:ml-2 h-5 w-5 font-bold" />
                 ) : (
-                  <AiOutlineDown className="ml-1 sm:ml-2" />
+                  <AiOutlineDown className="ml-1 sm:ml-2 h-5 w-5 font-bold" />
                 )}
               </button>
               {showDropdown && (

@@ -85,7 +85,7 @@ a {
 /* Overlay effect */
 .card::before {
   content: "";
-  background: linear-gradient(90.21deg, #3663aa -5.91%, #2fbda5 111.58%);
+  background: linear-gradient(90.21deg, #2563eb -5.91%, #14b8a6 111.58%);
   opacity: 1;
   position: absolute;
   width: 100%;
