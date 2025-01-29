@@ -70,7 +70,7 @@ export default function Contact() {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={slideUpVariants}
-        className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-8"
+        className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-7"
       >
         Contact Me
       </motion.h1>

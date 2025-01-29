@@ -157,6 +157,29 @@ const Index = () => {
     { imgUrl: logoSvg.reactnative, altText: "React Native Logo" },
   ];
 
+  const socials = [
+    {
+      icon: AiOutlineGithub,
+      link: "https://github.com/Usamafuward",
+    },
+    {
+      icon: AiFillLinkedin,
+      link: "https://linkedin.com/in/usama-puward",
+    },
+    {
+      icon: AiFillTwitterCircle,
+      link: "https://www.x.com/usamafuward",
+    },
+    {
+      icon: AiFillInstagram,
+      link: "https://www.instagram.com/usama._fuward",
+    },
+    {
+      icon: AiFillMail,
+      link: "mailto:usamafuward2001@gmail.com",
+    },
+  ];
+
   return (
     <div>
       {/* Hero Section */}
@@ -170,7 +193,7 @@ const Index = () => {
           >
             <SplitText
               text="Usama Puward"
-              className="text-5xl px-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl"
+              className="text-[40px] sm:text-5xl px-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl"
               delay={150}
               animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
               animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
@@ -178,7 +201,7 @@ const Index = () => {
               threshold={0.2}
               rootMargin="-50px"
             />
-            <h3 className="text-4xl py-2 pt-7 font-medium dark:text-white md:text-4xl">
+            <h3 className="text-[34px] sm:text-4xl py-2 pt-7 font-medium dark:text-white md:text-4xl">
               {` `}
               <span className="txt-rotate" data-period="1000">
                 {text}
@@ -195,39 +218,35 @@ const Index = () => {
               and AI.
             </p>
 
-            <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-700 dark:text-gray-300 mb-7 md:mb-0">
-              {[
-                {
-                  icon: AiOutlineGithub,
-                  link: "https://github.com/Usamafuward",
-                },
-                {
-                  icon: AiFillLinkedin,
-                  link: "https://linkedin.com/in/usama-puward",
-                },
-                {
-                  icon: AiFillTwitterCircle,
-                  link: "https://www.x.com/usamafuward",
-                },
-                {
-                  icon: AiFillInstagram,
-                  link: "https://www.instagram.com/usama._fuward",
-                },
-                { icon: AiFillMail, link: "mailto:usamafuward2001@gmail.com" },
-              ].map((social, index) => (
-                <span
-                  key={index}
-                  className="dark:hover:text-gray-800 hover:text-white"
-                >
+            <div className="flex justify-center gap-[5px] sm:gap-9 lg:gap-14 py-5 text-gray-700 dark:text-gray-300 mb-7 md:mb-0">
+              {socials.map((social, index) => (
+                <div key={index} className="relative group">
                   <a
                     href={social.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="dark:hover:text-gray-800 hover:text-white transition-colors duration-300"
+                    className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-full
+                     relative overflow-hidden
+                     border border-black/50 dark:border-white/50
+                     bg-gray-100/10 dark:bg-gray-700/20
+                     transition-colors duration-300"
                   >
-                    <social.icon className="w-16 h-16" />
+                    {/* Hover overlay */}
+                    <div
+                      className="absolute inset-0 bg-gray-800 dark:bg-white 
+                          scale-0 group-hover:scale-100 
+                          rounded-full transition-transform duration-300 ease-in-out"
+                    />
+
+                    {/* Icon */}
+                    <social.icon
+                      className="w-9 h-9 sm:w-10 sm:h-10 relative z-10
+                                  text-gray-700 dark:text-gray-300
+                                  group-hover:text-white dark:group-hover:text-gray-800
+                                  transition-colors duration-300"
+                    />
                   </a>
-                </span>
+                </div>
               ))}
             </div>
             <HashLink to="/contact">
@@ -240,10 +259,10 @@ const Index = () => {
             <motion.img
               src={profile}
               alt="Usama Puward"
-              className="rounded-full h-[325px] w-[325px] sm:h-[360px] sm:w-[360px]"
+              className="rounded-full h-[315px] w-[315px] sm:h-[360px] sm:w-[360px]"
             />
             <motion.svg
-              className="absolute -inset-[15px] h-[355px] w-[355px] sm:h-[390px] sm:w-[390px]"
+              className="absolute -inset-[15px] h-[345px] w-[345px] sm:h-[390px] sm:w-[390px]"
               fill="transparent"
               viewBox="0 0 390 390"
               xmlns="http://www.w3.org/2000/svg"

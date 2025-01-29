@@ -10,6 +10,7 @@ import {
   AiOutlineDown,
   AiOutlineMenu,
 } from "react-icons/ai";
+import { TbFileCv } from "react-icons/tb";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { DarkModeContext } from "../context/DarkModeContext";
 import SE from "../assets/Resume_SE.pdf";
@@ -31,14 +32,26 @@ const Layout = () => {
   ];
 
   const socialLinks = [
-    { href: "https://github.com/Usamafuward", icon: <AiOutlineGithub /> },
-    { href: "https://linkedin.com/in/usama-puward", icon: <AiFillLinkedin /> },
-    { href: "https://www.x.com/usamafuward", icon: <AiFillTwitterCircle /> },
     {
-      href: "https://www.instagram.com/usama._fuward",
-      icon: <AiFillInstagram />,
+      icon: AiOutlineGithub,
+      link: "https://github.com/Usamafuward",
     },
-    { href: "mailto:usamafuward2001@gmail.com", icon: <AiFillMail /> },
+    {
+      icon: AiFillLinkedin,
+      link: "https://linkedin.com/in/usama-puward",
+    },
+    {
+      icon: AiFillTwitterCircle,
+      link: "https://www.x.com/usamafuward",
+    },
+    {
+      icon: AiFillInstagram,
+      link: "https://www.instagram.com/usama._fuward",
+    },
+    {
+      icon: AiFillMail,
+      link: "mailto:usamafuward2001@gmail.com",
+    },
   ];
 
   const resumeLinks = [
@@ -92,12 +105,12 @@ const Layout = () => {
             isScrolled ? "py-5" : "py-7"
           } transition-all duration-300`}
         >
-          <ul className="flex items-center gap-5">
+          <ul className="flex items-center gap-4 sm:gap-5">
             <li className="lg:hidden">
               <div className="relative">
                 <button
                   onClick={() => setShowMenu(!showMenu)}
-                  className="flex items-center justify-center pb-1 text-3xl"
+                  className="flex items-center justify-center text-3xl"
                 >
                   <AiOutlineMenu />
                 </button>
@@ -129,7 +142,7 @@ const Layout = () => {
             </li>
             <li>
               <Link to="/">
-                <h1 className="font-bold font-serif text-2xl cursor-pointer text-gray-800 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200">
+                <h1 className="font-bold font-playfair text-3xl cursor-pointer text-gray-800 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200">
                   Portfolio
                 </h1>
               </Link>
@@ -137,7 +150,7 @@ const Layout = () => {
           </ul>
 
           <ul className="flex items-center">
-            <li className="hidden lg:flex gap-5 mr-6">
+            <li className="hidden lg:flex md:gap-5 md:mr-5 ">
               {menuItems.slice(0, -1).map((item) => (
                 <Link
                   key={item.to}
@@ -158,16 +171,17 @@ const Layout = () => {
                 className="cursor-pointer text-2xl text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
               />
             </li>
-            <li className="relative ml-8">
+            <li className="relative ml-4 sm:ml-5">
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 border-none rounded-[5px] flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
+                className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-2 py-2 sm:px-4 sm:py-2 border-none rounded-[5px] flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
               >
-                Resume{" "}
+                <span className="hidden sm:inline">Resume</span>
+                <TbFileCv className="sm:hidden h-6 w-6" />
                 {showDropdown ? (
-                  <AiOutlineUp className="ml-2" />
+                  <AiOutlineUp className="ml-1 sm:ml-2" />
                 ) : (
-                  <AiOutlineDown className="ml-2" />
+                  <AiOutlineDown className="ml-1 sm:ml-2" />
                 )}
               </button>
               {showDropdown && (
@@ -200,16 +214,37 @@ const Layout = () => {
       </main>
 
       <footer className="py-4 text-center bg-white dark:bg-gray-900 transition-all duration-300">
-        <div className="social-icon flex justify-center gap-3 lg:gap-14 py-5 text-gray-700 dark:text-gray-300">
+        <div className="flex justify-center gap-3 lg:gap-14 py-5 text-gray-700 dark:text-gray-300">
           {socialLinks.map((link, index) => (
-            <span
-              key={index}
-              className="dark:hover:text-gray-800 hover:text-white"
-            >
-              <a href={link.href} target="_blank" rel="noopener noreferrer">
-                {link.icon}
+            <div key={index} className="relative group">
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-full
+                       relative overflow-hidden
+                       border border-black/50 dark:border-white/50
+                       bg-gray-100/10 dark:bg-gray-700/20
+                       text-gray-700 dark:text-gray-300
+                       hover:text-white dark:hover:text-gray-800
+                       transition-all duration-300"
+              >
+                {/* Hover overlay */}
+                <div
+                  className="absolute inset-0 bg-gray-800 dark:bg-white 
+                            scale-0 group-hover:scale-100 
+                            rounded-full transition-transform duration-300 ease-in-out"
+                />
+
+                {/* Icon wrapper */}
+                <link.icon
+                  className="w-9 h-9 sm:w-10 sm:h-10 relative z-10
+                                  text-gray-700 dark:text-gray-300
+                                  group-hover:text-white dark:group-hover:text-gray-800
+                                  transition-colors duration-300"
+                />
               </a>
-            </span>
+            </div>
           ))}
         </div>
 
