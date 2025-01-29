@@ -26,7 +26,7 @@ export const Skills = () => {
 
   return (
     <section className="skill" id="skills">
-      <div className="container">
+      <div className="container relative z-0">
         <div className="row">
           <div className="col-12">
             <div className="skill-bx wow zoomIn bg-green-100 dark:bg-gray-700 rounded-xl shadow-lg border-2 border-white dark:border-gray-500">

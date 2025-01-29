@@ -44,7 +44,7 @@ const Index = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState("");
   const [delta, setDelta] = useState(300 - Math.random() * 100);
-  const toRotate = useMemo(() => ["AI / ML Engineer", "Software Engineer"], []);
+  const toRotate = useMemo(() => ["AI / ML Engineer", "Software Developer"], []);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const period = 2000;
@@ -184,85 +184,97 @@ const Index = () => {
     <div>
       {/* Hero Section */}
       <section ref={ref}>
-        <div className="text-center p-5 flex flex-col xl:flex-row md:justify-between space-y-20">
-          <motion.div
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={containerVariants}
-            className="items-center justify-center mx-auto"
-          >
-            <SplitText
-              text="Usama Puward"
-              className="text-[40px] sm:text-5xl px-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl"
-              delay={150}
-              animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
-              animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
-              easing="easeOutCubic"
-              threshold={0.2}
-              rootMargin="-50px"
-            />
-            <h3 className="text-[34px] sm:text-4xl py-2 pt-7 font-medium dark:text-white md:text-4xl">
-              {` `}
-              <span className="txt-rotate" data-period="1000">
-                {text}
-              </span>
-              {` !!`}
-            </h3>
-            <p className="text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
-              Computer Science Undergraduate and current AI/ML Engineer Intern,
-              with a strong passion for Software Engineering, Machine Learning,
-              and Artificial Intelligence. Skilled in developing efficient and
-              innovative solutions for real-world projects and building
-              high-quality applications. Eager to tackle complex challenges in
-              software development and drive innovation within the fields of ML
-              and AI.
-            </p>
+        <div className=" p-7 flex flex-col xl:flex-row md:justify-between w-full xl:gap-16">
+          <div className="z-0 inline-block xl:border-l-4 border-teal-400 dark:border-teal-400 justify-between order-2 xl:order-none relative py-5">
+            {/* Gradient overlay - Visible only on xl devices */}
+            <div className="hidden xl:block absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-teal-400/30 to-transparent pointer-events-none" />
 
-            <div className="flex justify-center gap-[5px] sm:gap-9 lg:gap-14 py-5 text-gray-700 dark:text-gray-300 mb-7 md:mb-0">
-              {socials.map((social, index) => (
-                <div key={index} className="relative group">
-                  <a
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-full
+            <motion.div
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={containerVariants}
+              className="text-center xl:text-left items-center justify-between mx-auto mt-8 xl:mt-0 xl:ps-32 relative z-10"
+            >
+              <h3 className="text-[32px] sm:text-xl py-2 font-medium text-gray-800 dark:text-white md:text-4xl">
+                {` `}
+                <span className="txt-rotate" data-period="1000">
+                  {text}
+                </span>
+                {` !!`}
+              </h3>
+              <h1 className="text-[40px] sm:text-5xl px-2 xl:px-0 py-2 text-gray-800 dark:text-white md:text-6xl">
+                Hello I’m
+              </h1>
+              <SplitText
+                text="Usama Puward"
+                className="text-[40px] sm:text-5xl px-2 xl:px-0 py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl"
+                delay={150}
+                animationFrom={{
+                  opacity: 0,
+                  transform: "translate3d(0,50px,0)",
+                }}
+                animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+                easing="easeOutCubic"
+                threshold={0.2}
+                rootMargin="-50px"
+              />
+              <p className="text-center xl:text-left text-md py-4 leading-8 text-gray-800 dark:text-gray-200 max-w-xl xl:mx-0 mx-auto md:text-xl">
+                Computer Science Undergraduate and current AI/ML Engineer
+                Intern, with a strong passion for Software Developing, Machine
+                Learning, and Artificial Intelligence. Skilled in developing
+                efficient and innovative solutions for real-world projects and
+                building high-quality applications. Eager to tackle complex
+                challenges in software development and drive innovation within
+                the fields of ML and AI.
+              </p>
+              <div className="flex flex-col xl:flex-row items-center justify-between xl:gap-10">
+                <div className="relative z-0 flex justify-center xl:justify-left gap-[9px] sm:gap-9 xl:gap-5 py-4 text-gray-700 dark:text-gray-300 mb-7 xl:mb-0 order-none xl:order-2">
+                  {socials.map((social, index) => (
+                    <div key={index} className="relative group">
+                      <a
+                        href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-14 h-14 flex items-center justify-center rounded-full
                      relative overflow-hidden
                      border border-black/50 dark:border-white/50
                      bg-gray-100/10 dark:bg-gray-700/20
                      transition-colors duration-300"
-                  >
-                    {/* Hover overlay */}
-                    <div
-                      className="absolute inset-0 bg-gray-800 dark:bg-white 
+                      >
+                        {/* Hover overlay */}
+                        <div
+                          className="absolute inset-0 bg-gray-800 dark:bg-white 
                           scale-0 group-hover:scale-100 
                           rounded-full transition-transform duration-300 ease-in-out"
-                    />
+                        />
 
-                    {/* Icon */}
-                    <social.icon
-                      className="w-9 h-9 sm:w-10 sm:h-10 relative z-10
+                        {/* Icon */}
+                        <social.icon
+                          className="w-9 h-9 relative z-10
                                   text-gray-700 dark:text-gray-300
                                   group-hover:text-white dark:group-hover:text-gray-800
                                   transition-colors duration-300"
-                    />
-                  </a>
+                        />
+                      </a>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <HashLink to="/contact">
-              <button className="font-bold text-black dark:text-white border-2 border-black  dark:border-white py-4 px-8 relative transition-all duration-300 ease-in-out mt-15 hover:bg-gradient-to-r from-blue-600 to-teal-500">
-                Let’s Connect
-              </button>
-            </HashLink>
-          </motion.div>
-          <motion.div className="relative mx-auto my-auto flex xl:items-top justify-center animate-updown">
+                <HashLink to="/contact">
+                  <button className="font-bold text-black dark:text-white border-2 border-black  dark:border-white py-4 px-8 relative transition-all duration-300 ease-in-out mt-15 hover:bg-gradient-to-r from-cyan-600 to-teal-500 order-none xl:order-1">
+                    Let’s Connect
+                  </button>
+                </HashLink>
+              </div>
+            </motion.div>
+          </div>
+          <motion.div className="relative mx-auto flex justify-center items-center animate-updown order-1 xl:order-none mt-3 xl:mt-0">
             <motion.img
               src={profile}
               alt="Usama Puward"
-              className="rounded-full h-[315px] w-[315px] sm:h-[360px] sm:w-[360px]"
+              className="rounded-full h-[305px] w-[305px] sm:h-[360px] sm:w-[360px]"
             />
             <motion.svg
-              className="absolute -inset-[15px] h-[345px] w-[345px] sm:h-[390px] sm:w-[390px]"
+              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-80px] h-[337px] w-[337px] sm:h-[390px] sm:w-[390px]"
               fill="transparent"
               viewBox="0 0 390 390"
               xmlns="http://www.w3.org/2000/svg"
@@ -411,7 +423,7 @@ const Index = () => {
                     </div>
                   }
                   secondContent={
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl transform translate-y-[-100%] group-hover:translate-y-0 border-2 border-white dark:border-gray-500">
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl transform translate-y-[-100%] group-hover:translate-y-0 border-2 border-white dark:border-gray-500">
                       <div className="transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
                         <h5 className="text-xl font-bold pb-2 text-white">
                           {card.title}

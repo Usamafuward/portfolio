@@ -158,7 +158,7 @@ const Layout = () => {
                   className={`hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium transition-colors duration-300 ${
                     isActive(item.to)
                       ? "border-b-2 border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400"
-                      : "text-gray-700 dark:text-white"
+                      : "text-gray-800 dark:text-white"
                   }`}
                 >
                   {item.label}
@@ -174,7 +174,7 @@ const Layout = () => {
             <li className="relative ml-4 sm:ml-5">
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-2 py-2 sm:px-4 sm:py-2 border-none rounded-[5px] flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
+                className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white px-2 py-2 sm:px-4 sm:py-2 border-none rounded-[5px] flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
               >
                 <span className="hidden sm:inline">Resume</span>
                 <TbFileCv className="sm:hidden h-6 w-6" />
