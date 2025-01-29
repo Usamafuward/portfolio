@@ -226,19 +226,19 @@ const Index = () => {
               transition={{ type: "spring", stiffness: 200, duration: 0.5 }}
               className="text-center xl:text-left items-center justify-between mx-auto mt-6 xl:mt-0 xl:ps-28 relative z-10"
             >
-              <h3 className="text-xl py-2 font-medium text-gray-800 dark:text-gray-200 md:text-2xl">
+              <h3 className="text-xl sm:sm:py-2 py-1 font-medium text-gray-800 dark:text-gray-200 md:text-2xl">
                 {` `}
                 <span className="txt-rotate" data-period="1000">
                   {text}
                 </span>
                 {` !!`}
               </h3>
-              <h1 className="text-[40px] sm:text-5xl px-2 xl:px-0 py-2 text-gray-800 dark:text-white md:text-6xl">
+              <h1 className="text-[40px] sm:text-5xl px-2 xl:px-0 sm:py-2 :py-1 text-gray-800 dark:text-white md:text-6xl">
                 Hello I’m
               </h1>
               <SplitText
                 text="Usama Puward"
-                className="text-[40px] sm:text-5xl px-2 xl:px-0 py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl"
+                className="text-[40px] sm:text-5xl px-2 xl:px-0 sm:py-2 py-1 text-teal-600 font-medium dark:text-teal-400 md:text-6xl"
                 delay={150}
                 animationFrom={{
                   opacity: 0,
@@ -249,7 +249,7 @@ const Index = () => {
                 threshold={0.2}
                 rootMargin="-50px"
               />
-              <p className="text-center xl:text-left text-md py-4 leading-8 text-gray-800 dark:text-gray-200 max-w-xl xl:mx-0 mx-auto md:text-xl">
+              <p className="text-center xl:text-left text-md py-2 sm:py-4 leading-8 text-gray-800 dark:text-gray-200 max-w-xl xl:mx-0 mx-auto md:text-xl">
                 Computer Science Undergraduate and current AI/ML Engineer
                 Intern, with a strong passion for Software Developing, Machine
                 Learning, and Artificial Intelligence. Skilled in developing
@@ -259,7 +259,7 @@ const Index = () => {
                 the fields of ML and AI.
               </p>
               <div className="flex flex-col xl:flex-row items-center justify-between xl:gap-10">
-                <div className="relative z-0 flex justify-center xl:justify-left gap-[9px] sm:gap-9 xl:gap-5 py-4 text-gray-700 dark:text-gray-300 mb-7 xl:mb-0 order-none xl:order-2">
+                <div className="relative z-0 flex justify-center xl:justify-left gap-[9px] sm:gap-9 xl:gap-5 sm:py-4 py-2 text-gray-700 dark:text-gray-300 mb-7 xl:mb-0 order-none xl:order-2">
                   {socials.map((social, index) => (
                     <div key={index} className="relative group">
                       <a
