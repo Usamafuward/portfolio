@@ -206,7 +206,7 @@ const Index = () => {
                 window.innerWidth > 1280 ? slideLeftVariants : slideUpVariants
               }
               transition={{ type: "spring", stiffness: 200, duration: 0.5 }}
-              className="text-center xl:text-left items-center justify-between mx-auto mt-8 xl:mt-0 xl:ps-32 relative z-10"
+              className="text-center xl:text-left items-center justify-between mx-auto mt-8 xl:mt-0 xl:ps-28 relative z-10"
             >
               <h3 className="text-xl py-2 font-medium text-gray-800 dark:text-white md:text-2xl">
                 {` `}
