@@ -1,16 +1,15 @@
 import { useState, useEffect, useContext } from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import {
-  AiOutlineGithub,
   AiFillLinkedin,
   AiFillInstagram,
-  AiFillTwitterCircle,
-  AiFillMail,
   AiOutlineUp,
-  AiOutlineDown,
   AiOutlineMenu,
+  AiOutlineDownload
 } from "react-icons/ai";
-import { TbFileCv } from "react-icons/tb";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { IoMail } from "react-icons/io5";
+import { FaGithubSquare } from "react-icons/fa";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { DarkModeContext } from "../context/DarkModeContext";
 import SE from "../assets/Resume_SE.pdf";
@@ -33,7 +32,7 @@ const Layout = () => {
 
   const socialLinks = [
     {
-      icon: AiOutlineGithub,
+      icon: FaGithubSquare,
       link: "https://github.com/Usamafuward",
     },
     {
@@ -41,7 +40,7 @@ const Layout = () => {
       link: "https://linkedin.com/in/usama-puward",
     },
     {
-      icon: AiFillTwitterCircle,
+      icon: FaSquareXTwitter,
       link: "https://www.x.com/usamafuward",
     },
     {
@@ -49,7 +48,7 @@ const Layout = () => {
       link: "https://www.instagram.com/usama._fuward",
     },
     {
-      icon: AiFillMail,
+      icon: IoMail,
       link: "mailto:usamafuward2001@gmail.com",
     },
   ];
@@ -174,14 +173,14 @@ const Layout = () => {
             <li className="relative ml-4 sm:ml-5">
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white px-2 py-[6px] sm:px-4 sm:py-2 border-none rounded-[5px] flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
+                className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white p-2 sm:px-4 border-none rounded-[5px] flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
               >
                 <span className="hidden sm:inline">Resume</span>
-                <TbFileCv className="sm:hidden h-7 w-7" />
+                <span className="sm:hidden">CV</span>
                 {showDropdown ? (
-                  <AiOutlineUp className="ml-1 sm:ml-2 h-5 w-5 font-bold" />
+                  <AiOutlineUp className="ml-1 sm:ml-[6px] h-6 w-6 font-bold" />
                 ) : (
-                  <AiOutlineDown className="ml-1 sm:ml-2 h-5 w-5 font-bold" />
+                  <AiOutlineDownload className="ml-1 sm:ml-[6px] h-6 w-6 font-bold" />
                 )}
               </button>
               {showDropdown && (
@@ -241,7 +240,7 @@ const Layout = () => {
                   className="w-9 h-9 sm:w-10 sm:h-10 relative z-10
                                   text-gray-700 dark:text-gray-300
                                   group-hover:text-white dark:group-hover:text-gray-800
-                                  transition-colors duration-300"
+                                  transition-colors duration-300 [15px]"
                 />
               </a>
             </div>

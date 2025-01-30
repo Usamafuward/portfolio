@@ -1,11 +1,8 @@
 import { useState, useEffect, useContext, useMemo, useRef } from "react";
 import { DarkModeContext } from "@/context/DarkModeContext";
 import {
-  AiOutlineGithub,
   AiFillLinkedin,
   AiFillInstagram,
-  AiFillTwitterCircle,
-  AiFillMail,
 } from "react-icons/ai";
 import { motion, useInView } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
@@ -19,14 +16,18 @@ import TrueFocus from "@/components/ui/TrueFocus";
 // import PixelTransition from "@/components/ui/PixelTransition";
 import logoSvg from "@/assets/logo_svg";
 import flatIcon from "@/assets/flat_icon";
-import { GraduationCap } from "lucide-react";
-import { School } from "lucide-react";
+import { MdOutlineHandshake } from "react-icons/md";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { IoMail } from "react-icons/io5";
+import { FaGithubSquare } from "react-icons/fa";
+import { FaSchool } from "react-icons/fa";
+import { FaGraduationCap } from "react-icons/fa";
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    transition: { staggerChildren: 0.2, delayChildren: 0.25 },
   },
 };
 
@@ -125,7 +126,7 @@ const Index = () => {
     { title: "Languages", items: ["JavaScript", "Python", "C++"] },
     {
       title: "ML Tools & Libraries",
-      items: ["scikit-learn", "TensorFlow", "Pandas", "NumPy", "Matplotlib"],
+      items: ["Scikit-learn", "TensorFlow", "Pandas", "NumPy", "Matplotlib"],
     },
     { title: "DevOps & Containerization", items: ["Docker"] },
     { title: "Cloud Platforms", items: ["Microsoft Azure"] },
@@ -169,7 +170,7 @@ const Index = () => {
 
   const socials = [
     {
-      icon: AiOutlineGithub,
+      icon: FaGithubSquare,
       link: "https://github.com/Usamafuward",
     },
     {
@@ -177,7 +178,7 @@ const Index = () => {
       link: "https://linkedin.com/in/usama-puward",
     },
     {
-      icon: AiFillTwitterCircle,
+      icon: FaSquareXTwitter,
       link: "https://www.x.com/usamafuward",
     },
     {
@@ -185,14 +186,14 @@ const Index = () => {
       link: "https://www.instagram.com/usama._fuward",
     },
     {
-      icon: AiFillMail,
+      icon: IoMail,
       link: "mailto:usamafuward2001@gmail.com",
     },
   ];
 
   const educationData = [
     {
-      icon: GraduationCap,
+      icon: FaGraduationCap,
       degree: "Bachelor of Science in Computer Science",
       institution: "University of Colombo School of Computing",
       year: "2022 - present(2025)",
@@ -200,7 +201,7 @@ const Index = () => {
         "Currently pursuing a degree in Computer Science, with a focus on software development, machine learning, and artificial intelligence.",
     },
     {
-      icon: School,
+      icon: FaSchool,
       degree: "Secondary School Education",
       institution: "Zahira College Mawanella",
       year: "2012 - 2020",
@@ -284,15 +285,16 @@ const Index = () => {
                           className="w-9 h-9 relative z-10
                                   text-gray-700 dark:text-gray-300
                                   group-hover:text-white dark:group-hover:text-gray-800
-                                  transition-colors duration-300"
+                                  transition-colors duration-300 rounded-[15px]"
                         />
                       </a>
                     </div>
                   ))}
                 </div>
                 <HashLink to="/contact">
-                  <button className="font-bold text-black dark:text-white border-2 border-black  dark:border-white py-4 px-8 relative transition-all duration-300 ease-in-out mt-15 hover:bg-gradient-to-r from-cyan-600 to-teal-500 order-none xl:order-1">
-                    Let’s Connect
+                  <button className="flex items-center font-bold text-black dark:text-white border-2 border-black dark:border-white py-4 px-6 relative transition-all duration-300 ease-in-out mt-15 hover:bg-gradient-to-r from-cyan-600 to-teal-500 order-none xl:order-1 gap-3">
+                    <span className="text-lg">Let’s Connect</span>
+                    <MdOutlineHandshake className=" h-[26px] w-[26px] font-bold" />
                   </button>
                 </HashLink>
               </div>
@@ -466,8 +468,8 @@ const Index = () => {
               className="p-6 rounded-xl shadow-lg bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
             >
               <div className="flex items-center space-x-4">
-                <edu.icon size={32} className="text-blue-400" />
-                <div>
+                <edu.icon size={32} className="text-blue-400 w-1/6 sm:w-1/12" />
+                <div className="flex flex-col w-5/6 sm:w-11/12">
                   <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400">
                     {edu.degree}
                   </h3>
@@ -479,7 +481,7 @@ const Index = () => {
                   </p>
                 </div>
               </div>
-              <p className="mt-3 dark:text-gray-200">{edu.description}</p>
+              <p className="mt-3 dark:text-white">{edu.description}</p>
             </motion.div>
           ))}
         </motion.div>
