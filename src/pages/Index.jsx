@@ -367,7 +367,7 @@ const Index = () => {
               <HashLink
                 key={index}
                 to={card.link}
-                className="group text-center p-10 rounded-xl my-5 border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 flex-1 flex flex-col justify-center relative overflow-hidden h-[360px]"
+                className="group text-center p-10 my-5 border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 flex-1 flex flex-col justify-center relative overflow-hidden h-[360px]"
               >
                 <img
                   src={card.image}
@@ -375,7 +375,7 @@ const Index = () => {
                   className=" mx-auto h-32 w-auto grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
                 <h3 className="text-2xl font-medium pt-8 pb-2">{card.title}</h3>
-                <div className=" absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 rounded-xl -translate-y-full group-hover:translate-y-0">
+                <div className=" absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 -translate-y-full group-hover:translate-y-0">
                   <div className="translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
                     <h5 className="text-xl font-bold pb-2 text-white">
                       {card.title}
@@ -397,8 +397,16 @@ const Index = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="p-7 my-7"
+        className="p-7"
       >
+        <motion.h2
+          initial="hidden"
+          animate="visible"
+          variants={slideUpVariants}
+          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-10"
+        >
+          Skills
+        </motion.h2>
         <Skills />
       </motion.section>
 
@@ -412,13 +420,13 @@ const Index = () => {
       >
         <motion.h2
           variants={slideUpVariants}
-          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-12"
+          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-10"
         >
           Technologies
         </motion.h2>
         <motion.div
           variants={slideUpVariants}
-          className="h-auto w-full relative my-6 shadow-lg border-x-4 border-teal-400 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200"
+          className="h-auto w-full relative my-6 shadow-lg border-x-4 border-teal-400 bg-green-100 dark:bg-gray-700 dark:text-gray-200"
         >
           <LogoWall
             items={logoImgs}
@@ -429,14 +437,14 @@ const Index = () => {
           />
         </motion.div>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto mb-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto"
           variants={containerVariants}
         >
           {technologies.map((tech, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="text-center shadow-lg p-10 rounded-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2  border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
+              className="text-center shadow-lg p-10 bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2  border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
             >
               <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
                 {tech.title}
@@ -456,7 +464,7 @@ const Index = () => {
       >
         <motion.h2
           variants={slideUpVariants}
-          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-12"
+          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-10"
         >
           Education
         </motion.h2>
@@ -465,7 +473,7 @@ const Index = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="p-6 rounded-xl shadow-lg bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
+              className="p-6 shadow-lg bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
             >
               <div className="flex items-center space-x-4">
                 <edu.icon size={32} className="text-blue-400 w-1/6 sm:w-1/12" />

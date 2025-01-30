@@ -174,62 +174,64 @@ export default function Experiences() {
 
   return (
     <section className="min-h-screen" ref={ref}>
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-7 mb-5"
-      >
-        Experiences
-      </motion.h1>
+      <div className="px-7">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-7 mb-5"
+        >
+          Experiences
+        </motion.h1>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        className="max-w-4xl mx-auto relative"
-      >
-        {/* Timeline line */}
-        <div className="absolute left-0 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-teal-600 dark:bg-teal-400" />
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className=" mx-auto relative"
+        >
+          {/* Timeline line */}
+          <div className="absolute left-0 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-teal-600 dark:bg-teal-400" />
 
-        {Experiences.map((experience, index) => (
-          <motion.div
-            key={index}
-            className={`flex flex-col md:flex-row gap-8 mb-16 relative ${
-              index % 2 === 0 ? "md:flex-row-reverse" : ""
-            }`}
-          >
-            {/* Timeline dot */}
-            <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-teal-600 dark:bg-teal-400 border-4 border-white dark:border-gray-900" />
-
-            {/* Content */}
-            <div
-              className={`md:w-1/2 ${
-                index % 2 === 0 ? "md:pl-16" : "md:pr-16"
+          {Experiences.map((experience, index) => (
+            <motion.div
+              key={index}
+              className={`flex flex-col md:flex-row gap-8 mb-16 relative ${
+                index % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
             >
-              <motion.div
-                variants={itemVariants}
-                className="p-6 bg-green-100 dark:bg-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
+              {/* Timeline dot */}
+              <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-teal-600 dark:bg-teal-400 border-4 border-white dark:border-gray-900" />
+
+              {/* Content */}
+              <div
+                className={`md:w-1/2 ${
+                  index % 2 === 0 ? "md:pl-16" : "md:pr-16"
+                }`}
               >
-                <div className="flex flex-col space-y-2">
-                  <span className="text-sm font-medium text-teal-600 dark:text-teal-400">
-                    {experience.duration}
-                  </span>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                    {experience.title}
-                  </h3>
-                  <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                    {experience.company}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    {experience.description}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+                <motion.div
+                  variants={itemVariants}
+                  className="p-6 bg-green-100 dark:bg-gray-700 shadow-xl hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
+                >
+                  <div className="flex flex-col space-y-2">
+                    <span className="text-sm font-medium text-teal-600 dark:text-teal-400">
+                      {experience.duration}
+                    </span>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                      {experience.title}
+                    </h3>
+                    <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                      {experience.company}
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                      {experience.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }

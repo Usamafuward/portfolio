@@ -116,13 +116,15 @@ export default function Projects() {
             className="break-inside-avoid"
           >
             <Link to={project.to} className="block group">
-              <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400">
+              <div className="rounded-lg overflow-hidden shadow-xl hover:shadow-xl transition-all duration-300 border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400">
                 <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                       {project.title}
                     </h3>
-                    <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors" />
+                    <div className="w-6">
+                      <ExternalLink className="w-5 h-5 al text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 mt-1" />
+                    </div>
                   </div>
 
                   <p className="text-gray-700 dark:text-gray-200 mb-4 line-clamp-3 group-hover:line-clamp-none transition-all">
@@ -133,7 +135,7 @@ export default function Projects() {
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 text-sm rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300"
+                        className="px-3 py-1 text-sm rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 border border-teal-800 dark:border-teal-300"
                       >
                         {tech}
                       </span>

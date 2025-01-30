@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Search, Award, ExternalLink } from "lucide-react";
+import { Search, ExternalLink } from "lucide-react";
 
 export default function Certifications() {
   const ref = useRef(null);
@@ -155,7 +155,7 @@ export default function Certifications() {
               placeholder="Search certifications..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-teal-500 dark:focus:border-teal-400 transition-colors"
+              className="w-full pl-12 pr-4 py-3 rounded-lg bg-white dark:bg-gray-800 transition-colors border-2 border-gray-300 dark:border-gray-500 hover:border-teal-400 hover:dark:border-teal-400 text-gray-600 dark:text-gray-300 focus:outline-none focus:border-teal-500"
             />
           </div>
 
@@ -193,6 +193,7 @@ export default function Certifications() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
+                  className="shadow-xl"
                 >
                   <Link to={cert.to} className="block group h-full">
                     <div className="h-full p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400">
@@ -200,7 +201,9 @@ export default function Certifications() {
                         <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400">
                           {cert.title}
                         </h3>
-                        <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400" />
+                        <div className="w-6">
+                          <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 mt-1" />
+                        </div>
                       </div>
                       <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 group-hover:line-clamp-none transition-all">
                         {cert.description}

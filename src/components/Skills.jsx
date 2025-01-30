@@ -29,8 +29,7 @@ export const Skills = () => {
       <div className="container relative z-0">
         <div className="row">
           <div className="col-12">
-            <div className="skill-bx wow zoomIn bg-green-100 dark:bg-gray-700 rounded-xl shadow-lg border-2 border-white dark:border-gray-500">
-              <h2 className="mb-6 text-teal-600 dark:text-teal-400">Skills</h2>
+            <div className="skill-bx wow zoomIn bg-green-100 dark:bg-gray-700 shadow-lg border-2 border-white dark:border-gray-500">
               <p className="dark:text-white">
                 I have a diverse background in various domains of software
                 development and machine learning. My expertise allows me to
