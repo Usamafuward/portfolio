@@ -210,13 +210,13 @@ export default function Experiences() {
               >
                 <motion.div
                   variants={itemVariants}
-                  className="p-6 bg-green-100 dark:bg-gray-700 shadow-xl hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
+                  className="p-6 bg-green-100 dark:bg-gray-700 shadow-xl hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 group"
                 >
                   <div className="flex flex-col space-y-2">
                     <span className="text-sm font-medium text-teal-600 dark:text-teal-400">
                       {experience.duration}
                     </span>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400">
                       {experience.title}
                     </h3>
                     <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">

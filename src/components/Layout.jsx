@@ -78,9 +78,21 @@ const Layout = () => {
       setShowMenu(false); // Close menu on scroll
     };
 
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".dropdown-button")) {
+        setShowDropdown(false); // Close dropdown on outside click
+      }
+      if (!event.target.closest(".menu-button")) {
+        setShowMenu(false); // Close dropdown on outside click
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -109,23 +121,17 @@ const Layout = () => {
               <div className="relative">
                 <button
                   onClick={() => setShowMenu(!showMenu)}
-                  className="flex items-center justify-center text-3xl"
+                  className="flex items-center justify-center text-3xl menu-button"
                 >
                   <AiOutlineMenu />
                 </button>
                 {showMenu && (
-                  <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-[5px] shadow-lg transition-all duration-300">
-                    {menuItems.map((item, index) => (
+                  <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 menu-button backdrop-filter backdrop-blur-md">
+                    {menuItems.map((item) => (
                       <li key={item.to}>
                         <Link
                           to={item.to}
                           className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 ${
-                            index === 0
-                              ? "rounded-t-[5px]"
-                              : index === menuItems.length - 1
-                              ? "rounded-b-[5px]"
-                              : ""
-                          } ${
                             isActive(item.to)
                               ? "border-s-4 border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400"
                               : "text-gray-700 dark:text-white"
@@ -173,7 +179,7 @@ const Layout = () => {
             <li className="relative ml-4 sm:ml-5">
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white p-2 sm:px-4 border-none rounded-[5px] flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200"
+                className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white p-2 sm:px-4 border-none flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200 dropdown-button"
               >
                 <span className="hidden sm:inline">Resume</span>
                 <span className="sm:hidden">CV</span>
@@ -184,19 +190,15 @@ const Layout = () => {
                 )}
               </button>
               {showDropdown && (
-                <div className="absolute right-0 mt-[5px] w-48 bg-white dark:bg-gray-800 rounded-[5px] shadow-lg transition-all duration-300">
-                  {resumeLinks.map((resume, index) => (
+                <div
+                  className="absolute right-0 mt-[3px] w-48 bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 dropdown-button backdrop-filter backdrop-blur-md"
+                >
+                  {resumeLinks.map((resume) => (
                     <a
                       key={resume.label}
                       href={resume.href}
                       download={resume.download}
-                      className={`block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 ${
-                        index === 0
-                          ? "rounded-t-[5px]"
-                          : index === resumeLinks.length - 1
-                          ? "rounded-b-[5px]"
-                          : ""
-                      }`}
+                      className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
                     >
                       {resume.label}
                     </a>

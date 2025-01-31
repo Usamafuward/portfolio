@@ -113,6 +113,10 @@ export default function Projects() {
           <motion.div
             key={index}
             variants={itemVariants}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+            }}
             className="break-inside-avoid"
           >
             <Link to={project.to} className="block group">

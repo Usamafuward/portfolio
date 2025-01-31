@@ -147,7 +147,7 @@ export default function Certifications() {
           Certifications
         </h1>
 
-        <div className="mb-12 space-y-6">
+        <div className="mb-10 space-y-6">
           <div className="relative max-w-2xl mx-auto">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
@@ -181,7 +181,7 @@ export default function Certifications() {
             key={org}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mb-12"
+            className="mb-10"
           >
             <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
               {org}
@@ -192,7 +192,11 @@ export default function Certifications() {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{
+                    delay: index * 0.1,
+                    type: "spring",
+                    stiffness: 300,
+                  }}
                   className="shadow-xl"
                 >
                   <Link to={cert.to} className="block group h-full">

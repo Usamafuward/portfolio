@@ -7,7 +7,6 @@ import {
 import { motion, useInView } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
 import profile from "@/assets/Usama.jpg";
-import { Skills } from "@/components/Skills";
 // import TrackVisibility from "react-on-screen";
 import SplitText from "@/components/ui/SplitText";
 import LogoWall from "@/components/ui/LogoWall";
@@ -41,10 +40,10 @@ const slideUpVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-// const slideRightVariants = {
-//   hidden: { opacity: 0, x: 50 },
-//   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-// };
+const slideRightVariants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0 },
+};
 
 const slideLeftVariants = {
   hidden: { opacity: 0, x: -100 },
@@ -122,24 +121,55 @@ const Index = () => {
     },
   ];
 
-  const technologies = [
-    { title: "Languages", items: ["JavaScript", "Python", "C++"] },
+  const skills = [
     {
-      title: "ML Tools & Libraries",
-      items: ["Scikit-learn", "TensorFlow", "Pandas", "NumPy", "Matplotlib"],
+      category: "Front-End Development",
+      progress: 85,
+      techs: [
+        "React",
+        "Next",
+        "React Native",
+        "FastHTML",
+        "SCSS",
+        "Tailwind CSS",
+        "Bootstrap",
+      ],
     },
-    { title: "DevOps & Containerization", items: ["Docker"] },
-    { title: "Cloud Platforms", items: ["Microsoft Azure"] },
-    { title: "Version Control", items: ["Git", "GitHub"] },
     {
-      title: "Frontend Libraries/Frameworks",
-      items: ["React", "React Native", "SCSS", "Tailwind CSS", "Bootstrap"],
+      category: "Back-End Development",
+      progress: 90,
+      techs: ["FastAPI", "Node.js", "Django", "Express.js"],
     },
     {
-      title: "Backend Frameworks",
-      items: ["Node.js", "Express.js", "Python FastAPI", "Django"],
+      category: "Machine Learning",
+      progress: 75,
+      techs: ["TensorFlow", "Scikit-learn", "Pandas", "NumPy", "Matplotlib"],
     },
-    { title: "Databases", items: ["MySQL", "PostgreSQL", "MongoDB"] },
+    {
+      category: "Database Ops",
+      progress: 90,
+      techs: ["MongoDB", "PostgreSQL", "MySQL"],
+    },
+    {
+      category: "Artificial Intelligence",
+      progress: 85,
+      techs: ["NLP", "Computer Vision", "Deep Learning"],
+    },
+    {
+      category: "DevOps & Containerization",
+      progress: 70,
+      techs: ["Docker"],
+    },
+    {
+      category: "Cloud Platforms",
+      progress: 60,
+      techs: ["Microsoft Azure"],
+    },
+    {
+      category: "Version Control",
+      progress: 85,
+      techs: ["Git", "GitHub"],
+    },
   ];
 
   const logoImgs = [
@@ -269,7 +299,7 @@ const Index = () => {
                         rel="noopener noreferrer"
                         className="w-14 h-14 flex items-center justify-center rounded-full
                      relative overflow-hidden
-                     border border-black/50 dark:border-white/50
+                     border-2 border-teal-600 font-medium dark:border-teal-400 hover:border-black/50 hover:dark:border-white/50
                      bg-gray-100/10 dark:bg-gray-700/20
                      transition-colors duration-300"
                       >
@@ -292,7 +322,7 @@ const Index = () => {
                   ))}
                 </div>
                 <HashLink to="/contact">
-                  <button className="flex items-center font-bold text-black dark:text-white border-2 border-black dark:border-white py-4 px-6 relative transition-all duration-300 ease-in-out mt-15 hover:bg-gradient-to-r from-cyan-600 to-teal-500 order-none xl:order-1 gap-3">
+                  <button className="flex items-center font-bold text-gray-800 dark:text-white border-2 hover:border-gray-800 hover:dark:border-white border-teal-600 dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out mt-15 hover:bg-gradient-to-r from-cyan-600 to-teal-500 order-none xl:order-1 gap-3">
                     <span className="text-lg">Let’s Connect</span>
                     <MdOutlineHandshake className=" h-[26px] w-[26px] font-bold" />
                   </button>
@@ -307,7 +337,7 @@ const Index = () => {
               className="rounded-full h-[280px] w-[280px] sm:h-[360px] sm:w-[360px] animate-zoomIn"
             />
             <motion.svg
-              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-75px] h-[320px] w-[320px] sm:h-[390px] sm:w-[390px]"
+              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-75px] h-[312px] w-[312px] sm:h-[390px] sm:w-[390px]"
               fill="transparent"
               viewBox="0 0 390 390"
               xmlns="http://www.w3.org/2000/svg"
@@ -393,21 +423,77 @@ const Index = () => {
 
       {/* Skills Section */}
       <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        variants={containerVariants}
         className="p-7"
       >
         <motion.h2
-          initial="hidden"
-          animate="visible"
           variants={slideUpVariants}
           className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-10"
         >
           Skills
         </motion.h2>
-        <Skills />
+        <motion.div className="  mx-auto">
+          <motion.div variants={slideUpVariants} className="text-center mb-12">
+            <p className="text-lg max-w-3xl mx-auto text-gray-700 dark:text-gray-400">
+              I have a diverse background in various domains of software
+              development and machine learning. My expertise allows me to create
+              visually appealing interfaces, build robust server-side
+              applications, and develop intelligent systems using modern tools
+              and frameworks.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {skills.map((skill, index) => (
+              <motion.div
+                key={index}
+                variants={
+                  index % 2 === 0 ? slideLeftVariants : slideRightVariants
+                }
+                className="bg-green-100 dark:bg-gray-700 p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
+              >
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+                    {skill.category}
+                  </h3>
+                  <div className="relative w-full h-2 bg-gray-200 rounded">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-teal-700 to-teal-500 rounded transition-all duration-300"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.progress}%` }}
+                      transition={{
+                        duration: 2.5,
+                        ease: "easeOut",
+                        delayChildren: 0.3,
+                        staggerChildren: 0.2,
+                      }}
+                    />
+                  </div>
+                  <span className="text-sm dark:text-gray-400 text-gray-600 mt-1 inline-block">
+                    {skill.progress}% Proficiency
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {skill.techs.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-3 py-1 text-sm rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 border border-teal-800 dark:border-teal-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       </motion.section>
 
       {/* Technologies Section */}
@@ -435,23 +521,6 @@ const Index = () => {
             duration="60s"
             bgAccentColor="#2DD4BF"
           />
-        </motion.div>
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto"
-          variants={containerVariants}
-        >
-          {technologies.map((tech, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="text-center shadow-lg p-10 bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2  border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
-            >
-              <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">
-                {tech.title}
-              </h3>
-              <p>{tech.items.join(", ")}</p>
-            </motion.div>
-          ))}
         </motion.div>
       </motion.section>
 
