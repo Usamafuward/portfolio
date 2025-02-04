@@ -162,7 +162,7 @@ const Layout = () => {
                   to={item.to}
                   className={`hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium transition-colors duration-300 ${
                     isActive(item.to)
-                      ? "border-b-2 border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400"
+                      ? "border-b-[2.5px] border-teal-500 dark:border-teal-400 text-teal-600 dark:text-teal-400 "
                       : "text-gray-800 dark:text-white"
                   }`}
                 >
