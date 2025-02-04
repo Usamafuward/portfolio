@@ -5,7 +5,7 @@ import {
   AiFillInstagram,
   AiOutlineUp,
   AiOutlineMenu,
-  AiOutlineDownload
+  AiOutlineDownload,
 } from "react-icons/ai";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
@@ -107,7 +107,7 @@ const Layout = () => {
       <header
         className={`px-7 md:px-[92px] lg:px-[156px] fixed top-0 w-full z-10 transition-colors duration-300 backdrop-filter backdrop-blur-md ${
           isScrolled
-            ? "bg-green-100/80 dark:bg-gray-700/80 shadow-lg"
+            ? "bg-green-100/80 dark:bg-gray-700/80 shadow-xl"
             : "bg-white/80 dark:bg-gray-900/80"
         }`}
       >
@@ -126,7 +126,7 @@ const Layout = () => {
                   <AiOutlineMenu />
                 </button>
                 {showMenu && (
-                  <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 menu-button backdrop-filter backdrop-blur-md">
+                  <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-xl transition-all duration-300 menu-button backdrop-filter backdrop-blur-md">
                     {menuItems.map((item) => (
                       <li key={item.to}>
                         <Link
@@ -179,7 +179,7 @@ const Layout = () => {
             <li className="relative ml-4 sm:ml-5">
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white p-2 sm:px-4 border-none flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-lg transition-colors duration-200 dropdown-button"
+                className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white p-2 sm:px-4 border-none flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-xl transition-colors duration-200 dropdown-button"
               >
                 <span className="hidden sm:inline">Resume</span>
                 <span className="sm:hidden">CV</span>
@@ -190,9 +190,7 @@ const Layout = () => {
                 )}
               </button>
               {showDropdown && (
-                <div
-                  className="absolute right-0 mt-[3px] w-48 bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 dropdown-button backdrop-filter backdrop-blur-md"
-                >
+                <div className="absolute right-0 mt-[3px] w-48 bg-white dark:bg-gray-800 shadow-xl transition-all duration-300 dropdown-button backdrop-filter backdrop-blur-md">
                   {resumeLinks.map((resume) => (
                     <a
                       key={resume.label}
@@ -223,8 +221,8 @@ const Layout = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-full
-                       relative overflow-hidden
-                       border border-black/50 dark:border-white/50
+                       relative overflow-hidden shadow-xl
+                       border-2 border-teal-600 font-medium dark:border-teal-400 hover:border-black/50 hover:dark:border-white/50
                        bg-gray-100/10 dark:bg-gray-700/20
                        text-gray-700 dark:text-gray-300
                        hover:text-white dark:hover:text-gray-800
@@ -256,7 +254,7 @@ const Layout = () => {
       {isScrolled ? (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-10 right-10 lg:right-28 bg-teal-600 text-white p-3 rounded-full shadow-lg hover:bg-teal-600 transition-colors backdrop-blur-lg backdrop-filter bg-opacity-30"
+          className="fixed bottom-10 right-10 lg:right-28 bg-teal-600 text-white p-3 rounded-full shadow-xl hover:bg-teal-600 transition-colors backdrop-blur-lg backdrop-filter bg-opacity-30"
         >
           <AiOutlineUp />
         </button>

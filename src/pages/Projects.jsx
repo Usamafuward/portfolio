@@ -282,7 +282,7 @@ export default function Projects() {
 //               transition={{ type: "spring", stiffness: 300 }}
 //             >
 //             <Link key={index} to={project.to} className="flex-1 group relative">
-//               <div className="text-center shadow-lg dark:shadow-gray-400 p-7 rounded-xl border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card">
+//               <div className="text-center shadow-xl dark:shadow-gray-400 p-7 rounded-xl border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex-1 flex flex-col justify-center card">
 //                 <h5 className="text-2xl font-bold pb-2">{project.title}</h5>
 //                 <p className="py-2" style={{ fontStyle: "italic" }}>
 //                   Tech Stack : {project.technologies.join(", ")}

@@ -45,7 +45,7 @@
 //   );
 // };
 
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -111,7 +111,6 @@ export const Skills = () => {
     },
   ];
 
-
   return (
     <motion.section>
       <div className="  mx-auto">
@@ -133,7 +132,7 @@ export const Skills = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-green-100 dark:bg-gray-700 p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
+              className="bg-green-100 dark:bg-gray-700 p-6 shadow-xl hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
             >
               <div className="mb-4">
                 <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
@@ -170,7 +169,6 @@ export const Skills = () => {
   );
 };
 
-
 // import meter1 from "../assets/meter1.svg";
 // import meter2 from "../assets/meter2.svg";
 // import meter3 from "../assets/meter3.svg";
@@ -202,7 +200,7 @@ export const Skills = () => {
 //       <div className="container relative z-0">
 //         <div className="row">
 //           <div className="col-12">
-//             <div className="skill-bx wow zoomIn bg-green-100 dark:bg-gray-700 shadow-lg border-2 border-white dark:border-gray-500">
+//             <div className="skill-bx wow zoomIn bg-green-100 dark:bg-gray-700 shadow-xl border-2 border-white dark:border-gray-500">
 //               <p className="dark:text-white">
 //                 I have a diverse background in various domains of software
 //                 development and machine learning. My expertise allows me to

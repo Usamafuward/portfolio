@@ -1,9 +1,6 @@
 import { useState, useEffect, useContext, useMemo, useRef } from "react";
 import { DarkModeContext } from "@/context/DarkModeContext";
-import {
-  AiFillLinkedin,
-  AiFillInstagram,
-} from "react-icons/ai";
+import { AiFillLinkedin, AiFillInstagram } from "react-icons/ai";
 import { motion, useInView } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
 import profile from "@/assets/Usama.jpg";
@@ -235,7 +232,8 @@ const Index = () => {
       degree: "Secondary School Education",
       institution: "Zahira College Mawanella",
       year: "2012 - 2020",
-      description: "Completed GCE Ordinary Level and GCE Advanced Level in Physical Science Stream.",
+      description:
+        "Completed GCE Ordinary Level and GCE Advanced Level in Physical Science Stream.",
     },
   ];
 
@@ -298,7 +296,7 @@ const Index = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-14 h-14 flex items-center justify-center rounded-full
-                     relative overflow-hidden
+                     relative overflow-hidden shadow-xl
                      border-2 border-teal-600 font-medium dark:border-teal-400 hover:border-black/50 hover:dark:border-white/50
                      bg-gray-100/10 dark:bg-gray-700/20
                      transition-colors duration-300"
@@ -397,7 +395,7 @@ const Index = () => {
               <HashLink
                 key={index}
                 to={card.link}
-                className="group text-center p-10 my-5 border-2 border-white dark:border-gray-500 dark:shadow-gray-400 dark:bg-gray-700 dark:text-gray-200 bg-green-100 flex-1 flex flex-col justify-center relative overflow-hidden h-[360px]"
+                className="group text-center shadow-xl p-10 my-5 border-2 border-white dark:border-gray-500 dark:bg-gray-700 dark:text-gray-200 bg-green-100 flex-1 flex flex-col justify-center relative overflow-hidden h-[360px]"
               >
                 <img
                   src={card.image}
@@ -456,7 +454,7 @@ const Index = () => {
                 variants={
                   index % 2 === 0 ? slideLeftVariants : slideRightVariants
                 }
-                className="bg-green-100 dark:bg-gray-700 p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
+                className="bg-green-100 dark:bg-gray-700 p-6 shadow-xl hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
               >
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
@@ -475,7 +473,10 @@ const Index = () => {
                       }}
                     />
                   </div>
-                  <span className="text-sm dark:text-gray-400 text-gray-600 mt-1 inline-block">
+                  <span
+                    className="text-sm dark:text-gray-400 text-gray-6
+                  00 mt-1 inline-block"
+                  >
                     {skill.progress}% Proficiency
                   </span>
                 </div>
@@ -512,7 +513,7 @@ const Index = () => {
         </motion.h2>
         <motion.div
           variants={slideUpVariants}
-          className="h-auto w-full relative my-6 shadow-lg border-x-4 border-teal-400 bg-green-100 dark:bg-gray-700 dark:text-gray-200"
+          className="h-auto w-full relative my-6 shadow-xl border-x-4 border-teal-400 bg-green-100 dark:bg-gray-700 dark:text-gray-200"
         >
           <LogoWall
             items={logoImgs}
@@ -542,7 +543,7 @@ const Index = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="p-6 shadow-lg bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
+              className="p-6 shadow-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
             >
               <div className="flex items-center space-x-4">
                 <edu.icon size={32} className="text-blue-400 w-1/6 sm:w-1/12" />
