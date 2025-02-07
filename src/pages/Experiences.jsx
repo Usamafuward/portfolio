@@ -87,7 +87,7 @@ export default function Experiences() {
           {Experiences.map((experience, index) => (
             <motion.div
               key={index}
-              className={`flex flex-col md:flex-row gap-8 mb-16 relative ${
+              className={`flex flex-col md:flex-row gap-8 mb-4 md:mb-16 relative ${
                 index % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
             >
