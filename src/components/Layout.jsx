@@ -160,9 +160,9 @@ const Layout = () => {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className={`hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium transition-colors duration-300 ${
+                  className={`hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium ${
                     isActive(item.to)
-                      ? "border-b-[2.5px] border-teal-500 dark:border-teal-400 text-teal-600 dark:text-teal-400 "
+                      ? "border-b-[2.5px] border-teal-500 dark:border-teal-400 text-teal-600 dark:text-teal-400 transform -translate-y-1"
                       : "text-gray-800 dark:text-white"
                   }`}
                 >
@@ -226,7 +226,7 @@ const Layout = () => {
                        bg-gray-100/10 dark:bg-gray-700/20
                        text-gray-700 dark:text-gray-300
                        hover:text-white dark:hover:text-gray-800
-                       transition-all duration-300"
+                       transition-all duration-300 z-0"
               >
                 {/* Hover overlay */}
                 <div

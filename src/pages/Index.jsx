@@ -10,6 +10,7 @@ import LogoWall from "@/components/ui/LogoWall";
 // import TiltedCard from "@/components/ui/TitleCard";
 import TrueFocus from "@/components/ui/TrueFocus";
 // import PixelTransition from "@/components/ui/PixelTransition";
+import AnimatedText from "@/components/ui/AnimatedText";
 import logoSvg from "@/assets/logo_svg";
 import flatIcon from "@/assets/flat_icon";
 import { MdOutlineHandshake } from "react-icons/md";
@@ -255,13 +256,7 @@ const Index = () => {
               transition={{ type: "spring", stiffness: 200, duration: 0.5 }}
               className="text-center xl:text-left items-center justify-between mx-auto mt-6 xl:mt-0 xl:ps-28 relative z-10"
             >
-              <h3 className="text-xl sm:sm:py-2 py-1 font-medium text-gray-800 dark:text-gray-200 md:text-2xl">
-                {` `}
-                <span className="txt-rotate" data-period="1000">
-                  {text}
-                </span>
-                {` !!`}
-              </h3>
+              <AnimatedText texts={["AI/ML Engineer", "Software Developer"]} />
               <h1 className="text-[40px] sm:text-5xl px-2 xl:px-0 sm:py-2 :py-1 text-gray-800 dark:text-white md:text-6xl">
                 Hello I’m
               </h1>
@@ -335,7 +330,7 @@ const Index = () => {
               className="rounded-full h-[280px] w-[280px] sm:h-[360px] sm:w-[360px] animate-zoomIn"
             />
             <motion.svg
-              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-75px] h-[312px] w-[312px] sm:h-[390px] sm:w-[390px]"
+              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-70px] h-[312px] w-[312px] sm:h-[390px] sm:w-[390px]"
               fill="transparent"
               viewBox="0 0 390 390"
               xmlns="http://www.w3.org/2000/svg"

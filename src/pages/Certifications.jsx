@@ -143,7 +143,7 @@ export default function Certifications() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         className="mx-auto px-7"
       >
-        <h1 className=" flex items-center justify-center py-7 mb-4 text-5xl font-bold text-teal-600 dark:text-teal-400">
+        <h1 className=" flex items-center justify-center py-7 mb-5 text-5xl font-bold text-teal-600 dark:text-teal-400">
           Certifications
         </h1>
 
@@ -181,9 +181,9 @@ export default function Certifications() {
             key={org}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mb-10"
+            className=""
           >
-            <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
+            <h2 className="text-2xl font-bold my-8 text-gray-800 dark:text-gray-200">
               {org}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -197,7 +197,7 @@ export default function Certifications() {
                     type: "spring",
                     stiffness: 300,
                   }}
-                  className="shadow-xl"
+                  className="shadow-xl space-y-10"
                 >
                   <Link to={cert.to} className="block group h-full">
                     <div className="h-full p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400">

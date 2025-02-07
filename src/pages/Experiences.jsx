@@ -96,9 +96,9 @@ export default function Experiences() {
           {Experiences.map((experience, index) => (
             <motion.div
               key={index}
-              className={`flex flex-col md:flex-row gap-8 mb-4 md:mb-16 relative ${
+              className={`flex flex-col md:flex-row gap-6 md:space-y-2 relative ${
                 index % 2 === 0 ? "md:flex-row-reverse" : ""
-              }`}
+              } ${index === 0 ? "" : "md:mt-16 mt-6"}`}
             >
               {/* Timeline dot */}
               <div className="hidden md:block absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-teal-600 dark:bg-teal-400 border-4 border-white dark:border-gray-900" />
