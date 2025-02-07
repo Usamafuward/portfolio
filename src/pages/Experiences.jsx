@@ -36,22 +36,30 @@ export default function Experiences() {
       company: "Kainovation Technologies",
     },
     {
+      title: "Software Developer",
+      description:
+        "Worked on the Mediman - Doctor Patient Clinic Online Appointment project, handling both front-end and back-end development. Implemented features for appointment booking, patient management, and real-time communication between doctors and patients, ensuring a seamless user experience.",
+      duration: "November 2024 – January 2025",
+      company: "Edus Lanka (PVT) LTD",
+    },
+    {
       title: "Full Stack Developer Intern",
       description:
         "Contributing to the development and maintenance of full-stack applications, working on both front-end and back-end components to support the company's digital solutions. Collaborated with senior developers to enhance application functionality and user experience.",
-      duration: "October 2024 – Present",
+      duration: "October 2024 – December 2024",
       company: "Unified Mentor India",
     },
     {
       title: "Artificial Intelligence Intern",
       description:
-        "Completed a one-month internship in Artificial Intelligence at NoviTech R&D Pvt Ltd, , I worked on several AI projects, contributing to the development and implementation of machine learning models and AI solutions aimed at solving real-world challenges",
+        "Completed a one-month internship in Artificial Intelligence at NoviTech R&D Pvt Ltd. Worked on several AI projects, contributing to the development and implementation of machine learning models and AI solutions aimed at solving real-world challenges.",
       duration: "June 2023 – July 2024",
       company: "NoviTech R&D Pvt Ltd",
     },
     {
       title: "Freelance Full Stack Developer",
-      description: "Developed custom websites focusing on responsive design.",
+      description:
+        "Designed and developed custom web applications tailored to client requirements, focusing on responsive and user-friendly interfaces. Built scalable backend architectures using Node.js and MongoDB, integrated third-party APIs, and optimized performance for seamless user experiences.",
       duration: "December 2023 – May 2024",
       company: "Self-Employed",
     },
@@ -63,6 +71,7 @@ export default function Experiences() {
       company: "UCSC",
     },
   ];
+
 
   return (
     <section className="min-h-screen" ref={ref}>
