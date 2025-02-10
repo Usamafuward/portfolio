@@ -387,28 +387,38 @@ const Index = () => {
         >
           {cards.map((card, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <HashLink
-                key={index}
-                to={card.link}
-                className="group text-center shadow-xl p-10 my-5 border-2 border-white dark:border-gray-500 dark:bg-gray-700 dark:text-gray-200 bg-green-100 flex-1 flex flex-col justify-center relative overflow-hidden h-[360px]"
+              <div
+                className="card-container relative group"
+                style={{
+                  "--gradient-start": darkMode ? "#5eead4" : "#0d9488", // Lighter teal for dark mode
+                  "--gradient-middle": darkMode ? "#2dd4bf" : "#2dd4bf",
+                  "--gradient-end": darkMode ? "#0d9488" : "#0d9488",
+                }}
               >
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className=" mx-auto h-32 w-auto grayscale group-hover:grayscale-0 transition-all duration-300"
-                />
-                <h3 className="text-2xl font-medium pt-8 pb-2">{card.title}</h3>
-                <div className=" absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 -translate-y-full group-hover:translate-y-0">
-                  <div className="translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                    <h5 className="text-xl font-bold pb-2 text-white">
-                      {card.title}
-                    </h5>
-                    <p className="p-3 text-white text-center">
-                      {card.description}
-                    </p>
+                <HashLink
+                  to={card.link}
+                  className="card bg-green-100 dark:bg-gray-700 dark:text-gray-200 flex flex-col justify-center h-[360px] text-center shadow-xl p-10 relative overflow-hidden"
+                >
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="mx-auto h-32 w-auto grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                  <h3 className="text-2xl font-medium pt-8 pb-2">
+                    {card.title}
+                  </h3>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 -translate-y-full group-hover:translate-y-0">
+                    <div className="translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                      <h5 className="text-xl font-bold pb-2 text-white">
+                        {card.title}
+                      </h5>
+                      <p className="p-3 text-white text-center">
+                        {card.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </HashLink>
+                </HashLink>
+              </div>
             </motion.div>
           ))}
         </motion.div>

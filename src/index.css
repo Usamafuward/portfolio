@@ -66,39 +66,6 @@ a {
   src: url("assets/Burtons.otf");
 }
 
-.card {
-  position: relative;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  margin-bottom: 24px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  text-align: center;
-  height: 280px;
-}
-
-/* .card:hover {
-  transform: scale(1.05);
-} */
-
-/* Overlay effect */
-.card::before {
-  content: "";
-  background: linear-gradient(90.21deg, #2563eb -5.91%, #14b8a6 111.58%);
-  opacity: 1;
-  position: absolute;
-  width: 100%;
-  height: 0;
-  transition: 0.4s ease-in-out;
-  border-radius: 10px;
-  inset: 0;
-}
-
-.card:hover::before {
-  height: 100%;
-}
-
 /* Text styling inside card */
 .overlay {
   position: absolute;
@@ -140,9 +107,54 @@ a {
   margin: 0 auto 25px auto;
 }
 
+/* Card */
+.card-container {
+  --angle: 0deg;
+  --border-width: 8px;
+  position: relative;
+  border-radius: var(--radius);
+  background: transparent;
+}
 
+.card-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: var(--radius);
+  padding: var(--border-width);
+  background: conic-gradient(
+    from var(--angle),
+    var(--gradient-start),
+    var(--gradient-middle),
+    var(--gradient-end)
+  );
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask: 
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: 3s spin linear infinite;
+}
 
+.card {
+  position: relative;
+  z-index: 1;
+  background: inherit;
+  border-radius: inherit;
+}
 
+@keyframes spin {
+  to {
+    --angle: 360deg;
+  }
+}
 
-
-
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
