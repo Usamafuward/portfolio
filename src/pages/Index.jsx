@@ -367,8 +367,9 @@ const Index = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
+        className="px-9"
       >
-        <div className="text-center pt-8 sm:pt-16 pb-5 xl:pb-0 px-7">
+        <div className="text-center pt-8 sm:pt-16 xl:pb-0 px-7 mb-10">
           <TrueFocus
             sentence="Welcome to My Portfolio"
             manualMode={false}
@@ -380,7 +381,7 @@ const Index = () => {
           />
         </div>
         <motion.div
-          className="grid grid-cols-1 gap-10 lg:grid-cols-3 p-9 mt-3"
+          className="grid grid-cols-1 gap-10 lg:grid-cols-3 my-8"
           variants={containerVariants}
         >
           {cards.map((card, index) => (
@@ -397,7 +398,7 @@ const Index = () => {
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="p-7"
+        className="px-7 pt-7"
       >
         <motion.h2
           variants={slideUpVariants}
@@ -405,7 +406,7 @@ const Index = () => {
         >
           Skills
         </motion.h2>
-        <motion.div className="  mx-auto">
+        <motion.div className="mx-auto my-6">
           <motion.div variants={slideUpVariants} className="text-center mb-12">
             <p className="text-lg max-w-3xl mx-auto text-gray-700 dark:text-gray-400">
               I have a diverse background in various domains of software
@@ -475,7 +476,7 @@ const Index = () => {
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="p-7"
+        className="px-7 pt-7"
       >
         <motion.h2
           variants={slideUpVariants}
@@ -502,7 +503,7 @@ const Index = () => {
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="p-7"
+        className="px-7 pt-7"
       >
         <motion.h2
           variants={slideUpVariants}
