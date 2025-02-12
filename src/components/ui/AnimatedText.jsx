@@ -12,7 +12,7 @@ const AnimatedText = ({ texts = ["AI/ML Engineer", "Software Developer"] }) => {
           className="absolute w-full text-2xl md:text-3xl font-medium"
           style={{
             color: "transparent",
-            WebkitTextStroke: darkMode ? "0.7px #2DD4BF" : "0.7px #0d9488",
+            WebkitTextStroke: darkMode ? "0.5px #2DD4BF" : "0.7px #0d9488",
             animation: `displayText 8s linear infinite`,
             animationDelay: `calc(-4s * ${index})`,
           }}

@@ -72,7 +72,7 @@ const TrueFocus = ({
           <span
             key={index}
             ref={(el) => (wordRefs.current[index] = el)}
-            className="relative text-[3rem] font-black cursor-pointer text-teal-600 dark:text-teal-400"
+            className="relative text-[2.5rem] md:text-[3rem] font-black cursor-pointer text-teal-600 dark:text-teal-400"
             style={{
               filter: isActive ? "blur(0px)" : `blur(${blurAmount}px)`,
               transition: `filter ${animationDuration}s ease`,
@@ -86,7 +86,7 @@ const TrueFocus = ({
       })}
 
       <motion.div
-        className="absolute top-0 left-0 pointer-events-none box-border border-0"
+        className="absolute top-[3px] left-0 pointer-events-none box-border border-0"
         animate={{
           x: focusRect.x,
           y: focusRect.y,

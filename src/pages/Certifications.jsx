@@ -143,7 +143,7 @@ export default function Certifications() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         className="mx-auto px-7"
       >
-        <h1 className=" flex items-center justify-center py-7 mb-5 text-5xl font-bold text-teal-600 dark:text-teal-400">
+        <h1 className=" flex items-center justify-center py-7 mb-5 text-[42px] md:text-5xl font-bold text-teal-600 dark:text-teal-400">
           Certifications
         </h1>
 

@@ -98,7 +98,7 @@ export default function Projects() {
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        className="text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-7 mb-5"
+        className="text-[42px] md:text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-7 mb-5"
       >
         Projects
       </motion.h1>
