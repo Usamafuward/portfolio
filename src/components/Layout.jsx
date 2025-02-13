@@ -103,7 +103,7 @@ const Layout = () => {
                   onClick={() => setShowMenu(!showMenu)}
                   className="flex items-center justify-center text-3xl menu-button"
                 >
-                  <AiOutlineMenu />
+                  <AiOutlineMenu className="w-6 h-6 sm:w-7 sm:h-7" />
                 </button>
                 {showMenu && (
                   <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-xl transition-all duration-300 menu-button backdrop-filter backdrop-blur-md">
@@ -159,8 +159,10 @@ const Layout = () => {
             <li className="relative ml-4 sm:ml-5">
               <Link to="/contact">
                 <button className="bg-gradient-to-r from-cyan-700 to-teal-500 text-white p-2 border-2 border-white flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-xl transition-colors duration-200">
-                  <span className="hidden xl:inline">Let&apos;s Connect</span>
-                  <span className="xl:hidden">Connect</span>
+                  <span className="hidden xl:inline font-medium">
+                    Let&apos;s Connect
+                  </span>
+                  <span className="xl:hidden font-medium">Connect</span>
                   <MdOutlineHandshake className="ml-1 sm:ml-[6px] h-6 w-6 font-bold" />
                 </button>
               </Link>

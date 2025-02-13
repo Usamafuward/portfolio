@@ -280,7 +280,7 @@ const Index = () => {
                 challenges in software development and drive innovation within
                 the fields of ML and AI.
               </p>
-              <div className="flex flex-col xl:flex-row items-center xl:justify-between xl:gap-8 mt-1 xl:mt-0 py-4 space-y-8 xl:space-y-0">
+              <div className="flex flex-col xl:flex-row items-center xl:justify-between xl:gap-8 py-4 space-y-8 xl:space-y-0">
                 <div className="relative group xl:mb-0 order-none xl:order-2">
                   <button
                     onClick={() => setShowDropdown(!showDropdown)}
@@ -349,7 +349,7 @@ const Index = () => {
               className="rounded-full h-[280px] w-[280px] sm:h-[360px] sm:w-[360px] animate-zoomIn"
             />
             <motion.svg
-              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-70px] h-[312px] w-[312px] sm:h-[390px] sm:w-[390px]"
+              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-74px] h-[305px] w-[305px] sm:h-[390px] sm:w-[390px]"
               fill="transparent"
               viewBox="0 0 390 390"
               xmlns="http://www.w3.org/2000/svg"
@@ -357,7 +357,7 @@ const Index = () => {
               <motion.circle
                 cx="195"
                 cy="195"
-                r="192"
+                r="191"
                 stroke={darkMode ? "#2DD4BF" : "#0d9488"}
                 strokeWidth="6"
                 strokeLinecap="round"
