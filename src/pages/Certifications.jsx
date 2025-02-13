@@ -115,6 +115,13 @@ export default function Certifications() {
       to: "https://coursera.org/verify/O43QCWPY75RY",
       organization: "Google Cloud",
     },
+    {
+      title: "Artificial Intelligence on Microsoft Azure",
+      description:
+        "An online course authorized by Microsoft, offered through Coursera, covering AI implementation on Microsoft Azure, including cloud-based machine learning, cognitive services, and AI model deployment.",
+      to: "https://coursera.org/verify/JOQ04JJROD5F",
+      organization: "Microsoft",
+    },
   ];
 
   const organizations = [
