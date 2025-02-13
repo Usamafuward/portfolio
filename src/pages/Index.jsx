@@ -1,8 +1,12 @@
-import { useState, useEffect, useContext, useMemo, useRef } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { DarkModeContext } from "@/context/DarkModeContext";
-import { AiFillLinkedin, AiFillInstagram } from "react-icons/ai";
+import {
+  AiFillLinkedin,
+  AiFillInstagram,
+  AiOutlineUp,
+  AiOutlineDownload,
+} from "react-icons/ai";
 import { motion, useInView } from "framer-motion";
-import { HashLink } from "react-router-hash-link";
 import profile from "@/assets/Usama.jpg";
 import SplitText from "@/components/ui/SplitText";
 import LogoWall from "@/components/ui/LogoWall";
@@ -11,12 +15,13 @@ import AnimatedText from "@/components/ui/AnimatedText";
 import PortfolioCard from "@/components/ui/PortfolioCard";
 import logoSvg from "@/assets/logo_svg";
 import flatIcon from "@/assets/flat_icon";
-import { MdOutlineHandshake } from "react-icons/md";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 import { FaGithubSquare } from "react-icons/fa";
 import { FaSchool } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa";
+import SE from "../assets/Resume_SE.pdf";
+import ML_AI from "../assets/Resume_ML.pdf";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -48,50 +53,32 @@ const slideLeftVariants = {
 
 const Index = () => {
   const { darkMode } = useContext(DarkModeContext);
-  const [loopNum, setLoopNum] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [text, setText] = useState("");
-  const [delta, setDelta] = useState(300 - Math.random() * 100);
-  const toRotate = useMemo(
-    () => ["AI / ML Engineer", "Software Developer"],
-    []
-  );
+  const [showDropdown, setShowDropdown] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [isScrolled, setIsScrolled] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const period = 2000;
 
   useEffect(() => {
-    const tick = () => {
-      let i = loopNum % toRotate.length;
-      let fullText = toRotate[i];
-      let updatedText = isDeleting
-        ? fullText.substring(0, text.length - 1)
-        : fullText.substring(0, text.length + 1);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+      setShowDropdown(false); // This will now work correctly
+    };
 
-      setText(updatedText);
-
-      if (isDeleting) {
-        setDelta((prevDelta) => prevDelta / 2);
-      }
-
-      if (!isDeleting && updatedText === fullText) {
-        setIsDeleting(true);
-        setDelta(period);
-      } else if (isDeleting && updatedText === "") {
-        setIsDeleting(false);
-        setLoopNum(loopNum + 1);
-        setDelta(500);
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".dropdown-button")) {
+        setShowDropdown(false);
       }
     };
 
-    let ticker = setInterval(() => {
-      tick();
-    }, delta);
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      clearInterval(ticker);
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [loopNum, isDeleting, text, delta, period, toRotate]);
+  }, []);
 
   const cards = [
     {
@@ -236,6 +223,19 @@ const Index = () => {
     },
   ];
 
+  const resumeLinks = [
+    {
+      href: SE,
+      label: "Software Engineering",
+      download: "Resume_Software_Engineering.pdf",
+    },
+    {
+      href: ML_AI,
+      label: "ML/AI Engineering",
+      download: "Resume_ML_AI_Engineering.pdf",
+    },
+  ];
+
   return (
     <div>
       {/* Hero Section */}
@@ -281,6 +281,33 @@ const Index = () => {
                 the fields of ML and AI.
               </p>
               <div className="flex flex-col xl:flex-row items-center justify-between xl:gap-10">
+                <div className="relative group mb-7 xl:mb-0 order-none xl:order-2">
+                  <button
+                    onClick={() => setShowDropdown(!showDropdown)}
+                    className="flex items-center font-bold text-gray-800 dark:text-white rounded-full xl:rounded-r-full border-dashed border-2 hover:border-gray-800 hover:dark:border-white border-teal-600 dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out hover:bg-gradient-to-r from-cyan-700 to-teal-500 gap-3 dropdown-button"
+                  >
+                    <span className="text-lg">Download CV</span>
+                    {showDropdown ? (
+                      <AiOutlineUp className="h-[26px] w-[26px] font-bold" />
+                    ) : (
+                      <AiOutlineDownload className="h-[26px] w-[26px] font-bold" />
+                    )}
+                  </button>
+                  {showDropdown && (
+                    <div className="absolute left-0 mt-2 w-full bg-white dark:bg-gray-800 shadow-xl">
+                      {resumeLinks.map((resume) => (
+                        <a
+                          key={resume.label}
+                          href={resume.href}
+                          download={resume.download}
+                          className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                        >
+                          {resume.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
                 <div className="relative z-0 flex justify-center xl:justify-left gap-[9px] sm:gap-9 xl:gap-5 sm:py-4 py-2 text-gray-700 dark:text-gray-300 mb-7 xl:mb-0 order-none xl:order-2">
                   {socials.map((social, index) => (
                     <div key={index} className="relative group">
@@ -312,12 +339,6 @@ const Index = () => {
                     </div>
                   ))}
                 </div>
-                <HashLink to="/contact">
-                  <button className="flex items-center font-bold text-gray-800 dark:text-white border-2 hover:border-gray-800 hover:dark:border-white border-teal-600 dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out mt-15 hover:bg-gradient-to-r from-cyan-600 to-teal-500 order-none xl:order-1 gap-3">
-                    <span className="text-lg">Let’s Connect</span>
-                    <MdOutlineHandshake className=" h-[26px] w-[26px] font-bold" />
-                  </button>
-                </HashLink>
               </div>
             </motion.div>
           </div>

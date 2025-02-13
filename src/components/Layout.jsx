@@ -5,19 +5,16 @@ import {
   AiFillInstagram,
   AiOutlineUp,
   AiOutlineMenu,
-  AiOutlineDownload,
 } from "react-icons/ai";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 import { FaGithubSquare } from "react-icons/fa";
+import { MdOutlineHandshake } from "react-icons/md";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { DarkModeContext } from "../context/DarkModeContext";
-import SE from "../assets/Resume_SE.pdf";
-import ML_AI from "../assets/Resume_ML.pdf";
 
 const Layout = () => {
   const { darkMode, setDarkMode } = useContext(DarkModeContext);
-  const [showDropdown, setShowDropdown] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -53,37 +50,20 @@ const Layout = () => {
     },
   ];
 
-  const resumeLinks = [
-    {
-      href: SE,
-      label: "Software Engineering",
-      download: "Resume_Software_Engineering.pdf",
-    },
-    {
-      href: ML_AI,
-      label: "ML/AI Engineering",
-      download: "Resume_ML_AI_Engineering.pdf",
-    },
-  ];
-
   useEffect(() => {
-    setShowMenu(false); // Close the menu on location change
-    window.scrollTo(0, 0); // Scroll to the top of the page on navigation
+    setShowMenu(false);
+    window.scrollTo(0, 0);
   }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0); // Set `isScrolled` based on scroll position
-      setShowDropdown(false); // Close dropdown on scroll
-      setShowMenu(false); // Close menu on scroll
+      setIsScrolled(window.scrollY > 0);
+      setShowMenu(false);
     };
 
     const handleClickOutside = (event) => {
-      if (!event.target.closest(".dropdown-button")) {
-        setShowDropdown(false); // Close dropdown on outside click
-      }
       if (!event.target.closest(".menu-button")) {
-        setShowMenu(false); // Close dropdown on outside click
+        setShowMenu(false);
       }
     };
 
@@ -177,32 +157,13 @@ const Layout = () => {
               />
             </li>
             <li className="relative ml-4 sm:ml-5">
-              <button
-                onClick={() => setShowDropdown(!showDropdown)}
-                className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white p-2 sm:px-4 border-none flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-xl transition-colors duration-200 dropdown-button"
-              >
-                <span className="hidden sm:inline">Resume</span>
-                <span className="sm:hidden">CV</span>
-                {showDropdown ? (
-                  <AiOutlineUp className="ml-1 sm:ml-[6px] h-6 w-6 font-bold" />
-                ) : (
-                  <AiOutlineDownload className="ml-1 sm:ml-[6px] h-6 w-6 font-bold" />
-                )}
-              </button>
-              {showDropdown && (
-                <div className="absolute right-0 mt-[3px] w-48 bg-white dark:bg-gray-800 shadow-xl transition-all duration-300 dropdown-button backdrop-filter backdrop-blur-md">
-                  {resumeLinks.map((resume) => (
-                    <a
-                      key={resume.label}
-                      href={resume.href}
-                      download={resume.download}
-                      className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
-                    >
-                      {resume.label}
-                    </a>
-                  ))}
-                </div>
-              )}
+              <Link to="/contact">
+                <button className="bg-gradient-to-r from-cyan-700 to-teal-500 text-white p-2 border-2 border-white flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-xl transition-colors duration-200">
+                  <span className="hidden xl:inline">Let&apos;s Connect</span>
+                  <span className="xl:hidden">Connect</span>
+                  <MdOutlineHandshake className="ml-1 sm:ml-[6px] h-6 w-6 font-bold" />
+                </button>
+              </Link>
             </li>
           </ul>
         </nav>

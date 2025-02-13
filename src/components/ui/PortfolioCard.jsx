@@ -6,9 +6,9 @@ const PortfolioCard = ({ card, darkMode }) => {
     <div
       className="card-container relative group"
       style={{
-        "--gradient-start": darkMode ? "#5eead4" : "#0d9488",
-        "--gradient-middle": darkMode ? "#2dd4bf" : "#2dd4bf",
-        "--gradient-end": darkMode ? "#14b8a6" : "#0d9488",
+        "--gradient-start": darkMode ? "#0e7490" : "#0e7490",
+        "--gradient-middle": darkMode ? "#14b8a6" : "#14b8a6",
+        "--gradient-end": darkMode ? "#14b8a6" : "#14b8a6",
         "--border-width": "8px",
         "--bg-color": darkMode ? "#1f2937" : "#ffffff",
         position: "relative",
@@ -25,7 +25,7 @@ const PortfolioCard = ({ card, darkMode }) => {
           className="mx-auto h-32 w-auto grayscale group-hover:grayscale-0 transition-all duration-300"
         />
         <h3 className="text-2xl font-medium pt-8 pb-2">{card.title}</h3>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 -translate-y-full group-hover:translate-y-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-700 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out flex flex-col justify-center items-center p-5 -translate-y-full group-hover:translate-y-0">
           <div className="translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
             <h5 className="text-xl font-bold pb-2 text-white">{card.title}</h5>
             <p className="p-3 text-white text-center">{card.description}</p>
