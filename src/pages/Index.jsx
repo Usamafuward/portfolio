@@ -280,11 +280,11 @@ const Index = () => {
                 challenges in software development and drive innovation within
                 the fields of ML and AI.
               </p>
-              <div className="flex flex-col xl:flex-row items-center justify-between xl:gap-10">
-                <div className="relative group mb-7 xl:mb-0 order-none xl:order-2">
+              <div className="flex flex-col xl:flex-row items-center xl:justify-between xl:gap-8 mt-1 xl:mt-0 py-4 space-y-8 xl:space-y-0">
+                <div className="relative group xl:mb-0 order-none xl:order-2">
                   <button
                     onClick={() => setShowDropdown(!showDropdown)}
-                    className="flex items-center font-bold text-gray-800 dark:text-white rounded-full xl:rounded-r-full border-dashed border-2 hover:border-gray-800 hover:dark:border-white border-teal-600 dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out hover:bg-gradient-to-r from-cyan-700 to-teal-500 gap-3 dropdown-button"
+                    className="flex items-center font-bold text-gray-800 dark:text-white rounded-full xl:rounded-none xl:rounded-r-full border-dashed border-2 hover:border-gray-800 hover:dark:border-white border-teal-600 dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out hover:bg-gradient-to-r from-cyan-700 to-teal-500 gap-3 dropdown-button"
                   >
                     <span className="text-lg">Download CV</span>
                     {showDropdown ? (
@@ -294,7 +294,7 @@ const Index = () => {
                     )}
                   </button>
                   {showDropdown && (
-                    <div className="absolute left-0 mt-2 w-full bg-white dark:bg-gray-800 shadow-xl">
+                    <div className="absolute z-10 left-0 mt-2 w-full bg-white dark:bg-gray-800 shadow-xl">
                       {resumeLinks.map((resume) => (
                         <a
                           key={resume.label}
@@ -308,7 +308,7 @@ const Index = () => {
                     </div>
                   )}
                 </div>
-                <div className="relative z-0 flex justify-center xl:justify-left gap-[9px] sm:gap-9 xl:gap-5 sm:py-4 py-2 text-gray-700 dark:text-gray-300 mb-7 xl:mb-0 order-none xl:order-2">
+                <div className="relative z-0 flex justify-center xl:justify-left gap-[9px] sm:gap-9 xl:gap-5 text-gray-700 dark:text-gray-300 xl:mb-0 order-none xl:order-2">
                   {socials.map((social, index) => (
                     <div key={index} className="relative group">
                       <a

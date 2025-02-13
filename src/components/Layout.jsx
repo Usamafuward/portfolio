@@ -96,7 +96,7 @@ const Layout = () => {
             isScrolled ? "py-[16px]" : "py-7"
           } transition-all duration-300`}
         >
-          <ul className="flex items-center gap-4 sm:gap-5">
+          <ul className="flex items-center justify-between gap-4 sm:gap-5">
             <li className="lg:hidden">
               <div className="relative">
                 <button
@@ -127,7 +127,7 @@ const Layout = () => {
             </li>
             <li>
               <Link to="/">
-                <h1 className="font-bold font-playfair text-3xl cursor-pointer text-gray-800 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200">
+                <h1 className="font-bold font-playfair text-2xl sm:text-3xl cursor-pointer text-gray-800 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200">
                   Portfolio
                 </h1>
               </Link>
