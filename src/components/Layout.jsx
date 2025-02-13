@@ -93,7 +93,7 @@ const Layout = () => {
       >
         <nav
           className={`flex justify-between items-center dark:text-white ${
-            isScrolled ? "py-[16px]" : "py-7"
+            isScrolled ? "py-[14px]" : "py-6"
           } transition-all duration-300`}
         >
           <ul className="flex items-center justify-between gap-4 sm:gap-5">

@@ -284,7 +284,7 @@ const Index = () => {
                 <div className="relative group xl:mb-0 order-none xl:order-2">
                   <button
                     onClick={() => setShowDropdown(!showDropdown)}
-                    className="flex items-center font-bold text-gray-800 dark:text-white rounded-full xl:rounded-none xl:rounded-r-full border-dashed border-2 hover:border-gray-800 hover:dark:border-white border-teal-600 dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out hover:bg-gradient-to-r from-cyan-700 to-teal-500 gap-3 dropdown-button"
+                    className="flex items-center font-bold text-gray-700 dark:text-white rounded-full xl:rounded-none xl:rounded-r-full border-dashed border-2 hover:border-gray-700 hover:dark:border-white border-teal-600 dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out hover:bg-gradient-to-r from-cyan-700 to-teal-500 gap-3 dropdown-button"
                   >
                     <span className="text-lg">Download CV</span>
                     {showDropdown ? (
