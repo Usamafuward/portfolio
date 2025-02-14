@@ -182,31 +182,31 @@ const Layout = () => {
 
       <footer className="py-4 space-y-4 px-7 md:px-[92px] lg:px-[156px] bg-white dark:bg-gray-900 transition-all duration-300">
         <div className="mx-auto md:flex justify-between">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* About Section */}
             <div className="space-y-4">
               <h3 className="text-xl text-center font-bold text-gray-800 dark:text-white">
                 About Me
               </h3>
-              <p className="text-center text-gray-600 dark:text-gray-300">
+              <p className="text-center flex items-start text-gray-700 dark:text-gray-300">
                 Computer Science Undergraduate @ UCSC passionate about creating
                 innovative solutions and exploring new technologies.
               </p>
             </div>
 
             {/* Quick Links Section */}
-            <div className="space-y-3">
+            <div className="space-y-4">
               <h3 className="text-xl text-center font-bold text-gray-800 dark:text-white">
                 Quick Links
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
                 {/* First Column */}
-                <ul className=" mx-auto">
+                <ul className="flex flex-wrap mx-auto gap-3 xl:gap-5 justify-center">
                   {footerLinks.columnOne.map((item, index) => (
                     <li key={index}>
                       <Link
                         to={item.to}
-                        className="text-gray-600 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                        className="text-gray-700 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
                       >
                         {item.label}
                       </Link>
@@ -214,12 +214,12 @@ const Layout = () => {
                   ))}
                 </ul>
                 {/* Second Column */}
-                <ul className="space-y-1 mx-auto">
+                <ul className="flex flex-wrap mx-auto gap-3 xl:gap-5 justify-center">
                   {footerLinks.columnTwo.map((item, index) => (
                     <li key={index}>
                       <Link
                         to={item.to}
-                        className="text-gray-600 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                        className="text-gray-700 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
                       >
                         {item.label}
                       </Link>
@@ -230,11 +230,11 @@ const Layout = () => {
             </div>
 
             {/* Social Links Section */}
-            <div className="space-y-4">
+            <div className="space-y-5">
               <h3 className="text-xl text-center font-bold text-gray-800 dark:text-white">
                 Connect With Me
               </h3>
-              <div className="flex flex-wrap gap-4 justify-center">
+              <div className="flex flex-wrap gap-3 justify-center">
                 {socialLinks.map((link, index) => (
                   <div key={index} className="relative group">
                     <a
@@ -255,7 +255,7 @@ const Layout = () => {
                             rounded-full transition-transform duration-300 ease-in-out"
                       />
                       <link.icon
-                        className="w-6 h-6 sm:w-7 sm:h-7 relative z-10
+                        className="w-7 h-7 sm:w-7 sm:h-7 relative z-10
                                   text-gray-700 dark:text-gray-300
                                   group-hover:text-white dark:group-hover:text-gray-800
                                   transition-colors duration-300"
