@@ -284,14 +284,16 @@ const Index = () => {
                 <div className="relative group xl:mb-0 order-none xl:order-2">
                   <button
                     onClick={() => setShowDropdown(!showDropdown)}
-                    className="flex items-center font-bold text-gray-700 dark:text-white rounded-full xl:rounded-none xl:rounded-r-full border-dashed border-2 hover:border-gray-700 hover:dark:border-white border-teal-600 dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out hover:bg-gradient-to-r from-cyan-700 to-teal-500 gap-3 dropdown-button"
+                    className="shadow-xl font-bold text-gray-700 dark:text-white rounded-full xl:rounded-none xl:rounded-r-full border-dashed border-2 hover:text-teal-600 hover:dark:text-teal-400 border-gray-700 hover:border-teal-600 dark:border-white hover:dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out dropdown-button"
                   >
-                    <span className="text-lg">Download CV</span>
-                    {showDropdown ? (
-                      <AiOutlineUp className="h-[26px] w-[26px] font-bold" />
-                    ) : (
-                      <AiOutlineDownload className="h-[26px] w-[26px] font-bold" />
-                    )}
+                    <div className="flex items-center transition-transform duration-300 hover:scale-[1.03] gap-3">
+                      <span className="text-lg">Download CV</span>
+                      {showDropdown ? (
+                        <AiOutlineUp className="h-[26px] w-[26px] font-bold" />
+                      ) : (
+                        <AiOutlineDownload className="h-[26px] w-[26px] font-bold" />
+                      )}
+                    </div>
                   </button>
                   {showDropdown && (
                     <div className="absolute z-10 left-0 mt-2 w-full bg-white dark:bg-gray-800 shadow-xl">

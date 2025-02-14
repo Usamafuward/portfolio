@@ -27,6 +27,11 @@ const Layout = () => {
     { to: "/contact", label: "Contact Me!" },
   ];
 
+  const footerLinks = {
+    columnOne: menuItems.slice(0, Math.ceil(menuItems.length / 2)),
+    columnTwo: menuItems.slice(Math.ceil(menuItems.length / 2)),
+  };
+
   const socialLinks = [
     {
       icon: FaGithubSquare,
@@ -158,12 +163,12 @@ const Layout = () => {
             </li>
             <li className="relative ml-4 sm:ml-5">
               <Link to="/contact">
-                <button className="bg-gradient-to-r from-cyan-700 to-teal-500 text-white p-2 border-2 border-white flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-xl transition-colors duration-200">
+                <button className="bg-gradient-to-r from-cyan-700 to-teal-500 text-white px-2 py-1 sm:py-2 border-2 border-white flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-xl transition-colors duration-200">
                   <span className="hidden xl:inline font-medium">
                     Let&apos;s Connect
                   </span>
                   <span className="xl:hidden font-medium">Connect</span>
-                  <MdOutlineHandshake className="ml-1 sm:ml-[6px] h-6 w-6 font-bold" />
+                  <MdOutlineHandshake className="ml-1 sm:ml-[6px] h-[22px] w-[22px] font-bold" />
                 </button>
               </Link>
             </li>
@@ -171,46 +176,99 @@ const Layout = () => {
         </nav>
       </header>
 
-      <main className="bg-white py-4 dark:bg-gray-900 md:px-16 lg:px-32 pt-[100px] w-full transition-all duration-300">
+      <main className="bg-white pb-8 dark:bg-gray-900 md:px-16 lg:px-32 pt-[100px] w-full transition-all duration-300">
         <Outlet />
       </main>
 
-      <footer className="py-4 text-center bg-white dark:bg-gray-900 transition-all duration-300">
-        <div className="flex justify-center gap-[9px] sm:gap-10 py-5 text-gray-700 dark:text-gray-300">
-          {socialLinks.map((link, index) => (
-            <div key={index} className="relative group">
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-full
+      <footer className="py-4 space-y-4 px-7 md:px-[92px] lg:px-[156px] bg-white dark:bg-gray-900 transition-all duration-300">
+        <div className="mx-auto md:flex justify-between">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* About Section */}
+            <div className="space-y-4">
+              <h3 className="text-xl text-center font-bold text-gray-800 dark:text-white">
+                About Me
+              </h3>
+              <p className="text-center text-gray-600 dark:text-gray-300">
+                Computer Science Undergraduate @ UCSC passionate about creating
+                innovative solutions and exploring new technologies.
+              </p>
+            </div>
+
+            {/* Quick Links Section */}
+            <div className="space-y-3">
+              <h3 className="text-xl text-center font-bold text-gray-800 dark:text-white">
+                Quick Links
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {/* First Column */}
+                <ul className=" mx-auto">
+                  {footerLinks.columnOne.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        to={item.to}
+                        className="text-gray-600 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                {/* Second Column */}
+                <ul className="space-y-1 mx-auto">
+                  {footerLinks.columnTwo.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        to={item.to}
+                        className="text-gray-600 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Social Links Section */}
+            <div className="space-y-4">
+              <h3 className="text-xl text-center font-bold text-gray-800 dark:text-white">
+                Connect With Me
+              </h3>
+              <div className="flex flex-wrap gap-4 justify-center">
+                {socialLinks.map((link, index) => (
+                  <div key={index} className="relative group">
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full
                        relative overflow-hidden shadow-xl
-                       border-2 border-teal-600 font-medium dark:border-teal-400 hover:border-black/50 hover:dark:border-white/50
+                       border-2 border-teal-600 dark:border-teal-400 hover:border-black/50 hover:dark:border-white/50
                        bg-gray-100/10 dark:bg-gray-700/20
                        text-gray-700 dark:text-gray-300
                        hover:text-white dark:hover:text-gray-800
                        transition-all duration-300 z-0"
-              >
-                {/* Hover overlay */}
-                <div
-                  className="absolute inset-0 bg-gray-800 dark:bg-white 
+                    >
+                      <div
+                        className="absolute inset-0 bg-gray-800 dark:bg-white 
                             scale-0 group-hover:scale-100 
                             rounded-full transition-transform duration-300 ease-in-out"
-                />
-
-                {/* Icon wrapper */}
-                <link.icon
-                  className="w-9 h-9 sm:w-10 sm:h-10 relative z-10
+                      />
+                      <link.icon
+                        className="w-6 h-6 sm:w-7 sm:h-7 relative z-10
                                   text-gray-700 dark:text-gray-300
                                   group-hover:text-white dark:group-hover:text-gray-800
-                                  transition-colors duration-300 [15px]"
-                />
-              </a>
+                                  transition-colors duration-300"
+                      />
+                    </a>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
         </div>
 
-        <p className="text-md py-2 dark:text-white">
+        <p className="text-md dark:text-white text-center py-4">
           © 2024 Usama Puward | Computer Science Undergraduate @ UCSC
         </p>
       </footer>
