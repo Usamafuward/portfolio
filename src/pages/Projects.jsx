@@ -44,6 +44,13 @@ export default function Projects() {
       technologies: ["Flask", "TF-IDF", "VADER", "NLTK"],
     },
     {
+      title: "Mediman - Doctor Dashboard (sample) Frontend App",
+      description:
+        "Mediman is a doctor dashboard app that allows doctors to manage patient appointments (Online and Physical), view patient medical records, and prescribe medications, enhancing patient care and treatment outcomes.",
+      to: "https://github.com/Usamafuward/sample-mediman-doctor.git",
+      technologies: ["React", "Shadcn-UI", "Tailwind CSS"],
+    },
+    {
       title: "Eats Robers",
       description:
         "Eats Robers is a web app using React, Node.js, Express, MongoDB, and Mongoose that helps users find the perfect meal, featuring seamless payment options and exceptional customer service.",
@@ -68,7 +75,7 @@ export default function Projects() {
       description:
         "A personal portfolio built with React that showcases my projects and skills in software engineering and machine learning, providing an engaging platform for potential employers and collaborators.",
       to: "https://github.com/Usamafuward/portfolio.git",
-      technologies: ["React", "Tailwind CSS", "Firebase"],
+      technologies: ["React", "Tailwind CSS", "EmailJS"],
     },
     {
       title: "Clubhub-Central",
