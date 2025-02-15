@@ -111,7 +111,7 @@ const Layout = () => {
                   <AiOutlineMenu className="w-6 h-6 sm:w-7 sm:h-7" />
                 </button>
                 {showMenu && (
-                  <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-xl transition-all duration-300 menu-button backdrop-filter backdrop-blur-md">
+                  <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-xl dark:shadow-[#0c121d] transition-all duration-300 menu-button backdrop-filter backdrop-blur-md">
                     {menuItems.map((item) => (
                       <li key={item.to}>
                         <Link
@@ -242,7 +242,7 @@ const Layout = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full
-                       relative overflow-hidden shadow-xl
+                       relative overflow-hidden shadow-xl dark:shadow-[#0c121d]
                        border-2 border-teal-600 dark:border-teal-400 hover:border-black/50 hover:dark:border-white/50
                        bg-gray-100/10 dark:bg-gray-700/20
                        text-gray-700 dark:text-gray-300

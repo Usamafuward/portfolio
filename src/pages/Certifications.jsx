@@ -171,7 +171,7 @@ export default function Certifications() {
               <button
                 key={org}
                 onClick={() => setSelectedOrg(org)}
-                className={`px-4 py-2 rounded-full transition-colors ${
+                className={`px-4 py-2 rounded-full transition-colors shadow-xl dark:shadow-[#0c121d] ${
                   selectedOrg === org
                     ? "bg-teal-600 dark:bg-teal-500 text-white"
                     : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -204,16 +204,16 @@ export default function Certifications() {
                     type: "spring",
                     stiffness: 300,
                   }}
-                  className="shadow-xl space-y-10"
+                  className="shadow-xl dark:shadow-[#0c121d] space-y-10"
                 >
                   <Link to={cert.to} className="block group h-full">
-                    <div className="h-full p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400">
+                    <div className="h-full p-6 rounded-lg shadow-xl dark:shadow-[#0c121d] transition-shadow border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400">
                       <div className="flex justify-between items-start mb-4">
                         <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400">
                           {cert.title}
                         </h3>
                         <div className="w-6">
-                          <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 mt-1" />
+                          <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 mt-1 shadow-xl dark:shadow-[#0c121d]" />
                         </div>
                       </div>
                       <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 group-hover:line-clamp-none transition-all">

@@ -62,7 +62,7 @@ const Index = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
-      setShowDropdown(false); // This will now work correctly
+      setShowDropdown(false);
     };
 
     const handleClickOutside = (event) => {
@@ -85,21 +85,21 @@ const Index = () => {
       title: "Projects",
       image: !darkMode ? flatIcon.project_full : flatIcon.project_white,
       description:
-        "Explore my portfolio, showcasing innovative solutions and technical expertise across various applications.",
+        "Explore a showcase of my innovative projects, demonstrating technical expertise and problem-solving skills.",
       link: "/projects",
     },
     {
       title: "Certifications",
-      image: !darkMode ? flatIcon.certificate_2 : flatIcon.certificate_2_white,
+      image: !darkMode ? flatIcon.certificate_full : flatIcon.certificate_white,
       description:
-        "A collection of certifications that reflect my commitment to skill-building and mastery of essential tools.",
+        "Browse my certifications, highlighting my dedication to continuous learning and professional growth.",
       link: "/certifications",
     },
     {
       title: "Experiences",
       image: !darkMode ? flatIcon.quality_full : flatIcon.quality_white,
       description:
-        "Discover my professional journey, with roles that have shaped my skills and approach to problem-solving.",
+        "Discover my professional journey, including key roles and experiences that have shaped my expertise and skills.",
       link: "/experiences",
     },
   ];
@@ -231,7 +231,7 @@ const Index = () => {
     },
     {
       href: ML_AI,
-      label: "ML/AI Engineering",
+      label: "AI/ML Engineering",
       download: "Resume_ML_AI_Engineering.pdf",
     },
   ];
@@ -278,13 +278,13 @@ const Index = () => {
                 efficient and innovative solutions for real-world projects and
                 building high-quality applications. Eager to tackle complex
                 challenges in software development and drive innovation within
-                the fields of ML and AI.
+                the fields of AI and ML.
               </p>
               <div className="flex flex-col xl:flex-row items-center xl:justify-between xl:gap-8 py-4 space-y-8 xl:space-y-0">
                 <div className="relative group xl:mb-0 order-none xl:order-2">
                   <button
                     onClick={() => setShowDropdown(!showDropdown)}
-                    className="shadow-xl font-bold text-gray-700 dark:text-white rounded-full xl:rounded-none xl:rounded-r-full border-dashed border-2 hover:text-teal-600 hover:dark:text-teal-400 border-gray-700 hover:border-teal-600 dark:border-white hover:dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out dropdown-button"
+                    className="shadow-xl dark:shadow-[#0c121d] font-bold text-gray-700 dark:text-white rounded-full xl:rounded-none xl:rounded-r-full border-dashed border-2 hover:text-teal-600 hover:dark:text-teal-400 border-gray-700 hover:border-teal-600 dark:border-white hover:dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out dropdown-button"
                   >
                     <div className="flex items-center transition-transform duration-300 hover:scale-[1.03] gap-3">
                       <span className="text-lg">Download CV</span>
@@ -296,7 +296,7 @@ const Index = () => {
                     </div>
                   </button>
                   {showDropdown && (
-                    <div className="absolute z-10 left-0 mt-2 w-full bg-white dark:bg-gray-800 shadow-xl">
+                    <div className="absolute z-10 left-0 mt-2 w-full bg-white dark:bg-gray-800 shadow-xl dark:shadow-[#0c121d]">
                       {resumeLinks.map((resume) => (
                         <a
                           key={resume.label}
@@ -318,7 +318,7 @@ const Index = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-14 h-14 flex items-center justify-center rounded-full
-                     relative overflow-hidden shadow-xl
+                     relative overflow-hidden shadow-xl dark:shadow-[#0c121d]
                      border-2 border-teal-600 font-medium dark:border-teal-400 hover:border-black/50 hover:dark:border-white/50
                      bg-gray-100/10 dark:bg-gray-700/20
                      transition-colors duration-300"
@@ -390,7 +390,7 @@ const Index = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
-        className="px-9"
+        className="px-7"
       >
         <div className="text-center pt-8 sm:pt-16 xl:pb-0 px-7 mb-10">
           <TrueFocus
@@ -450,7 +450,7 @@ const Index = () => {
                 variants={
                   index % 2 === 0 ? slideLeftVariants : slideRightVariants
                 }
-                className="bg-green-100 dark:bg-gray-700 p-6 shadow-xl hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
+                className="bg-green-100 dark:bg-gray-700 p-6 shadow-xl hover:shadow-xl dark:shadow-[#0c121d] transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
               >
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
@@ -509,7 +509,7 @@ const Index = () => {
         </motion.h2>
         <motion.div
           variants={slideUpVariants}
-          className="h-auto w-full relative my-6 shadow-xl border-x-4 border-teal-400 bg-green-100 dark:bg-gray-700 dark:text-gray-200"
+          className="h-auto w-full relative my-6 shadow-xl dark:shadow-[#0c121d] border-x-4 border-teal-400 bg-green-100 dark:bg-gray-700 dark:text-gray-200"
         >
           <LogoWall
             items={logoImgs}
@@ -539,7 +539,7 @@ const Index = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="p-6 shadow-xl bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
+              className="p-6 shadow-xl dark:shadow-[#0c121d] bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
             >
               <div className="flex items-center space-x-4">
                 <edu.icon size={32} className="text-blue-400 w-1/6 sm:w-1/12" />
