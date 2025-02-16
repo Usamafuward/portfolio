@@ -45,7 +45,7 @@ export default function Experiences() {
     {
       title: "Full Stack Developer Intern",
       description:
-        "Contributing to the development and maintenance of full-stack applications, working on both front-end and back-end components to support the company's digital solutions. Collaborated with senior developers to enhance application functionality and user experience.",
+        "Participated in a learning internship focused on full-stack development, gaining hands-on experience with front-end and back-end technologies. Worked on guided projects, improving proficiency in web development, database management, and API integration while collaborating with mentors to enhance coding best practices",
       duration: "October 2024 – December 2024",
       company: "Unified Mentor India",
     },
