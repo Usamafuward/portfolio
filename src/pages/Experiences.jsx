@@ -31,7 +31,7 @@ export default function Experiences() {
     {
       title: "AI/ML Engineer Intern",
       description:
-        "Contributing to transformative projects in AI, machine learning, and automation, leveraging data-driven insights to enhance business operations at Kainovation Technologies.",
+        "Actively contributing to transformative projects in AI, machine learning, and automation, leveraging data-driven insights to enhance business operations at Kainovation Technologies, focusing on data preprocessing, AI solution deployment, and optimizing intelligent systems for real-world applications",
       duration: "November 2024 – Present",
       company: "Kainovation Technologies",
     },
