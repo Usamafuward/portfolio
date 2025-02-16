@@ -66,7 +66,7 @@ export const Skills = () => {
 
   return (
     <motion.section>
-      <div className="  mx-auto">
+      <div className="mx-auto">
         <div className="text-center mb-12">
           <p className="text-lg max-w-3xl mx-auto text-gray-700 dark:text-gray-400">
             I have a diverse background in various domains of software
@@ -96,6 +96,7 @@ export const Skills = () => {
                     className=" h-full bg-gradient-to-r from-teal-700 to-teal-500 rounded transition-all duration-300"
                     initial={{ width: 0 }}
                     animate={{ width: `${skill.progress}%` }}
+                    whileHover={{ width: `${skill.progress}%` }}
                     transition={{ duration: 1, ease: "easeOut" }}
                   />
                 </div>

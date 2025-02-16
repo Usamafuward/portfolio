@@ -19,25 +19,25 @@ const PortfolioCard = ({ card, darkMode }) => {
         to={card.link}
         className="card bg-white dark:bg-gray-800 dark:text-gray-200 flex flex-col justify-center h-[360px] text-center shadow-lg p-10 relative overflow-hidden rounded-lg"
       >
-        <div className="transition-all duration-500 ease-in-out transform opacity-100 group-hover:opacity-0 group-hover:-translate-y-60">
+        <div className="flex flex-col items-center justify-center transition-all duration-500 ease-in-out transform opacity-100 group-hover:opacity-0 group-hover:-translate-y-60">
           <img
             src={card.image}
             alt={card.title}
-            className="mx-auto flex h-32 w-auto"
+            className="mx-auto flex h-32 lg:h-28 xl:h-32 w-auto"
           />
           <h3 className="text-2xl font-medium pt-8 pb-2 text-gray-800 dark:text-gray-200">
             {card.title}
           </h3>
         </div>
-        <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-teal-400 dark:from-teal-600 to-transparent translate-y-full opacity-0 transition-all duration-500 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
-          <div className="px-8 py-8 dark:text-white text-gray-800">
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-teal-400 dark:from-teal-600 to-transparent translate-y-full opacity-0 transition-all duration-500 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="p-4 sm:p-8 md:p-8 lg:p-2 xl:p-8 dark:text-white text-gray-800">
             <img
               src={card.image}
               alt={card.title}
-              className="mx-auto flex h-32 w-auto pb-2"
+              className="mx-auto flex h-24 sm:h-32 lg:h-20 xl:h-28 w-auto"
             />
-            <h5 className="text-2xl font-bold py-2">{card.title}</h5>
-            <p className="text-lg font-medium leading-relaxed">
+            <h5 className="text-2xl font-bold mt-4">{card.title}</h5>
+            <p className="text-lg font-medium leading-relaxed mt-2">
               {card.description}
             </p>
           </div>
