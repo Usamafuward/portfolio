@@ -240,8 +240,8 @@ const Index = () => {
     <div>
       {/* Hero Section */}
       <section ref={ref}>
-        <div className=" p-7 flex flex-col xl:flex-row md:justify-between w-full xl:gap-16">
-          <div className="z-0 inline-block xl:border-l-4 border-teal-400 dark:border-teal-400 justify-between order-2 xl:order-none relative py-5">
+        <div className=" p-7 flex flex-col xl:flex-row md:justify-between w-full">
+          <div className="z-0 inline-block xl:w-2/3 xl:border-l-4 border-teal-400 dark:border-teal-400 justify-between order-2 xl:order-none relative py-5">
             {/* Gradient overlay - Visible only on xl devices */}
             <div className="hidden xl:block absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-teal-400/30 to-transparent pointer-events-none" />
 
@@ -280,7 +280,7 @@ const Index = () => {
                 challenges in software development and drive innovation within
                 the fields of AI and ML.
               </p>
-              <div className="flex flex-col xl:flex-row items-center xl:justify-between xl:gap-8 py-4 space-y-8 xl:space-y-0">
+              <div className="flex flex-col xl:flex-row items-center  xl:gap-8 py-4 space-y-8 xl:space-y-0">
                 <div className="relative group xl:mb-0 order-none xl:order-2">
                   <button
                     onClick={() => setShowDropdown(!showDropdown)}
@@ -310,7 +310,7 @@ const Index = () => {
                     </div>
                   )}
                 </div>
-                <div className="relative z-0 flex justify-center xl:justify-left gap-[9px] sm:gap-9 xl:gap-5 text-gray-700 dark:text-gray-300 xl:mb-0 order-none xl:order-2">
+                <div className="relative z-0 flex justify-center gap-[9px] sm:gap-9 xl:gap-5 text-gray-700 dark:text-gray-300 xl:mb-0 order-none xl:order-2">
                   {socials.map((social, index) => (
                     <div key={index} className="relative group">
                       <a
@@ -344,14 +344,14 @@ const Index = () => {
               </div>
             </motion.div>
           </div>
-          <motion.div className="relative mx-auto flex justify-center items-center animate-updown order-1 xl:order-none mt-3 xl:mt-0">
+          <motion.div className="relative mx-auto xl:w-1/3 flex justify-center items-center animate-updown order-1 xl:order-none mt-3 xl:mt-0">
             <motion.img
               src={profile}
               alt="Usama Puward"
               className="rounded-full h-[280px] w-[280px] sm:h-[360px] sm:w-[360px] animate-zoomIn"
             />
             <motion.svg
-              className="absolute xl:-inset-x-[15px] xl:-inset-y-[-74px] h-[305px] w-[305px] sm:h-[390px] sm:w-[390px]"
+              className="absolute xl:-inset-x-[-5px] xl:-inset-y-[-74px] h-[305px] w-[305px] sm:h-[390px] sm:w-[390px]"
               fill="transparent"
               viewBox="0 0 390 390"
               xmlns="http://www.w3.org/2000/svg"
