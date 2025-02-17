@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { motion, useInView } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
+import { LiaWhatsapp ,LiaTelegramPlane } from "react-icons/lia";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -54,6 +55,18 @@ export default function Contact() {
       title: "Phone",
       value: "+94 (76) 6260507",
       link: "tel:+94766260507",
+    },
+    {
+      icon: <LiaWhatsapp className="w-7 h-7" />,
+      title: "WhatsApp",
+      value: "+94 (76) 6260507",
+      link: "https://wa.me/94766260507",
+    },
+    {
+      icon: <LiaTelegramPlane className="w-6 h-6" />,
+      title: "Telegram",
+      value: "+94 (76) 6260507",
+      link: "https://t.me/+94766260507",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
