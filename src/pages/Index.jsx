@@ -12,6 +12,7 @@ import SplitText from "@/components/ui/SplitText";
 import LogoWall from "@/components/ui/LogoWall";
 import TrueFocus from "@/components/ui/TrueFocus";
 import AnimatedText from "@/components/ui/AnimatedText";
+import AnimatedProfile from "@/components/ui/AnimatedProfile";
 import PortfolioCard from "@/components/ui/PortfolioCard";
 import logoSvg from "@/assets/logo_svg";
 import flatIcon from "@/assets/flat_icon";
@@ -344,42 +345,8 @@ const Index = () => {
               </div>
             </motion.div>
           </div>
-          <motion.div className="relative mx-auto xl:w-1/3 flex justify-center items-center animate-updown order-1 xl:order-none mt-3 xl:mt-0">
-            <motion.img
-              src={profile}
-              alt="Usama Puward"
-              className="rounded-full h-[280px] w-[280px] sm:h-[360px] sm:w-[360px] animate-zoomIn"
-            />
-            <motion.svg
-              className="absolute xl:-inset-x-[-5px] xl:-inset-y-[-74px] h-[305px] w-[305px] sm:h-[390px] sm:w-[390px]"
-              fill="transparent"
-              viewBox="0 0 390 390"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <motion.circle
-                cx="195"
-                cy="195"
-                r="191"
-                stroke={darkMode ? "#2DD4BF" : "#0d9488"}
-                strokeWidth="6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                initial={{ strokeDasharray: "24 10 0 0" }}
-                animate={{
-                  strokeDasharray: [
-                    "15 120 25 25",
-                    "16 25 92 72",
-                    "4 250 22 22",
-                  ],
-                  rotate: [120, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-            </motion.svg>
+          <motion.div className="relative mx-auto xl:w-1/3 flex justify-center items-center order-1 xl:order-none my-3 xl:my-0 py-4 xl:py-0">
+            <AnimatedProfile imageSrc={profile} />
           </motion.div>
         </div>
       </section>

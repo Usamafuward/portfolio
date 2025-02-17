@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'jetbrains-mono': ['JetBrains Mono', 'monospace'],
+        "jetbrains-mono": ["JetBrains Mono", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -84,6 +84,19 @@ export default {
         "0%": { backgroundPosition: "100%" },
         "100%": { backgroundPosition: "-100%" },
       },
+      float: {
+        "0%, 100%": { transform: "translateY(0)" },
+        "50%": { transform: "translateY(-10px)" },
+      },
+      spinSlow: {
+        "0%": { transform: "rotate(0deg)" },
+        "100%": { transform: "rotate(360deg)" },
+      },
+      pingSlow: {
+        "0%": { transform: "scale(0.9)", opacity: "0.7" },
+        "50%": { transform: "scale(1.1)", opacity: "0.3" },
+        "100%": { transform: "scale(0.9)", opacity: "0.7" },
+      },
     },
     animation: {
       zoomIn: "zoomIn 1s ease-in-out",
@@ -92,6 +105,9 @@ export default {
       scrollX: "scrollX var(--duration) linear infinite",
       scrollY: "scrollY var(--duration) linear infinite",
       shine: "shine 5s linear infinite",
+      spinSlow: "spin 15s linear infinite",
+      pingSlow: "ping 3s cubic-bezier(0, 0, 0.2, 1) infinite",
+      float: "float 3s ease-in-out infinite",
     },
   },
   variants: {

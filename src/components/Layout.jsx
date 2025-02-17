@@ -163,7 +163,7 @@ const Layout = () => {
             </li>
             <li className="relative ml-4 sm:ml-5">
               <Link to="/contact">
-                <button className="bg-gradient-to-r from-cyan-700 to-teal-500 text-white px-2 py-1 sm:py-2 border-2 border-white flex items-center hover:from-cyan-600 hover:to-teal-600 shadow-xl transition-colors duration-200">
+                <button className="glowing-button flex items-center px-2 py-1 sm:py-2 border-2 border-white text-white bg-gradient-to-r from-cyan-700 to-teal-500 shadow-xl transition-all duration-300">
                   <span className="hidden xl:inline font-medium">
                     Let&apos;s Connect
                   </span>

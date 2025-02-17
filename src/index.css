@@ -103,3 +103,25 @@ a {
   width: 50%;
   margin: 0 auto 25px auto;
 }
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 4px rgba(0, 255, 255, 0.6), 0 0 8px rgba(0, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.8), 0 0 16px rgba(0, 255, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 4px rgba(0, 255, 255, 0.6), 0 0 8px rgba(0, 255, 255, 0.4);
+  }
+}
+
+.glowing-button {
+  position: relative;
+  overflow: hidden;
+  animation: glow 1.5s infinite alternate;
+}
+
+.glowing-button:hover {
+  filter: brightness(1.2);
+}
