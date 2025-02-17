@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
+import { MdLightMode } from "react-icons/md";
 import {
   AiFillLinkedin,
   AiFillInstagram,
@@ -132,9 +133,22 @@ const Layout = () => {
             </li>
             <li>
               <Link to="/">
-                <h1 className="font-bold font-playfair text-2xl sm:text-3xl cursor-pointer text-gray-800 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200">
-                  Portfolio
-                </h1>
+                <div className="relative inline-block group">
+                  <h1
+                    className="font-playfair text-2xl sm:text-3xl font-bold 
+        bg-gradient-to-r from-teal-600 to-teal-400
+        bg-clip-text text-transparent
+        transition-all duration-300
+        hover:from-teal-600 hover:to-teal-400"
+                  >
+                    Portfolio
+                  </h1>
+                  <span
+                    className="absolute -bottom-1 left-0 w-0 h-0.5
+        bg-gradient-to-r from-teal-600 to-teal-400
+        group-hover:w-full transition-all duration-300"
+                  ></span>
+                </div>
               </Link>
             </li>
           </ul>
@@ -156,10 +170,17 @@ const Layout = () => {
               ))}
             </li>
             <li>
-              <BsFillMoonStarsFill
-                onClick={() => setDarkMode(!darkMode)}
-                className="cursor-pointer text-2xl text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
-              />
+              {darkMode ? (
+                <MdLightMode
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
+                />
+              ) : (
+                <BsFillMoonStarsFill
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
+                />
+              )}
             </li>
             <li className="relative ml-4 sm:ml-5">
               <Link to="/contact">
