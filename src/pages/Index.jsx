@@ -241,7 +241,7 @@ const Index = () => {
     <div>
       {/* Hero Section */}
       <section ref={ref}>
-        <div className=" p-7 flex flex-col xl:flex-row md:justify-between w-full">
+        <div className=" p-7 flex flex-col xl:flex-row md:justify-between w-full bg-transparent">
           <div className="z-0 inline-block xl:w-2/3 xl:border-l-4 border-teal-400 dark:border-teal-400 justify-between order-2 xl:order-none relative py-5">
             {/* Gradient overlay - Visible only on xl devices */}
             <div className="hidden xl:block absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-teal-400/30 to-transparent pointer-events-none" />

@@ -13,7 +13,7 @@ function App() {
       <DarkModeProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" exact element={<Index />} />
+            <Route index element={<Index />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/certifications" element={<Certifications />} />
             <Route path="/experiences" element={<Experiences />} />

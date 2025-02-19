@@ -3,7 +3,7 @@ const AnimatedProfile = ({ imageSrc }) => {
   return (
     <div className="relative mx-auto flex justify-center items-center">
       {/* Outer rotating ring */}
-      <div className="absolute w-[320px] h-[320px] sm:w-[400px] sm:h-[400px]">
+      <div className="absolute w-[310px] h-[310px] sm:w-[400px] sm:h-[400px]">
         <div
           className="w-full h-full rounded-full border-4 border-dashed border-teal-600 dark:border-teal-400 opacity-50"
           style={{
@@ -30,7 +30,7 @@ const AnimatedProfile = ({ imageSrc }) => {
         />
 
         {/* Main image container */}
-        <div className="relative rounded-full overflow-hidden h-[280px] w-[280px] sm:h-[360px] sm:w-[360px] shadow-2xl">
+        <div className="relative rounded-full overflow-hidden h-[270px] w-[270px] sm:h-[360px] sm:w-[360px] shadow-2xl">
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-tr from-teal-400/10 to-transparent rounded-full" />
 
@@ -50,49 +50,16 @@ const AnimatedProfile = ({ imageSrc }) => {
       <div
         className="absolute -top-4 -right-4 w-4 h-4 rounded-full bg-teal-600 dark:bg-teal-400 opacity-70"
         style={{
-          animation: "float 3s ease-in-out infinite",
+          animation: "float_1 3s ease-in-out infinite",
         }}
       />
       <div
         className="absolute -bottom-4 -left-4 w-4 h-4 rounded-full bg-teal-600 dark:bg-teal-400 opacity-70"
         style={{
-          animation: "float 3s ease-in-out infinite",
+          animation: "float_1 3s ease-in-out infinite",
           animationDelay: "0.15s",
         }}
       />
-
-      <style>{`
-        @keyframes rotate {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes pulsate {
-          0%,
-          100% {
-            transform: scale(1);
-            opacity: 0.2;
-          }
-          50% {
-            transform: scale(1.2);
-            opacity: 0.4;
-          }
-        }
-
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-      `}</style>
     </div>
   );
 };

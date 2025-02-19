@@ -28,12 +28,10 @@
 
 :root {
   --svg-color: #000; /* Light mode default - Black */
-  --background-color: white; /* Light mode background color */
 }
 
 .dark :root {
     --svg-color: #fff; /* Dark mode - White */
-    --background-color: #111827; /* Dark mode background color */
 }
 
 html,
@@ -124,4 +122,35 @@ a {
 
 .glowing-button:hover {
   filter: brightness(1.2);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulsate {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+}
+
+@keyframes float_1 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }

@@ -13,6 +13,7 @@ import { FaGithubSquare } from "react-icons/fa";
 import { MdOutlineHandshake } from "react-icons/md";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { DarkModeContext } from "../context/DarkModeContext";
+import AnimatedBackground from "./ui/AnimatedBackground";
 
 const Layout = () => {
   const { darkMode, setDarkMode } = useContext(DarkModeContext);
@@ -90,11 +91,12 @@ const Layout = () => {
 
   return (
     <div className={darkMode ? "dark" : ""}>
+      <AnimatedBackground />
       <header
-        className={`px-7 md:px-[92px] lg:px-[156px] fixed top-0 w-full z-10 transition-colors duration-300 backdrop-filter backdrop-blur-md ${
+        className={`px-7 md:px-[92px] lg:px-[156px] fixed top-0 w-full z-50 transition-colors duration-300 ${
           isScrolled
-            ? "bg-green-100/80 dark:bg-gray-700/80 shadow-xl"
-            : "bg-white/80 dark:bg-gray-900/80"
+            ? "bg-green-100/80 dark:bg-gray-700/80 backdrop-filter backdrop-blur-md shadow-xl"
+            : "bg-transparent dark:bg-transparent shadow-none"
         }`}
       >
         <nav
@@ -197,11 +199,11 @@ const Layout = () => {
         </nav>
       </header>
 
-      <main className="bg-white pb-8 dark:bg-gray-900 md:px-16 lg:px-32 pt-[100px] w-full transition-all duration-300">
+      <main className="bg-transparent pb-8 dark:bg-transparent md:px-16 lg:px-32 pt-[100px] w-full transition-all duration-300 z-10">
         <Outlet />
       </main>
 
-      <footer className="py-4 space-y-4 px-7 md:px-[92px] lg:px-[156px] bg-white dark:bg-gray-900 transition-all duration-300">
+      <footer className="py-4 space-y-4 px-7 md:px-[92px] lg:px-[156px] bg-transparent dark:bg-transparent transition-all duration-300 z-10">
         <div className="mx-auto md:flex justify-between">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* About Section */}
