@@ -17,7 +17,7 @@ const PortfolioCard = ({ card, darkMode }) => {
     >
       <HashLink
         to={card.link}
-        className="card bg-white dark:bg-gray-800 dark:text-gray-200 flex flex-col justify-center h-[360px] text-center shadow-lg p-10 relative overflow-hidden"
+        className="card bg-[#b9f7d7] dark:bg-gray-700 dark:text-gray-200 flex flex-col justify-center h-[360px] text-center shadow-lg p-10 relative overflow-hidden"
       >
         <div className="flex flex-col items-center justify-center transition-all duration-500 ease-in-out transform opacity-100 group-hover:opacity-0 group-hover:-translate-y-60">
           <img
@@ -29,7 +29,7 @@ const PortfolioCard = ({ card, darkMode }) => {
             {card.title}
           </h3>
         </div>
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-teal-400 dark:from-teal-600 to-transparent translate-y-full opacity-0 transition-all duration-500 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-teal-600 dark:from-teal-400 to-transparent translate-y-full opacity-0 transition-all duration-500 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
           <div className="p-4 sm:p-8 md:p-8 lg:p-2 xl:p-8 dark:text-white text-gray-800">
             <img
               src={card.image}

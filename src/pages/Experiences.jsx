@@ -110,7 +110,7 @@ export default function Experiences() {
               >
                 <motion.div
                   variants={itemVariants}
-                  className={`p-6 bg-green-100 dark:bg-gray-700 shadow-xl dark:shadow-[#0c121d] hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 group rounded-[30px] md:rounded-[40px] ${
+                  className={`p-6 bg-[#b9f7d7] dark:bg-gray-700 shadow-xl dark:shadow-[#0c121d] hover:shadow-xl transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 group rounded-[30px] md:rounded-[40px] ${
                     index % 2 === 0
                       ? "rounded-tl-none rounded-br-none md:rounded-tl-none md:rounded-br-none"
                       : "rounded-tr-none rounded-bl-none md:rounded-tr-none md:rounded-bl-none"

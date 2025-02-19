@@ -7,7 +7,7 @@ const AnimatedBackground = () => {
   const containerStyle = darkMode ? "bg-gray-900" : "bg-white";
   const squareColor = darkMode
     ? "rgba(255, 255, 255, 0.2)"
-    : "rgba(0, 0, 0, 0.3)";
+    : "rgb(153 246 228)";
 
   return (
     <div

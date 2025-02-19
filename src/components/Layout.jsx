@@ -95,7 +95,7 @@ const Layout = () => {
       <header
         className={`px-7 md:px-[92px] lg:px-[156px] fixed top-0 w-full z-50 transition-colors duration-300 ${
           isScrolled
-            ? "bg-green-100/80 dark:bg-gray-700/80 backdrop-filter backdrop-blur-md shadow-xl"
+            ? "bg-[#b9f7d7]/80 dark:bg-gray-700/80 backdrop-filter backdrop-blur-md shadow-xl"
             : "bg-transparent dark:bg-transparent shadow-none"
         }`}
       >

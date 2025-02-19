@@ -417,7 +417,7 @@ const Index = () => {
                 variants={
                   index % 2 === 0 ? slideLeftVariants : slideRightVariants
                 }
-                className="bg-green-100 dark:bg-gray-700 p-6 shadow-xl hover:shadow-xl dark:shadow-[#0c121d] transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none "
+                className="bg-[#b9f7d7] dark:bg-gray-700 p-6 shadow-xl hover:shadow-xl dark:shadow-[#0c121d] transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none "
               >
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
@@ -476,7 +476,7 @@ const Index = () => {
         </motion.h2>
         <motion.div
           variants={slideUpVariants}
-          className="h-auto w-full relative my-6 shadow-xl dark:shadow-[#0c121d] border-x-4 border-teal-400 bg-green-100 dark:bg-gray-700 dark:text-gray-200"
+          className="h-auto w-full relative my-6 shadow-xl dark:shadow-[#0c121d] border-x-4 border-teal-400 bg-[#b9f7d7] dark:bg-gray-700 dark:text-gray-200"
         >
           <LogoWall
             items={logoImgs}
@@ -506,7 +506,7 @@ const Index = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="p-6 shadow-xl dark:shadow-[#0c121d] bg-green-100 dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
+              className="p-6 shadow-xl dark:shadow-[#0c121d] bg-[#b9f7d7] dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-2 hover:border-teal-400 hover:dark:border-teal-400"
             >
               <div className="flex items-center space-x-4">
                 <edu.icon size={32} className="text-blue-400 w-1/6 sm:w-1/12" />

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { motion, useInView } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
-import { LiaWhatsapp ,LiaTelegramPlane } from "react-icons/lia";
+import { LiaWhatsapp, LiaTelegramPlane } from "react-icons/lia";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -149,7 +149,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            className="border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 shadow-xl dark:shadow-[#0c121d] p-8"
+            className="border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 shadow-xl dark:shadow-[#0c121d] p-8"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
