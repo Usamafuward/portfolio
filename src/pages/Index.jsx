@@ -417,7 +417,7 @@ const Index = () => {
                 variants={
                   index % 2 === 0 ? slideLeftVariants : slideRightVariants
                 }
-                className="bg-green-100 dark:bg-gray-700 p-6 shadow-xl hover:shadow-xl dark:shadow-[#0c121d] transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400"
+                className="bg-green-100 dark:bg-gray-700 p-6 shadow-xl hover:shadow-xl dark:shadow-[#0c121d] transition-shadow duration-300 border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none "
               >
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">

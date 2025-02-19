@@ -127,7 +127,7 @@ export default function Projects() {
             className="break-inside-avoid"
           >
             <Link to={project.to} className="block group">
-              <div className="rounded-lg overflow-hidden shadow-xl dark:shadow-[#0c121d] hover:shadow-xl transition-all duration-300 border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400">
+              <div className="overflow-hidden shadow-xl dark:shadow-[#0c121d] hover:shadow-xl transition-all duration-300 border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none">
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">

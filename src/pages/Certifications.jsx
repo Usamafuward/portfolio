@@ -207,7 +207,7 @@ export default function Certifications() {
                   className="shadow-xl dark:shadow-[#0c121d] space-y-10"
                 >
                   <Link to={cert.to} className="block group h-full">
-                    <div className="h-full p-6 rounded-lg shadow-xl dark:shadow-[#0c121d] transition-shadow border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400">
+                    <div className="h-full p-6 shadow-xl dark:shadow-[#0c121d] transition-shadow border-2 border-white dark:border-gray-500 bg-green-100 dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none">
                       <div className="flex justify-between items-start mb-4">
                         <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400">
                           {cert.title}

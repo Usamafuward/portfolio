@@ -135,16 +135,16 @@ const Layout = () => {
               <Link to="/">
                 <div className="relative inline-block group">
                   <h1
-                    className="font-playfair text-2xl sm:text-3xl font-bold 
-        bg-gradient-to-r from-teal-600 to-teal-400
+                    className="font-playfair text-2xl sm:text-3xl font-bold dark:bg-white bg-gray-800
+        lg:bg-gradient-to-r from-teal-600 to-teal-400
         bg-clip-text text-transparent
         transition-all duration-300
-        hover:from-teal-600 hover:to-teal-400"
+        hover:bg-gradient-to-r mb-[2px]"
                   >
                     Portfolio
                   </h1>
                   <span
-                    className="absolute -bottom-1 left-0 w-0 h-0.5
+                    className="hidden lg:block absolute -bottom-1 left-0 w-0 h-0.5
         bg-gradient-to-r from-teal-600 to-teal-400
         group-hover:w-full transition-all duration-300"
                   ></span>

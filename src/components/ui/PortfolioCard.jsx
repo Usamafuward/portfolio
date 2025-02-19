@@ -17,7 +17,7 @@ const PortfolioCard = ({ card, darkMode }) => {
     >
       <HashLink
         to={card.link}
-        className="card bg-white dark:bg-gray-800 dark:text-gray-200 flex flex-col justify-center h-[360px] text-center shadow-lg p-10 relative overflow-hidden rounded-lg"
+        className="card bg-white dark:bg-gray-800 dark:text-gray-200 flex flex-col justify-center h-[360px] text-center shadow-lg p-10 relative overflow-hidden"
       >
         <div className="flex flex-col items-center justify-center transition-all duration-500 ease-in-out transform opacity-100 group-hover:opacity-0 group-hover:-translate-y-60">
           <img
