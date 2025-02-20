@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const PortfolioCard = ({ card, darkMode }) => {
   return (
     <div
-      className="card-container relative group"
+      className="card-container relative group shadow-xl dark:shadow-[#0c121d] rounded-[40px] rounded-tl-none rounded-br-none"
       style={{
         "--gradient-start": darkMode ? "#0f766e" : "#0f766e",
         "--gradient-middle": darkMode ? "#14b8a6" : "#14b8a6",
@@ -17,7 +17,7 @@ const PortfolioCard = ({ card, darkMode }) => {
     >
       <HashLink
         to={card.link}
-        className="card bg-[#b9f7d7] dark:bg-gray-700 dark:text-gray-200 flex flex-col justify-center h-[360px] text-center shadow-lg p-10 relative overflow-hidden"
+        className="bg-[#b9f7d7] dark:bg-gray-700 dark:text-gray-200 flex flex-col justify-center h-[360px] text-center shadow-lg p-10 relative overflow-hidden rounded-[36px] rounded-tl-none rounded-br-none"
       >
         <div className="flex flex-col items-center justify-center transition-all duration-500 ease-in-out transform opacity-100 group-hover:opacity-0 group-hover:-translate-y-60">
           <img
@@ -64,6 +64,7 @@ const PortfolioCard = ({ card, darkMode }) => {
           );
           background-size: 200% 100%;
           animation: shimmer 3s linear infinite;
+          border-radius: inherit;
         }
 
         .card {

@@ -392,7 +392,7 @@ const Index = () => {
       >
         <motion.h2
           variants={slideUpVariants}
-          className="text-[42px] md:text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-10"
+          className="text-[42px] md:text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-8"
         >
           Skills
         </motion.h2>
