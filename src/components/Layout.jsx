@@ -169,7 +169,7 @@ const Layout = () => {
                   className={`hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium ${
                     isActive(item.to)
                       ? "border-b-[2.5px] border-teal-500 dark:border-teal-400 text-teal-600 dark:text-teal-400 transform -translate-y-1"
-                      : "text-gray-800 dark:text-white hover:-translate-y-1"
+                      : "text-gray-800 dark:text-white"
                   }`}
                 >
                   {item.label}
