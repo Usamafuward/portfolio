@@ -272,7 +272,7 @@ const Index = () => {
                 threshold={0.2}
                 rootMargin="-50px"
               />
-              <p className="text-center xl:text-left text-md py-2 sm:py-4 leading-8 text-gray-800 dark:text-gray-200 max-w-xl xl:mx-0 mx-auto md:text-xl">
+              <p className="text-center xl:text-left text-md py-2 sm:py-4 leading-8 text-gray-700 dark:text-gray-300 max-w-xl xl:mx-0 mx-auto md:text-xl">
                 Computer Science Undergraduate and current AI/ML Engineer
                 Intern, with a strong passion for Software Developing, Machine
                 Learning, and Artificial Intelligence. Skilled in developing
@@ -398,7 +398,7 @@ const Index = () => {
         </motion.h2>
         <motion.div className="mx-auto my-6">
           <motion.div variants={slideUpVariants} className="text-center mb-12">
-            <p className="text-lg max-w-3xl mx-auto text-gray-700 dark:text-gray-400">
+            <p className="text-lg max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
               I have a diverse background in various domains of software
               development and machine learning. My expertise allows me to create
               visually appealing interfaces, build robust server-side
@@ -423,7 +423,7 @@ const Index = () => {
                   <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
                     {skill.category}
                   </h3>
-                  <div className="relative w-full h-2 bg-gray-200 rounded">
+                  <div className="relative w-full h-2 bg-gray-100 rounded">
                     <motion.div
                       className="h-full bg-gradient-to-r from-teal-700 to-teal-500 rounded transition-all duration-300"
                       initial={{ width: 0 }}
@@ -476,15 +476,17 @@ const Index = () => {
         </motion.h2>
         <motion.div
           variants={slideUpVariants}
-          className="h-auto w-full relative my-6 shadow-xl dark:shadow-[#0c121d] border-x-4 border-teal-400 bg-[#b9f7d7] dark:bg-gray-700 dark:text-gray-200"
+          className="h-auto w-full relative my-6 shadow-xl dark:shadow-[#0c121d] bg-[#b9f7d7] dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-teal-400 hover:dark:border-teal-400"
         >
-          <LogoWall
-            items={logoImgs}
-            direction="horizontal"
-            size="clamp(8rem, 1rem + 28vmin, 25rem)"
-            duration="60s"
-            bgAccentColor="#2DD4BF"
-          />
+          <div className="">
+            <LogoWall
+              items={logoImgs}
+              direction="horizontal"
+              size="clamp(8rem, 1rem + 28vmin, 25rem)"
+              duration="60s"
+              bgAccentColor="#2DD4BF"
+            />
+          </div>
         </motion.div>
       </motion.section>
 

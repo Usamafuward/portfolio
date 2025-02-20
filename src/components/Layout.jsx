@@ -14,6 +14,7 @@ import { MdOutlineHandshake } from "react-icons/md";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { DarkModeContext } from "../context/DarkModeContext";
 import AnimatedBackground from "./ui/AnimatedBackground";
+import { motion } from "framer-motion";
 
 const Layout = () => {
   const { darkMode, setDarkMode } = useContext(DarkModeContext);
@@ -95,7 +96,7 @@ const Layout = () => {
       <header
         className={`px-7 md:px-[92px] lg:px-[156px] fixed top-0 w-full z-50 transition-colors duration-300 ${
           isScrolled
-            ? "bg-[#b9f7d7]/80 dark:bg-gray-700/80 backdrop-filter backdrop-blur-md shadow-xl"
+            ? "bg-[#b9f7d7]/80 dark:bg-gray-700/80 backdrop-filter backdrop-blur-[8px] shadow-xl"
             : "bg-transparent dark:bg-transparent shadow-none"
         }`}
       >
@@ -111,7 +112,7 @@ const Layout = () => {
                   onClick={() => setShowMenu(!showMenu)}
                   className="flex items-center justify-center text-3xl menu-button"
                 >
-                  <AiOutlineMenu className="w-6 h-6 sm:w-7 sm:h-7" />
+                  <AiOutlineMenu className="w-6 h-6 sm:w-7 sm:h-7 hover:text-teal-500" />
                 </button>
                 {showMenu && (
                   <ul className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-xl dark:shadow-[#0c121d] transition-all duration-300 menu-button backdrop-filter backdrop-blur-md">
@@ -135,22 +136,26 @@ const Layout = () => {
             </li>
             <li>
               <Link to="/">
-                <div className="relative inline-block group">
+                <motion.div
+                  className="relative inline-block group"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <h1
                     className="font-playfair text-2xl sm:text-3xl font-bold dark:bg-white bg-gray-800
-        lg:bg-gradient-to-r from-teal-600 to-teal-400
-        bg-clip-text text-transparent
-        transition-all duration-300
-        hover:bg-gradient-to-r mb-[2px]"
+                    lg:bg-gradient-to-r from-teal-600 to-teal-400
+                    bg-clip-text text-transparent
+                    transition-all duration-300
+                    hover:bg-gradient-to-r mb-[2px]"
                   >
                     Portfolio
                   </h1>
                   <span
                     className="hidden lg:block absolute -bottom-1 left-0 w-0 h-0.5
-        bg-gradient-to-r from-teal-600 to-teal-400
-        group-hover:w-full transition-all duration-300"
+                    bg-gradient-to-r from-teal-600 to-teal-400
+                    group-hover:w-full transition-all duration-300"
                   ></span>
-                </div>
+                </motion.div>
               </Link>
             </li>
           </ul>
@@ -164,7 +169,7 @@ const Layout = () => {
                   className={`hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium ${
                     isActive(item.to)
                       ? "border-b-[2.5px] border-teal-500 dark:border-teal-400 text-teal-600 dark:text-teal-400 transform -translate-y-1"
-                      : "text-gray-800 dark:text-white"
+                      : "text-gray-800 dark:text-white hover:-translate-y-1"
                   }`}
                 >
                   {item.label}
@@ -172,17 +177,23 @@ const Layout = () => {
               ))}
             </li>
             <li>
-              {darkMode ? (
-                <MdLightMode
-                  onClick={() => setDarkMode(!darkMode)}
-                  className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
-                />
-              ) : (
-                <BsFillMoonStarsFill
-                  onClick={() => setDarkMode(!darkMode)}
-                  className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
-                />
-              )}
+              <motion.div
+                whileHover={{ rotate: 35 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0.2 }}
+              >
+                {darkMode ? (
+                  <MdLightMode
+                    onClick={() => setDarkMode(!darkMode)}
+                    className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
+                  />
+                ) : (
+                  <BsFillMoonStarsFill
+                    onClick={() => setDarkMode(!darkMode)}
+                    className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
+                  />
+                )}
+              </motion.div>
             </li>
             <li className="relative ml-4 sm:ml-5">
               <Link to="/contact">
@@ -207,7 +218,12 @@ const Layout = () => {
         <div className="mx-auto md:flex justify-between">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* About Section */}
-            <div className="space-y-4">
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <h3 className="text-xl text-center font-bold text-gray-800 dark:text-white">
                 About Me
               </h3>
@@ -215,10 +231,15 @@ const Layout = () => {
                 Computer Science Undergraduate @ UCSC passionate about creating
                 innovative solutions and exploring new technologies.
               </p>
-            </div>
+            </motion.div>
 
             {/* Quick Links Section */}
-            <div className="space-y-4">
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <h3 className="text-xl text-center font-bold text-gray-800 dark:text-white">
                 Quick Links
               </h3>
@@ -226,42 +247,55 @@ const Layout = () => {
                 {/* First Column */}
                 <ul className="flex flex-wrap mx-auto gap-3 xl:gap-5 justify-center">
                   {footerLinks.columnOne.map((item, index) => (
-                    <li key={index}>
+                    <motion.li
+                      key={index}
+                      whileHover={{ y: -2 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <Link
                         to={item.to}
                         className="text-gray-700 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
                       >
                         {item.label}
                       </Link>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
                 {/* Second Column */}
                 <ul className="flex flex-wrap mx-auto gap-3 xl:gap-5 justify-center">
                   {footerLinks.columnTwo.map((item, index) => (
-                    <li key={index}>
+                    <motion.li
+                      key={index}
+                      whileHover={{ y: -2 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <Link
                         to={item.to}
                         className="text-gray-700 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
                       >
                         {item.label}
                       </Link>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
 
             {/* Social Links Section */}
-            <div className="space-y-5">
+            <motion.div
+              className="space-y-5"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <h3 className="text-xl text-center font-bold text-gray-800 dark:text-white">
                 Connect With Me
               </h3>
               <div className="flex flex-wrap gap-3 justify-center">
                 {socialLinks.map((link, index) => (
                   <div key={index} className="relative group">
-                    <a
-                      href={link.href}
+                    <motion.a
+                      href={link.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full
@@ -271,6 +305,8 @@ const Layout = () => {
                        text-gray-700 dark:text-gray-300
                        hover:text-white dark:hover:text-gray-800
                        transition-all duration-300 z-0"
+                      whileTap={{ scale: 0.9 }}
+                      transition={{ duration: 0.2 }}
                     >
                       <div
                         className="absolute inset-0 bg-gray-800 dark:bg-white 
@@ -283,25 +319,29 @@ const Layout = () => {
                                   group-hover:text-white dark:group-hover:text-gray-800
                                   transition-colors duration-300"
                       />
-                    </a>
+                    </motion.a>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        <p className="text-md dark:text-white text-center py-4">
+        <p className="text-md text-gray-800 dark:text-gray-200 text-center py-4">
           © 2024 Usama Puward | Computer Science Undergraduate @ UCSC
         </p>
       </footer>
       {isScrolled ? (
-        <button
+        <motion.button
           onClick={scrollToTop}
           className="fixed bottom-10 right-10 lg:right-28 bg-teal-600 text-white p-3 rounded-full shadow-xl hover:bg-teal-600 transition-colors backdrop-blur-lg backdrop-filter bg-opacity-30"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.9 }}
         >
           <AiOutlineUp />
-        </button>
+        </motion.button>
       ) : (
         <></>
       )}

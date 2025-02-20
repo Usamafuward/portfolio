@@ -120,7 +120,7 @@ export default function Contact() {
                   transition={{ delay: index * 0.1 }}
                   className="flex items-center space-x-4"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center text-teal-600 dark:text-teal-400 shadow-xl dark:shadow-[#0c121d]">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-teal-200 dark:bg-teal-900/60 flex items-center justify-center text-teal-600 dark:text-teal-400 shadow-xl dark:shadow-[#0c121d]">
                     {info.icon}
                   </div>
                   <div>

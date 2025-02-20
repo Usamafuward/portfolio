@@ -79,6 +79,7 @@ function LogoWall({
                 `w-[var(--size)] p-[calc(var(--size)/10)]`,
                 direction === "vertical" &&
                   "aspect-square w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
+                "small-device-logo", // Add a class for small devices
               ]
                 .filter(Boolean)
                 .join(" ")}
@@ -113,6 +114,7 @@ function LogoWall({
                 `w-[var(--size)] p-[calc(var(--size)/10)]`,
                 direction === "vertical" &&
                   "aspect-square w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
+                "small-device-logo", // Add a class for small devices
               ]
                 .filter(Boolean)
                 .join(" ")}
@@ -154,6 +156,7 @@ function LogoWall({
                 `w-[var(--size)] p-[calc(var(--size)/10)]`,
                 direction === "vertical" &&
                   "aspect-square w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
+                "small-device-logo", // Add a class for small devices
               ]
                 .filter(Boolean)
                 .join(" ")}
@@ -189,6 +192,7 @@ function LogoWall({
                 `w-[var(--size)] p-[calc(var(--size)/10)]`,
                 direction === "vertical" &&
                   "aspect-square w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
+                "small-device-logo", // Add a class for small devices
               ]
                 .filter(Boolean)
                 .join(" ")}
@@ -196,6 +200,24 @@ function LogoWall({
           ))}
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .small-device-logo {
+            width: calc(var(--size) * 1.2) !important; /* Increase logo size */
+            height: auto;/* Increase logo padding */
+            margin-top: 0.8rem;
+            margin-bottom: 0.8rem;
+            padding: 0.6rem;
+          }
+
+          .marqueeClass {
+            flex-direction: column; /* Stack logos vertically */
+            height: auto;
+          }
+
+          
+        }
+      `}</style>
     </article>
   );
 }
