@@ -122,6 +122,12 @@ export default function Certifications() {
       to: "https://coursera.org/verify/JOQ04JJROD5F",
       organization: "Microsoft",
     },
+    {
+      "title": "Mastering Multi-Agent Development with AutoGen",
+      "description": "An online course authorized by Packt, offered through Coursera, covering multi-agent systems and AutoGen, including autonomous agent interactions, conversation patterns, and AI-driven automation.",
+      "to": "https://coursera.org/verify/CCC0CUDGVOOR",
+      "organization": "Packt"
+    },
   ];
 
   const organizations = [
