@@ -30,7 +30,7 @@ export default function Projects() {
       "technologies": [
         "AutoGen",
         "OpenAI GPT",
-        "FastHTML"
+        "FastHTML",
         "FastAPI",
         "LangChain",
         "FAISS",
