@@ -24,6 +24,20 @@ export default function Projects() {
 
   const projects = [
     {
+      "title": "AI-Powered Multi-Agent Coding Assistant",
+      "description": "An advanced AI-powered coding assistant that leverages multiple AI agents to assist developers in writing, debugging, optimizing, and documenting code. It integrates OpenAI's LLMs with FastAPI to provide real-time assistance, along with GitHub API integration for seamless code management and collaboration.",
+      "to": "https://github.com/Usamafuward/AI_Powered_Multi_Agent_Coding_Assistant.git",
+      "technologies": [
+        "AutoGen",
+        "OpenAI GPT",
+        "FastHTML"
+        "FastAPI",
+        "LangChain",
+        "FAISS",
+        "GitHub API",
+      ]
+    },
+    {
       title: "Travel Point",
       description:
         "A social media platform for travellers to share experiences, itineraries, and book accommodations. It also allows users to create and book all-inclusive travel packages for a seamless travel experience.",
