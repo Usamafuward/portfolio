@@ -65,6 +65,13 @@ export default function Projects() {
       technologies: ["React", "Shadcn-UI", "Tailwind CSS"],
     },
     {
+      title: "Portfolio Website",
+      description:
+        "A personal portfolio built with React that showcases my projects and skills in software engineering and machine learning, providing an engaging platform for potential employers and collaborators.",
+      to: "https://github.com/Usamafuward/portfolio.git",
+      technologies: ["React", "Tailwind CSS", "EmailJS"],
+    },
+    {
       title: "Eats Robers",
       description:
         "Eats Robers is a web app using React, Node.js, Express, MongoDB, and Mongoose that helps users find the perfect meal, featuring seamless payment options and exceptional customer service.",
@@ -85,11 +92,11 @@ export default function Projects() {
       ],
     },
     {
-      title: "Portfolio Website",
+      title: "LangChain for LLM Application Development (coursera)",
       description:
-        "A personal portfolio built with React that showcases my projects and skills in software engineering and machine learning, providing an engaging platform for potential employers and collaborators.",
-      to: "https://github.com/Usamafuward/portfolio.git",
-      technologies: ["React", "Tailwind CSS", "EmailJS"],
+        "The project uses the LangChain framework to build applications with advanced language models (LLMs), focusing on key features like prompts, memory management, creating operation chains, document-based question answering, and developing LLMs as reasoning agents.",
+      to: "https://www.coursera.org/learn/langchain-for-llm-application-development-project",
+      technologies: ["LangChain", "LLM", "OpenAI", "Python"],
     },
     {
       title: "Clubhub-Central",
@@ -104,13 +111,6 @@ export default function Projects() {
         "A blog application built with Django for publishing technology-related posts, providing a user-friendly interface for authors to share insights and engage with readers.",
       to: "https://github.com/Usamafuward/Django-blog.git",
       technologies: ["Python", "Django", "HTML", "CSS", "PostgreSQL"],
-    },
-    {
-      title: "LangChain for LLM Application Development (coursera)",
-      description:
-        "The project uses the LangChain framework to build applications with advanced language models (LLMs), focusing on key features like prompts, memory management, creating operation chains, document-based question answering, and developing LLMs as reasoning agents.",
-      to: "https://www.coursera.org/learn/langchain-for-llm-application-development-project",
-      technologies: ["LangChain", "LLM", "OpenAI", "Python"],
     },
   ];
 
