@@ -60,6 +60,13 @@ export default function Certifications() {
       organization: "DeepLearning.AI",
     },
     {
+      title: "Azure Fundamentals Training",
+      description:
+        "Successfully completed the Azure Fundamentals Training organized by Styava on 22nd March 2025, gaining foundational knowledge of Microsoft Azure services and cloud computing",
+      to: "https://drive.google.com/file/d/1cDCI4o_jqNFtnAl9KSVbIPAgzR_D-ZXh/view?usp=sharing",
+      organization: "Styava",
+    },
+    {
       title: "Django Web Framework",
       description:
         "An online course authorized by Meta and offered through Coursera, covering the essentials of the Django web framework for building robust and scalable web applications.",
