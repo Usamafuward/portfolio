@@ -21,8 +21,8 @@ import { IoMail } from "react-icons/io5";
 import { FaGithubSquare } from "react-icons/fa";
 import { FaSchool } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa";
-import SE from "../assets/Resume_SE.pdf";
-import ML_AI from "../assets/Resume_ML.pdf";
+import SE from "@/assets/Resume_SE.pdf";
+import ML_AI from "@/assets/Resume_ML.pdf";
 
 const containerVariants = {
   hidden: { opacity: 0 },
