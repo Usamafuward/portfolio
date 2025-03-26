@@ -67,7 +67,7 @@ export default function Projects() {
     {
       title: "Portfolio Website",
       description:
-        "A personal portfolio built with React that showcases my projects and skills in software engineering and machine learning, providing an engaging platform for potential employers and collaborators.",
+        "A personal portfolio built with React that showcases my projects and skills in artificial intelligence, software developing and machine learning, providing an engaging platform for potential employers and collaborators.",
       to: "https://github.com/Usamafuward/portfolio.git",
       technologies: ["React", "Tailwind CSS", "EmailJS"],
     },
