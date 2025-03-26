@@ -49,7 +49,7 @@ export default function Certifications() {
       title: "30 Days MasterClass in Artificial Intelligence",
       description:
         "This certifies successfully completed the 30 Days MasterClass in Artificial Intelligence conducted by NoviTech R&D Private Limited, provided comprehensive training in various aspects of artificial intelligence, equipping participants with the skills to apply AI techniques in real-world applications.",
-      to: "https://coursera.org/verify/MXULJQSHCAJP",
+      to: "https://drive.google.com/file/d/1o_2N7RJvDmo-ElYJYf3UySRpm5jvvPP5/view?usp=sharing",
       organization: "NoviTech R&D Private Limited",
     },
     {
