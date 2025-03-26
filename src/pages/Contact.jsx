@@ -98,6 +98,10 @@ export default function Contact() {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             className="space-y-8"
+            transition={{
+              type: "spring",
+              stiffness: 300,
+            }}
           >
             <div className="prose dark:prose-invert">
               <h2 className="text-3xl font-semibold mb-6 text-teal-600 dark:text-teal-400">
