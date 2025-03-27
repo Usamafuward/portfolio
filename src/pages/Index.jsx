@@ -212,7 +212,7 @@ const Index = () => {
       institution: "University of Colombo School of Computing",
       year: "2022 - present(2025)",
       description:
-        "Currently pursuing a degree in Computer Science, with a focus on software development, machine learning, and artificial intelligence.",
+        "Currently pursuing a degree in Computer Science, focusing on software development, machine learning, and AI, while gaining hands-on experience through projects and internships. Passionate about building innovative solutions and exploring new technologies",
     },
     {
       icon: FaSchool,
@@ -220,7 +220,7 @@ const Index = () => {
       institution: "Zahira College Mawanella",
       year: "2012 - 2020",
       description:
-        "Completed GCE Ordinary Level and GCE Advanced Level in Physical Science Stream.",
+        "Completed GCE Ordinary Level and GCE Advanced Level in Physical Science Stream. Alongside academics, actively participated in extracurricular activities, served as a student prefect, and achieved numerous accolades in both education and sports",
     },
   ];
 
