@@ -105,8 +105,9 @@ const Layout = () => {
             isScrolled ? "py-[14px]" : "py-6"
           } transition-all duration-300`}
         >
-          <ul className="flex items-center justify-between gap-4 sm:gap-5">
-            <li className="lg:hidden">
+          {/* Left side - Mobile menu + Logo */}
+          <div className="flex items-center gap-4 sm:gap-5">
+            <div className="lg:hidden">
               <div className="relative">
                 <button
                   onClick={() => setShowMenu(!showMenu)}
@@ -133,80 +134,77 @@ const Layout = () => {
                   </ul>
                 )}
               </div>
-            </li>
-            <li>
-              <Link to="/">
-                <motion.div
-                  className="relative inline-block group"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <h1
-                    className="font-playfair text-2xl sm:text-3xl font-bold dark:bg-white bg-gray-800
-                    lg:bg-gradient-to-r from-teal-600 to-teal-400
-                    bg-clip-text text-transparent
-                    transition-all duration-300
-                    hover:bg-gradient-to-r mb-[2px]"
-                  >
-                    Portfolio
-                  </h1>
-                  <span
-                    className="hidden lg:block absolute -bottom-1 left-0 w-0 h-0.5
-                    bg-gradient-to-r from-teal-600 to-teal-400
-                    group-hover:w-full transition-all duration-300"
-                  ></span>
-                </motion.div>
-              </Link>
-            </li>
-          </ul>
-
-          <ul className="flex items-center">
-            <li className="hidden lg:flex md:gap-5 md:mr-5 ">
-              {menuItems.slice(0, -1).map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className={`hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium ${
-                    isActive(item.to)
-                      ? "border-b-[2.5px] border-teal-500 dark:border-teal-400 text-teal-600 dark:text-teal-400 transform -translate-y-1"
-                      : "text-gray-800 dark:text-white"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </li>
-            <li>
+            </div>
+            <Link to="/">
               <motion.div
-                whileHover={{ rotate: 35 }}
-                whileTap={{ scale: 0.9 }}
+                className="relative inline-block group"
+                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                {darkMode ? (
-                  <MdLightMode
-                    onClick={() => setDarkMode(!darkMode)}
-                    className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
-                  />
-                ) : (
-                  <BsFillMoonStarsFill
-                    onClick={() => setDarkMode(!darkMode)}
-                    className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
-                  />
-                )}
+                <h1
+                  className="font-playfair text-2xl sm:text-3xl font-bold dark:bg-white bg-gray-800
+                  lg:bg-gradient-to-r from-teal-600 to-teal-400
+                  bg-clip-text text-transparent
+                  transition-all duration-300
+                  hover:bg-gradient-to-r mb-[2px]"
+                >
+                  Portfolio
+                </h1>
+                <span
+                  className="hidden lg:block absolute -bottom-1 left-0 w-0 h-0.5
+                  bg-gradient-to-r from-teal-600 to-teal-400
+                  group-hover:w-full transition-all duration-300"
+                ></span>
               </motion.div>
-            </li>
-            <li className="relative ml-4 sm:ml-5">
-              <Link to="/contact">
-                <button className="glowing-button flex items-center px-2 py-1 sm:py-2 border-2 border-white text-white bg-gradient-to-r from-cyan-700 to-teal-500 shadow-xl transition-all duration-300">
-                  <span className="hidden xl:inline font-medium">
-                    Let&apos;s Connect
-                  </span>
-                  <span className="xl:hidden font-medium">Connect</span>
-                  <MdOutlineHandshake className="ml-1 sm:ml-[6px] h-[22px] w-[22px] font-bold" />
-                </button>
+            </Link>
+          </div>
+
+          {/* Center - Navigation Links (hidden on mobile) */}
+          <div className="hidden lg:flex items-center gap-8">
+            {menuItems.slice(0, -1).map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium transition-all duration-200 ${
+                  isActive(item.to)
+                    ? "border-b-[2.5px] border-teal-500 dark:border-teal-400 text-teal-600 dark:text-teal-400 transform -translate-y-1"
+                    : "text-gray-800 dark:text-white"
+                }`}
+              >
+                {item.label}
               </Link>
-            </li>
-          </ul>
+            ))}
+          </div>
+
+          {/* Right side - Theme toggle + Connect button */}
+          <div className="flex items-center gap-4 sm:gap-5">
+            <motion.div
+              whileHover={{ rotate: 35 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+            >
+              {darkMode ? (
+                <MdLightMode
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
+                />
+              ) : (
+                <BsFillMoonStarsFill
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
+                />
+              )}
+            </motion.div>
+            <Link to="/contact">
+              <button className="glowing-button flex items-center px-2 py-1 sm:py-2 border-2 border-white text-white bg-gradient-to-r from-cyan-700 to-teal-500 shadow-xl transition-all duration-300">
+                <span className="hidden xl:inline font-medium">
+                  Let&apos;s Connect
+                </span>
+                <span className="xl:hidden font-medium">Connect</span>
+                <MdOutlineHandshake className="ml-1 sm:ml-[6px] h-[22px] w-[22px] font-bold" />
+              </button>
+            </Link>
+          </div>
         </nav>
       </header>
 
