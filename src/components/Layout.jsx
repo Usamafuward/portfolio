@@ -105,7 +105,6 @@ const Layout = () => {
             isScrolled ? "py-[14px]" : "py-6"
           } transition-all duration-300`}
         >
-          {/* Left side - Mobile menu + Logo */}
           <div className="flex items-center gap-4 sm:gap-5">
             <div className="lg:hidden">
               <div className="relative">
@@ -159,8 +158,7 @@ const Layout = () => {
             </Link>
           </div>
 
-          {/* Center - Navigation Links (hidden on mobile) */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-7 xl:gap-8">
             {menuItems.slice(0, -1).map((item) => (
               <Link
                 key={item.to}
@@ -176,7 +174,6 @@ const Layout = () => {
             ))}
           </div>
 
-          {/* Right side - Theme toggle + Connect button */}
           <div className="flex items-center gap-4 sm:gap-5">
             <motion.div
               whileHover={{ rotate: 35 }}
@@ -231,7 +228,6 @@ const Layout = () => {
               </p>
             </motion.div>
 
-            {/* Quick Links Section */}
             <motion.div
               className="space-y-4"
               initial={{ opacity: 0, y: 20 }}
@@ -242,7 +238,6 @@ const Layout = () => {
                 Quick Links
               </h3>
               <div className="space-y-2">
-                {/* First Column */}
                 <ul className="flex flex-wrap mx-auto gap-3 xl:gap-5 justify-center">
                   {footerLinks.columnOne.map((item, index) => (
                     <motion.li
@@ -259,7 +254,6 @@ const Layout = () => {
                     </motion.li>
                   ))}
                 </ul>
-                {/* Second Column */}
                 <ul className="flex flex-wrap mx-auto gap-3 xl:gap-5 justify-center">
                   {footerLinks.columnTwo.map((item, index) => (
                     <motion.li
@@ -279,7 +273,6 @@ const Layout = () => {
               </div>
             </motion.div>
 
-            {/* Social Links Section */}
             <motion.div
               className="space-y-5"
               initial={{ opacity: 0, y: 20 }}
