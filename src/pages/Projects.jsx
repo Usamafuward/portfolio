@@ -175,7 +175,7 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <p className="text-gray-700 dark:text-gray-200 mb-4 sm:line-clamp-3 sm:group-hover:line-clamp-none transition-all">
+                  <p className="text-gray-700 dark:text-gray-200 mb-4 lg:line-clamp-3 lg:group-hover:line-clamp-none transition-all">
                     {project.description}
                   </p>
 
