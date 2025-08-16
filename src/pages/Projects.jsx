@@ -2,6 +2,16 @@ import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink } from "lucide-react";
+import one from "@/assets/thumbnails/1.png";
+import two from "@/assets/thumbnails/2.png";
+import three from "@/assets/thumbnails/3.png";
+import four from "@/assets/thumbnails/4.png";
+import five from "@/assets/thumbnails/5.png";
+import six from "@/assets/thumbnails/6.png";
+import seven from "@/assets/thumbnails/7.png";
+import eight from "@/assets/thumbnails/8.png";
+import nine from "@/assets/thumbnails/9.png";
+import ten from "@/assets/thumbnails/10.png";
 
 export default function Projects() {
   const ref = useRef(null);
@@ -24,10 +34,10 @@ export default function Projects() {
 
   const projects = [
     {
-      "title": "AI-Powered Multi-Agent Coding Assistant",
-      "description": "An advanced AI-powered coding assistant that leverages multiple AI agents to assist developers in writing, debugging, optimizing, and documenting code. It integrates OpenAI's LLMs with FastAPI to provide real-time assistance, along with GitHub API integration for seamless code management and collaboration.",
-      "to": "https://github.com/Usamafuward/AI_Powered_Multi_Agent_Coding_Assistant.git",
-      "technologies": [
+      title: "AI-Powered Multi-Agent Coding Assistant",
+      description: "An advanced AI-powered coding assistant that leverages multiple AI agents to assist developers in writing, debugging, optimizing, and documenting code. It integrates OpenAI's LLMs with FastAPI to provide real-time assistance, along with GitHub API integration for seamless code management and collaboration.",
+      to: "https://github.com/Usamafuward/AI_Powered_Multi_Agent_Coding_Assistant.git",
+      technologies: [
         "AutoGen",
         "OpenAI GPT",
         "FastHTML",
@@ -35,7 +45,24 @@ export default function Projects() {
         "LangChain",
         "FAISS",
         "GitHub API",
-      ]
+      ],
+      thumbnail: one,
+    },
+    {
+      title: "NLP Podcast Chatbot",
+      description:
+        "An NLP-driven chatbot that interacts with podcast transcripts to answer questions, attribute responses to speakers, and provide YouTube links, enhancing user engagement and content access.",
+      to: "https://github.com/Usamafuward/nlp-podcast-chatbot.git",
+      technologies: ["Flask", "TF-IDF", "VADER", "NLTK"],
+      thumbnail: three,
+    },
+    {
+      title: "Mediman - Doctor Dashboard (sample) Frontend App",
+      description:
+        "Mediman is a doctor dashboard app that allows doctors to manage patient appointments (Online and Physical), view patient medical records, and prescribe medications, enhancing patient care and treatment outcomes.",
+      to: "https://github.com/Usamafuward/sample-mediman-doctor.git",
+      technologies: ["React", "Shadcn-UI", "Tailwind CSS"],
+      thumbnail: four,
     },
     {
       title: "Travel Point",
@@ -49,27 +76,7 @@ export default function Projects() {
         "PostgreSQL",
         "Tailwind CSS",
       ],
-    },
-    {
-      title: "NLP Podcast Chatbot",
-      description:
-        "An NLP-driven chatbot that interacts with podcast transcripts to answer questions, attribute responses to speakers, and provide YouTube links, enhancing user engagement and content access.",
-      to: "https://github.com/Usamafuward/nlp-podcast-chatbot.git",
-      technologies: ["Flask", "TF-IDF", "VADER", "NLTK"],
-    },
-    {
-      title: "Mediman - Doctor Dashboard (sample) Frontend App",
-      description:
-        "Mediman is a doctor dashboard app that allows doctors to manage patient appointments (Online and Physical), view patient medical records, and prescribe medications, enhancing patient care and treatment outcomes.",
-      to: "https://github.com/Usamafuward/sample-mediman-doctor.git",
-      technologies: ["React", "Shadcn-UI", "Tailwind CSS"],
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "A personal portfolio built with React that showcases my projects and skills in artificial intelligence, software developing and machine learning, providing an engaging platform for potential employers and collaborators.",
-      to: "https://github.com/Usamafuward/portfolio.git",
-      technologies: ["React", "Tailwind CSS", "EmailJS"],
+      thumbnail: two,
     },
     {
       title: "Eats Robers",
@@ -77,6 +84,7 @@ export default function Projects() {
         "Eats Robers is a web app using React, Node.js, Express, MongoDB, and Mongoose that helps users find the perfect meal, featuring seamless payment options and exceptional customer service.",
       to: "https://github.com/Usamafuward/eats-robers.git",
       technologies: ["React", "Node.js", "Express", "MongoDB", "Mongoose"],
+      thumbnail: six,
     },
     {
       title: "RAG Pipeline for PDF Analysis (Chatbot)",
@@ -90,13 +98,15 @@ export default function Projects() {
         "Streamlit",
         "Python",
       ],
+      thumbnail: seven,
     },
     {
-      title: "LangChain for LLM Application Development (coursera)",
+      title: "Portfolio Website",
       description:
-        "The project uses the LangChain framework to build applications with advanced language models (LLMs), focusing on key features like prompts, memory management, creating operation chains, document-based question answering, and developing LLMs as reasoning agents.",
-      to: "https://www.coursera.org/learn/langchain-for-llm-application-development-project",
-      technologies: ["LangChain", "LLM", "OpenAI", "Python"],
+        "A personal portfolio built with React that showcases my projects and skills in artificial intelligence, software developing and machine learning, providing an engaging platform for potential employers and collaborators.",
+      to: "https://github.com/Usamafuward/portfolio.git",
+      technologies: ["React", "Tailwind CSS", "EmailJS"],
+      thumbnail: five,
     },
     {
       title: "Clubhub-Central",
@@ -104,6 +114,15 @@ export default function Projects() {
         "Club-Hub Central is a centralized platform developed with PHP, HTML, CSS, JavaScript, and MariaDB for the University of Colombo School of Computing clubs and societies, facilitating better communication and collaboration among members.",
       to: "https://github.com/terance-edmonds/clubhub-central.git",
       technologies: ["PHP", "HTML", "SCSS", "JavaScript", "MariaDB"],
+      thumbnail: nine,
+    },
+    {
+      title: "LangChain for LLM Application Development (coursera)",
+      description:
+        "The project uses the LangChain framework to build applications with advanced language models (LLMs), focusing on key features like prompts, memory management, creating operation chains, document-based question answering, and developing LLMs as reasoning agents.",
+      to: "https://www.coursera.org/learn/langchain-for-llm-application-development-project",
+      technologies: ["LangChain", "LLM", "OpenAI", "Python"],
+      thumbnail: eight,
     },
     {
       title: "Django Blog",
@@ -111,6 +130,7 @@ export default function Projects() {
         "A blog application built with Django for publishing technology-related posts, providing a user-friendly interface for authors to share insights and engage with readers.",
       to: "https://github.com/Usamafuward/Django-blog.git",
       technologies: ["Python", "Django", "HTML", "CSS", "PostgreSQL"],
+      thumbnail: ten,
     },
   ];
 
@@ -142,6 +162,9 @@ export default function Projects() {
           >
             <Link to={project.to} className="block group">
               <div className="overflow-hidden shadow-xl dark:shadow-[#0c121d] hover:shadow-xl transition-all duration-300 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none">
+                <div className=" bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
+                  <img src={project.thumbnail} alt={project.title} className="object-cover" />
+                </div>
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
@@ -152,7 +175,7 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <p className="text-gray-700 dark:text-gray-200 mb-4 line-clamp-3 group-hover:line-clamp-none transition-all">
+                  <p className="text-gray-700 dark:text-gray-200 mb-4 sm:line-clamp-3 sm:group-hover:line-clamp-none transition-all">
                     {project.description}
                   </p>
 
