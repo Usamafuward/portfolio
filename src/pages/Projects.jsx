@@ -47,6 +47,7 @@ export default function Projects() {
         "GitHub API",
       ],
       thumbnail: one,
+      category: "AI/ML"
     },
     {
       title: "NLP Podcast Chatbot",
@@ -55,36 +56,7 @@ export default function Projects() {
       to: "https://github.com/Usamafuward/nlp-podcast-chatbot.git",
       technologies: ["Flask", "TF-IDF", "VADER", "NLTK"],
       thumbnail: three,
-    },
-    {
-      title: "Mediman - Doctor Dashboard (sample) Frontend App",
-      description:
-        "Mediman is a doctor dashboard app that allows doctors to manage patient appointments (Online and Physical), view patient medical records, and prescribe medications, enhancing patient care and treatment outcomes.",
-      to: "https://github.com/Usamafuward/sample-mediman-doctor.git",
-      technologies: ["React", "Shadcn-UI", "Tailwind CSS"],
-      thumbnail: four,
-    },
-    {
-      title: "Travel Point",
-      description:
-        "A social media platform for travellers to share experiences, itineraries, and book accommodations. It also allows users to create and book all-inclusive travel packages for a seamless travel experience.",
-      to: "https://github.com/aamirfazeer/TravelPointMobile.git",
-      technologies: [
-        "React",
-        "ReactNative",
-        "FastAPI",
-        "PostgreSQL",
-        "Tailwind CSS",
-      ],
-      thumbnail: two,
-    },
-    {
-      title: "Eats Robers",
-      description:
-        "Eats Robers is a web app using React, Node.js, Express, MongoDB, and Mongoose that helps users find the perfect meal, featuring seamless payment options and exceptional customer service.",
-      to: "https://github.com/Usamafuward/eats-robers.git",
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Mongoose"],
-      thumbnail: six,
+      category: "AI/ML"
     },
     {
       title: "RAG Pipeline for PDF Analysis (Chatbot)",
@@ -99,6 +71,40 @@ export default function Projects() {
         "Python",
       ],
       thumbnail: seven,
+      category: "AI/ML"
+    },
+    {
+      title: "Travel Point",
+      description:
+        "A social media platform for travellers to share experiences, itineraries, and book accommodations. It also allows users to create and book all-inclusive travel packages for a seamless travel experience.",
+      to: "https://github.com/aamirfazeer/TravelPointMobile.git",
+      technologies: [
+        "React",
+        "ReactNative",
+        "FastAPI",
+        "PostgreSQL",
+        "Tailwind CSS",
+      ],
+      thumbnail: two,
+      category: "Full-Stack"
+    },
+    {
+      title: "Eats Robers",
+      description:
+        "Eats Robers is a web app using React, Node.js, Express, MongoDB, and Mongoose that helps users find the perfect meal, featuring seamless payment options and exceptional customer service.",
+      to: "https://github.com/Usamafuward/eats-robers.git",
+      technologies: ["React", "Node.js", "Express", "MongoDB", "Mongoose"],
+      thumbnail: six,
+      category: "Full-Stack"
+    },
+    {
+      title: "Mediman - Doctor Dashboard (sample) Frontend App",
+      description:
+        "Mediman is a doctor dashboard app that allows doctors to manage patient appointments (Online and Physical), view patient medical records, and prescribe medications, enhancing patient care and treatment outcomes.",
+      to: "https://github.com/Usamafuward/sample-mediman-doctor.git",
+      technologies: ["React", "Shadcn-UI", "Tailwind CSS"],
+      thumbnail: four,
+      category: "Frontend"
     },
     {
       title: "Portfolio Website",
@@ -107,6 +113,7 @@ export default function Projects() {
       to: "https://github.com/Usamafuward/portfolio.git",
       technologies: ["React", "Tailwind CSS", "EmailJS"],
       thumbnail: five,
+      category: "Frontend"
     },
     {
       title: "Clubhub-Central",
@@ -115,6 +122,7 @@ export default function Projects() {
       to: "https://github.com/terance-edmonds/clubhub-central.git",
       technologies: ["PHP", "HTML", "SCSS", "JavaScript", "MariaDB"],
       thumbnail: nine,
+      category: "Full-Stack"
     },
     {
       title: "LangChain for LLM Application Development (coursera)",
@@ -123,6 +131,7 @@ export default function Projects() {
       to: "https://www.coursera.org/learn/langchain-for-llm-application-development-project",
       technologies: ["LangChain", "LLM", "OpenAI", "Python"],
       thumbnail: eight,
+      category: "AI/ML"
     },
     {
       title: "Django Blog",
@@ -131,6 +140,7 @@ export default function Projects() {
       to: "https://github.com/Usamafuward/Django-blog.git",
       technologies: ["Python", "Django", "HTML", "CSS", "PostgreSQL"],
       thumbnail: ten,
+      category: "Backend"
     },
   ];
 
@@ -144,11 +154,12 @@ export default function Projects() {
         Projects
       </motion.h1>
 
+      {/* Projects Cards */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="px-7 mx-auto justify-between columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6"
+        className="px-7 mx-auto justify-between columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 z-10"
       >
         {projects.map((project, index) => (
           <motion.div
@@ -161,21 +172,39 @@ export default function Projects() {
             className="break-inside-avoid"
           >
             <Link to={project.to} className="block group">
-              <div className="overflow-hidden shadow-xl dark:shadow-[#0c121d] hover:shadow-xl transition-all duration-300 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none">
-                <div className=" bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
-                  <img src={project.thumbnail} alt={project.title} className="object-cover" />
+              <div className="relative overflow-hidden shadow-xl dark:shadow-[#0c121d] hover:shadow-xl transition-all duration-500 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none transform">
+
+                <div className="absolute top-4 right-4 z-20">
+                  <span className="inline-flex items-center px-2.5 py-1 text-xs font-medium text-teal-700 dark:text-teal-300 bg-teal-100 dark:bg-teal-900/50 rounded-full border border-teal-200 dark:border-teal-700">
+                    {project.category}
+                  </span>
                 </div>
+
+                <div className="relative bg-gray-200 dark:bg-gray-600 flex items-center justify-center overflow-hidden">
+                  <img 
+                    src={project.thumbnail} 
+                    alt={project.title} 
+                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" 
+                  />
+
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/20">
+                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full p-3 transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <ExternalLink className="w-6 h-6 text-teal-600 dark:text-teal-400" />
+                    </div>
+                  </div>
+                </div>
+
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300">
                       {project.title}
                     </h3>
-                    <div className="w-6">
-                      <ExternalLink className="w-5 h-5 al text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 mt-1 shadow-xl dark:shadow-[#0c121d]" />
+                    <div className="w-6 flex-shrink-0 ml-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                      <ExternalLink className="w-5 h-5 text-gray-400 mt-1" />
                     </div>
                   </div>
 
-                  <p className="text-gray-700 dark:text-gray-200 mb-4 lg:line-clamp-3 lg:group-hover:line-clamp-none transition-all">
+                  <p className="text-gray-700 dark:text-gray-200 mb-4 lg:line-clamp-3 lg:group-hover:line-clamp-none transition-all duration-300">
                     {project.description}
                   </p>
 
@@ -183,7 +212,7 @@ export default function Projects() {
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 text-sm rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 border border-teal-800 dark:border-teal-300"
+                        className="px-3 py-1 text-sm rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 border border-teal-800 dark:border-teal-300 transition-all duration-300 group-hover:bg-teal-200 dark:group-hover:bg-teal-800/40"
                       >
                         {tech}
                       </span>
