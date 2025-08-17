@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 function LogoWall({
   items = [],
   direction = "horizontal",
   pauseOnHover = false,
-  size = "clamp(8rem, 1rem + 30vmin, 25rem)",
+  size = "clamp(4rem, 1rem + 15vmin, 12rem)",
   duration = "60s",
 }) {
   const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true });
 
   const wrapperClass = [
     "flex",
@@ -17,6 +20,7 @@ function LogoWall({
     "mx-auto",
     "max-w-full",
     "p-[20px_10px]",
+    "relative",
     direction === "vertical" && "flex-row justify-center h-full",
   ]
     .filter(Boolean)
@@ -37,8 +41,11 @@ function LogoWall({
     .filter(Boolean)
     .join(" ");
 
+  const displayItems = items;
+
   return (
-    <article
+    <motion.article
+      ref={containerRef}
       className={wrapperClass}
       style={{
         "--size": size,
@@ -46,179 +53,313 @@ function LogoWall({
         color: "var(--color-text)",
         backgroundColor: "var(--color-bg)",
       }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8 }}
     >
-      <div
-        className={marqueeClass}
-        onMouseEnter={() => pauseOnHover && setIsPaused(true)}
-        onMouseLeave={() => pauseOnHover && setIsPaused(false)}
-      >
-        <div
-          className={[
-            "flex-shrink-0",
-            "flex",
-            "items-center",
-            "justify-around",
-            "gap-[calc(var(--size)/14)]",
-            "min-w-full",
-            "animate-scrollX",
-            direction === "vertical" && "flex-col min-h-full animate-scrollY",
-          ]
-            .filter(Boolean)
-            .join(" ")}
-        >
-          {items.map((item, idx) => (
-            <img
-              key={idx}
-              src={item.imgUrl}
-              alt={item.altText}
-              className={[
-                "bg-[var(--color-bg-accent)]",
-                "rounded-md",
-                "object-contain",
-                "aspect-video",
-                `w-[var(--size)] p-[calc(var(--size)/10)]`,
-                direction === "vertical" &&
-                  "aspect-square w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
-                "small-device-logo", // Add a class for small devices
-              ]
-                .filter(Boolean)
-                .join(" ")}
+      {/* Background with animated elements */}
+      <div className="absolute inset-0 overflow-hidden rounded-lg">
+        {/* Animated grid background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        
+        {/* Animated data streams */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(4)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent"
+              style={{
+                top: `${25 + i * 20}%`,
+                width: '100%'
+              }}
+              animate={{
+                x: ['-100%', '100%']
+              }}
+              transition={{
+                duration: 8 + Math.random() * 4,
+                repeat: Infinity,
+                delay: i * 2,
+                ease: "linear"
+              }}
             />
           ))}
         </div>
-        <div
-          aria-hidden="true"
-          className={[
-            "flex-shrink-0",
-            "flex",
-            "items-center",
-            "justify-around",
-            "gap-[calc(var(--size)/14)]",
-            "min-w-full",
-            "animate-scrollX",
-            direction === "vertical" && "flex-col min-h-full animate-scrollY",
-          ]
-            .filter(Boolean)
-            .join(" ")}
-        >
-          {items.map((item, idx) => (
-            <img
-              key={`dup1-${idx}`}
-              src={item.imgUrl}
-              alt={item.altText}
-              className={[
-                "bg-[var(--color-bg-accent)]",
-                "rounded-md",
-                "object-contain",
-                "aspect-video",
-                `w-[var(--size)] p-[calc(var(--size)/10)]`,
-                direction === "vertical" &&
-                  "aspect-square w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
-                "small-device-logo", // Add a class for small devices
-              ]
-                .filter(Boolean)
-                .join(" ")}
+
+        {/* Corner gradient accents */}
+        <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-teal-400/20 to-transparent rounded-br-full" />
+        <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-teal-400/20 to-transparent rounded-tl-full" />
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-teal-400/40 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                x: [0, Math.random() * 100 - 50],
+                y: [0, Math.random() * 100 - 50],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: Math.random() * 6 + 4,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+              }}
             />
           ))}
         </div>
       </div>
 
-      <div
-        className={marqueeClass + " marquee--reverse"}
-        onMouseEnter={() => pauseOnHover && setIsPaused(true)}
-        onMouseLeave={() => pauseOnHover && setIsPaused(false)}
-      >
+      {/* Main content with relative positioning */}
+      <div className="relative z-10">
         <div
-          className={[
-            "flex-shrink-0",
-            "flex",
-            "items-center",
-            "justify-around",
-            "gap-[calc(var(--size)/14)]",
-            "min-w-full",
-            "animate-scrollX reverse-x",
-            direction === "vertical" &&
-              "flex-col min-h-full animate-scrollY reverse-x",
-          ]
-            .filter(Boolean)
-            .join(" ")}
+          className={marqueeClass}
+          onMouseEnter={() => pauseOnHover && setIsPaused(true)}
+          onMouseLeave={() => pauseOnHover && setIsPaused(false)}
         >
-          {items.map((item, idx) => (
-            <img
-              key={`rev-${idx}`}
-              src={item.imgUrl}
-              alt={item.altText}
-              className={[
-                "bg-[var(--color-bg-accent)]",
-                "rounded-md",
-                "object-contain",
-                "aspect-video",
-                `w-[var(--size)] p-[calc(var(--size)/10)]`,
-                direction === "vertical" &&
-                  "aspect-square w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
-                "small-device-logo", // Add a class for small devices
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            />
-          ))}
+          <div
+            className={[
+              "flex-shrink-0",
+              "flex",
+              "items-center",
+              "justify-around",
+              "gap-[calc(var(--size)/14)]",
+              "min-w-full",
+              "animate-scrollX",
+              direction === "vertical" && "flex-col min-h-full animate-scrollY",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {displayItems.map((item, idx) => (
+              <motion.img
+                key={idx}
+                src={item.imgUrl}
+                alt={item.altText}
+                className={[
+                  "object-contain",
+                  "aspect-square",
+                  `w-[var(--size)] p-[calc(var(--size)/5)]`,
+                  direction === "vertical" &&
+                    "w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
+                  "small-device-logo",
+                  "transition-all duration-300",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                whileHover={{ 
+                  scale: 1.1,
+                  filter: "drop-shadow(0 0 20px rgba(0, 255, 255, 0.4))",
+                }}
+                style={{
+                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))"
+                }}
+              />
+            ))}
+          </div>
+          <div
+            aria-hidden="true"
+            className={[
+              "flex-shrink-0",
+              "flex",
+              "items-center",
+              "justify-around",
+              "gap-[calc(var(--size)/14)]",
+              "min-w-full",
+              "animate-scrollX",
+              direction === "vertical" && "flex-col min-h-full animate-scrollY",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {displayItems.map((item, idx) => (
+              <motion.img
+                key={`dup1-${idx}`}
+                src={item.imgUrl}
+                alt={item.altText}
+                className={[
+                  "object-contain",
+                  "aspect-square",
+                  `w-[var(--size)] p-[calc(var(--size)/5)]`,
+                  direction === "vertical" &&
+                    "w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
+                  "small-device-logo",
+                  "transition-all duration-300",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                whileHover={{ 
+                  scale: 1.1,
+                  filter: "drop-shadow(0 0 20px rgba(0, 255, 255, 0.4))",
+                }}
+                style={{
+                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))"
+                }}
+              />
+            ))}
+          </div>
         </div>
+
         <div
-          aria-hidden="true"
-          className={[
-            "flex-shrink-0",
-            "flex",
-            "items-center",
-            "justify-around",
-            "gap-[calc(var(--size)/14)]",
-            "min-w-full",
-            "animate-scrollX reverse-x",
-            direction === "vertical" &&
-              "flex-col min-h-full animate-scrollY reverse-x",
-          ]
-            .filter(Boolean)
-            .join(" ")}
+          className={marqueeClass + " marquee--reverse"}
+          onMouseEnter={() => pauseOnHover && setIsPaused(true)}
+          onMouseLeave={() => pauseOnHover && setIsPaused(false)}
         >
-          {items.map((item, idx) => (
-            <img
-              key={`dup2-${idx}`}
-              src={item.imgUrl}
-              alt={item.altText}
-              className={[
-                "bg-[var(--color-bg-accent)]",
-                "rounded-md",
-                "object-contain",
-                "aspect-video",
-                `w-[var(--size)] p-[calc(var(--size)/10)]`,
-                direction === "vertical" &&
-                  "aspect-square w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
-                "small-device-logo", // Add a class for small devices
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            />
-          ))}
+          <div
+            className={[
+              "flex-shrink-0",
+              "flex",
+              "items-center",
+              "justify-around",
+              "gap-[calc(var(--size)/14)]",
+              "min-w-full",
+              "animate-scrollX reverse-x",
+              direction === "vertical" &&
+                "flex-col min-h-full animate-scrollY reverse-x",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {displayItems.map((item, idx) => (
+              <motion.img
+                key={`rev-${idx}`}
+                src={item.imgUrl}
+                alt={item.altText}
+                className={[
+                  "object-contain",
+                  "aspect-square",
+                  `w-[var(--size)] p-[calc(var(--size)/5)]`,
+                  direction === "vertical" &&
+                    "w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
+                  "small-device-logo",
+                  "transition-all duration-300",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                whileHover={{ 
+                  scale: 1.1,
+                  filter: "drop-shadow(0 0 20px rgba(0, 255, 255, 0.4))",
+                }}
+                style={{
+                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))"
+                }}
+              />
+            ))}
+          </div>
+          <div
+            aria-hidden="true"
+            className={[
+              "flex-shrink-0",
+              "flex",
+              "items-center",
+              "justify-around",
+              "gap-[calc(var(--size)/14)]",
+              "min-w-full",
+              "animate-scrollX reverse-x",
+              direction === "vertical" &&
+                "flex-col min-h-full animate-scrollY reverse-x",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {displayItems.map((item, idx) => (
+              <motion.img
+                key={`dup2-${idx}`}
+                src={item.imgUrl}
+                alt={item.altText}
+                className={[
+                  "object-contain",
+                  "aspect-square",
+                  `w-[var(--size)] p-[calc(var(--size)/5)]`,
+                  direction === "vertical" &&
+                    "w-[calc(var(--size)/1.5)] p-[calc(var(--size)/6)]",
+                  "small-device-logo",
+                  "transition-all duration-300",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                whileHover={{ 
+                  scale: 1.1,
+                  filter: "drop-shadow(0 0 20px rgba(0, 255, 255, 0.4))",
+                }}
+                style={{
+                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))"
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Corner geometric elements */}
+      <div className="absolute top-4 right-4 z-20">
+        <motion.div
+          className="w-6 h-6 border-2 border-teal-400/60 rotate-45"
+          animate={{ rotate: [45, 225, 45] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+      <div className="absolute bottom-4 left-4 z-20">
+        <motion.div
+          className="w-6 h-6 border-2 border-teal-400/60 rotate-45"
+          animate={{ rotate: [45, -135, 45] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+
+      {/* Enhanced styles */}
       <style>{`
+        .mask-horizontal {
+          -webkit-mask: linear-gradient(90deg, transparent 0%, black 20%, black 80%, transparent 100%);
+          mask: linear-gradient(90deg, transparent 0%, black 20%, black 80%, transparent 100%);
+        }
+
+        .mask-vertical {
+          -webkit-mask: linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
+          mask: linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
+        }
+
+        .animate-scrollX {
+          animation: scrollX var(--duration) linear infinite;
+        }
+
+        .animate-scrollY {
+          animation: scrollY var(--duration) linear infinite;
+        }
+
+        .reverse-x {
+          animation-direction: reverse;
+        }
+
+        .paused * {
+          animation-play-state: paused;
+        }
+
+        @keyframes scrollX {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-100%); }
+        }
+
+        @keyframes scrollY {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-100%); }
+        }
+
         @media (max-width: 768px) {
           .small-device-logo {
-            width: calc(var(--size) * 1.2) !important; /* Increase logo size */
-            height: auto;/* Increase logo padding */
+            width: calc(var(--size) * 1.2) !important;
+            height: auto;
             margin-top: 0.8rem;
             margin-bottom: 0.8rem;
-            padding: 0.6rem;
+            padding: 1.4rem;
           }
-
-          .marqueeClass {
-            flex-direction: column; /* Stack logos vertically */
-            height: auto;
-          }
-
-          
         }
       `}</style>
-    </article>
+    </motion.article>
   );
 }
 

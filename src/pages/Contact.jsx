@@ -157,7 +157,7 @@ export default function Contact() {
               type: "spring",
               stiffness: 300,
             }}
-            className="border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 shadow-xl dark:shadow-[#0c121d] p-8"
+            className="border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 shadow-xl dark:shadow-[#0c121d] p-8 "
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>

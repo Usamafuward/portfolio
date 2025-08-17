@@ -71,6 +71,7 @@ const SplitText = ({
           {letters[index] === " " ? " " : letters[index]}
         </animated.span>
       ))}
+      
     </p>
   );
 };
