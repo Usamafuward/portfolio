@@ -21,6 +21,8 @@ import { IoMail } from "react-icons/io5";
 import { FaGithubSquare } from "react-icons/fa";
 import { FaSchool } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa";
+import SE from "@/assets/resumes/Resume_SE.pdf";
+import ML_AI from "@/assets/resumes/Resume_ML.pdf";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -53,7 +55,6 @@ const slideLeftVariants = {
 const Index = () => {
   const { darkMode } = useContext(DarkModeContext);
   const [showDropdown, setShowDropdown] = useState(false);
-  const dropdownRef = useRef(null);
   const [setIsScrolled] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -68,7 +69,7 @@ const Index = () => {
     };
 
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (!event.target.closest(".dropdown-button")) {
         setShowDropdown(false);
       }
     };
@@ -227,14 +228,14 @@ const Index = () => {
 
   const resumeLinks = [
     {
-      href: "/Resume_SE.pdf",
+      href: SE,
       label: "Software Engineering",
-      download: "Usama_Puward_Resume_SE.pdf",
+      download: "Resume_Software_Engineering.pdf",
     },
     {
-      href: "/Resume_ML.pdf",
+      href: ML_AI,
       label: "AI/ML Engineering",
-      download: "Usama_Puward_Resume_ML.pdf",
+      download: "Resume_ML_AI_Engineering.pdf",
     },
   ];
 
@@ -300,7 +301,6 @@ const Index = () => {
               </motion.p>
               <div className="flex flex-col xl:flex-row items-center  xl:gap-8 py-4 space-y-8 xl:space-y-0">
                 <motion.div
-                  ref={dropdownRef} // Add this ref
                   className="relative group xl:mb-0 order-none xl:order-2"
                   initial={{ opacity: 0, y: 30 }}
                   animate={
@@ -328,7 +328,7 @@ const Index = () => {
                           key={resume.label}
                           href={resume.href}
                           download={resume.download}
-                          className="block px-4 py-3 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 text-left"
+                          className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
                         >
                           {resume.label}
                         </a>
@@ -500,6 +500,8 @@ const Index = () => {
                 {/* Holographic glow */}
                 <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-teal-400/20 via-cyan-400/20 to-blue-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
+                
+
                 {/* Main container with matching border style */}
                 <div className="relative h-full bg-[#b9f7d7] dark:bg-gray-700 backdrop-blur-xl border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 p-6 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden shadow-xl dark:shadow-[#0c121d] transition-all duration-300">
                   {/* Animated background */}
@@ -554,23 +556,23 @@ const Index = () => {
 
                   {/* Floating particles */}
                   <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
-                    {[...Array(3)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className="absolute w-1 h-1 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100"
-                        animate={{
-                          x: [Math.random() * 200, Math.random() * 200],
-                          y: [Math.random() * 150, Math.random() * 150],
-                          opacity: [0, 0.6, 0],
-                        }}
-                        transition={{
-                          duration: Math.random() * 3 + 2,
-                          repeat: Infinity,
-                          delay: Math.random() * 2,
-                        }}
-                      />
-                    ))}
-                  </div>
+                  {[...Array(3)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-1 h-1 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100"
+                      animate={{
+                        x: [Math.random() * 200, Math.random() * 200],
+                        y: [Math.random() * 150, Math.random() * 150],
+                        opacity: [0, 0.6, 0],
+                      }}
+                      transition={{
+                        duration: Math.random() * 3 + 2,
+                        repeat: Infinity,
+                        delay: Math.random() * 2,
+                      }}
+                    />
+                  ))}
+                </div>
 
                   {/* Content */}
                   <div className="relative z-10">

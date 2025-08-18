@@ -61,7 +61,7 @@ function LogoWall({
       <div className="absolute inset-0 overflow-hidden rounded-lg">
         {/* Animated grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-        
+
         {/* Animated data streams */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(4)].map((_, i) => (
@@ -70,25 +70,81 @@ function LogoWall({
               className="absolute h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent"
               style={{
                 top: `${25 + i * 20}%`,
-                width: '100%'
+                width: "100%",
               }}
               animate={{
-                x: ['-100%', '100%']
+                x: ["-100%", "100%"],
               }}
               transition={{
                 duration: 8 + Math.random() * 4,
                 repeat: Infinity,
                 delay: i * 2,
-                ease: "linear"
+                ease: "linear",
               }}
             />
           ))}
         </div>
 
+        {/* Top Left - Quick flash */}
+        <div className="absolute top-0 left-0">
+          <motion.div
+            className="w-20 h-20"
+          />
+          <div className="absolute top-4 left-4 w-10 h-10">
+            <motion.div
+              className="w-full h-0.5 bg-teal-400/50"
+              animate={{ scaleX: [0, 1, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: 0.5,
+              }}
+            />
+            <motion.div
+              className="w-0.5 h-full bg-teal-400/50 absolute top-0 right-10"
+              animate={{ scaleY: [0, 1, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: 0.5 + 0.5,
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 right-0">
+          <motion.div
+            className="w-20 h-20"
+          />
+          <div className="absolute top-4 left-4 w-10 h-10">
+            <motion.div
+              className="w-full h-0.5 bg-teal-400/50 absolute -bottom-2 -right-2"
+              animate={{ scaleX: [0, 1, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: 0.5,
+              }}
+            />
+            <motion.div
+              className="w-0.5 h-full bg-teal-400/50 absolute top-2 -right-2"
+              animate={{ scaleY: [0, 1, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: 0.5 + 0.5,
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Bottom Right - Glitch effect */}
+        {/* <motion.div className="hidden xl:block absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-teal-600 animate-pulse" /> */}
+
         {/* Corner gradient accents */}
         <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-teal-400/20 to-transparent rounded-br-full" />
         <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-teal-400/20 to-transparent rounded-tl-full" />
-        
+
         {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(8)].map((_, i) => (
@@ -151,12 +207,12 @@ function LogoWall({
                 ]
                   .filter(Boolean)
                   .join(" ")}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.1,
                   filter: "drop-shadow(0 0 20px rgba(0, 255, 255, 0.4))",
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))"
+                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))",
                 }}
               />
             ))}
@@ -192,12 +248,12 @@ function LogoWall({
                 ]
                   .filter(Boolean)
                   .join(" ")}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.1,
                   filter: "drop-shadow(0 0 20px rgba(0, 255, 255, 0.4))",
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))"
+                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))",
                 }}
               />
             ))}
@@ -240,12 +296,12 @@ function LogoWall({
                 ]
                   .filter(Boolean)
                   .join(" ")}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.1,
                   filter: "drop-shadow(0 0 20px rgba(0, 255, 255, 0.4))",
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))"
+                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))",
                 }}
               />
             ))}
@@ -282,12 +338,12 @@ function LogoWall({
                 ]
                   .filter(Boolean)
                   .join(" ")}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.1,
                   filter: "drop-shadow(0 0 20px rgba(0, 255, 255, 0.4))",
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))"
+                  filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))",
                 }}
               />
             ))}

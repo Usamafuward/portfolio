@@ -57,14 +57,14 @@ const FuturisticProjectCard = ({ project, index }) => {
 
           {/* Floating particles */}
           <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
-            {[...Array(4)].map((_, i) => (
+            {[...Array(3)].map((_, i) => (
               <motion.div
                 key={i}
                 className="absolute w-1 h-1 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100"
                 animate={isHovered ? {
-                  x: [Math.random() * 300, Math.random() * 300],
-                  y: [Math.random() * 200, Math.random() * 200],
-                  opacity: [0, 0.8, 0],
+                  x: [Math.random() * 200, Math.random() * 200],
+                  y: [Math.random() * 150, Math.random() * 150],
+                  opacity: [0, 0.6, 0],
                 } : {}}
                 transition={{
                   duration: Math.random() * 3 + 2,
@@ -79,7 +79,6 @@ const FuturisticProjectCard = ({ project, index }) => {
           <div className="absolute top-4 right-4 z-20">
             <motion.div 
               className="flex items-center gap-2 px-2.5 py-1 text-xs font-medium text-teal-700 dark:text-teal-300 bg-teal-100 dark:bg-teal-900/50 rounded-full border border-teal-200 dark:border-teal-700"
-              whileHover={{ scale: 1.05 }}
               animate={isHovered ? {
                 boxShadow: "0 0 20px rgba(13,148,136,0.4)"
               } : {}}
@@ -92,7 +91,7 @@ const FuturisticProjectCard = ({ project, index }) => {
           {/* Scan line effect */}
           <motion.div
             className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-0 group-hover:opacity-100"
-            animate={isHovered ? { y: [0, 400, 0] } : {}}
+            animate={isHovered ? { y: [250, 700, 250] } : {}}
             transition={{ duration: 2, repeat: Infinity }}
           />
 
@@ -170,7 +169,6 @@ const FuturisticProjectCard = ({ project, index }) => {
               
               <motion.div
                 className="w-6 flex-shrink-0 ml-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300"
-                animate={isHovered ? { rotate: 45, scale: 0.8 } : { rotate: 0, scale: 1 }}
               >
                 <ExternalLink className="w-5 h-5 text-gray-400 mt-1" />
               </motion.div>
@@ -198,7 +196,6 @@ const FuturisticProjectCard = ({ project, index }) => {
                     delay: (index * 0.1) + (techIndex * 0.05) 
                   }}
                   whileHover={{ 
-                    scale: 1.05,
                     boxShadow: "0 0 15px rgba(13,148,136,0.3)",
                     borderColor: "rgb(13,148,136)"
                   }}

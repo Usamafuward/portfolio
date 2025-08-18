@@ -9,6 +9,7 @@ const FuturisticCyberBackground = () => {
   const [, setGridLines] = useState([]);
   const mouseRef = useRef({ x: 0, y: 0 });
   const [isScrolled, setIsScrolled] = useState(false);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   // Theme-based color schemes
   const theme = darkMode
@@ -47,17 +48,38 @@ const FuturisticCyberBackground = () => {
         ambientGlow: "from-teal-200/10 via-transparent to-cyan-200/10",
       };
 
+  // Update dimensions when window resizes
+  useEffect(() => {
+    const updateDimensions = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
   // Initialize particles and grid lines
   useEffect(() => {
+    if (dimensions.width === 0 || dimensions.height === 0) return;
+
     const initializeParticles = () => {
       const newParticles = [];
-      const particleCount = window.innerWidth < 640 ? 25 : 50;
+      // Responsive particle count based on screen size
+      let particleCount;
+      if (dimensions.width < 480) particleCount = 15; // Mobile
+      else if (dimensions.width < 768) particleCount = 25; // Tablet
+      else if (dimensions.width < 1024) particleCount = 35; // Small desktop
+      else particleCount = 50; // Large desktop
 
       for (let i = 0; i < particleCount; i++) {
         newParticles.push({
           id: i,
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
+          x: Math.random() * dimensions.width,
+          y: Math.random() * dimensions.height,
           size: Math.random() * 3 + 1,
           speedX: (Math.random() - 0.5) * 0.5,
           speedY: (Math.random() - 0.5) * 0.5,
@@ -71,10 +93,11 @@ const FuturisticCyberBackground = () => {
 
     const initializeGrid = () => {
       const newGridLines = [];
-      const spacing = 80;
+      // Responsive grid spacing
+      const spacing = dimensions.width < 768 ? 60 : 80;
 
       // Vertical lines
-      for (let x = 0; x < window.innerWidth; x += spacing) {
+      for (let x = 0; x < dimensions.width; x += spacing) {
         newGridLines.push({
           type: "vertical",
           position: x,
@@ -84,7 +107,7 @@ const FuturisticCyberBackground = () => {
       }
 
       // Horizontal lines
-      for (let y = 0; y < window.innerHeight; y += spacing) {
+      for (let y = 0; y < dimensions.height; y += spacing) {
         newGridLines.push({
           type: "horizontal",
           position: y,
@@ -96,7 +119,6 @@ const FuturisticCyberBackground = () => {
       setGridLines(newGridLines);
     };
 
-    // Initialize particles and grid lines
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
@@ -106,14 +128,8 @@ const FuturisticCyberBackground = () => {
     initializeParticles();
     initializeGrid();
 
-    const handleResize = () => {
-      initializeParticles();
-      initializeGrid();
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [dimensions]);
 
   // Mouse tracking
   useEffect(() => {
@@ -127,6 +143,8 @@ const FuturisticCyberBackground = () => {
 
   // Particle animation
   useEffect(() => {
+    if (dimensions.width === 0 || dimensions.height === 0) return;
+
     const animateParticles = () => {
       setParticles((prev) =>
         prev.map((particle) => {
@@ -134,10 +152,10 @@ const FuturisticCyberBackground = () => {
           let newY = particle.y + particle.speedY;
 
           // Wrap around screen edges
-          if (newX < 0) newX = window.innerWidth;
-          if (newX > window.innerWidth) newX = 0;
-          if (newY < 0) newY = window.innerHeight;
-          if (newY > window.innerHeight) newY = 0;
+          if (newX < 0) newX = dimensions.width;
+          if (newX > dimensions.width) newX = 0;
+          if (newY < 0) newY = dimensions.height;
+          if (newY > dimensions.height) newY = 0;
 
           return {
             ...particle,
@@ -151,19 +169,48 @@ const FuturisticCyberBackground = () => {
 
     const interval = setInterval(animateParticles, 50);
     return () => clearInterval(interval);
-  }, []);
+  }, [dimensions]);
 
-  // Floating geometric shapes data
-  // const floatingShapes = Array.from({ length: window.innerWidth < 640 ? 8 : 15 }, (_, i) => ({
-  //   id: i,
-  //   size: 20 + Math.random() * 40,
-  //   x: Math.random() * 100,
-  //   y: Math.random() * 100,
-  //   rotation: Math.random() * 360,
-  //   duration: 20 + Math.random() * 20,
-  //   delay: Math.random() * 5,
-  //   shape: ['hexagon', 'triangle', 'diamond', 'circuit'][Math.floor(Math.random() * 4)],
-  // }));
+  // Responsive floating shapes data
+  // const getFloatingShapes = () => {
+  //   if (dimensions.width === 0) return [];
+    
+  //   let shapeCount;
+  //   let baseSize;
+  //   if (dimensions.width < 480) {
+  //     shapeCount = 6;
+  //     baseSize = 15;
+  //   } else if (dimensions.width < 768) {
+  //     shapeCount = 8;
+  //     baseSize = 18;
+  //   } else if (dimensions.width < 1024) {
+  //     shapeCount = 12;
+  //     baseSize = 20;
+  //   } else {
+  //     shapeCount = 15;
+  //     baseSize = 20;
+  //   }
+
+  //   return Array.from({ length: shapeCount }, (_, i) => ({
+  //     id: i,
+  //     size: baseSize + Math.random() * 40,
+  //     x: Math.random() * 100,
+  //     y: Math.random() * 100,
+  //     rotation: Math.random() * 360,
+  //     duration: 20 + Math.random() * 20,
+  //     delay: Math.random() * 5,
+  //     shape: ['hexagon', 'triangle', 'diamond', 'circuit'][Math.floor(Math.random() * 4)],
+  //   }));
+  // };
+
+  // const floatingShapes = getFloatingShapes();
+
+  // Responsive connection distance
+  const getConnectionDistance = () => {
+    if (dimensions.width < 480) return 100;
+    if (dimensions.width < 768) return 120;
+    return 150;
+  };
 
   return (
     <div
@@ -175,16 +222,18 @@ const FuturisticCyberBackground = () => {
           width="100%"
           height="100%"
           className={darkMode ? "opacity-20" : "opacity-30"}
+          viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
+          preserveAspectRatio="xMidYMid slice"
         >
           <defs>
             <pattern
               id="grid"
-              width="80"
-              height="80"
+              width={dimensions.width < 768 ? "60" : "80"}
+              height={dimensions.width < 768 ? "60" : "80"}
               patternUnits="userSpaceOnUse"
             >
               <path
-                d="M 80 0 L 0 0 0 80"
+                d={`M ${dimensions.width < 768 ? "60" : "80"} 0 L 0 0 0 ${dimensions.width < 768 ? "60" : "80"}`}
                 fill="none"
                 stroke="url(#gridGradient)"
                 strokeWidth="0.5"
@@ -210,15 +259,16 @@ const FuturisticCyberBackground = () => {
       <div
         className={`absolute inset-0 ${darkMode ? "opacity-10" : "opacity-15"}`}
       >
-        <svg width="100%" height="100%">
-          {Array.from({ length: 20 }, (_, i) => {
-            const x = (i % 4) * 25;
-            const y = Math.floor(i / 4) * 20;
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+          {Array.from({ length: dimensions.width < 768 ? 12 : 20 }, (_, i) => {
+            const cols = dimensions.width < 768 ? 3 : 4;
+            const x = (i % cols) * (100 / cols);
+            const y = Math.floor(i / cols) * (100 / Math.ceil((dimensions.width < 768 ? 12 : 20) / cols));
             return (
               <g key={i}>
                 <motion.path
-                  d={`M${x}% ${y}% L${x + 10}% ${y}% L${x + 10}% ${y + 5}% L${
-                    x + 15
+                  d={`M${x}% ${y}% L${x + (100 / cols) * 0.4}% ${y}% L${x + (100 / cols) * 0.4}% ${y + 5}% L${
+                    x + (100 / cols) * 0.6
                   }% ${y + 5}%`}
                   stroke="url(#circuitGradient)"
                   strokeWidth="1"
@@ -236,9 +286,9 @@ const FuturisticCyberBackground = () => {
                   }}
                 />
                 <motion.circle
-                  cx={`${x + 15}%`}
+                  cx={`${x + (100 / cols) * 0.6}%`}
                   cy={`${y + 5}%`}
-                  r="2"
+                  r={dimensions.width < 768 ? "1.5" : "2"}
                   fill={
                     darkMode ? "rgba(13,148,136,0.6)" : "rgba(13,148,136,0.8)"
                   }
@@ -274,7 +324,7 @@ const FuturisticCyberBackground = () => {
             top: `${shape.y}%`,
           }}
           animate={{
-            y: [-20, -window.innerHeight - 20],
+            y: [-20, -dimensions.height - 20],
             rotate: [0, shape.rotation + 360],
             opacity: [0, 0.6, 0.6, 0],
           }}
@@ -329,7 +379,7 @@ const FuturisticCyberBackground = () => {
       ))} */}
 
       {/* Animated Particles with Connections */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
+      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox={`0 0 ${dimensions.width} ${dimensions.height}`} preserveAspectRatio="xMidYMid slice">
         <defs>
           <radialGradient id="particleGradient">
             <stop offset="0%" stopColor={theme.particleColors.primary} />
@@ -352,8 +402,9 @@ const FuturisticCyberBackground = () => {
                 Math.pow(particle.y - otherParticle.y, 2)
             );
 
-            if (distance < 150) {
-              const opacity = ((150 - distance) / 150) * (darkMode ? 0.3 : 0.4);
+            const connectionDistance = getConnectionDistance();
+            if (distance < connectionDistance) {
+              const opacity = ((connectionDistance - distance) / connectionDistance) * (darkMode ? 0.3 : 0.4);
               return (
                 <motion.line
                   key={`${i}-${j}`}
@@ -362,7 +413,7 @@ const FuturisticCyberBackground = () => {
                   x2={otherParticle.x}
                   y2={otherParticle.y}
                   stroke="url(#connectionGradient)"
-                  strokeWidth="1"
+                  strokeWidth={dimensions.width < 768 ? "0.8" : "1"}
                   opacity={opacity}
                   animate={{
                     opacity: [opacity * 0.5, opacity, opacity * 0.5],
@@ -439,7 +490,7 @@ const FuturisticCyberBackground = () => {
           background: `linear-gradient(90deg, transparent 98%, ${
             darkMode ? "rgba(13,148,136,0.1)" : "rgba(13,148,136,0.15)"
           } 100%)`,
-          backgroundSize: "20px 100%",
+          backgroundSize: `${dimensions.width < 768 ? "15px" : "20px"} 100%`,
         }}
         animate={{
           backgroundPosition: ["0% 0%", "100% 0%"],
@@ -453,7 +504,7 @@ const FuturisticCyberBackground = () => {
 
       {/* Data Stream Lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(5)].map((_, i) => (
+        {[...Array(dimensions.width < 768 ? 3 : 5)].map((_, i) => (
           <motion.div
             key={i}
             className={`absolute h-0.5 w-full bg-gradient-to-r from-transparent ${
@@ -474,10 +525,10 @@ const FuturisticCyberBackground = () => {
         ))}
       </div>
 
-      {/* Corner UI Elements */}
+      {/* Corner UI Elements - Responsive sizing */}
       {!isScrolled && (
         <>
-          <div className="absolute top-4 left-4 w-16 h-16 pointer-events-none">
+          <div className={`absolute top-2 left-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
             <motion.div
               className={`absolute inset-0 border-l-2 border-t-2 ${
                 darkMode ? "border-teal-400/50" : "border-teal-500/70"
@@ -498,7 +549,7 @@ const FuturisticCyberBackground = () => {
               transition={{ duration: 3, repeat: Infinity }}
             />
             <motion.div
-              className={`absolute top-2 left-2 w-2 h-2 ${
+              className={`absolute ${dimensions.width < 768 ? "top-1.5 left-1.5 w-1.5 h-1.5" : "top-2 left-2 w-2 h-2"} ${
                 darkMode ? "bg-teal-400" : "bg-teal-500"
               } rounded-full`}
               animate={{
@@ -509,7 +560,7 @@ const FuturisticCyberBackground = () => {
             />
           </div>
 
-          <div className="absolute top-4 right-4 w-16 h-16 pointer-events-none">
+          <div className={`absolute top-2 right-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
             <motion.div
               className={`absolute inset-0 border-r-2 border-t-2 ${
                 darkMode ? "border-cyan-400/50" : "border-cyan-500/70"
@@ -533,7 +584,7 @@ const FuturisticCyberBackground = () => {
         </>
       )}
 
-      <div className="absolute bottom-4 left-4 w-16 h-16 pointer-events-none">
+      <div className={`absolute bottom-2 left-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
         <motion.div
           className={`absolute inset-0 border-l-2 border-b-2 ${
             darkMode ? "border-blue-400/50" : "border-blue-500/70"
@@ -555,7 +606,7 @@ const FuturisticCyberBackground = () => {
         />
       </div>
 
-      <div className="absolute bottom-4 right-4 w-16 h-16 pointer-events-none">
+      <div className={`absolute bottom-2 right-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
         <motion.div
           className={`absolute inset-0 border-r-2 border-b-2 ${
             darkMode ? "border-purple-400/50" : "border-purple-500/70"
@@ -577,10 +628,12 @@ const FuturisticCyberBackground = () => {
         />
       </div>
 
-      {/* Central Holographic Ring */}
+      {/* Central Holographic Ring - Responsive sizing */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
         <motion.div
-          className={`w-96 h-96 rounded-full border ${
+          className={`${
+            dimensions.width < 768 ? "w-64 h-64" : dimensions.width < 1024 ? "w-80 h-80" : "w-96 h-96"
+          } rounded-full border ${
             darkMode ? "border-teal-400/20" : "border-teal-500/30"
           }`}
           animate={{
@@ -595,7 +648,9 @@ const FuturisticCyberBackground = () => {
           }}
         />
         <motion.div
-          className={`absolute inset-8 rounded-full border ${
+          className={`absolute ${
+            dimensions.width < 768 ? "inset-6" : "inset-8"
+          } rounded-full border ${
             darkMode ? "border-cyan-400/30" : "border-cyan-500/40"
           }`}
           animate={{

@@ -25,7 +25,7 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
       className="space-y-10"
     >
       <a href={cert.to} target="_blank" rel="noopener noreferrer" className="block group h-full">
-        <div className="relative h-full p-6 group-hover:pt-10 shadow-xl dark:shadow-[#0c121d] transition-all duration-500 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none group-hover:shadow-2xl">
+        <div className="relative h-full p-6 group-hover:pt-10 shadow-xl dark:shadow-[#0c121d] transition-all duration-500 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none group-hover:shadow-2xl overflow-hidden">
           
           {/* Animated background grid */}
           <div className="absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden">
@@ -33,7 +33,7 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
           </div>
 
           {/* Floating particles */}
-          <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
+          <div className="absolute inset-0 overflow-hidden">
             {[...Array(3)].map((_, i) => (
               <motion.div
                 key={i}
@@ -52,11 +52,14 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
             ))}
           </div>
 
-          {/* Scan line effect */}
+          {/* Scan line effect - properly contained */}
           <motion.div
-            className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-0 group-hover:opacity-100"
-            animate={isHovered ? { y: [0, 200, 0] } : {}}
+            className="absolute left-0 right-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-0 group-hover:opacity-100"
+            animate={isHovered ? { y: [0, 250, 0] } : { y: 0 }}
             transition={{ duration: 2, repeat: Infinity }}
+            style={{
+              clipPath: 'inset(0 0 0 0)',
+            }}
           />
 
           {/* Content section */}

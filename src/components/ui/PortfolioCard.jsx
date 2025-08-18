@@ -198,12 +198,12 @@ const PortfolioCard = ({ card, darkMode = false }) => {
 
           {/* Corner accent lights */}
           <motion.div
-            className="absolute -top-10 -right-4 w-8 h-8"
+            className="absolute -bottom-12 -right-7 w-10 h-10"
             animate={!isHovered ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
             <motion.div
-              className="w-full h-0.5 bg-teal-400/80"
+              className="w-full h-0.5 bg-teal-400/80 absolute bottom-0 left-0"
               animate={!isHovered ? { scaleX: [0, 1, 0] } : { scaleX: 0 }}
               transition={{ duration: 1.5, repeat: !isHovered ? Infinity : 0 }}
             />
@@ -215,12 +215,12 @@ const PortfolioCard = ({ card, darkMode = false }) => {
           </motion.div>
 
           <motion.div
-            className="absolute -bottom-10 -left-4 w-6 h-6"
+            className="absolute -top-12 -left-7 w-10 h-10"
             animate={!isHovered ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.3, delay: 0.2 }}
           >
             <motion.div
-              className="w-full h-0.5 bg-teal-400/80"
+              className="w-full h-0.5 bg-teal-400/80 absolute top-0 left-0"
               animate={!isHovered ? { scaleX: [0, 1, 0] } : { scaleX: 0 }}
               transition={{ duration: 1.5, repeat: !isHovered ? Infinity : 0, delay: 0.8 }}
             />
@@ -340,34 +340,34 @@ const PortfolioCard = ({ card, darkMode = false }) => {
 
           {/* Corner accent lights */}
           <motion.div
-            className="absolute top-4 right-4 w-8 h-8"
+            className="absolute top-4 left-4 w-10 h-10"
             animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
             <motion.div
-              className="w-full h-0.5 bg-white/50"
+              className="w-full h-0.5 bg-white/50 absolute top-0 left-0"
               animate={isHovered ? { scaleX: [0, 1, 0] } : { scaleX: 0 }}
               transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0 }}
             />
             <motion.div
-              className="w-0.5 h-full bg-white/50 absolute top-0 right-0"
+              className="w-0.5 h-full bg-white/50 absolute top-0 right-10"
               animate={isHovered ? { scaleY: [0, 1, 0] } : { scaleY: 0 }}
               transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0, delay: 0.5 }}
             />
           </motion.div>
 
           <motion.div
-            className="absolute bottom-4 left-4 w-6 h-6"
+            className="absolute bottom-4 right-4 w-10 h-10"
             animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.3, delay: 0.2 }}
           >
             <motion.div
-              className="w-full h-0.5 bg-white/50"
+              className="w-full h-0.5 bg-white/50 absolute top-10 left-0"
               animate={isHovered ? { scaleX: [0, 1, 0] } : { scaleX: 0 }}
               transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0, delay: 0.8 }}
             />
             <motion.div
-              className="w-0.5 h-full bg-white/50 absolute bottom-0 left-0"
+              className="w-0.5 h-full bg-white/50 absolute bottom-0 left-10"
               animate={isHovered ? { scaleY: [0, 1, 0] } : { scaleY: 0 }}
               transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0, delay: 1.3 }}
             />

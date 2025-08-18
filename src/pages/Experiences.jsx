@@ -33,19 +33,23 @@ const FuturisticExperienceCard = ({ experience, index, isLeft }) => {
       className={`md:w-1/2 ${isLeft ? "md:pr-16" : "md:pl-16"}`}
     >
       <div className={`relative overflow-hidden shadow-xl dark:shadow-[#0c121d] hover:shadow-2xl transition-all duration-500 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 group rounded-[30px] ${
-          index % 2 === 0
-            ? "rounded-tl-none rounded-br-none md:rounded-tl-none md:rounded-br-none"
-            : "rounded-tr-none rounded-bl-none md:rounded-tr-none md:rounded-bl-none"
+          isLeft
+            ? "rounded-tr-none rounded-bl-none md:rounded-tr-none md:rounded-bl-none"
+            : "rounded-tl-none rounded-br-none md:rounded-tl-none md:rounded-br-none"
         } transform`}
       >  
         
         {/* Animated background grid */}
-        <div className="absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden">
+        <div className={`absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] ${
+          isLeft ? "rounded-tr-none rounded-bl-none" : "rounded-tl-none rounded-br-none"
+        } overflow-hidden`}>
           <div className="absolute inset-0 bg-[linear-gradient(rgba(13,148,136,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(13,148,136,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
         </div>
 
         {/* Floating particles */}
-        <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
+        <div className={`absolute inset-0 overflow-hidden rounded-[30px] ${
+          isLeft ? "rounded-tr-none rounded-bl-none" : "rounded-tl-none rounded-br-none"
+        }`}>
           {[...Array(4)].map((_, i) => (
             <motion.div
               key={i}
@@ -67,7 +71,7 @@ const FuturisticExperienceCard = ({ experience, index, isLeft }) => {
         {/* Scan line effect */}
         <motion.div
           className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-0 group-hover:opacity-100"
-          animate={isHovered ? { y: [0, 250, 0] } : {}}
+          animate={isHovered ? { y: [0, 300, 0] } : {}}
           transition={{ duration: 2.5, repeat: Infinity }}
         />
 
@@ -104,7 +108,7 @@ const FuturisticExperienceCard = ({ experience, index, isLeft }) => {
           {/* Company with icon */}
           <div className="flex items-center gap-2 mb-3">
             <motion.p 
-              className="text-sm font-semibold text-gray-700 dark:text-gray-300 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300"
+              className="text-sm font-semibold text-teal-600 dark:text-teal-400 transition-colors duration-300"
               animate={isHovered ? { 
                 textShadow: "0 0 10px rgba(13,148,136,0.3)" 
               } : {}}
@@ -117,7 +121,6 @@ const FuturisticExperienceCard = ({ experience, index, isLeft }) => {
           <div className="mb-4">
             <motion.div 
               className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-teal-700 dark:text-teal-300 bg-teal-100 dark:bg-teal-900/50 rounded-full border border-teal-200 dark:border-teal-700 backdrop-blur-sm"
-              whileHover={{ scale: 1.05 }}
               animate={isHovered ? {
                 boxShadow: "0 0 20px rgba(13,148,136,0.4)"
               } : {}}
@@ -129,7 +132,7 @@ const FuturisticExperienceCard = ({ experience, index, isLeft }) => {
 
           {/* Description */}
           <motion.p 
-            className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed"
             animate={isHovered ? { 
               textShadow: "0 0 10px rgba(13,148,136,0.1)"
             } : {}}
@@ -138,32 +141,44 @@ const FuturisticExperienceCard = ({ experience, index, isLeft }) => {
           </motion.p>
         </div>
 
-        {/* Corner geometric elements */}
+        {/* Corner geometric elements - Positioned based on isLeft */}
         <motion.div
-          className="absolute top-4 left-4 opacity-50 group-hover:opacity-100"
-          animate={isHovered ? { rotate: 90 } : { rotate: 0 }}
+          className={`absolute top-4 opacity-50 group-hover:opacity-100 ${
+            isLeft ? "right-4" : "left-4"
+          }`}
+          animate={isHovered ? { rotate: isLeft ? -90 : 90 } : { rotate: 0 }}
           transition={{ duration: 0.3 }}
         >
           <div className="w-6 h-6">
             <div className="absolute w-full h-0.5 bg-teal-400/70" />
-            <div className="absolute h-full w-0.5 bg-teal-400/70" />
+            <div className={`absolute h-full w-0.5 bg-teal-400/70 ${isLeft ? "right-0" : "left-0"}`} />
           </div>
         </motion.div>
         
         <motion.div
-          className="absolute bottom-4 right-4 opacity-50 group-hover:opacity-100"
-          animate={isHovered ? { rotate: -90 } : { rotate: 0 }}
+          className={`absolute bottom-4 opacity-50 group-hover:opacity-100 ${
+            isLeft ? "left-4" : "right-4"
+          }`}
+          animate={isHovered ? { rotate: isLeft ? 90 : -90 } : { rotate: 0 }}
           transition={{ duration: 0.3 }}
         >
           <div className="w-6 h-6">
             <div className="absolute w-full h-0.5 bg-teal-400/70 bottom-0" />
-            <div className="absolute h-full w-0.5 bg-teal-400/70 right-0" />
+            <div className={`absolute h-full w-0.5 bg-teal-400/70 ${isLeft ? "left-0" : "right-0"}`} />
           </div>
         </motion.div>
 
-        {/* Energy pulse at corners */}
-        <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-teal-400/20 to-transparent rounded-tr-[30px]" />
-        <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-cyan-400/20 to-transparent rounded-bl-[30px]" />
+        {/* Energy pulse at corners - Positioned based on isLeft */}
+        <div className={`absolute top-0 w-12 h-12 bg-gradient-to-bl from-teal-400/20 to-transparent ${
+          isLeft 
+            ? "left-0 bg-gradient-to-br from-teal-400/20 to-transparent rounded-tl-[30px]" 
+            : "right-0 bg-gradient-to-bl from-teal-400/20 to-transparent rounded-tr-[30px]"
+        }`} />
+        <div className={`absolute bottom-0 w-12 h-12 ${
+          isLeft 
+            ? "right-0 bg-gradient-to-tl from-cyan-400/20 to-transparent rounded-br-[30px]" 
+            : "left-0 bg-gradient-to-tr from-cyan-400/20 to-transparent rounded-bl-[30px]"
+        }`} />
       </div>
     </motion.div>
   );
