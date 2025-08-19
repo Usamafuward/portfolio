@@ -653,6 +653,29 @@ const Index = () => {
                     </div>
                   </div>
 
+                  <div className="absolute bottom-0 right-0 p-4">
+                  <div className="relative w-8 h-8">
+                    <motion.div
+                      className="absolute bottom-0 right-0 w-full h-0.5 bg-teal-400/60 group-hover:bg-teal-400"
+                      animate={{ scaleX: [0, 1, 0] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.5,
+                      }}
+                    />
+                    <motion.div
+                      className="absolute bottom-0 right-0 w-0.5 h-full bg-teal-400/60 group-hover:bg-teal-400"
+                      animate={{ scaleY: [0, 1, 0] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.5 + 0.5,
+                      }}
+                    />
+                  </div>
+                </div>
+
                   {/* Corner accents with theme compatibility */}
                   <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-teal-400/20 to-transparent rounded-tl-none" />
                   <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-cyan-400/20 to-transparent rounded-br-none" />
@@ -896,15 +919,26 @@ const Index = () => {
                   <motion.div
                     className="w-20 h-20 bg-gradient-to-bl from-teal-400/10 to-transparent"
                     animate={{
-                      background: isHovered
-                        ? "linear-gradient(to bottom left, rgba(13,148,136,0.2), transparent)"
-                        : "linear-gradient(to bottom left, rgba(13,148,136,0.1), transparent)",
+                      background: "linear-gradient(to bottom left, rgba(13,148,136,0.3), transparent)"
                     }}
                     transition={{ duration: 0.3 }}
                   />
-                  <div className="absolute top-4 right-4 w-8 h-8">
+                </div>
+
+                <div className="absolute bottom-0 left-0">
+                  <motion.div
+                    className="w-16 h-16 bg-gradient-to-tr from-cyan-400/10 to-transparent"
+                    animate={{
+                      background: "linear-gradient(to top right, rgba(13,148,136,0.3), transparent)"
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
+
+                <div className="absolute bottom-0 right-0 p-4">
+                  <div className="relative w-10 h-10">
                     <motion.div
-                      className="w-full h-0.5 bg-teal-400/50"
+                      className="absolute bottom-0 right-0 w-full h-0.5 bg-teal-400/60 group-hover:bg-teal-400"
                       animate={{ scaleX: [0, 1, 0] }}
                       transition={{
                         duration: 2,
@@ -913,7 +947,7 @@ const Index = () => {
                       }}
                     />
                     <motion.div
-                      className="w-0.5 h-full bg-teal-400/50 absolute top-0 right-0"
+                      className="absolute bottom-0 right-0 w-0.5 h-full bg-teal-400/60 group-hover:bg-teal-400"
                       animate={{ scaleY: [0, 1, 0] }}
                       transition={{
                         duration: 2,
@@ -922,18 +956,6 @@ const Index = () => {
                       }}
                     />
                   </div>
-                </div>
-
-                <div className="absolute bottom-0 left-0">
-                  <motion.div
-                    className="w-16 h-16 bg-gradient-to-tr from-cyan-400/10 to-transparent"
-                    animate={{
-                      background: isHovered
-                        ? "linear-gradient(to top right, rgba(34,211,238,0.2), transparent)"
-                        : "linear-gradient(to top right, rgba(34,211,238,0.1), transparent)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
                 </div>
               </div>
             </motion.div>

@@ -223,7 +223,7 @@ const Layout = () => {
                 About Me
               </h3>
               <p className="text-center flex items-start text-gray-700 dark:text-gray-300">
-                Computer Science Undergraduate @ UCSC passionate about creating
+                Computer Science Graduate @ UCSC passionate about creating
                 innovative solutions and exploring new technologies.
               </p>
             </motion.div>
@@ -319,7 +319,7 @@ const Layout = () => {
         </div>
 
         <p className="text-md text-gray-800 dark:text-gray-200 text-center py-4">
-          © 2024 Usama Puward | Computer Science Undergraduate @ UCSC
+          © 2024 Usama Puward | AI/ML Engineer & Software Developer
         </p>
       </footer>
       {isScrolled ? (

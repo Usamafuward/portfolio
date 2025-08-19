@@ -47,31 +47,31 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: <Mail className="w-6 h-6" />,
+      icon: Mail,
       title: "Email",
       value: "usamafuward2001@gmail.com",
       link: "mailto:usamafuward2001@gmail.com",
     },
     {
-      icon: <Phone className="w-6 h-6" />,
+      icon: Phone,
       title: "Phone",
       value: "+94 (76) 6260507",
       link: "tel:+94766260507",
     },
     {
-      icon: <LiaWhatsapp className="w-7 h-7" />,
+      icon: LiaWhatsapp,
       title: "WhatsApp",
       value: "+94 (76) 6260507",
       link: "https://wa.me/94766260507",
     },
     {
-      icon: <LiaTelegramPlane className="w-6 h-6" />,
+      icon: LiaTelegramPlane,
       title: "Telegram",
       value: "+94 (76) 6260507",
       link: "https://t.me/+94766260507",
     },
     {
-      icon: <MapPin className="w-6 h-6" />,
+      icon: MapPin,
       title: "Location",
       value: "Colombo, Sri Lanka",
       link: null,
@@ -124,10 +124,18 @@ export default function Contact() {
                     isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
                   }
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center space-x-4"
+                  className="flex items-center space-x-4 relative group"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-teal-200 dark:bg-teal-900/60 flex items-center justify-center text-teal-600 dark:text-teal-400 shadow-xl dark:shadow-[#0c121d]">
-                    {info.icon}
+                  <div className="relative flex w-12 h-12 rounded-full bg-teal-200 dark:bg-teal-900/60 items-center justify-center text-teal-600 dark:text-teal-400 shadow-xl dark:shadow-[#0c121d] overflow-hidden">
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-b from-transparent via-teal-400/20 to-transparent"
+                      animate={{ y: [-30, 30] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                      }}
+                    />
+                    <info.icon className="w-6 h-6 relative z-10" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
@@ -176,6 +184,8 @@ export default function Contact() {
               />
             </div>
 
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
+
             {/* Floating particles */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
               {[...Array(6)].map((_, i) => (
@@ -186,16 +196,12 @@ export default function Contact() {
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
                   }}
-                  animate={
-                    isHovered
-                      ? {
-                          x: [0, Math.random() * 40 - 20],
-                          y: [0, Math.random() * 40 - 20],
-                          opacity: [0, 0.8, 0],
-                          scale: [0, 1, 0],
-                        }
-                      : { opacity: 0 }
-                  }
+                  animate={{
+                    x: [0, Math.random() * 40 - 20],
+                    y: [0, Math.random() * 40 - 20],
+                    opacity: [0, 0.8, 0],
+                    scale: [0, 1, 0],
+                  }}
                   transition={{
                     duration: Math.random() * 3 + 2,
                     repeat: Infinity,
@@ -218,7 +224,7 @@ export default function Contact() {
 
             {/* Corner elements */}
             <div className="absolute top-0 left-0 p-4">
-              <div className="relative w-8 h-8">
+              <div className="relative w-10 h-10">
                 <motion.div
                   className="absolute top-0 left-0 w-full h-0.5 bg-teal-400/60"
                   animate={{
