@@ -495,7 +495,7 @@ const Index = () => {
                 variants={
                   index % 2 === 0 ? slideLeftVariants : slideRightVariants
                 }
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.8, delay: index * 0.1, type: "spring" }}
               >
                 {/* Holographic glow */}
                 <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-teal-400/20 via-cyan-400/20 to-blue-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

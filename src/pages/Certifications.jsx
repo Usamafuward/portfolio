@@ -14,19 +14,23 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
       ref={cardRef}
       initial={{ opacity: 0, y: 30, scale: 0.95 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ 
-        duration: 0.6, 
+      transition={{
+        duration: 0.6,
         delay: delay + index * 0.1,
         type: "spring",
-        stiffness: 120
+        stiffness: 120,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="space-y-10"
     >
-      <a href={cert.to} target="_blank" rel="noopener noreferrer" className="block group h-full">
+      <a
+        href={cert.to}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block group h-full"
+      >
         <div className="relative h-full p-6 group-hover:pt-10 shadow-xl dark:shadow-[#0c121d] transition-all duration-500 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none group-hover:shadow-2xl overflow-hidden">
-          
           {/* Animated background grid */}
           <div className="absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden">
             <div className="absolute inset-0 bg-[linear-gradient(rgba(13,148,136,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(13,148,136,0.3)_1px,transparent_1px)] bg-[size:15px_15px]" />
@@ -34,15 +38,19 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
 
           {/* Floating particles */}
           <div className="absolute inset-0 overflow-hidden">
-            {[...Array(3)].map((_, i) => (
+            {[...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100"
-                animate={isHovered ? {
+                className="absolute w-1 h-1 bg-teal-400 rounded-full"
+                style={{
+                  left: `${Math.random() * 50}%`,
+                  top: `${Math.random() * 50}%`,
+                }}
+                animate={{
                   x: [Math.random() * 200, Math.random() * 200],
                   y: [Math.random() * 150, Math.random() * 150],
                   opacity: [0, 0.6, 0],
-                } : {}}
+                }}
                 transition={{
                   duration: Math.random() * 3 + 2,
                   repeat: Infinity,
@@ -58,27 +66,34 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
             animate={isHovered ? { y: [0, 250, 0] } : { y: 0 }}
             transition={{ duration: 2, repeat: Infinity }}
             style={{
-              clipPath: 'inset(0 0 0 0)',
+              clipPath: "inset(0 0 0 0)",
             }}
           />
 
           {/* Content section */}
           <div className="relative z-10">
-            
             {/* Title with external link icon */}
             <div className="flex justify-between items-start mb-4">
-              <motion.h3 
+              <motion.h3
                 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300 pr-2"
-                animate={isHovered ? { 
-                  textShadow: "0 0 20px rgba(13,148,136,0.3)" 
-                } : {}}
+                animate={
+                  isHovered
+                    ? {
+                        textShadow: "0 0 20px rgba(13,148,136,0.3)",
+                      }
+                    : {}
+                }
               >
                 {cert.title}
               </motion.h3>
-              
+
               <motion.div
                 className="w-6 flex-shrink-0"
-                animate={isHovered ? { rotate: 45, scale: 1.1 } : { rotate: 0, scale: 1 }}
+                animate={
+                  isHovered
+                    ? { rotate: 45, scale: 1.1 }
+                    : { rotate: 0, scale: 1 }
+                }
                 transition={{ duration: 0.3 }}
               >
                 <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 mt-1 shadow-xl dark:shadow-[#0c121d] transition-colors duration-300" />
@@ -86,11 +101,15 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
             </div>
 
             {/* Description */}
-            <motion.p 
+            <motion.p
               className="text-sm text-gray-600 dark:text-gray-300 lg:line-clamp-3 lg:group-hover:line-clamp-none transition-all duration-300"
-              animate={isHovered ? { 
-                textShadow: "0 0 10px rgba(13,148,136,0.1)"
-              } : {}}
+              animate={
+                isHovered
+                  ? {
+                      textShadow: "0 0 10px rgba(13,148,136,0.1)",
+                    }
+                  : {}
+              }
             >
               {cert.description}
             </motion.p>
@@ -107,7 +126,7 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
               <div className="absolute h-full w-0.5 bg-teal-400/70" />
             </div>
           </motion.div>
-          
+
           <motion.div
             className="absolute bottom-4 right-4 opacity-50 group-hover:opacity-100"
             animate={isHovered ? { rotate: -90 } : { rotate: 0 }}
@@ -267,9 +286,10 @@ export default function Certifications() {
     },
     {
       title: "Mastering Multi-Agent Development with AutoGen",
-      description: "An online course authorized by Packt, offered through Coursera, covering multi-agent systems and AutoGen, including autonomous agent interactions, conversation patterns, and AI-driven automation.",
+      description:
+        "An online course authorized by Packt, offered through Coursera, covering multi-agent systems and AutoGen, including autonomous agent interactions, conversation patterns, and AI-driven automation.",
       to: "https://coursera.org/verify/CCC0CUDGVOOR",
-      organization: "Packt"
+      organization: "Packt",
     },
   ];
 
@@ -302,12 +322,12 @@ export default function Certifications() {
         {/* Enhanced Title Section */}
         <motion.h1
           className="flex items-center justify-center py-7 mb-5 text-[42px] md:text-5xl font-bold text-teal-600 dark:text-teal-400"
-          animate={{ 
+          animate={{
             textShadow: [
               "0 0 20px rgba(13,148,136,0.3)",
               "0 0 30px rgba(13,148,136,0.4)",
-              "0 0 20px rgba(13,148,136,0.3)"
-            ]
+              "0 0 20px rgba(13,148,136,0.3)",
+            ],
           }}
           transition={{ duration: 3, repeat: Infinity }}
         >
@@ -315,7 +335,7 @@ export default function Certifications() {
         </motion.h1>
 
         {/* Enhanced Controls Section */}
-        <motion.div 
+        <motion.div
           className="mb-10 space-y-6"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -341,7 +361,7 @@ export default function Certifications() {
           </div>
 
           {/* Enhanced Filter Buttons */}
-          <motion.div 
+          <motion.div
             className="flex flex-wrap justify-center gap-3"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -415,7 +435,8 @@ export default function Certifications() {
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: orgIndex * 0.1 + 0.6 }}
               >
-                {certs.length} {certs.length === 1 ? 'certification' : 'certifications'}
+                {certs.length}{" "}
+                {certs.length === 1 ? "certification" : "certifications"}
               </motion.span>
             </motion.div>
 
@@ -461,10 +482,20 @@ export default function Certifications() {
             key={i}
             className="absolute w-1 h-1 bg-teal-400/40 rounded-full"
             animate={{
-              x: [Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000), Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000)],
-              y: [Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000), Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000)],
+              x: [
+                Math.random() *
+                  (typeof window !== "undefined" ? window.innerWidth : 1000),
+                Math.random() *
+                  (typeof window !== "undefined" ? window.innerWidth : 1000),
+              ],
+              y: [
+                Math.random() *
+                  (typeof window !== "undefined" ? window.innerHeight : 1000),
+                Math.random() *
+                  (typeof window !== "undefined" ? window.innerHeight : 1000),
+              ],
               opacity: [0, 0.4, 0],
-              scale: [0, 1, 0]
+              scale: [0, 1, 0],
             }}
             transition={{
               duration: Math.random() * 15 + 10,

@@ -188,10 +188,10 @@ export default function Contact() {
 
             {/* Floating particles */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              {[...Array(6)].map((_, i) => (
+              {[...Array(10)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-2 h-2 bg-teal-400 rounded-full"
+                  className="absolute w-1.5 h-1.5 bg-teal-400 rounded-full"
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,

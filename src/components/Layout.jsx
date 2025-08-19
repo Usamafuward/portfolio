@@ -96,13 +96,13 @@ const Layout = () => {
       <header
         className={`px-7 md:px-[92px] lg:px-[156px] fixed top-0 w-full z-50 transition-colors duration-300 ${
           isScrolled
-            ? "bg-[#b9f7d7]/80 dark:bg-gray-700/80 backdrop-filter backdrop-blur-[8px] shadow-xl"
+            ? "bg-[#b9f7d7]/10 dark:bg-gray-900/20 backdrop-filter backdrop-blur-xl shadow-xl"
             : "bg-transparent dark:bg-transparent shadow-none"
         }`}
       >
         <nav
           className={`flex justify-between items-center dark:text-white ${
-            isScrolled ? "py-[14px]" : "py-6"
+            isScrolled ? "py-4" : "py-6"
           } transition-all duration-300`}
         >
           <div className="flex items-center gap-4 sm:gap-5">
@@ -137,60 +137,119 @@ const Layout = () => {
             <Link to="/">
               <motion.div
                 className="relative inline-block group"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                <h1
-                  className="font-playfair text-2xl sm:text-3xl font-bold dark:bg-white bg-gray-800
-                  lg:bg-gradient-to-r from-teal-600 to-teal-400
-                  bg-clip-text text-transparent
-                  transition-all duration-300
-                  hover:bg-gradient-to-r mb-[2px]"
-                >
-                  Portfolio
-                </h1>
-                <span
-                  className="hidden lg:block absolute -bottom-1 left-0 w-0 h-0.5
-                  bg-gradient-to-r from-teal-600 to-teal-400
-                  group-hover:w-full transition-all duration-300"
-                ></span>
+                {/* Glowing background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-cyan-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg" />
+
+                <div className="relative">
+                  <h1
+                    className="font-playfair text-2xl sm:text-3xl font-bold
+                    bg-gray-800 dark:bg-white
+                    lg:bg-gradient-to-r from-teal-600 to-teal-400
+                    bg-clip-text text-transparent
+                    transition-all duration-300
+                    hover:bg-gradient-to-r mb-[2px]
+                    group-hover:drop-shadow-[0_0_10px_rgba(13,148,136,0.5)]"
+                  >
+                    Portfolio
+                  </h1>
+
+                  {/* Holographic corners */}
+                  <div className="absolute -top-1 -left-1 w-4 h-4 border-l-2 border-t-2 border-teal-400/0 group-hover:border-teal-400/60 transition-colors duration-300 mt-1.5" />
+                  <div className="absolute -bottom-1 -right-1 w-4 h-4 border-r-2 border-b-2 border-teal-400/0 group-hover:border-teal-400 transition-colors duration-300 mb-1" />
+                </div>
               </motion.div>
             </Link>
           </div>
 
           <div className="hidden lg:flex items-center gap-7 xl:gap-8">
-            {menuItems.slice(0, -1).map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={`hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium transition-all duration-200 ${
-                  isActive(item.to)
-                    ? "border-b-[2.5px] border-teal-500 dark:border-teal-400 text-teal-600 dark:text-teal-400 transform -translate-y-1"
-                    : "text-gray-800 dark:text-white"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {menuItems.slice(0, -1).map((item) => {
+              const active = isActive(item.to);
+
+              return (
+                <motion.div
+                  key={item.to}
+                  className="relative group"
+                  whileHover={active ? {} : { y: -3 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link
+                    to={item.to}
+                    className={`relative hover:text-teal-500 dark:hover:text-teal-400 text-lg font-medium transition-all duration-300 ${
+                      active
+                        ? "text-teal-600 dark:text-teal-400"
+                        : "text-gray-800 dark:text-white"
+                    }`}
+                  >
+                    {item.label}
+
+                    {/* Active indicator with glow */}
+                    {active && (
+                      <motion.div className="relative" layoutId="activeTab">
+                        {/* Holographic corners for active indicator */}
+                        <motion.div
+                          className="absolute -top-7 -left-2 w-3 h-3 border-l-2 border-t-2 border-teal-400 transition-colors duration-300"
+                          animate={{ opacity: [1, 0, 1] }}
+                          transition={{ duration: 1, repeat: Infinity }}
+                        />
+                        <motion.div
+                          className="absolute -bottom-0 -right-2 w-3 h-3 border-r-2 border-b-2 border-teal-400 transition-colors duration-300"
+                          animate={{ opacity: [1, 0, 1] }}
+                          transition={{ duration: 1, repeat: Infinity }}
+                        />
+                      </motion.div>
+                    )}
+
+                    {/* Hover effect */}
+                    <motion.div
+                      className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-400 opacity-0 group-hover:opacity-60"
+                      initial={{ scaleX: 0 }}
+                      whileHover={{ scaleX: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-4 sm:gap-5">
             <motion.div
-              whileHover={{ rotate: 35 }}
-              whileTap={{ scale: 0.9 }}
+              className="relative group cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
-              {darkMode ? (
-                <MdLightMode
-                  onClick={() => setDarkMode(!darkMode)}
-                  className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
-                />
-              ) : (
-                <BsFillMoonStarsFill
-                  onClick={() => setDarkMode(!darkMode)}
-                  className="cursor-pointer text-2xl w-7 h-7 text-gray-700 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-200"
-                />
-              )}
+              {/* Orbital rings */}
+              <motion.div
+                className="absolute inset-0 w-12 h-12 border border-teal-400/30 rounded-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute inset-1 w-10 h-10 border border-cyan-400/20 rounded-full"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+              />
+
+              {/* Center button */}
+              <div
+                onClick={() => setDarkMode(!darkMode)}
+                className="relative w-12 h-12 bg-gray-100/10 dark:bg-gray-800/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-teal-400/30 group-hover:border-teal-400/60 transition-all duration-300"
+              >
+                <motion.div
+                  animate={{ rotate: darkMode ? 0 : 180 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {darkMode ? (
+                    <MdLightMode className="w-6 h-6 text-gray-700 dark:text-white group-hover:text-teal-400 transition-colors duration-200" />
+                  ) : (
+                    <BsFillMoonStarsFill className="w-6 h-6 text-gray-700 dark:text-white group-hover:text-teal-400 transition-colors duration-200" />
+                  )}
+                </motion.div>
+              </div>
             </motion.div>
             <Link to="/contact">
               <button className="glowing-button flex items-center px-2 py-1 sm:py-2 border-2 border-white text-white bg-gradient-to-r from-cyan-700 to-teal-500 shadow-xl transition-all duration-300">
@@ -244,12 +303,20 @@ const Layout = () => {
                       key={index}
                       whileHover={{ y: -2 }}
                       transition={{ duration: 0.2 }}
+                      className="relative group"
                     >
                       <Link
                         to={item.to}
-                        className="text-gray-700 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                        className="text-gray-700 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 relative"
                       >
                         {item.label}
+
+                        {/* Hover indicator with corners */}
+                        <motion.div className="absolute -bottom-1 left-0 right-0">
+                          {/* Holographic corners for hover */}
+                          <div className="absolute -top-7 -left-2 w-2 h-2 border-l border-t border-teal-400/0 group-hover:border-teal-400/60 transition-colors duration-300" />
+                          <div className="absolute -bottom-0 -right-2 w-2 h-2 border-r border-b border-teal-400/0 group-hover:border-teal-400 transition-colors duration-300" />
+                        </motion.div>
                       </Link>
                     </motion.li>
                   ))}
@@ -260,12 +327,20 @@ const Layout = () => {
                       key={index}
                       whileHover={{ y: -2 }}
                       transition={{ duration: 0.2 }}
+                      className="relative group"
                     >
                       <Link
                         to={item.to}
                         className="text-gray-700 flex justify-center dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
                       >
                         {item.label}
+
+                        {/* Hover indicator with corners */}
+                        <motion.div className="absolute -bottom-1 left-0 right-0">
+                          {/* Holographic corners for hover */}
+                          <div className="absolute -top-7 -left-2 w-2 h-2 border-l border-t border-teal-400/0 group-hover:border-teal-400/60 transition-colors duration-300" />
+                          <div className="absolute -bottom-0 -right-2 w-2 h-2 border-r border-b border-teal-400/0 group-hover:border-teal-400 transition-colors duration-300" />
+                        </motion.div>
                       </Link>
                     </motion.li>
                   ))}

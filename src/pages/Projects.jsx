@@ -1,6 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Brain, Globe, Monitor, Server, Code } from "lucide-react";
+import {
+  ExternalLink,
+  Brain,
+  Globe,
+  Monitor,
+  Server,
+  Code,
+} from "lucide-react";
 import one from "@/assets/thumbnails/1.png";
 import two from "@/assets/thumbnails/2.png";
 import three from "@/assets/thumbnails/3.png";
@@ -22,11 +29,16 @@ const FuturisticProjectCard = ({ project, index }) => {
   // Get category icon
   const getCategoryIcon = (category) => {
     switch (category) {
-      case "AI/ML": return Brain;
-      case "Full-Stack": return Globe;
-      case "Frontend": return Monitor;
-      case "Backend": return Server;
-      default: return Code;
+      case "AI/ML":
+        return Brain;
+      case "Full-Stack":
+        return Globe;
+      case "Frontend":
+        return Monitor;
+      case "Backend":
+        return Server;
+      default:
+        return Code;
     }
   };
 
@@ -38,52 +50,43 @@ const FuturisticProjectCard = ({ project, index }) => {
       className="break-inside-avoid mb-6"
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ 
-        duration: 0.6, 
+      transition={{
+        duration: 0.6,
         delay: index * 0.1,
         type: "spring",
-        stiffness: 100
+        stiffness: 100,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <a href={project.to} target="_blank" rel="noopener noreferrer" className="block group">
+      <a
+        href={project.to}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block group"
+      >
         <div className="relative overflow-hidden shadow-xl dark:shadow-[#0c121d] hover:shadow-xl transition-all duration-500 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none transform">
-          
           {/* Animated background grid */}
           <div className="absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden">
             <div className="absolute inset-0 bg-[linear-gradient(rgba(13,148,136,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(13,148,136,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
           </div>
 
-          {/* Floating particles */}
-          <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
-            {[...Array(3)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1 h-1 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100"
-                animate={isHovered ? {
-                  x: [Math.random() * 200, Math.random() * 200],
-                  y: [Math.random() * 150, Math.random() * 150],
-                  opacity: [0, 0.6, 0],
-                } : {}}
-                transition={{
-                  duration: Math.random() * 3 + 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 2,
-                }}
-              />
-            ))}
-          </div>
-
           {/* Category badge with icon */}
           <div className="absolute top-4 right-4 z-20">
-            <motion.div 
+            <motion.div
               className="flex items-center gap-2 px-2.5 py-1 text-xs font-medium text-teal-700 dark:text-teal-300 bg-teal-100 dark:bg-teal-900/50 rounded-full border border-teal-200 dark:border-teal-700"
-              animate={isHovered ? {
-                boxShadow: "0 0 20px rgba(13,148,136,0.4)"
-              } : {}}
+              animate={
+                isHovered
+                  ? {
+                      boxShadow: "0 0 20px rgba(13,148,136,0.4)",
+                    }
+                  : {}
+              }
             >
-              <CategoryIcon size={12} className="text-teal-600 dark:text-teal-400" />
+              <CategoryIcon
+                size={12}
+                className="text-teal-600 dark:text-teal-400"
+              />
               <span>{project.category}</span>
             </motion.div>
           </div>
@@ -97,7 +100,6 @@ const FuturisticProjectCard = ({ project, index }) => {
 
           {/* Image section with enhanced effects */}
           <div className="relative bg-gray-200 dark:bg-gray-600 flex items-center justify-center overflow-hidden">
-            
             {/* Circuit pattern overlay */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
               <svg width="100%" height="100%" className="text-teal-400/50">
@@ -111,43 +113,58 @@ const FuturisticProjectCard = ({ project, index }) => {
                     stroke="currentColor"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
-                    animate={isHovered ? { pathLength: 1, opacity: 0.3 } : { pathLength: 0, opacity: 0 }}
+                    animate={
+                      isHovered
+                        ? { pathLength: 1, opacity: 0.3 }
+                        : { pathLength: 0, opacity: 0 }
+                    }
                     transition={{ duration: 1.5, delay: i * 0.1 }}
                   />
                 ))}
               </svg>
             </div>
 
-            <img 
-              src={project.thumbnail} 
-              alt={project.title} 
-              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" 
+            <img
+              src={project.thumbnail}
+              alt={project.title}
+              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
             />
 
             {/* Enhanced hover overlay */}
-            <motion.div 
+            <motion.div
               className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/20"
               initial={{ scale: 0.8 }}
-              animate={{ scale: isHovered ? 1 : 0.8, opacity: isHovered ? 1 : 0 }}
+              animate={{
+                scale: isHovered ? 1 : 0.8,
+                opacity: isHovered ? 1 : 0,
+              }}
             >
-              <motion.div 
+              <motion.div
                 className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full p-3 transform scale-75 group-hover:scale-100 transition-transform duration-300"
-                animate={isHovered ? { 
-                  rotate: [0, 10, -10, 0],
-                  scale: [0.75, 1.1, 1]
-                } : {}}
+                animate={
+                  isHovered
+                    ? {
+                        rotate: [0, 10, -10, 0],
+                        scale: [0.75, 1.1, 1],
+                      }
+                    : {}
+                }
                 transition={{ duration: 0.8 }}
               >
                 <ExternalLink className="w-6 h-6 text-teal-600 dark:text-teal-400" />
               </motion.div>
-              
+
               {/* Energy rings */}
               <motion.div
                 className="absolute inset-0 rounded-full border-2 border-teal-400/50"
-                animate={isHovered ? {
-                  scale: [1, 1.5, 2],
-                  opacity: [0.5, 0.2, 0]
-                } : {}}
+                animate={
+                  isHovered
+                    ? {
+                        scale: [1, 1.5, 2],
+                        opacity: [0.5, 0.2, 0],
+                      }
+                    : {}
+                }
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
             </motion.div>
@@ -155,30 +172,53 @@ const FuturisticProjectCard = ({ project, index }) => {
 
           {/* Content section */}
           <div className="relative z-10 p-6">
-            
+            {/* Floating particles */}
+            <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
+              {[...Array(6)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-teal-400 rounded-full"
+                  style={{
+                    left: `${Math.random() * 50}%`,
+                    top: `${Math.random() * 50}%`,
+                  }}
+                  animate={{
+                    x: [Math.random() * 200, Math.random() * 200],
+                    y: [Math.random() * 150, Math.random() * 150],
+                    opacity: [0, 0.6, 0],
+                  }}
+                  transition={{
+                    duration: Math.random() * 3 + 2,
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                  }}
+                />
+              ))}
+            </div>
             {/* Title with external link icon */}
             <div className="flex justify-between items-start mb-4">
-              <motion.h3 
+              <motion.h3
                 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300"
-                animate={isHovered ? { 
-                  textShadow: "0 0 20px rgba(13,148,136,0.3)" 
-                } : {}}
+                animate={
+                  isHovered
+                    ? {
+                        textShadow: "0 0 20px rgba(13,148,136,0.3)",
+                      }
+                    : {}
+                }
               >
                 {project.title}
               </motion.h3>
-              
-              <motion.div
-                className="w-6 flex-shrink-0 ml-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300"
-              >
+
+              <motion.div className="w-6 flex-shrink-0 ml-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
                 <ExternalLink className="w-5 h-5 text-gray-400 mt-1" />
               </motion.div>
             </div>
 
             {/* Description */}
-            <motion.p 
-              className="text-gray-700 dark:text-gray-200 mb-4 lg:line-clamp-3 lg:group-hover:line-clamp-none transition-all duration-300"
-              animate={isHovered ? { 
-              } : {}}
+            <motion.p
+              className="text-gray-700 dark:text-gray-200 mb-4 lg:line-clamp-3 lg:group-hover:line-clamp-none transition-all duration-500"
+              animate={isHovered ? {} : {}}
             >
               {project.description}
             </motion.p>
@@ -191,13 +231,13 @@ const FuturisticProjectCard = ({ project, index }) => {
                   className="px-3 py-1 text-sm rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 border border-teal-800 dark:border-teal-300 transition-all duration-300 group-hover:bg-teal-200 dark:group-hover:bg-teal-800/40"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ 
-                    duration: 0.3, 
-                    delay: (index * 0.1) + (techIndex * 0.05) 
+                  transition={{
+                    duration: 0.3,
+                    delay: index * 0.1 + techIndex * 0.05,
                   }}
-                  whileHover={{ 
+                  whileHover={{
                     boxShadow: "0 0 15px rgba(13,148,136,0.3)",
-                    borderColor: "rgb(13,148,136)"
+                    borderColor: "rgb(13,148,136)",
                   }}
                 >
                   {tech}
@@ -217,7 +257,7 @@ const FuturisticProjectCard = ({ project, index }) => {
               <div className="absolute h-full w-0.5 bg-teal-400/70" />
             </div>
           </motion.div>
-          
+
           <motion.div
             className="absolute bottom-4 right-4 opacity-50 group-hover:opacity-100"
             animate={isHovered ? { rotate: -90 } : { rotate: 0 }}
@@ -229,7 +269,7 @@ const FuturisticProjectCard = ({ project, index }) => {
             </div>
           </motion.div>
         </div>
-              </a>
+      </a>
     </motion.div>
   );
 };
@@ -263,7 +303,8 @@ export default function Projects() {
   const projects = [
     {
       title: "AI-Powered Multi-Agent Coding Assistant",
-      description: "An advanced AI-powered coding assistant that leverages multiple AI agents to assist developers in writing, debugging, optimizing, and documenting code. It integrates OpenAI's LLMs with FastAPI to provide real-time assistance, along with GitHub API integration for seamless code management and collaboration.",
+      description:
+        "An advanced AI-powered coding assistant that leverages multiple AI agents to assist developers in writing, debugging, optimizing, and documenting code. It integrates OpenAI's LLMs with FastAPI to provide real-time assistance, along with GitHub API integration for seamless code management and collaboration.",
       to: "https://github.com/Usamafuward/AI_Powered_Multi_Agent_Coding_Assistant.git",
       technologies: [
         "AutoGen",
@@ -275,7 +316,7 @@ export default function Projects() {
         "GitHub API",
       ],
       thumbnail: one,
-      category: "AI/ML"
+      category: "AI/ML",
     },
     {
       title: "NLP Podcast Chatbot",
@@ -284,7 +325,7 @@ export default function Projects() {
       to: "https://github.com/Usamafuward/nlp-podcast-chatbot.git",
       technologies: ["Flask", "TF-IDF", "VADER", "NLTK"],
       thumbnail: three,
-      category: "AI/ML"
+      category: "AI/ML",
     },
     {
       title: "RAG Pipeline for PDF Analysis (Chatbot)",
@@ -299,7 +340,7 @@ export default function Projects() {
         "Python",
       ],
       thumbnail: seven,
-      category: "AI/ML"
+      category: "AI/ML",
     },
     {
       title: "Travel Point",
@@ -314,7 +355,7 @@ export default function Projects() {
         "Tailwind CSS",
       ],
       thumbnail: two,
-      category: "Full-Stack"
+      category: "Full-Stack",
     },
     {
       title: "Eats Robers",
@@ -323,7 +364,7 @@ export default function Projects() {
       to: "https://github.com/Usamafuward/eats-robers.git",
       technologies: ["React", "Node.js", "Express", "MongoDB", "Mongoose"],
       thumbnail: six,
-      category: "Full-Stack"
+      category: "Full-Stack",
     },
     {
       title: "Mediman - Doctor Dashboard (sample) Frontend App",
@@ -332,7 +373,7 @@ export default function Projects() {
       to: "https://github.com/Usamafuward/sample-mediman-doctor.git",
       technologies: ["React", "Shadcn-UI", "Tailwind CSS"],
       thumbnail: four,
-      category: "Frontend"
+      category: "Frontend",
     },
     {
       title: "Portfolio Website",
@@ -341,7 +382,7 @@ export default function Projects() {
       to: "https://github.com/Usamafuward/portfolio.git",
       technologies: ["React", "Tailwind CSS", "EmailJS"],
       thumbnail: five,
-      category: "Frontend"
+      category: "Frontend",
     },
     {
       title: "Clubhub-Central",
@@ -350,7 +391,7 @@ export default function Projects() {
       to: "https://github.com/terance-edmonds/clubhub-central.git",
       technologies: ["PHP", "HTML", "SCSS", "JavaScript", "MariaDB"],
       thumbnail: nine,
-      category: "Full-Stack"
+      category: "Full-Stack",
     },
     {
       title: "LangChain for LLM Application Development (coursera)",
@@ -359,7 +400,7 @@ export default function Projects() {
       to: "https://www.coursera.org/learn/langchain-for-llm-application-development-project",
       technologies: ["LangChain", "LLM", "OpenAI", "Python"],
       thumbnail: eight,
-      category: "AI/ML"
+      category: "AI/ML",
     },
     {
       title: "Django Blog",
@@ -368,7 +409,7 @@ export default function Projects() {
       to: "https://github.com/Usamafuward/Django-blog.git",
       technologies: ["Python", "Django", "HTML", "CSS", "PostgreSQL"],
       thumbnail: ten,
-      category: "Backend"
+      category: "Backend",
     },
   ];
 
@@ -377,18 +418,22 @@ export default function Projects() {
       {/* Enhanced Title Section */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { 
-          opacity: 1, 
-          y: 0,
-          textShadow: [
-            "0 0 20px rgba(13,148,136,0.3)",
-            "0 0 30px rgba(13,148,136,0.4)",
-            "0 0 20px rgba(13,148,136,0.3)"
-          ]
-        } : { 
-          opacity: 0, 
-          y: 20 
-        }}
+        animate={
+          isInView
+            ? {
+                opacity: 1,
+                y: 0,
+                textShadow: [
+                  "0 0 20px rgba(13,148,136,0.3)",
+                  "0 0 30px rgba(13,148,136,0.4)",
+                  "0 0 20px rgba(13,148,136,0.3)",
+                ],
+              }
+            : {
+                opacity: 0,
+                y: 20,
+              }
+        }
         className="text-[42px] md:text-5xl font-bold text-center text-teal-600 dark:text-teal-400 py-7 mb-5"
       >
         Projects
@@ -402,11 +447,7 @@ export default function Projects() {
         className="px-7 mx-auto justify-between columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 z-10 relative"
       >
         {projects.map((project, index) => (
-          <FuturisticProjectCard
-            key={index}
-            project={project}
-            index={index}
-          />
+          <FuturisticProjectCard key={index} project={project} index={index} />
         ))}
       </motion.div>
 
@@ -417,10 +458,20 @@ export default function Projects() {
             key={i}
             className="absolute w-1 h-1 bg-teal-400/30 rounded-full"
             animate={{
-              x: [Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000), Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000)],
-              y: [Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000), Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000)],
+              x: [
+                Math.random() *
+                  (typeof window !== "undefined" ? window.innerWidth : 1000),
+                Math.random() *
+                  (typeof window !== "undefined" ? window.innerWidth : 1000),
+              ],
+              y: [
+                Math.random() *
+                  (typeof window !== "undefined" ? window.innerHeight : 1000),
+                Math.random() *
+                  (typeof window !== "undefined" ? window.innerHeight : 1000),
+              ],
               opacity: [0, 0.5, 0],
-              scale: [0, 1, 0]
+              scale: [0, 1, 0],
             }}
             transition={{
               duration: Math.random() * 10 + 10,
