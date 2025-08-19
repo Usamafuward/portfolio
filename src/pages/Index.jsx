@@ -285,8 +285,8 @@ const Index = () => {
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 1, delay: 0.5 }}
               >
-                Computer Science Undergraduate and current AI/ML Engineer
-                Intern, with a strong passion for Software Developing, Machine
+                Computer Science Graduate and current AI/ML Engineer
+                Intern and Software Developer, with a strong passion for Software Developing, Machine
                 Learning, and Artificial Intelligence. Skilled in developing
                 efficient and innovative solutions for real-world projects and
                 building high-quality applications. Eager to tackle complex

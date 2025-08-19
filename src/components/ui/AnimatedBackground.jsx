@@ -528,7 +528,7 @@ const FuturisticCyberBackground = () => {
       {/* Corner UI Elements - Responsive sizing */}
       {!isScrolled && (
         <>
-          <div className={`absolute top-2 left-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
+          <div className={`hidden sm:block absolute top-2 left-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
             <motion.div
               className={`absolute inset-0 border-l-2 border-t-2 ${
                 darkMode ? "border-teal-400/50" : "border-teal-500/70"
@@ -560,7 +560,7 @@ const FuturisticCyberBackground = () => {
             />
           </div>
 
-          <div className={`absolute top-2 right-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
+          <div className={`hidden sm:block absolute top-2 right-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
             <motion.div
               className={`absolute inset-0 border-r-2 border-t-2 ${
                 darkMode ? "border-cyan-400/50" : "border-cyan-500/70"
@@ -584,7 +584,7 @@ const FuturisticCyberBackground = () => {
         </>
       )}
 
-      <div className={`absolute bottom-2 left-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
+      <div className={`hidden sm:block absolute bottom-2 left-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
         <motion.div
           className={`absolute inset-0 border-l-2 border-b-2 ${
             darkMode ? "border-blue-400/50" : "border-blue-500/70"
@@ -606,7 +606,7 @@ const FuturisticCyberBackground = () => {
         />
       </div>
 
-      <div className={`absolute bottom-2 right-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
+      <div className={`hidden sm:block absolute bottom-2 right-2 ${dimensions.width < 768 ? "w-12 h-12" : "w-16 h-16"} pointer-events-none`}>
         <motion.div
           className={`absolute inset-0 border-r-2 border-b-2 ${
             darkMode ? "border-purple-400/50" : "border-purple-500/70"
