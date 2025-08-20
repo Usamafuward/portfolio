@@ -337,7 +337,7 @@ const Index = () => {
                   )}
                 </motion.div>
 
-                <div className="relative z-0 flex justify-center gap-[9px] sm:gap-9 xl:gap-5 text-gray-700 dark:text-gray-300 xl:mb-0 order-none xl:order-2">
+                <div className="relative z-0 flex justify-center gap-4 sm:gap-9 xl:gap-5 text-gray-700 dark:text-gray-300 xl:mb-0 order-none xl:order-2">
                   {socials.map((social, index) => (
                     <motion.div
                       key={index}
@@ -369,9 +369,10 @@ const Index = () => {
                         href={social.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-14 h-14 flex items-center justify-center rounded-full relative overflow-hidden shadow-xl dark:shadow-[#0c121d] border-2 border-teal-600 font-medium dark:border-teal-400 hover:border-black/50 hover:dark:border-white/50 bg-gray-100/10 dark:bg-gray-700/20 transition-colors duration-300"
-                        whileHover={{ scale: 1.1, rotateY: 180 }}
+                        className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full relative overflow-hidden shadow-xl dark:shadow-[#0c121d] border-2 border-teal-600 font-medium dark:border-teal-400 hover:border-black/50 hover:dark:border-white/50 bg-gray-100/10 dark:bg-gray-700/20 transition-colors duration-300"
+                        whileHover={{ rotateY: 180 }}
                         whileTap={{ scale: 0.95 }}
+                        transition={{ duration: 0.6, ease: "easeInOut" }}
                       >
                         {/* Scan lines */}
                         <motion.div
@@ -392,7 +393,7 @@ const Index = () => {
                         />
 
                         {/* Icon */}
-                        <social.icon className="w-9 h-9 relative z-10 text-gray-700 dark:text-gray-300 group-hover:text-white dark:group-hover:text-white/50 transition-colors duration-300 rounded-[15px]" />
+                        <social.icon className="w-8 h-8 sm:w-9 sm:h-9 relative z-10 text-gray-700 dark:text-gray-300 group-hover:text-white dark:group-hover:text-white/50 transition-colors duration-300 rounded-[15px]" />
                       </motion.a>
                     </motion.div>
                   ))}

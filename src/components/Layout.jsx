@@ -215,7 +215,7 @@ const Layout = () => {
             })}
           </div>
 
-          <div className="flex items-center gap-4 sm:gap-5">
+          <div className="flex items-center gap-3 sm:gap-5">
             <motion.div
               className="relative group cursor-pointer"
               whileHover={{ scale: 1.05 }}
@@ -224,12 +224,12 @@ const Layout = () => {
             >
               {/* Orbital rings */}
               <motion.div
-                className="absolute inset-0 w-12 h-12 border border-teal-400/30 rounded-full"
+                className="hidden sm:block absolute inset-0 w-12 h-12 border border-teal-400/30 rounded-full"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               />
               <motion.div
-                className="absolute inset-1 w-10 h-10 border border-cyan-400/20 rounded-full"
+                className="hidden sm:block absolute inset-1 w-10 h-10 border border-cyan-400/20 rounded-full"
                 animate={{ rotate: -360 }}
                 transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
               />
@@ -237,7 +237,7 @@ const Layout = () => {
               {/* Center button */}
               <div
                 onClick={() => setDarkMode(!darkMode)}
-                className="relative w-12 h-12 bg-gray-100/10 dark:bg-gray-800/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-teal-400/30 group-hover:border-teal-400/60 transition-all duration-300"
+                className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gray-100/10 dark:bg-gray-800/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-teal-400/30 group-hover:border-teal-400/60 transition-all duration-300"
               >
                 <motion.div
                   animate={{ rotate: darkMode ? 0 : 180 }}
