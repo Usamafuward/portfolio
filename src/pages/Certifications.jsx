@@ -291,6 +291,13 @@ export default function Certifications() {
       to: "https://coursera.org/verify/CCC0CUDGVOOR",
       organization: "Packt",
     },
+    {
+      title: "Developing Back-End Apps with Node.js and Express",
+      description:
+        "An online course authorized by IBM and offered through Coursera, focusing on building back-end applications with Node.js and Express. The course covers asynchronous programming with callbacks and promises, creating REST APIs with CRUD operations, and implementing authentication and session management. Includes hands-on labs and a final project to strengthen practical skills for back-end and full-stack development.",
+      to: "https://coursera.org/verify/UK84HBWR3YRT",
+      organization: "IBM",
+    },
   ];
 
   const organizations = [

@@ -18,6 +18,7 @@ import seven from "@/assets/thumbnails/7.png";
 import eight from "@/assets/thumbnails/8.png";
 import nine from "@/assets/thumbnails/9.png";
 import ten from "@/assets/thumbnails/10.png";
+import eleven from "@/assets/thumbnails/111.png";
 import PropTypes from "prop-types";
 
 // Enhanced Project Card Component
@@ -217,7 +218,7 @@ const FuturisticProjectCard = ({ project, index }) => {
 
             {/* Description */}
             <motion.p
-              className="text-gray-700 dark:text-gray-200 mb-4 lg:line-clamp-3 lg:group-hover:line-clamp-none transition-all duration-500"
+              className="text-gray-700 dark:text-gray-200 mb-4 transition-all duration-500"
               animate={isHovered ? {} : {}}
             >
               {project.description}
@@ -409,6 +410,20 @@ export default function Projects() {
       to: "https://github.com/Usamafuward/Django-blog.git",
       technologies: ["Python", "Django", "HTML", "CSS", "PostgreSQL"],
       thumbnail: ten,
+      category: "Backend",
+    },
+    {
+      title: "Online Book Review Application",
+      description:
+        "A comprehensive RESTful API for managing book reviews built with Node.js and Express.js. Features user authentication (JWT & Session), CRUD operations for reviews, async operations with Promises and async/await, and supports multiple concurrent users for seamless book review management.",
+      to: "https://github.com/Usamafuward/book-review-api.git",
+      technologies: [
+        "Node.js",
+        "Express.js",
+        "JWT",
+        "RESTful API",
+      ],
+      thumbnail: eleven,
       category: "Backend",
     },
   ];
