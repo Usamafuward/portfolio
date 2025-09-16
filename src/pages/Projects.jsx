@@ -19,6 +19,7 @@ import eight from "@/assets/thumbnails/8.png";
 import nine from "@/assets/thumbnails/9.png";
 import ten from "@/assets/thumbnails/10.png";
 import eleven from "@/assets/thumbnails/111.png";
+import twelve from "@/assets/thumbnails/122.png";
 import PropTypes from "prop-types";
 
 // Enhanced Project Card Component
@@ -417,14 +418,18 @@ export default function Projects() {
       description:
         "A comprehensive RESTful API for managing book reviews built with Node.js and Express.js. Features user authentication (JWT & Session), CRUD operations for reviews, async operations with Promises and async/await, and supports multiple concurrent users for seamless book review management.",
       to: "https://github.com/Usamafuward/book-review-api.git",
-      technologies: [
-        "Node.js",
-        "Express.js",
-        "JWT",
-        "RESTful API",
-      ],
+      technologies: ["Node.js", "Express.js", "JWT", "RESTful API"],
       thumbnail: eleven,
       category: "Backend",
+    },
+    {
+      title: "Startup Company Website",
+      description:
+        "A professional website created for a startup software company to showcase its products, services, team, blogs, and clients. Built with React, Next.js, and Tailwind CSS, it delivers a modern, responsive, and engaging user experience tailored for startups.",
+      to: "https://github.com/Usamafuward/startup_company_website.git",
+      technologies: ["React", "Next.js", "Tailwind CSS"],
+      thumbnail: twelve,
+      category: "Frontend",
     },
   ];
 
