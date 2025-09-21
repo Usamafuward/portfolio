@@ -298,6 +298,20 @@ export default function Certifications() {
       to: "https://coursera.org/verify/UK84HBWR3YRT",
       organization: "IBM",
     },
+    {
+      title: "Meta React Specialization",
+      description:
+        "A comprehensive specialization authorized by Meta and offered through Coursera. This program covers both fundamental and advanced React concepts, including building reusable components, managing data flow, and implementing advanced React patterns. Through instructional videos, assessments, and practical exercises, learners gain the skills to build sophisticated user interfaces for modern web applications.",
+      to: "https://coursera.org/verify/specialization/IAW5HXC3NIPI",
+      organization: "Meta",
+    },
+    {
+      title: "Advanced React",
+      description:
+        "An advanced course authorized by Meta and offered through Coursera, focusing on deeper React concepts and features, advanced hooks, JSX, component composition, and modern React patterns like Higher Order Components and Render Props. Includes building forms, consuming API data, testing React components, and developing a React portfolio.",
+      to: "https://coursera.org/verify/QRV2OJDBGU5C",
+      organization: "Meta",
+    },
   ];
 
   const organizations = [
