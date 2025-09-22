@@ -312,6 +312,13 @@ export default function Certifications() {
       to: "https://coursera.org/verify/UK84HBWR3YRT",
       organization: "IBM",
     },
+    {
+      title: "Version Control",
+      description:
+        "An online course authorized by Meta and offered through Coursera. This course introduces version control systems, Git, and effective workflows for modern software development. Learners gain hands-on experience with Linux commands, repository creation, and collaboration techniques to manage code revisions and team projects efficiently.",
+      to: "https://coursera.org/verify/32XI9E6WKUMU",
+      organization: "Meta",
+    },
   ];
 
   const organizations = [
