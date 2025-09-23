@@ -319,6 +319,13 @@ export default function Certifications() {
       to: "https://coursera.org/verify/32XI9E6WKUMU",
       organization: "Meta",
     },
+    {
+      title: "DevOps Essentials and Version Control with Git",
+      description:
+        "An online course authorized by Edureka and offered through Coursera. This course introduces DevOps principles, Linux fundamentals, and Git for efficient version control in software development. Learners gain skills in DevOps lifecycle stages, Linux commands, repository and branch management, resolving merge conflicts, and implementing Git workflows for team collaboration and code management.",
+      to: "https://coursera.org/verify/CGZ88EILCMOB",
+      organization: "Edureka",
+    },
   ];
 
   const organizations = [
