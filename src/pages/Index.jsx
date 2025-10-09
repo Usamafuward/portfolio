@@ -227,12 +227,12 @@ const Index = () => {
 
   const resumeLinks = [
     {
-      href: "/Resume_SE.pdf",
+      href: "/SE_CV.pdf",
       label: "Software Engineering",
       download: "Usama_Puward_Resume_SE.pdf",
     },
     {
-      href: "/Resume_ML.pdf",
+      href: "/AI_ML_CV.pdf",
       label: "AI/ML Engineering",
       download: "Usama_Puward_Resume_ML.pdf",
     },
