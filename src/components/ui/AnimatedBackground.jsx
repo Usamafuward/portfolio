@@ -26,6 +26,11 @@ const FuturisticCyberBackground = () => {
           secondary: "rgba(34,211,238,1)",
           secondaryLight: "rgba(34,211,238,0.3)",
         },
+        neon: {
+          teal: "rgba(13,148,136,0.8)",
+          cyan: "rgba(34,211,238,0.8)",
+          blue: "rgba(59,130,246,0.8)",
+        },
         shapeOpacity: "20",
         borderOpacity: "40",
         ambientGlow: "from-teal-500/5 via-transparent to-cyan-500/5",
@@ -42,6 +47,11 @@ const FuturisticCyberBackground = () => {
           primaryLight: "rgba(13,148,136,0.3)",
           secondary: "rgba(34,211,238,1)",
           secondaryLight: "rgba(34,211,238,0.4)",
+        },
+        neon: {
+          teal: "rgba(13,148,136,1)",
+          cyan: "rgba(34,211,238,1)",
+          blue: "rgba(59,130,246,1)",
         },
         shapeOpacity: "30",
         borderOpacity: "60",
@@ -68,12 +78,7 @@ const FuturisticCyberBackground = () => {
 
     const initializeParticles = () => {
       const newParticles = [];
-      // Responsive particle count based on screen size
-      let particleCount;
-      if (dimensions.width < 480) particleCount = 15; // Mobile
-      else if (dimensions.width < 768) particleCount = 25; // Tablet
-      else if (dimensions.width < 1024) particleCount = 35; // Small desktop
-      else particleCount = 50; // Large desktop
+      let particleCount = dimensions.width < 480 ? 20 : dimensions.width < 768 ? 30 : 60;
 
       for (let i = 0; i < particleCount; i++) {
         newParticles.push({
@@ -81,11 +86,10 @@ const FuturisticCyberBackground = () => {
           x: Math.random() * dimensions.width,
           y: Math.random() * dimensions.height,
           size: Math.random() * 3 + 1,
-          speedX: (Math.random() - 0.5) * 0.5,
-          speedY: (Math.random() - 0.5) * 0.5,
-          opacity: Math.random() * 0.5 + 0.2,
-          type: Math.random() > 0.7 ? "node" : "particle",
-          pulsePhase: Math.random() * Math.PI * 2,
+          speedX: (Math.random() - 0.5) * 0.8,
+          speedY: (Math.random() - 0.5) * 0.8,
+          opacity: Math.random() * 0.5 + 0.3,
+          type: Math.random() > 0.6 ? "node" : "particle",
         });
       }
       setParticles(newParticles);
@@ -151,18 +155,12 @@ const FuturisticCyberBackground = () => {
           let newX = particle.x + particle.speedX;
           let newY = particle.y + particle.speedY;
 
-          // Wrap around screen edges
           if (newX < 0) newX = dimensions.width;
           if (newX > dimensions.width) newX = 0;
           if (newY < 0) newY = dimensions.height;
           if (newY > dimensions.height) newY = 0;
 
-          return {
-            ...particle,
-            x: newX,
-            y: newY,
-            pulsePhase: particle.pulsePhase + 0.02,
-          };
+          return { ...particle, x: newX, y: newY };
         })
       );
     };
@@ -216,42 +214,23 @@ const FuturisticCyberBackground = () => {
     <div
       className={`fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br ${theme.background}`}
     >
-      {/* Animated Grid Background */}
+      {/* Isometric Grid */}
       <div className="absolute inset-0">
-        <svg
-          width="100%"
-          height="100%"
-          className={darkMode ? "opacity-20" : "opacity-30"}
-          viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
-          preserveAspectRatio="xMidYMid slice"
-        >
+        <svg width="100%" height="100%" className={darkMode ? "opacity-15" : "opacity-25"}>
           <defs>
-            <pattern
-              id="grid"
-              width={dimensions.width < 768 ? "60" : "80"}
-              height={dimensions.width < 768 ? "60" : "80"}
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d={`M ${dimensions.width < 768 ? "60" : "80"} 0 L 0 0 0 ${dimensions.width < 768 ? "60" : "80"}`}
-                fill="none"
-                stroke="url(#gridGradient)"
-                strokeWidth="0.5"
-              />
+            <pattern id="isoGrid" width="60" height="35" patternUnits="userSpaceOnUse" patternTransform="skewY(-30)">
+              <path d="M 0 0 L 60 0 L 60 35 L 0 35 Z" fill="none" stroke={theme.gridColors.primary} strokeWidth="0.5"/>
+              <path d="M 0 0 L 30 17.5 L 60 0" fill="none" stroke={theme.gridColors.secondary} strokeWidth="0.3"/>
             </pattern>
-            <linearGradient
-              id="gridGradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor={theme.gridColors.primary} />
-              <stop offset="50%" stopColor={theme.gridColors.secondary} />
-              <stop offset="100%" stopColor={theme.gridColors.tertiary} />
-            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
           </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
+          <rect width="100%" height="100%" fill="url(#isoGrid)"/>
         </svg>
       </div>
 
@@ -378,51 +357,48 @@ const FuturisticCyberBackground = () => {
         </motion.div>
       ))} */}
 
-      {/* Animated Particles with Connections */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox={`0 0 ${dimensions.width} ${dimensions.height}`} preserveAspectRatio="xMidYMid slice">
+      {/* Particle Network */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none">
         <defs>
-          <radialGradient id="particleGradient">
+          <radialGradient id="particleGrad">
             <stop offset="0%" stopColor={theme.particleColors.primary} />
             <stop offset="100%" stopColor={theme.particleColors.primaryLight} />
           </radialGradient>
-          <radialGradient id="nodeGradient">
+          <radialGradient id="nodeGrad">
             <stop offset="0%" stopColor={theme.particleColors.secondary} />
-            <stop
-              offset="100%"
-              stopColor={theme.particleColors.secondaryLight}
-            />
+            <stop offset="100%" stopColor={theme.particleColors.secondaryLight} />
           </radialGradient>
+          <filter id="neonGlow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
         </defs>
 
-        {/* Connection Lines */}
         {particles.map((particle, i) =>
-          particles.slice(i + 1).map((otherParticle, j) => {
+          particles.slice(i + 1).map((other, j) => {
             const distance = Math.sqrt(
-              Math.pow(particle.x - otherParticle.x, 2) +
-                Math.pow(particle.y - otherParticle.y, 2)
+              Math.pow(particle.x - other.x, 2) + Math.pow(particle.y - other.y, 2)
             );
-
             const connectionDistance = getConnectionDistance();
             if (distance < connectionDistance) {
-              const opacity = ((connectionDistance - distance) / connectionDistance) * (darkMode ? 0.3 : 0.4);
+              const opacity = ((connectionDistance - distance) / connectionDistance) * (darkMode ? 0.4 : 0.5);
               return (
                 <motion.line
                   key={`${i}-${j}`}
                   x1={particle.x}
                   y1={particle.y}
-                  x2={otherParticle.x}
-                  y2={otherParticle.y}
-                  stroke="url(#connectionGradient)"
-                  strokeWidth={dimensions.width < 768 ? "0.8" : "1"}
+                  x2={other.x}
+                  y2={other.y}
+                  stroke={theme.neon.cyan}
+                  strokeWidth="1"
                   opacity={opacity}
-                  animate={{
-                    opacity: [opacity * 0.5, opacity, opacity * 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  filter="url(#neonGlow)"
+                  animate={{ opacity: [opacity * 0.5, opacity, opacity * 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 />
               );
             }
@@ -430,25 +406,17 @@ const FuturisticCyberBackground = () => {
           })
         )}
 
-        {/* Particles */}
         {particles.map((particle) => (
           <motion.circle
             key={particle.id}
             cx={particle.x}
             cy={particle.y}
             r={particle.size}
-            fill={
-              particle.type === "node"
-                ? "url(#nodeGradient)"
-                : "url(#particleGradient)"
-            }
+            fill={particle.type === "node" ? "url(#nodeGrad)" : "url(#particleGrad)"}
+            filter="url(#neonGlow)"
             animate={{
-              r: [particle.size, particle.size * 1.5, particle.size],
-              opacity: [
-                particle.opacity,
-                particle.opacity * 1.5,
-                particle.opacity,
-              ],
+              r: [particle.size, particle.size * 1.8, particle.size],
+              opacity: [particle.opacity, particle.opacity * 1.5, particle.opacity],
             }}
             transition={{
               duration: 3,
@@ -458,29 +426,6 @@ const FuturisticCyberBackground = () => {
             }}
           />
         ))}
-
-        <defs>
-          <linearGradient id="connectionGradient">
-            <stop
-              offset="0%"
-              stopColor={
-                darkMode ? "rgba(13,148,136,0.6)" : "rgba(13,148,136,0.8)"
-              }
-            />
-            <stop
-              offset="50%"
-              stopColor={
-                darkMode ? "rgba(34,211,238,0.4)" : "rgba(34,211,238,0.6)"
-              }
-            />
-            <stop
-              offset="100%"
-              stopColor={
-                darkMode ? "rgba(59,130,246,0.6)" : "rgba(59,130,246,0.8)"
-              }
-            />
-          </linearGradient>
-        </defs>
       </svg>
 
       {/* Holographic Scan Lines */}

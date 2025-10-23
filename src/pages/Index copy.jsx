@@ -1,949 +1,555 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import { useEffect, useState, useContext } from "react";
+import { motion } from "framer-motion";
 import { DarkModeContext } from "@/context/DarkModeContext";
-import {
-  AiFillLinkedin,
-  AiFillInstagram,
-  AiOutlineUp,
-  AiOutlineDownload,
-} from "react-icons/ai";
-import { motion, useInView } from "framer-motion";
-import profile from "@/assets/Usama.jpg";
-import SplitText from "@/components/ui/SplitText";
-import LogoWall from "@/components/ui/LogoWall";
-import TrueFocus from "@/components/ui/TrueFocus";
-import AnimatedText from "@/components/ui/AnimatedText";
-import AnimatedProfile from "@/components/ui/AnimatedProfile";
-import PortfolioCard from "@/components/ui/PortfolioCard";
-import logoSvg from "@/assets/logo_svg";
-import flatIcon from "@/assets/flat_icon";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { IoMail } from "react-icons/io5";
-import { FaGithubSquare } from "react-icons/fa";
-import { FaSchool } from "react-icons/fa";
-import { FaGraduationCap } from "react-icons/fa";
-import SE from "@/assets/resumes/Resume_SE.pdf";
-import ML_AI from "@/assets/resumes/Resume_ML.pdf";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.25 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const slideUpVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const slideRightVariants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { opacity: 1, x: 0 },
-};
-
-const slideLeftVariants = {
-  hidden: { opacity: 0, x: -100 },
-  visible: { opacity: 1, x: 0 },
-};
-
-const Index = () => {
+const FuturisticCyberBackground = () => {
   const { darkMode } = useContext(DarkModeContext);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [setIsScrolled] = useState(false);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [isHovered, setIsHovered] = useState(false);
-  const educationRef = useRef(null);
-  const isInView3 = useInView(educationRef, { once: true });
+  const [particles, setParticles] = useState([]);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [hexagons, setHexagons] = useState([]);
+  const [dataStreams, setDataStreams] = useState([]);
+
+  const theme = darkMode
+    ? {
+        background: "from-gray-900 via-gray-800 to-black",
+        gridColors: {
+          primary: "rgba(13,148,136,0.3)",
+          secondary: "rgba(34,211,238,0.2)",
+          tertiary: "rgba(59,130,246,0.3)",
+        },
+        particleColors: {
+          primary: "rgba(13,148,136,0.8)",
+          primaryLight: "rgba(13,148,136,0.2)",
+          secondary: "rgba(34,211,238,1)",
+          secondaryLight: "rgba(34,211,238,0.3)",
+        },
+        neon: {
+          teal: "rgba(13,148,136,0.8)",
+          cyan: "rgba(34,211,238,0.8)",
+          blue: "rgba(59,130,246,0.8)",
+        },
+        ambientGlow: "from-teal-500/5 via-transparent to-cyan-500/5",
+      }
+    : {
+        background: "from-blue-50 via-cyan-50 to-teal-50",
+        gridColors: {
+          primary: "rgba(13,148,136,0.4)",
+          secondary: "rgba(34,211,238,0.3)",
+          tertiary: "rgba(59,130,246,0.4)",
+        },
+        particleColors: {
+          primary: "rgba(13,148,136,0.9)",
+          primaryLight: "rgba(13,148,136,0.3)",
+          secondary: "rgba(34,211,238,1)",
+          secondaryLight: "rgba(34,211,238,0.4)",
+        },
+        neon: {
+          teal: "rgba(13,148,136,1)",
+          cyan: "rgba(34,211,238,1)",
+          blue: "rgba(59,130,246,1)",
+        },
+        ambientGlow: "from-teal-200/10 via-transparent to-cyan-200/10",
+      };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-      setShowDropdown(false);
+    const updateDimensions = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
     };
-
-    const handleClickOutside = (event) => {
-      if (!event.target.closest(".dropdown-button")) {
-        setShowDropdown(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  const cards = [
-    {
-      title: "Projects",
-      image: !darkMode ? flatIcon.project_full : flatIcon.project_white,
-      description:
-        "Explore a showcase of my innovative projects, demonstrating technical expertise and problem-solving skills.",
-      link: "/projects",
-    },
-    {
-      title: "Certifications",
-      image: !darkMode ? flatIcon.certificate_full : flatIcon.certificate_white,
-      description:
-        "Browse my certifications, highlighting my dedication to continuous learning and professional growth.",
-      link: "/certifications",
-    },
-    {
-      title: "Experiences",
-      image: !darkMode ? flatIcon.quality_full : flatIcon.quality_white,
-      description:
-        "Discover my professional journey, including key roles and experiences that have shaped my expertise and skills.",
-      link: "/experiences",
-    },
-  ];
+  useEffect(() => {
+    if (dimensions.width === 0 || dimensions.height === 0) return;
 
-  const skills = [
-    {
-      category: "Front-End Development",
-      progress: 85,
-      techs: [
-        "React",
-        "Next",
-        "React Native",
-        "FastHTML",
-        "SCSS",
-        "Tailwind CSS",
-        "Bootstrap",
-      ],
-    },
-    {
-      category: "Back-End Development",
-      progress: 90,
-      techs: ["FastAPI", "Node.js", "Django", "Express.js"],
-    },
-    {
-      category: "Machine Learning",
-      progress: 75,
-      techs: ["TensorFlow", "Scikit-learn", "Pandas", "NumPy", "Matplotlib"],
-    },
-    {
-      category: "Database Ops",
-      progress: 90,
-      techs: ["MongoDB", "PostgreSQL", "MySQL"],
-    },
-    {
-      category: "Artificial Intelligence",
-      progress: 85,
-      techs: ["NLP", "Computer Vision", "Deep Learning"],
-    },
-    {
-      category: "DevOps & Containerization",
-      progress: 70,
-      techs: ["Docker"],
-    },
-    {
-      category: "Cloud Platforms",
-      progress: 60,
-      techs: ["Microsoft Azure"],
-    },
-    {
-      category: "Version Control",
-      progress: 85,
-      techs: ["Git", "GitHub"],
-    },
-  ];
+    const initializeParticles = () => {
+      const newParticles = [];
+      let particleCount = dimensions.width < 480 ? 20 : dimensions.width < 768 ? 30 : 60;
 
-  const logoImgs = [
-    { imgUrl: logoSvg.bootstrap, altText: "Bootstrap Logo" },
-    { imgUrl: logoSvg.docker, altText: "Docker Logo" },
-    { imgUrl: logoSvg.github, altText: "GitHub Logo" },
-    { imgUrl: logoSvg.javascript, altText: "JavaScript Logo" },
-    { imgUrl: logoSvg.mongodb, altText: "MongoDB Logo" },
-    { imgUrl: logoSvg.nodedotjs, altText: "Node.js Logo" },
-    { imgUrl: logoSvg.python, altText: "Python Logo" },
-    { imgUrl: logoSvg.react, altText: "React Logo" },
-    { imgUrl: logoSvg.tensorflow, altText: "TensorFlow Logo" },
-    { imgUrl: logoSvg.postgresql, altText: "PostgreSQL Logo" },
-    { imgUrl: logoSvg.tailwindcss, altText: "Tailwind CSS Logo" },
-    { imgUrl: logoSvg.bootstrap, altText: "Bootstrap Logo" },
-    { imgUrl: logoSvg.sass, altText: "SCSS Logo" },
-    { imgUrl: logoSvg.fastapi, altText: "FastAPI Logo" },
-    { imgUrl: logoSvg.express, altText: "Express Logo" },
-    { imgUrl: logoSvg.mysql, altText: "MySQL Logo" },
-    { imgUrl: logoSvg.pandas, altText: "Pandas Logo" },
-    { imgUrl: logoSvg.numpy, altText: "NumPy Logo" },
-    { imgUrl: logoSvg.scikitlearn, altText: "scikit-learn Logo" },
-    { imgUrl: logoSvg.cplusplus, altText: "C++ Logo" },
-    { imgUrl: logoSvg.git, altText: "Git Logo" },
-    { imgUrl: logoSvg.django, altText: "Django Logo" },
-    { imgUrl: logoSvg.reactnative, altText: "React Native Logo" },
-  ];
+      for (let i = 0; i < particleCount; i++) {
+        newParticles.push({
+          id: i,
+          x: Math.random() * dimensions.width,
+          y: Math.random() * dimensions.height,
+          size: Math.random() * 3 + 1,
+          speedX: (Math.random() - 0.5) * 0.8,
+          speedY: (Math.random() - 0.5) * 0.8,
+          opacity: Math.random() * 0.5 + 0.3,
+          type: Math.random() > 0.6 ? "node" : "particle",
+        });
+      }
+      setParticles(newParticles);
+    };
 
-  const socials = [
-    {
-      icon: FaGithubSquare,
-      link: "https://github.com/Usamafuward",
-    },
-    {
-      icon: AiFillLinkedin,
-      link: "https://linkedin.com/in/usama-puward",
-    },
-    {
-      icon: FaSquareXTwitter,
-      link: "https://www.x.com/usamafuward",
-    },
-    {
-      icon: AiFillInstagram,
-      link: "https://www.instagram.com/usama._fuward",
-    },
-    {
-      icon: IoMail,
-      link: "mailto:usamafuward2001@gmail.com",
-    },
-  ];
+    const initializeHexagons = () => {
+      const newHexagons = [];
+      const count = dimensions.width < 768 ? 8 : 15;
+      for (let i = 0; i < count; i++) {
+        newHexagons.push({
+          id: i,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          size: Math.random() * 40 + 30,
+          rotation: Math.random() * 360,
+          speed: Math.random() * 0.2 + 0.1,
+        });
+      }
+      setHexagons(newHexagons);
+    };
 
-  const educationData = [
-    {
-      icon: FaGraduationCap,
-      degree: "Bachelor of Science in Computer Science",
-      institution: "University of Colombo School of Computing",
-      year: "2022 - 2025",
-      description:
-        "Successfully completed a degree in Computer Science with a strong focus on software development, machine learning, and AI. Gained hands-on experience through projects and internships, while cultivating a passion for building innovative solutions and exploring new technologies.",
-    },
-    {
-      icon: FaSchool,
-      degree: "Secondary School Education",
-      institution: "Zahira College Mawanella",
-      year: "2012 - 2020",
-      description:
-        "Completed GCE Ordinary Level and GCE Advanced Level in Physical Science Stream. Alongside academics, actively participated in extracurricular activities, served as a student prefect, and achieved numerous accolades in both education and sports",
-    },
-  ];
+    const initializeDataStreams = () => {
+      const newStreams = [];
+      const count = dimensions.width < 768 ? 4 : 8;
+      for (let i = 0; i < count; i++) {
+        newStreams.push({
+          id: i,
+          x: Math.random() * 100,
+          isVertical: Math.random() > 0.5,
+          speed: Math.random() * 3 + 2,
+          delay: Math.random() * 2,
+        });
+      }
+      setDataStreams(newStreams);
+    };
 
-  const resumeLinks = [
-    {
-      href: SE,
-      label: "Software Engineering",
-      download: "Resume_Software_Engineering.pdf",
-    },
-    {
-      href: ML_AI,
-      label: "AI/ML Engineering",
-      download: "Resume_ML_AI_Engineering.pdf",
-    },
-  ];
+    initializeParticles();
+    initializeHexagons();
+    initializeDataStreams();
+  }, [dimensions]);
+
+  useEffect(() => {
+    if (dimensions.width === 0 || dimensions.height === 0) return;
+
+    const animateParticles = () => {
+      setParticles((prev) =>
+        prev.map((particle) => {
+          let newX = particle.x + particle.speedX;
+          let newY = particle.y + particle.speedY;
+
+          if (newX < 0) newX = dimensions.width;
+          if (newX > dimensions.width) newX = 0;
+          if (newY < 0) newY = dimensions.height;
+          if (newY > dimensions.height) newY = 0;
+
+          return { ...particle, x: newX, y: newY };
+        })
+      );
+    };
+
+    const interval = setInterval(animateParticles, 50);
+    return () => clearInterval(interval);
+  }, [dimensions]);
+
+  const getConnectionDistance = () => {
+    if (dimensions.width < 480) return 100;
+    if (dimensions.width < 768) return 120;
+    return 150;
+  };
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section ref={ref}>
-        <div className=" p-7 flex flex-col xl:flex-row md:justify-between w-full bg-transparent">
-          <div className="z-0 inline-block xl:w-2/3 xl:border-l-4 border-teal-400 dark:border-teal-400 justify-between order-2 xl:order-none relative py-5">
-            {/* Gradient overlay - Visible only on xl devices */}
-            <motion.div
-              className="hidden xl:block absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-teal-400/30 to-transparent pointer-events-none"
-              animate={{
-                opacity: [1, 0.5, 1],
-                transition: { duration: 1, repeat: Infinity },
+    <div className={`fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br ${theme.background}`}>
+      {/* Isometric Grid */}
+      <div className="absolute inset-0">
+        <svg width="100%" height="100%" className={darkMode ? "opacity-15" : "opacity-25"}>
+          <defs>
+            <pattern id="isoGrid" width="60" height="35" patternUnits="userSpaceOnUse" patternTransform="skewY(-30)">
+              <path d="M 0 0 L 60 0 L 60 35 L 0 35 Z" fill="none" stroke={theme.gridColors.primary} strokeWidth="0.5"/>
+              <path d="M 0 0 L 30 17.5 L 60 0" fill="none" stroke={theme.gridColors.secondary} strokeWidth="0.3"/>
+            </pattern>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#isoGrid)"/>
+        </svg>
+      </div>
+
+      {/* Floating Hexagons */}
+      <div className="absolute inset-0 overflow-hidden">
+        {hexagons.map((hex) => (
+          <motion.div
+            key={hex.id}
+            className="absolute"
+            style={{ left: `${hex.x}%`, top: `${hex.y}%` }}
+            animate={{
+              y: [0, -30, 0],
+              rotate: [hex.rotation, hex.rotation + 360],
+              opacity: darkMode ? [0.1, 0.3, 0.1] : [0.15, 0.4, 0.15],
+            }}
+            transition={{
+              duration: 15 / hex.speed,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: hex.id * 0.5,
+            }}
+          >
+            <svg width={hex.size} height={hex.size} viewBox="0 0 100 100">
+              <polygon
+                points="50 3, 95 25, 95 75, 50 97, 5 75, 5 25"
+                fill="none"
+                stroke={theme.neon.cyan}
+                strokeWidth="2"
+                filter="url(#glow)"
+              />
+              <polygon
+                points="50 15, 80 30, 80 70, 50 85, 20 70, 20 30"
+                fill="none"
+                stroke={theme.neon.teal}
+                strokeWidth="1"
+                opacity="0.5"
+              />
+            </svg>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Digital Rain / Data Streams */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {dataStreams.map((stream) => (
+          <motion.div
+            key={stream.id}
+            className="absolute"
+            style={
+              stream.isVertical
+                ? { left: `${stream.x}%`, top: 0, width: "2px", height: "100%" }
+                : { top: `${stream.x}%`, left: 0, width: "100%", height: "2px" }
+            }
+            animate={
+              stream.isVertical
+                ? { y: ["-100%", "200%"] }
+                : { x: ["-100%", "200%"] }
+            }
+            transition={{
+              duration: stream.speed,
+              repeat: Infinity,
+              delay: stream.delay,
+              ease: "linear",
+            }}
+          >
+            <div
+              className={`w-full h-full bg-gradient-to-${stream.isVertical ? "b" : "r"} from-transparent ${
+                darkMode ? "via-cyan-400/40" : "via-cyan-500/60"
+              } to-transparent`}
+              style={{
+                boxShadow: darkMode
+                  ? "0 0 10px rgba(34,211,238,0.5)"
+                  : "0 0 10px rgba(34,211,238,0.7)",
               }}
             />
-
-            <motion.div
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={
-                window.innerWidth > 1280 ? slideLeftVariants : slideUpVariants
-              }
-              transition={{ type: "spring", stiffness: 200, duration: 0.5 }}
-              className="text-center xl:text-left items-center justify-between mx-auto mt-6 xl:mt-0 xl:ps-28 relative z-10"
-            >
-              <AnimatedText texts={["AI/ML Engineer", "Software Developer"]} />
-              <h1 className="text-[40px] sm:text-5xl px-2 xl:px-0 sm:py-2 :py-1 text-gray-800 dark:text-white md:text-6xl">
-                Hello I’m
-              </h1>
-              <SplitText
-                text="Usama Puward"
-                className="text-[40px] sm:text-5xl px-2 xl:px-0 sm:py-2 py-1 text-teal-600 font-medium dark:text-teal-400 md:text-6xl"
-                delay={150}
-                animationFrom={{
-                  opacity: 0,
-                  transform: "translate3d(0,50px,0)",
-                }}
-                animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
-                easing="easeOutCubic"
-                threshold={0.2}
-                rootMargin="-50px"
-              />
-              <motion.p
-                className="text-center xl:text-left text-md py-2 sm:py-4 leading-8 text-gray-700 dark:text-gray-300 max-w-xl xl:mx-0 mx-auto md:text-xl"
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
-              >
-                Computer Science Undergraduate and current AI/ML Engineer
-                Intern, with a strong passion for Software Developing, Machine
-                Learning, and Artificial Intelligence. Skilled in developing
-                efficient and innovative solutions for real-world projects and
-                building high-quality applications. Eager to tackle complex
-                challenges in software development and drive innovation within
-                the fields of AI and ML.
-                <motion.span
-                  className="inline-block w-0.5 h-5 bg-teal-400 ml-1"
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                />
-              </motion.p>
-              <div className="flex flex-col xl:flex-row items-center  xl:gap-8 py-4 space-y-8 xl:space-y-0">
-                <motion.div
-                  className="relative group xl:mb-0 order-none xl:order-2"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-                  }
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                >
-                  <button
-                    onClick={() => setShowDropdown(!showDropdown)}
-                    className="shadow-xl dark:shadow-[#0c121d] font-bold text-gray-700 dark:text-white rounded-full xl:rounded-none xl:rounded-r-full border-dashed border-2 hover:text-teal-600 hover:dark:text-teal-400 border-gray-700 hover:border-teal-600 dark:border-white hover:dark:border-teal-400 py-4 px-6 relative transition-all duration-300 ease-in-out dropdown-button"
-                  >
-                    <div className="flex items-center transition-transform duration-300 hover:scale-[1.03] gap-3">
-                      <span className="text-lg">Download CV</span>
-                      {showDropdown ? (
-                        <AiOutlineUp className="h-[26px] w-[26px] font-bold" />
-                      ) : (
-                        <AiOutlineDownload className="h-[26px] w-[26px] font-bold" />
-                      )}
-                    </div>
-                  </button>
-                  {showDropdown && (
-                    <div className="absolute z-10 left-0 mt-2 w-full bg-white dark:bg-gray-800 shadow-xl dark:shadow-[#0c121d]">
-                      {resumeLinks.map((resume) => (
-                        <a
-                          key={resume.label}
-                          href={resume.href}
-                          download={resume.download}
-                          className="block px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
-                        >
-                          {resume.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-
-                <div className="relative z-0 flex justify-center gap-[9px] sm:gap-9 xl:gap-5 text-gray-700 dark:text-gray-300 xl:mb-0 order-none xl:order-2">
-                  {socials.map((social, index) => (
-                    <motion.div
-                      key={index}
-                      className="relative group"
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={
-                        isInView
-                          ? { opacity: 1, scale: 1 }
-                          : { opacity: 0, scale: 0 }
-                      }
-                      transition={{ duration: 0.3, delay: 1 + index * 0.1 }}
-                    >
-                      {/* Holographic ring */}
-                      <motion.div
-                        className="absolute inset-0 rounded-full border border-teal-400/30"
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 10 + index * 2,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
-                        style={{ scale: 1.2 }}
-                      />
-
-                      {/* Glow effect */}
-                      <div className="absolute inset-0 rounded-full bg-teal-400/20 blur-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
-
-                      <motion.a
-                        href={social.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-14 h-14 flex items-center justify-center rounded-full relative overflow-hidden shadow-xl dark:shadow-[#0c121d] border-2 border-teal-600 font-medium dark:border-teal-400 hover:border-black/50 hover:dark:border-white/50 bg-gray-100/10 dark:bg-gray-700/20 transition-colors duration-300"
-                        whileHover={{ scale: 1.1, rotateY: 180 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        {/* Scan lines */}
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-b from-transparent via-teal-400/20 to-transparent"
-                          animate={{ y: [-56, 56] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: index * 0.3,
-                          }}
-                        />
-
-                        {/* Hover overlay */}
-                        <motion.div
-                          className="absolute inset-0 bg-gray-800 dark:bg-white scale-0 group-hover:scale-100 rounded-full transition-transform duration-300 ease-in-out"
-                          initial={{ scale: 0 }}
-                          whileHover={{ scale: 1 }}
-                        />
-
-                        {/* Icon */}
-                        <social.icon className="w-9 h-9 relative z-10 text-gray-700 dark:text-gray-300 group-hover:text-white dark:group-hover:text-white/50 transition-colors duration-300 rounded-[15px]" />
-                      </motion.a>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-          <motion.div
-            className="relative mx-auto xl:w-1/3 flex justify-center items-center order-1 xl:order-none my-3 xl:my-0 py-4 xl:py-0"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={
-              isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
-            }
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <AnimatedProfile imageSrc={profile} />
-
-            {/* Top Right - Fast pulse */}
-            <div className="hidden xl:block absolute top-7 right-0 w-16 h-16 border-t-2 border-r-2 border-teal-600 animate-pulse" />
-
-            {/* Bottom Left - Slow fade in/out */}
-            <div className="hidden xl:block absolute bottom-9 left-0 w-16 h-16 border-b-2 border-l-2 border-teal-600 animate-[fade_2s_ease-in-out_infinite]" />
-
-            {/* Top Left - Quick flash */}
-            <div className="hidden xl:block absolute top-7 left-0 w-16 h-16 border-t-2 border-l-2 border-teal-600 animate-[flash_0.5s_ease-in-out_infinite]" />
-
-            {/* Bottom Right - Glitch effect */}
-            <div className="hidden xl:block absolute bottom-9 right-0 w-16 h-16 border-b-2 border-r-2 border-teal-600 animate-[glitch_1.5s_ease-in-out_infinite]" />
           </motion.div>
-        </div>
-      </section>
+        ))}
+      </div>
 
-      {/* Cards Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-        className="px-7"
-      >
-        <div className="text-center pt-8 sm:pt-16 xl:pb-0 px-7 mb-10">
-          <TrueFocus
-            sentence="Welcome to My Portfolio"
-            manualMode={false}
-            blurAmount={0}
-            borderColor="#0d9488"
-            textColor="#0d9488"
-            animationDuration={2}
-            pauseBetweenAnimations={1}
+      {/* Glitch Lines */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            className={`absolute left-0 right-0 h-px ${
+              darkMode ? "bg-teal-400/60" : "bg-teal-500/80"
+            }`}
+            style={{
+              top: `${30 + i * 25}%`,
+              boxShadow: darkMode
+                ? "0 0 8px rgba(13,148,136,0.6)"
+                : "0 0 8px rgba(13,148,136,0.8)",
+            }}
+            animate={{
+              scaleX: [0, 1, 0],
+              x: ["-100%", "0%", "100%"],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 0.5,
+              repeat: Infinity,
+              repeatDelay: 5 + i * 2,
+              ease: "easeInOut",
+            }}
           />
-        </div>
-        <motion.div
-          className="grid grid-cols-1 gap-10 lg:grid-cols-3 my-8"
-          variants={containerVariants}
-        >
-          {cards.map((card, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <PortfolioCard card={card} darkMode={darkMode} />
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.section>
+        ))}
+      </div>
 
-      {/* Skills Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-        className="px-7 pt-7"
-      >
-        <motion.h2
-          variants={slideUpVariants}
-          className="text-[42px] md:text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-8"
-        >
-          Skills
-        </motion.h2>
-        <motion.div className="mx-auto my-6">
-          <motion.div variants={slideUpVariants} className="text-center mb-12">
-            <p className="text-lg max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
-              I have a diverse background in various domains of software
-              development and machine learning. My expertise allows me to create
-              visually appealing interfaces, build robust server-side
-              applications, and develop intelligent systems using modern tools
-              and frameworks.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          >
-            {skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                className="relative group"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={
-                  index % 2 === 0 ? slideLeftVariants : slideRightVariants
-                }
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                {/* Holographic glow */}
-                <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-teal-400/20 via-cyan-400/20 to-blue-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                
-
-                {/* Main container with matching border style */}
-                <div className="relative h-full bg-[#b9f7d7] dark:bg-gray-700 backdrop-blur-xl border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 p-6 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden shadow-xl dark:shadow-[#0c121d] transition-all duration-300">
-                  {/* Animated background */}
-                  <div className="absolute inset-0 opacity-10">
-                    <motion.div
-                      className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(13,148,136,0.3)_0%,transparent_70%)]"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.1, 0.3, 0.1],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                    />
-                  </div>
-
-                  {/* Circuit pattern */}
-                  <div className="absolute top-4 right-4 w-20 h-20 opacity-20">
-                    <svg
-                      viewBox="0 0 100 100"
-                      className="w-full h-full text-teal-600 dark:text-teal-400"
-                    >
-                      <motion.path
-                        d="M20,20 L80,20 L80,50 L50,50 L50,80 L80,80"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        fill="none"
-                        initial={{ pathLength: 0 }}
-                        whileInView={{ pathLength: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 2, delay: index * 0.2 }}
-                      />
-                      <motion.circle
-                        cx="50"
-                        cy="50"
-                        r="3"
-                        fill="currentColor"
-                        animate={{
-                          scale: [1, 1.5, 1],
-                          opacity: [0.5, 1, 0.5],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: index * 0.3,
-                        }}
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Floating particles */}
-                  <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
-                  {[...Array(3)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-1 h-1 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100"
-                      animate={{
-                        x: [Math.random() * 200, Math.random() * 200],
-                        y: [Math.random() * 150, Math.random() * 150],
-                        opacity: [0, 0.6, 0],
-                      }}
-                      transition={{
-                        duration: Math.random() * 3 + 2,
-                        repeat: Infinity,
-                        delay: Math.random() * 2,
-                      }}
-                    />
-                  ))}
-                </div>
-
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300">
-                      {skill.category}
-                    </h3>
-
-                    {/* Progress bar container */}
-                    <div className="relative mb-6">
-                      <div className="flex justify-between items-center mb-3">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
-                          Proficiency
-                        </span>
-                        <span className="text-sm font-mono text-teal-600 dark:text-teal-400 font-semibold">
-                          {skill.progress}%
-                        </span>
-                      </div>
-
-                      {/* Progress track */}
-                      <div className="relative h-3 bg-gray-300/50 dark:bg-gray-600/50 rounded-full overflow-hidden">
-                        {/* Animated background */}
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-cyan-400/20"
-                          animate={{
-                            x: ["-100%", "100%"],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }}
-                        />
-
-                        {/* Progress fill */}
-                        <motion.div
-                          className="relative h-full bg-gradient-to-r from-teal-700 to-teal-500 rounded-full"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.progress}%` }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 1.5,
-                            ease: "easeOut",
-                            delay: index * 0.1,
-                          }}
-                        >
-                          {/* Shimmer effect */}
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-full"
-                            animate={{
-                              x: ["-100%", "100%"],
-                            }}
-                            transition={{
-                              duration: 1.5,
-                              repeat: Infinity,
-                              ease: "linear",
-                              delay: 1,
-                            }}
-                          />
-                        </motion.div>
-                      </div>
-                    </div>
-
-                    {/* Tech tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {skill.techs.map((tech, techIndex) => (
-                        <motion.span
-                          key={techIndex}
-                          className="px-3 py-1 text-sm rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 border border-teal-800 dark:border-teal-300 hover:border-teal-600 hover:dark:border-teal-400 hover:bg-teal-200 dark:hover:bg-teal-800/40 transition-all duration-200 cursor-default"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 0.3,
-                            delay: index * 0.1 + techIndex * 0.05,
-                          }}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Corner accents with theme compatibility */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-teal-400/20 to-transparent rounded-tl-none" />
-                  <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-cyan-400/20 to-transparent rounded-br-none" />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-      </motion.section>
-
-      {/* Technologies Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-        className="px-7 pt-7"
-      >
-        <motion.h2
-          variants={slideUpVariants}
-          className="text-[42px] md:text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-10"
-        >
-          Technologies
-        </motion.h2>
-        <motion.div
-          variants={slideUpVariants}
-          className="h-auto w-full relative my-6 shadow-xl dark:shadow-[#0c121d] bg-[#b9f7d7] dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-teal-400 hover:dark:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none"
-        >
-          <div className="">
-            <LogoWall
-              items={logoImgs}
-              direction="horizontal"
-              size="clamp(6rem, 1rem + 25vmin, 22rem)"
-              duration="60s"
-              bgAccentColor="#2DD4BF"
-            />
-          </div>
-        </motion.div>
-      </motion.section>
-
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-        className="px-7 pt-7"
-      >
-        <motion.h2
-          variants={slideUpVariants}
-          className="text-[42px] md:text-5xl font-bold text-center text-teal-600 dark:text-teal-400 mb-10"
-        >
-          Education
-        </motion.h2>
-        <motion.div variants={containerVariants} className="space-y-6">
-          {educationData.map((edu, index) => (
-            <motion.div
-              key={index}
-              ref={educationRef}
-              className="relative group"
-              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-              animate={isInView3 ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.3 }}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              {/* Holographic timeline connector */}
-              {index < educationData.length - 1 && (
-                <motion.div
-                  className="absolute left-8 top-24 w-0.5 h-24 bg-gradient-to-b from-teal-400 to-cyan-400"
-                  initial={{ height: 0 }}
-                  animate={isInView3 ? { height: 96 } : {}}
-                  transition={{ duration: 1, delay: index * 0.3 + 0.5 }}
+      {/* Circuit Board Pattern */}
+      <div className={`absolute inset-0 ${darkMode ? "opacity-20" : "opacity-30"}`}>
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+          {Array.from({ length: dimensions.width < 768 ? 15 : 25 }, (_, i) => {
+            const cols = dimensions.width < 768 ? 3 : 5;
+            const x = (i % cols) * (100 / cols);
+            const y = Math.floor(i / cols) * 20;
+            return (
+              <g key={i}>
+                <motion.path
+                  d={`M${x} ${y} L${x + 8} ${y} L${x + 8} ${y + 3} L${x + 15} ${y + 3}`}
+                  stroke={theme.neon.cyan}
+                  strokeWidth="0.5"
+                  fill="none"
+                  filter="url(#glow)"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: [0, 1, 0] }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                    ease: "easeInOut",
+                  }}
                 />
-              )}
+                <motion.circle
+                  cx={x + 15}
+                  cy={y + 3}
+                  r="1"
+                  fill={theme.neon.teal}
+                  filter="url(#glow)"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                  }}
+                />
+              </g>
+            );
+          })}
+        </svg>
+      </div>
 
-              {/* Energy pulse effect */}
-              <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-teal-400/10 via-cyan-400/10 to-blue-400/10 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      {/* Particle Network */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none">
+        <defs>
+          <radialGradient id="particleGrad">
+            <stop offset="0%" stopColor={theme.particleColors.primary} />
+            <stop offset="100%" stopColor={theme.particleColors.primaryLight} />
+          </radialGradient>
+          <radialGradient id="nodeGrad">
+            <stop offset="0%" stopColor={theme.particleColors.secondary} />
+            <stop offset="100%" stopColor={theme.particleColors.secondaryLight} />
+          </radialGradient>
+          <filter id="neonGlow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
 
-              {/* Main container with matching border style */}
-              <div className="relative bg-[#b9f7d7] dark:bg-gray-700 backdrop-blur-xl border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden shadow-xl dark:shadow-[#0c121d] transition-all duration-300">
-                {/* Animated neural network background */}
-                <div className="absolute inset-0 opacity-15">
-                  <svg
-                    width="100%"
-                    height="100%"
-                    className="text-teal-600 dark:text-teal-400"
-                  >
-                    {[...Array(6)].map((_, i) => (
-                      <motion.line
-                        key={i}
-                        x1={Math.random() * 100 + "%"}
-                        y1={Math.random() * 100 + "%"}
-                        x2={Math.random() * 100 + "%"}
-                        y2={Math.random() * 100 + "%"}
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        opacity="0.3"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: isHovered ? 1 : 0.5 }}
-                        transition={{ duration: 1.5, delay: i * 0.2 }}
-                      />
-                    ))}
-                  </svg>
-                </div>
+        {particles.map((particle, i) =>
+          particles.slice(i + 1).map((other, j) => {
+            const distance = Math.sqrt(
+              Math.pow(particle.x - other.x, 2) + Math.pow(particle.y - other.y, 2)
+            );
+            const connectionDistance = getConnectionDistance();
+            if (distance < connectionDistance) {
+              const opacity = ((connectionDistance - distance) / connectionDistance) * (darkMode ? 0.4 : 0.5);
+              return (
+                <motion.line
+                  key={`${i}-${j}`}
+                  x1={particle.x}
+                  y1={particle.y}
+                  x2={other.x}
+                  y2={other.y}
+                  stroke={theme.neon.cyan}
+                  strokeWidth="1"
+                  opacity={opacity}
+                  filter="url(#neonGlow)"
+                  animate={{ opacity: [opacity * 0.5, opacity, opacity * 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                />
+              );
+            }
+            return null;
+          })
+        )}
 
-                <div className="relative z-10 p-6 flex flex-col md:flex-row items-start gap-6">
-                  {/* Icon container */}
-                  <motion.div
-                    className="relative flex-shrink-0"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {/* Glowing ring */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-teal-400 to-cyan-400 p-0.5">
-                      <div className="w-full h-full bg-gray-100 dark:bg-gray-600 rounded-full" />
-                    </div>
+        {particles.map((particle) => (
+          <motion.circle
+            key={particle.id}
+            cx={particle.x}
+            cy={particle.y}
+            r={particle.size}
+            fill={particle.type === "node" ? "url(#nodeGrad)" : "url(#particleGrad)"}
+            filter="url(#neonGlow)"
+            animate={{
+              r: [particle.size, particle.size * 1.8, particle.size],
+              opacity: [particle.opacity, particle.opacity * 1.5, particle.opacity],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: particle.id * 0.1,
+            }}
+          />
+        ))}
+      </svg>
 
-                    {/* Icon background with pulse */}
-                    <motion.div
-                      className="relative w-14 h-14 bg-gradient-to-br from-teal-600 to-teal-500 dark:from-teal-400 dark:to-cyan-500 rounded-full flex items-center justify-center"
-                      animate={{
-                        boxShadow: isHovered
-                          ? [
-                              "0 0 20px rgba(13,148,136,0.3)",
-                              "0 0 40px rgba(13,148,136,0.6)",
-                              "0 0 20px rgba(13,148,136,0.3)",
-                            ]
-                          : "0 0 20px rgba(13,148,136,0.3)",
-                      }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      {React.createElement(edu.icon, {
-                        size: 28,
-                        className: "text-white",
-                      })}
-                    </motion.div>
+      {/* Holographic Scan Lines */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `linear-gradient(90deg, transparent 98%, ${
+            darkMode ? "rgba(13,148,136,0.15)" : "rgba(13,148,136,0.2)"
+          } 100%)`,
+          backgroundSize: `${dimensions.width < 768 ? "10px" : "15px"} 100%`,
+        }}
+        animate={{ backgroundPosition: ["0% 0%", "100% 0%"] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+      />
 
-                    {/* Orbital rings */}
-                    <motion.div
-                      className="absolute inset-0 rounded-full border border-teal-400/30"
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      style={{ scale: 1.25 }}
-                    />
-                    <motion.div
-                      className="absolute inset-0 rounded-full border border-cyan-400/20"
-                      animate={{ rotate: -360 }}
-                      transition={{
-                        duration: 15,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      style={{ scale: 1.5 }}
-                    />
-                  </motion.div>
+      {/* Corner HUD Elements */}
+      <div className="hidden sm:block absolute top-4 left-4 w-20 h-20 pointer-events-none">
+        <motion.div
+          className={`absolute inset-0 border-l-2 border-t-2 ${
+            darkMode ? "border-teal-400/60" : "border-teal-500/80"
+          }`}
+          style={{
+            boxShadow: darkMode
+              ? "0 0 10px rgba(13,148,136,0.5)"
+              : "0 0 10px rgba(13,148,136,0.7)",
+          }}
+          animate={{
+            borderColor: [theme.neon.teal, theme.neon.cyan, theme.neon.teal],
+          }}
+          transition={{ duration: 3, repeat: Infinity }}
+        />
+        <motion.div
+          className={`absolute top-2 left-2 w-2 h-2 ${
+            darkMode ? "bg-cyan-400" : "bg-cyan-500"
+          } rounded-full`}
+          style={{
+            boxShadow: darkMode
+              ? "0 0 10px rgba(34,211,238,0.8)"
+              : "0 0 10px rgba(34,211,238,1)",
+          }}
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.6, 1, 0.6],
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
+        <div className={`absolute top-5 left-0 w-8 h-px ${darkMode ? "bg-teal-400/60" : "bg-teal-500/80"}`} />
+        <div className={`absolute top-0 left-5 w-px h-8 ${darkMode ? "bg-teal-400/60" : "bg-teal-500/80"}`} />
+      </div>
 
-                  {/* Content */}
-                  <div className="flex-grow">
-                    <motion.div
-                      className="mb-4"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView3 ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.6, delay: index * 0.3 + 0.3 }}
-                    >
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300">
-                        {edu.degree}
-                      </h3>
+      <div className="hidden sm:block absolute top-4 right-4 w-20 h-20 pointer-events-none">
+        <motion.div
+          className={`absolute inset-0 border-r-2 border-t-2 ${
+            darkMode ? "border-cyan-400/60" : "border-cyan-500/80"
+          }`}
+          style={{
+            boxShadow: darkMode
+              ? "0 0 10px rgba(34,211,238,0.5)"
+              : "0 0 10px rgba(34,211,238,0.7)",
+          }}
+          animate={{
+            borderColor: [theme.neon.cyan, theme.neon.blue, theme.neon.cyan],
+          }}
+          transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+        />
+      </div>
 
-                      {/* Institution with holographic effect */}
-                      <motion.div
-                        className="flex flex-col md:flex-row md:items-center gap-2 mb-2"
-                        whileHover={{
-                          textShadow: "0 0 10px rgba(13,148,136,0.5)",
-                        }}
-                      >
-                        <span className="text-teal-600 dark:text-teal-400 font-semibold">
-                          {edu.institution}
-                        </span>
-                        <span className="text-gray-500 dark:text-gray-400 hidden md:inline">
-                          •
-                        </span>
-                        <span className="text-sm bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-300  font-mono bg-teal-400/10 px-3 py-1 rounded-full border border-teal-400/30 w-fit">
-                          {edu.year}
-                        </span>
-                      </motion.div>
+      <div className="hidden sm:block absolute bottom-4 left-4 w-20 h-20 pointer-events-none">
+        <motion.div
+          className={`absolute inset-0 border-l-2 border-b-2 ${
+            darkMode ? "border-blue-400/60" : "border-blue-500/80"
+          }`}
+          style={{
+            boxShadow: darkMode
+              ? "0 0 10px rgba(59,130,246,0.5)"
+              : "0 0 10px rgba(59,130,246,0.7)",
+          }}
+          animate={{
+            borderColor: [theme.neon.blue, theme.neon.teal, theme.neon.blue],
+          }}
+          transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+        />
+      </div>
 
-                      {/* Description with typing effect simulation */}
-                      <motion.p
-                        className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                        initial={{ opacity: 0 }}
-                        animate={isInView3 ? { opacity: 1 } : {}}
-                        transition={{ duration: 1, delay: index * 0.3 + 0.6 }}
-                      >
-                        {edu.description}
-                      </motion.p>
-                    </motion.div>
+      <div className="hidden sm:block absolute bottom-4 right-4 w-20 h-20 pointer-events-none">
+        <motion.div
+          className={`absolute inset-0 border-r-2 border-b-2 ${
+            darkMode ? "border-teal-400/60" : "border-teal-500/80"
+          }`}
+          style={{
+            boxShadow: darkMode
+              ? "0 0 10px rgba(13,148,136,0.5)"
+              : "0 0 10px rgba(13,148,136,0.7)",
+          }}
+          animate={{
+            borderColor: [theme.neon.teal, theme.neon.cyan, theme.neon.teal],
+          }}
+          transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
+        />
+      </div>
 
-                    <motion.div
-                      className="mt-6 flex items-center gap-3"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView3 ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.6, delay: index * 0.3 + 0.9 }}
-                    >
-                      <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="w-2 h-2 rounded-full bg-teal-400/30"
-                            animate={
-                              isHovered
-                                ? {
-                                    backgroundColor: [
-                                      "rgba(13,148,136,0.3)",
-                                      "rgba(13,148,136,1)",
-                                      "rgba(13,148,136,0.3)",
-                                    ],
-                                  }
-                                : {}
-                            }
-                            transition={{
-                              duration: 0.8,
-                              delay: i * 0.1,
-                              repeat: isHovered ? Infinity : 0,
-                            }}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">
-                        STATUS: COMPLETED
-                      </span>
-                    </motion.div>
-                  </div>
-                </div>
+      {/* Central Holographic Display */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+        <motion.div
+          className={`${
+            dimensions.width < 768 ? "w-80 h-80" : "w-96 h-96"
+          } rounded-full border-2 ${
+            darkMode ? "border-teal-400/20" : "border-teal-500/30"
+          }`}
+          style={{
+            boxShadow: darkMode
+              ? "0 0 30px rgba(13,148,136,0.3), inset 0 0 30px rgba(13,148,136,0.1)"
+              : "0 0 30px rgba(13,148,136,0.4), inset 0 0 30px rgba(13,148,136,0.2)",
+          }}
+          animate={{
+            scale: [1, 1.05, 1],
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+        <motion.div
+          className={`absolute inset-8 rounded-full border ${
+            darkMode ? "border-cyan-400/30" : "border-cyan-500/40"
+          }`}
+          animate={{
+            scale: [1.05, 1, 1.05],
+            rotate: [360, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+        <motion.div
+          className={`absolute inset-16 rounded-full border ${
+            darkMode ? "border-blue-400/20" : "border-blue-500/30"
+          }`}
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [0, -360],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      </div>
 
-                {/* Corner geometric elements with theme compatibility */}
-                <div className="absolute top-0 right-0">
-                  <motion.div
-                    className="w-20 h-20 bg-gradient-to-bl from-teal-400/10 to-transparent"
-                    animate={{
-                      background: isHovered
-                        ? "linear-gradient(to bottom left, rgba(13,148,136,0.2), transparent)"
-                        : "linear-gradient(to bottom left, rgba(13,148,136,0.1), transparent)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <div className="absolute top-4 right-4 w-8 h-8">
-                    <motion.div
-                      className="w-full h-0.5 bg-teal-400/50"
-                      animate={{ scaleX: [0, 1, 0] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.5,
-                      }}
-                    />
-                    <motion.div
-                      className="w-0.5 h-full bg-teal-400/50 absolute top-0 right-0"
-                      animate={{ scaleY: [0, 1, 0] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.5 + 0.5,
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div className="absolute bottom-0 left-0">
-                  <motion.div
-                    className="w-16 h-16 bg-gradient-to-tr from-cyan-400/10 to-transparent"
-                    animate={{
-                      background: isHovered
-                        ? "linear-gradient(to top right, rgba(34,211,238,0.2), transparent)"
-                        : "linear-gradient(to top right, rgba(34,211,238,0.1), transparent)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.section>
+      {/* Ambient Glow */}
+      <div className={`absolute inset-0 bg-gradient-to-r ${theme.ambientGlow} pointer-events-none`} />
     </div>
   );
 };
 
-export default Index;
+export default FuturisticCyberBackground;

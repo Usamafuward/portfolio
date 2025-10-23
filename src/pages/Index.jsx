@@ -7,7 +7,7 @@ import {
   AiOutlineDownload,
 } from "react-icons/ai";
 import { motion, useInView } from "framer-motion";
-import profile from "@/assets/Usama.jpg";
+import profile from "@/assets/Usama1.png";
 import SplitText from "@/components/ui/SplitText";
 import LogoWall from "@/components/ui/LogoWall";
 import TrueFocus from "@/components/ui/TrueFocus";
@@ -80,7 +80,7 @@ const Index = () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [setIsScrolled]);
 
   const cards = [
     {

@@ -5,7 +5,7 @@ const AnimatedProfile = ({ imageSrc }) => {
   return (
     <div className="relative mx-auto flex justify-center items-center">
       {/* Glowing border */}
-      <div className="absolute inset-4 rounded-full bg-gradient-to-r from-teal-400/20 via-cyan-400/20 to-blue-400/20 blur-lg" />
+      <div className="absolute inset-4 rounded-full bg-transparent blur-lg" />
 
       {/* Outer rotating ring */}
       <div className="absolute w-[310px] h-[310px] sm:w-[400px] sm:h-[400px]">
@@ -64,14 +64,14 @@ const AnimatedProfile = ({ imageSrc }) => {
 
         {/* Main image container */}
         <motion.div 
-          className="relative h-[270px] w-[270px] sm:h-[360px] sm:w-[360px] rounded-full overflow-hidden border-4 border-teal-400/60 bg-gradient-to-br from-gray-800 to-gray-900"
+          className="relative h-[270px] w-[270px] sm:h-[360px] sm:w-[360px] rounded-full overflow-hidden border-4 border-teal-400/60 bg-transparent"
           animate={{
             boxShadow: ["0 0 30px rgba(13,148,136,0.4)", "0 0 60px rgba(13,148,136,0.6)", "0 0 30px rgba(13,148,136,0.4)"]
           }}
           transition={{ duration: 2, repeat: Infinity }}
         >
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-teal-400/10 to-transparent rounded-full" />
+          <div className="absolute inset-0 bg-transparent rounded-full" />
 
 
           {/* Image */}
