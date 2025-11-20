@@ -14,6 +14,7 @@ import { MdOutlineHandshake } from "react-icons/md";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { DarkModeContext } from "../context/DarkModeContext";
 import AnimatedBackground from "./ui/AnimatedBackground";
+import ChatBot from "./ChatBot";
 import { motion } from "framer-motion";
 
 const Layout = () => {
@@ -400,7 +401,7 @@ const Layout = () => {
       {isScrolled ? (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-10 right-10 lg:right-28 bg-teal-600 text-white p-3 rounded-full shadow-xl hover:bg-teal-600 transition-colors backdrop-blur-lg backdrop-filter bg-opacity-30"
+          className="fixed bottom-24 right-6 bg-teal-600 text-white p-3 rounded-full shadow-xl hover:bg-teal-600 transition-colors backdrop-blur-lg backdrop-filter bg-opacity-30 z-40"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ scale: 1.05 }}
@@ -411,6 +412,7 @@ const Layout = () => {
       ) : (
         <></>
       )}
+      <ChatBot />
     </div>
   );
 };

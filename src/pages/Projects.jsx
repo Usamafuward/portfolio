@@ -8,19 +8,8 @@ import {
   Server,
   Code,
 } from "lucide-react";
-import one from "@/assets/thumbnails/1.png";
-import two from "@/assets/thumbnails/2.png";
-import three from "@/assets/thumbnails/3.png";
-import four from "@/assets/thumbnails/4.png";
-import five from "@/assets/thumbnails/5.png";
-import six from "@/assets/thumbnails/6.png";
-import seven from "@/assets/thumbnails/7.png";
-import eight from "@/assets/thumbnails/8.png";
-import nine from "@/assets/thumbnails/9.png";
-import ten from "@/assets/thumbnails/10.png";
-import eleven from "@/assets/thumbnails/111.png";
-import twelve from "@/assets/thumbnails/122.png";
 import PropTypes from "prop-types";
+import { portfolioData } from "../constants/portfolioData";
 
 // Enhanced Project Card Component
 const FuturisticProjectCard = ({ project, index }) => {
@@ -292,6 +281,8 @@ export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const { projects } = portfolioData;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -301,137 +292,6 @@ export default function Projects() {
       },
     },
   };
-
-  const projects = [
-    {
-      title: "AI-Powered Multi-Agent Coding Assistant",
-      description:
-        "An advanced AI-powered coding assistant that leverages multiple AI agents to assist developers in writing, debugging, optimizing, and documenting code. It integrates OpenAI's LLMs with FastAPI to provide real-time assistance, along with GitHub API integration for seamless code management and collaboration.",
-      to: "https://github.com/Usamafuward/AI_Powered_Multi_Agent_Coding_Assistant.git",
-      technologies: [
-        "AutoGen",
-        "OpenAI GPT",
-        "FastHTML",
-        "FastAPI",
-        "LangChain",
-        "FAISS",
-        "GitHub API",
-      ],
-      thumbnail: one,
-      category: "AI/ML",
-    },
-    {
-      title: "NLP Podcast Chatbot",
-      description:
-        "An NLP-driven chatbot that interacts with podcast transcripts to answer questions, attribute responses to speakers, and provide YouTube links, enhancing user engagement and content access.",
-      to: "https://github.com/Usamafuward/nlp-podcast-chatbot.git",
-      technologies: ["Flask", "TF-IDF", "VADER", "NLTK"],
-      thumbnail: three,
-      category: "AI/ML",
-    },
-    {
-      title: "RAG Pipeline for PDF Analysis (Chatbot)",
-      description:
-        "This project is a RAG (Retrieval-Augmented Generation) pipeline that extracts and processes text, tables, and images from PDFs, enabling users to query the extracted information through a conversational interface. It combines multi-modal embeddings with a Google Generative AI-powered question-answering system.",
-      to: "https://github.com/Usamafuward/Rag-Pipeline-For-PDF-Analysis.git",
-      technologies: [
-        "LangChain",
-        "Google GEN AI",
-        "FIASS",
-        "Streamlit",
-        "Python",
-      ],
-      thumbnail: seven,
-      category: "AI/ML",
-    },
-    {
-      title: "Travel Point",
-      description:
-        "A social media platform for travellers to share experiences, itineraries, and book accommodations. It also allows users to create and book all-inclusive travel packages for a seamless travel experience.",
-      to: "https://github.com/aamirfazeer/TravelPointMobile.git",
-      technologies: [
-        "React",
-        "ReactNative",
-        "FastAPI",
-        "PostgreSQL",
-        "Tailwind CSS",
-      ],
-      thumbnail: two,
-      category: "Full-Stack",
-    },
-    {
-      title: "Eats Robers",
-      description:
-        "Eats Robers is a web app using React, Node.js, Express, MongoDB, and Mongoose that helps users find the perfect meal, featuring seamless payment options and exceptional customer service.",
-      to: "https://github.com/Usamafuward/eats-robers.git",
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Mongoose"],
-      thumbnail: six,
-      category: "Full-Stack",
-    },
-    {
-      title: "Mediman - Doctor Dashboard (sample) Frontend App",
-      description:
-        "Mediman is a doctor dashboard app that allows doctors to manage patient appointments (Online and Physical), view patient medical records, and prescribe medications, enhancing patient care and treatment outcomes.",
-      to: "https://github.com/Usamafuward/sample-mediman-doctor.git",
-      technologies: ["React", "Shadcn-UI", "Tailwind CSS"],
-      thumbnail: four,
-      category: "Frontend",
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "A personal portfolio built with React that showcases my projects and skills in artificial intelligence, software developing and machine learning, providing an engaging platform for potential employers and collaborators.",
-      to: "https://github.com/Usamafuward/portfolio.git",
-      technologies: ["React", "Tailwind CSS", "EmailJS"],
-      thumbnail: five,
-      category: "Frontend",
-    },
-    {
-      title: "Clubhub-Central",
-      description:
-        "Club-Hub Central is a centralized platform developed with PHP, HTML, CSS, JavaScript, and MariaDB for the University of Colombo School of Computing clubs and societies, facilitating better communication and collaboration among members.",
-      to: "https://github.com/terance-edmonds/clubhub-central.git",
-      technologies: ["PHP", "HTML", "SCSS", "JavaScript", "MariaDB"],
-      thumbnail: nine,
-      category: "Full-Stack",
-    },
-    {
-      title: "LangChain for LLM Application Development (coursera)",
-      description:
-        "The project uses the LangChain framework to build applications with advanced language models (LLMs), focusing on key features like prompts, memory management, creating operation chains, document-based question answering, and developing LLMs as reasoning agents.",
-      to: "https://www.coursera.org/learn/langchain-for-llm-application-development-project",
-      technologies: ["LangChain", "LLM", "OpenAI", "Python"],
-      thumbnail: eight,
-      category: "AI/ML",
-    },
-    {
-      title: "Django Blog",
-      description:
-        "A blog application built with Django for publishing technology-related posts, providing a user-friendly interface for authors to share insights and engage with readers.",
-      to: "https://github.com/Usamafuward/Django-blog.git",
-      technologies: ["Python", "Django", "HTML", "CSS", "PostgreSQL"],
-      thumbnail: ten,
-      category: "Backend",
-    },
-    {
-      title: "Online Book Review Application",
-      description:
-        "A comprehensive RESTful API for managing book reviews built with Node.js and Express.js. Features user authentication (JWT & Session), CRUD operations for reviews, async operations with Promises and async/await, and supports multiple concurrent users for seamless book review management.",
-      to: "https://github.com/Usamafuward/book-review-api.git",
-      technologies: ["Node.js", "Express.js", "JWT", "RESTful API"],
-      thumbnail: eleven,
-      category: "Backend",
-    },
-    {
-      title: "Startup Company Website",
-      description:
-        "A professional website created for a startup software company to showcase its products, services, team, blogs, and clients. Built with React, Next.js, and Tailwind CSS, it delivers a modern, responsive, and engaging user experience tailored for startups.",
-      to: "https://github.com/Usamafuward/startup_company_website.git",
-      technologies: ["React", "Next.js", "Tailwind CSS"],
-      thumbnail: twelve,
-      category: "Frontend",
-    },
-  ];
 
   return (
     <section className="min-h-screen relative" ref={ref}>

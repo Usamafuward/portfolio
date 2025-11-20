@@ -115,5 +115,36 @@ export default {
       animation: ["hover", "focus"],
     },
   },
-  plugins: [import("tailwindcss-animate")],
+  plugins: [
+    import("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      const newUtilities = {
+        ".scrollbar-thin": {
+          scrollbarWidth: "thin",
+          scrollbarColor: "rgb(20 184 166) rgb(229 231 235)",
+        },
+        ".dark .scrollbar-thin": {
+          scrollbarColor: "rgb(20 184 166) rgb(31 41 55)",
+        },
+        ".scrollbar-thin::-webkit-scrollbar": {
+          width: "8px",
+        },
+        ".scrollbar-thin::-webkit-scrollbar-track": {
+          background: "rgb(229 231 235)",
+          borderRadius: "10px",
+        },
+        ".dark .scrollbar-thin::-webkit-scrollbar-track": {
+          background: "rgb(31 41 55)",
+        },
+        ".scrollbar-thin::-webkit-scrollbar-thumb": {
+          background: "rgb(20 184 166)",
+          borderRadius: "10px",
+        },
+        ".scrollbar-thin::-webkit-scrollbar-thumb:hover": {
+          background: "rgb(13 148 136)",
+        },
+      };
+      addUtilities(newUtilities, ["dark"]);
+    },
+  ],
 };

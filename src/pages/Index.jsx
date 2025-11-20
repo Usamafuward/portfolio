@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { DarkModeContext } from "@/context/DarkModeContext";
 import {
-  AiFillLinkedin,
-  AiFillInstagram,
   AiOutlineUp,
   AiOutlineDownload,
 } from "react-icons/ai";
@@ -14,13 +12,8 @@ import TrueFocus from "@/components/ui/TrueFocus";
 import AnimatedText from "@/components/ui/AnimatedText";
 import AnimatedProfile from "@/components/ui/AnimatedProfile";
 import PortfolioCard from "@/components/ui/PortfolioCard";
-import logoSvg from "@/assets/logo_svg";
 import flatIcon from "@/assets/flat_icon";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { IoMail } from "react-icons/io5";
-import { FaGithubSquare } from "react-icons/fa";
-import { FaSchool } from "react-icons/fa";
-import { FaGraduationCap } from "react-icons/fa";
+import { portfolioData } from "../constants/portfolioData";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -60,6 +53,10 @@ const Index = () => {
   const [isHovered, setIsHovered] = useState(false);
   const educationRef = useRef(null);
   const isInView3 = useInView(educationRef, { once: true });
+  const { skills } = portfolioData;
+  const { technologies } = portfolioData;
+  const { socialLinks } = portfolioData;
+  const { educations } = portfolioData;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,125 +100,6 @@ const Index = () => {
       description:
         "Discover my professional journey, including key roles and experiences that have shaped my expertise and skills.",
       link: "/experiences",
-    },
-  ];
-
-  const skills = [
-    {
-      category: "Front-End Development",
-      progress: 85,
-      techs: [
-        "React",
-        "Next",
-        "React Native",
-        "FastHTML",
-        "SCSS",
-        "Tailwind CSS",
-        "Bootstrap",
-      ],
-    },
-    {
-      category: "Back-End Development",
-      progress: 90,
-      techs: ["FastAPI", "Node.js", "Django", "Express.js"],
-    },
-    {
-      category: "Machine Learning",
-      progress: 75,
-      techs: ["TensorFlow", "Scikit-learn", "Pandas", "NumPy", "Matplotlib"],
-    },
-    {
-      category: "Database Ops",
-      progress: 90,
-      techs: ["MongoDB", "PostgreSQL", "MySQL"],
-    },
-    {
-      category: "Artificial Intelligence",
-      progress: 85,
-      techs: ["NLP", "Computer Vision", "Deep Learning"],
-    },
-    {
-      category: "DevOps & Containerization",
-      progress: 70,
-      techs: ["Docker"],
-    },
-    {
-      category: "Cloud Platforms",
-      progress: 60,
-      techs: ["Microsoft Azure"],
-    },
-    {
-      category: "Version Control",
-      progress: 85,
-      techs: ["Git", "GitHub"],
-    },
-  ];
-
-  const logoImgs = [
-    { imgUrl: logoSvg.bootstrap, altText: "Bootstrap Logo" },
-    { imgUrl: logoSvg.docker, altText: "Docker Logo" },
-    { imgUrl: logoSvg.github, altText: "GitHub Logo" },
-    { imgUrl: logoSvg.javascript, altText: "JavaScript Logo" },
-    { imgUrl: logoSvg.mongodb, altText: "MongoDB Logo" },
-    { imgUrl: logoSvg.nodedotjs, altText: "Node.js Logo" },
-    { imgUrl: logoSvg.python, altText: "Python Logo" },
-    { imgUrl: logoSvg.react, altText: "React Logo" },
-    { imgUrl: logoSvg.tensorflow, altText: "TensorFlow Logo" },
-    { imgUrl: logoSvg.postgresql, altText: "PostgreSQL Logo" },
-    { imgUrl: logoSvg.tailwindcss, altText: "Tailwind CSS Logo" },
-    { imgUrl: logoSvg.bootstrap, altText: "Bootstrap Logo" },
-    { imgUrl: logoSvg.sass, altText: "SCSS Logo" },
-    { imgUrl: logoSvg.fastapi, altText: "FastAPI Logo" },
-    { imgUrl: logoSvg.express, altText: "Express Logo" },
-    { imgUrl: logoSvg.mysql, altText: "MySQL Logo" },
-    { imgUrl: logoSvg.pandas, altText: "Pandas Logo" },
-    { imgUrl: logoSvg.numpy, altText: "NumPy Logo" },
-    { imgUrl: logoSvg.scikitlearn, altText: "scikit-learn Logo" },
-    { imgUrl: logoSvg.cplusplus, altText: "C++ Logo" },
-    { imgUrl: logoSvg.git, altText: "Git Logo" },
-    { imgUrl: logoSvg.django, altText: "Django Logo" },
-    { imgUrl: logoSvg.reactnative, altText: "React Native Logo" },
-  ];
-
-  const socials = [
-    {
-      icon: FaGithubSquare,
-      link: "https://github.com/Usamafuward",
-    },
-    {
-      icon: AiFillLinkedin,
-      link: "https://linkedin.com/in/usama-puward",
-    },
-    {
-      icon: FaSquareXTwitter,
-      link: "https://www.x.com/usamafuward",
-    },
-    {
-      icon: AiFillInstagram,
-      link: "https://www.instagram.com/usama._fuward",
-    },
-    {
-      icon: IoMail,
-      link: "mailto:usamafuward2001@gmail.com",
-    },
-  ];
-
-  const educationData = [
-    {
-      icon: FaGraduationCap,
-      degree: "Bachelor of Science in Computer Science",
-      institution: "University of Colombo School of Computing",
-      year: "2022 - 2025",
-      description:
-        "Successfully completed a degree in Computer Science with a strong focus on software development, machine learning, and AI. Gained hands-on experience through projects and internships, while cultivating a passion for building innovative solutions and exploring new technologies.",
-    },
-    {
-      icon: FaSchool,
-      degree: "Secondary School Education",
-      institution: "Zahira College Mawanella",
-      year: "2012 - 2020",
-      description:
-        "Completed GCE Ordinary Level and GCE Advanced Level in Physical Science Stream. Alongside academics, actively participated in extracurricular activities, served as a student prefect, and achieved numerous accolades in both education and sports",
     },
   ];
 
@@ -338,7 +216,7 @@ const Index = () => {
                 </motion.div>
 
                 <div className="relative z-0 flex justify-center gap-4 sm:gap-9 xl:gap-5 text-gray-700 dark:text-gray-300 xl:mb-0 order-none xl:order-2">
-                  {socials.map((social, index) => (
+                  {socialLinks.map((social, index) => (
                     <motion.div
                       key={index}
                       className="relative group"
@@ -707,7 +585,7 @@ const Index = () => {
         >
           <div className="">
             <LogoWall
-              items={logoImgs}
+              items={technologies}
               direction="horizontal"
               size="clamp(6rem, 1rem + 25vmin, 22rem)"
               duration="60s"
@@ -731,7 +609,7 @@ const Index = () => {
           Education
         </motion.h2>
         <motion.div variants={containerVariants} className="space-y-6">
-          {educationData.map((edu, index) => (
+          {educations.map((edu, index) => (
             <motion.div
               key={index}
               ref={educationRef}
@@ -743,7 +621,7 @@ const Index = () => {
               onMouseLeave={() => setIsHovered(false)}
             >
               {/* Holographic timeline connector */}
-              {index < educationData.length - 1 && (
+              {index < educations.length - 1 && (
                 <motion.div
                   className="absolute left-8 top-24 w-0.5 h-24 bg-gradient-to-b from-teal-400 to-cyan-400"
                   initial={{ height: 0 }}

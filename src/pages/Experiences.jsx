@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Calendar, Zap } from "lucide-react";
 import PropTypes from "prop-types";
+import { portfolioData } from "../constants/portfolioData";
 
 // Enhanced Experience Card Component
 const FuturisticExperienceCard = ({ experience, index, isLeft }) => {
@@ -296,6 +297,8 @@ export default function Experiences() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const { experiences } = portfolioData;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -305,51 +308,6 @@ export default function Experiences() {
       },
     },
   };
-
-  const experiences = [
-    {
-      title: "AI/ML Engineer Intern",
-      description:
-        "Actively contributing to transformative projects in AI, machine learning, and automation, leveraging data-driven insights to enhance business operations at Kainovation Technologies, focusing on data preprocessing, AI solution deployment, and optimizing intelligent systems for real-world applications",
-      duration: "November 2024 – Present",
-      company: "Kainovation Technologies",
-    },
-    {
-      title: "Software Developer",
-      description:
-        "Worked on the Mediman - Doctor Patient Clinic Online Appointment project, handling both front-end and back-end development. Implemented features for appointment booking, patient management, and real-time communication between doctors and patients, ensuring a seamless user experience.",
-      duration: "November 2024 – January 2025",
-      company: "Edus Lanka (PVT) LTD",
-    },
-    {
-      title: "Full Stack Developer Intern",
-      description:
-        "Participated in a learning internship focused on full-stack development, gaining hands-on experience with front-end and back-end technologies. Worked on guided projects, improving proficiency in web development, database management, and API integration while collaborating with mentors to enhance coding best practices",
-      duration: "October 2024 – December 2024",
-      company: "Unified Mentor India",
-    },
-    {
-      title: "Artificial Intelligence Intern",
-      description:
-        "Completed a one-month internship in Artificial Intelligence at NoviTech R&D Pvt Ltd. Worked on several AI projects, contributing to the development and implementation of machine learning models and AI solutions aimed at solving real-world challenges.",
-      duration: "June 2023 – July 2024",
-      company: "NoviTech R&D Pvt Ltd",
-    },
-    {
-      title: "Freelance Full Stack Developer",
-      description:
-        "Designed and developed custom web applications tailored to client requirements, focusing on responsive and user-friendly interfaces. Built scalable backend architectures using Node.js and MongoDB, integrated third-party APIs, and optimized performance for seamless user experiences.",
-      duration: "December 2023 – May 2024",
-      company: "Self-Employed",
-    },
-    {
-      title: "Research Projects: Data Collector, Annotator",
-      description:
-        "Collected and annotated data for projects on badminton shot analysis and emotion detection in Tamil texts. Responsibilities included data validation, video editing for ML training, and collaboration with research teams to achieve project goals.",
-      duration: "April 2023 – December 2023",
-      company: "UCSC",
-    },
-  ];
 
   return (
     <section className="min-h-screen relative" ref={ref}>
