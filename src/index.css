@@ -43,6 +43,38 @@ body {
   overflow-x: hidden;
 }
 
+/* Custom Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(20 184 166) rgb(229 231 235);
+}
+
+.dark * {
+  scrollbar-color: rgb(20 184 166) rgb(31 41 55);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(229 231 235);
+  border-radius: 10px;
+}
+
+.dark *::-webkit-scrollbar-track {
+  background: rgb(31 41 55);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgb(20 184 166);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgb(13 148 136);
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
   font-weight: 700; /* Adjust weight as needed */
