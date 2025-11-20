@@ -268,7 +268,7 @@ const ChatBot = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 p-4 bg-teal-600 text-white rounded-full shadow-lg hover:shadow-xl z-50 transition-shadow"
+        className="fixed bottom-6 right-6 p-3 sm:p-4 bg-teal-600 text-white rounded-2xl rounded-bl-none shadow-lg hover:shadow-xl z-50 transition-shadow"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </motion.button>
