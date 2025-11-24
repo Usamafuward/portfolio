@@ -401,7 +401,7 @@ const Layout = () => {
       {isScrolled ? (
         <motion.button
           onClick={scrollToTop}
-          className="fixed sm:bottom-24 bottom-[88px] right-6 bg-teal-600 text-white p-3 rounded-full shadow-xl hover:bg-teal-600 transition-colors backdrop-blur-lg backdrop-filter bg-opacity-30 z-40"
+          className="fixed sm:bottom-24 bottom-[88px] right-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md text-teal-600 dark:text-teal-400 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50 p-3 rounded-full shadow-xl transition-all z-40"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ scale: 1.05 }}

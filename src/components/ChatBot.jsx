@@ -4,7 +4,6 @@ import {
   MessageCircle,
   X,
   Send,
-  Loader2,
   Minimize2,
   Sparkles,
 } from "lucide-react";
@@ -152,7 +151,7 @@ const ChatBot = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 w-80 md:w-96 h-[500px] bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl rounded-tl-none rounded-br-none shadow-2xl border border-white/20 dark:border-gray-700/50 flex flex-col z-50 overflow-hidden"
+            className="fixed bottom-24 right-6 w-80 md:w-96 h-[500px] bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl rounded-tl-none rounded-br-none shadow-2xl border-2 border-teal-500/40 dark:border-teal-400/40 flex flex-col z-50 overflow-hidden"
           >
             {/* Header */}
             <div className="relative p-4 flex justify-between items-center text-white overflow-hidden">
@@ -232,7 +231,23 @@ const ChatBot = () => {
               {isLoading && (
                 <div className="flex justify-start">
                   <div className="bg-white/90 dark:bg-gray-700/90 backdrop-blur-sm p-3 rounded-2xl rounded-bl-none shadow-sm">
-                    <Loader2 className="w-5 h-5 animate-spin text-teal-600" />
+                    <div className="flex gap-1">
+                      <motion.div
+                        className="w-2 h-2 bg-teal-600 rounded-full"
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
+                      />
+                      <motion.div
+                        className="w-2 h-2 bg-teal-600 rounded-full"
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+                      />
+                      <motion.div
+                        className="w-2 h-2 bg-teal-600 rounded-full"
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
+                      />
+                    </div>
                   </div>
                 </div>
               )}
@@ -268,7 +283,7 @@ const ChatBot = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 p-3 sm:p-4 bg-teal-600 text-white rounded-2xl rounded-bl-none shadow-lg hover:shadow-xl z-50 transition-shadow"
+        className="fixed bottom-6 right-6 p-3 sm:p-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md text-teal-600 dark:text-teal-400 border-2 border-teal-500/40 dark:border-teal-400/40 rounded-2xl rounded-bl-none shadow-lg hover:shadow-xl z-50 transition-all hover:border-teal-500/50 dark:hover:border-teal-400/50"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </motion.button>

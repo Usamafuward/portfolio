@@ -56,7 +56,30 @@ const FuturisticProjectCard = ({ project, index }) => {
         rel="noopener noreferrer"
         className="block group"
       >
-        <div className="relative overflow-hidden shadow-xl dark:shadow-[#0c121d] hover:shadow-xl transition-all duration-500 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none transform">
+        <motion.div
+          className="relative overflow-hidden transition-all duration-300 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-[30px] rounded-tl-none rounded-br-none transform"
+          animate={
+            isHovered
+              ? {
+                  boxShadow: [
+                    "0 0 20px rgba(13,148,136,0.3)",
+                  ],
+                }
+              : {
+                  boxShadow: "0 0 0px rgba(13,148,136,0)",
+                }
+          }
+          transition={{
+            duration: 1,
+            repeat: isHovered ? Infinity : 0,
+            ease: "easeInOut",
+          }}
+        >
+          {/* Border light effect */}
+          <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-transparent via-teal-400/30 to-transparent blur-sm" />
+          </div>
+          
           {/* Animated background grid */}
           <div className="absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden">
             <div className="absolute inset-0 bg-[linear-gradient(rgba(13,148,136,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(13,148,136,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
@@ -90,9 +113,9 @@ const FuturisticProjectCard = ({ project, index }) => {
           />
 
           {/* Image section with enhanced effects */}
-          <div className="relative bg-gray-200 dark:bg-gray-600 flex items-center justify-center overflow-hidden">
+          <div className="relative bg-gray-200/30 dark:bg-gray-600/30 backdrop-blur-sm flex items-center justify-center overflow-hidden">
             {/* Circuit pattern overlay */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
               <svg width="100%" height="100%" className="text-teal-400/50">
                 {[...Array(6)].map((_, i) => (
                   <motion.line
@@ -118,12 +141,12 @@ const FuturisticProjectCard = ({ project, index }) => {
             <img
               src={project.thumbnail}
               alt={project.title}
-              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
             />
 
             {/* Enhanced hover overlay */}
             <motion.div
-              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/20"
+              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/20"
               initial={{ scale: 0.8 }}
               animate={{
                 scale: isHovered ? 1 : 0.8,
@@ -131,7 +154,7 @@ const FuturisticProjectCard = ({ project, index }) => {
               }}
             >
               <motion.div
-                className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full p-3 transform scale-75 group-hover:scale-100 transition-transform duration-300"
+                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full p-3 transform scale-75 group-hover:scale-100 transition-transform duration-300 border border-teal-400/30"
                 animate={
                   isHovered
                     ? {
@@ -208,7 +231,7 @@ const FuturisticProjectCard = ({ project, index }) => {
 
             {/* Description */}
             <motion.p
-              className="text-gray-700 dark:text-gray-200 mb-4 transition-all duration-500"
+              className="text-gray-700 dark:text-gray-200 mb-4 transition-all duration-300"
               animate={isHovered ? {} : {}}
             >
               {project.description}
@@ -236,30 +259,7 @@ const FuturisticProjectCard = ({ project, index }) => {
               ))}
             </div>
           </div>
-
-          {/* Corner geometric elements */}
-          <motion.div
-            className="absolute top-4 left-4 opacity-50 group-hover:opacity-100"
-            animate={isHovered ? { rotate: 90 } : { rotate: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="w-6 h-6">
-              <div className="absolute w-full h-0.5 bg-teal-400/70" />
-              <div className="absolute h-full w-0.5 bg-teal-400/70" />
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="absolute bottom-4 right-4 opacity-50 group-hover:opacity-100"
-            animate={isHovered ? { rotate: -90 } : { rotate: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="w-6 h-6">
-              <div className="absolute w-full h-0.5 bg-teal-400/70 bottom-0" />
-              <div className="absolute h-full w-0.5 bg-teal-400/70 right-0" />
-            </div>
-          </motion.div>
-        </div>
+        </motion.div>
       </a>
     </motion.div>
   );

@@ -37,13 +37,42 @@ const FuturisticExperienceCard = ({ experience, index, isLeft }) => {
       onMouseLeave={() => setIsHovered(false)}
       className={`md:w-1/2 ${isLeft ? "md:pr-16" : "md:pl-16"}`}
     >
-      <div
-        className={`relative overflow-hidden shadow-xl dark:shadow-[#0c121d] hover:shadow-2xl transition-all duration-500 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 group rounded-[30px] ${
+      <motion.div
+        className={`relative overflow-hidden transition-all duration-300 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md group rounded-[30px] ${
           isLeft
             ? "rounded-tr-none rounded-bl-none md:rounded-tr-none md:rounded-bl-none"
             : "rounded-tl-none rounded-br-none md:rounded-tl-none md:rounded-br-none"
         } transform`}
+        animate={
+          isHovered
+            ? {
+                boxShadow: [
+                  "0 0 20px rgba(13,148,136,0.3)",
+                ],
+              }
+            : {
+                boxShadow: "0 0 0px rgba(13,148,136,0)",
+              }
+        }
+        transition={{
+          duration: 1.5,
+          repeat: isHovered ? Infinity : 0,
+          ease: "easeInOut",
+        }}
       >
+        {/* Border light effect */}
+        <div className={`absolute inset-0 rounded-[30px] ${
+            isLeft
+              ? "rounded-tr-none rounded-bl-none"
+              : "rounded-tl-none rounded-br-none"
+          } opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}>
+          <div className={`absolute inset-0 rounded-[30px] ${
+            isLeft
+              ? "rounded-tr-none rounded-bl-none"
+              : "rounded-tl-none rounded-br-none"
+          } bg-gradient-to-r from-transparent via-teal-400/30 to-transparent blur-sm`} />
+        </div>
+        
         {/* Animated background grid */}
         <div
           className={`absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] ${
@@ -93,7 +122,7 @@ const FuturisticExperienceCard = ({ experience, index, isLeft }) => {
         />
 
         {/* Content section */}
-        <div className="relative z-10 p-6 pl-7 group-hover:pt-12 transition-all duration-500">
+        <div className="relative z-10 p-6 pl-7 group-hover:pt-12 transition-all duration-300">
           {/* Title with arrow icon */}
           <div className="flex items-start justify-between mb-3">
             <motion.h3
@@ -178,58 +207,7 @@ const FuturisticExperienceCard = ({ experience, index, isLeft }) => {
             {experience.description}
           </motion.p>
         </div>
-
-        {/* Corner geometric elements - Positioned based on isLeft */}
-        <motion.div
-          className={`absolute top-4 opacity-50 group-hover:opacity-100 ${
-            isLeft ? "right-4" : "left-4"
-          }`}
-          animate={isHovered ? { rotate: isLeft ? -90 : 90 } : { rotate: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="w-6 h-6">
-            <div className="absolute w-full h-0.5 bg-teal-400/70" />
-            <div
-              className={`absolute h-full w-0.5 bg-teal-400/70 ${
-                isLeft ? "right-0" : "left-0"
-              }`}
-            />
-          </div>
-        </motion.div>
-
-        <motion.div
-          className={`absolute bottom-4 opacity-50 group-hover:opacity-100 ${
-            isLeft ? "left-4" : "right-4"
-          }`}
-          animate={isHovered ? { rotate: isLeft ? 90 : -90 } : { rotate: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="w-6 h-6">
-            <div className="absolute w-full h-0.5 bg-teal-400/70 bottom-0" />
-            <div
-              className={`absolute h-full w-0.5 bg-teal-400/70 ${
-                isLeft ? "left-0" : "right-0"
-              }`}
-            />
-          </div>
-        </motion.div>
-
-        {/* Energy pulse at corners - Positioned based on isLeft */}
-        <div
-          className={`absolute top-0 w-12 h-12 bg-gradient-to-bl from-teal-400/20 to-transparent ${
-            isLeft
-              ? "left-0 bg-gradient-to-br from-teal-400/20 to-transparent rounded-tl-[30px]"
-              : "right-0 bg-gradient-to-bl from-teal-400/20 to-transparent rounded-tr-[30px]"
-          }`}
-        />
-        <div
-          className={`absolute bottom-0 w-12 h-12 ${
-            isLeft
-              ? "right-0 bg-gradient-to-tl from-cyan-400/20 to-transparent rounded-br-[30px]"
-              : "left-0 bg-gradient-to-tr from-cyan-400/20 to-transparent rounded-bl-[30px]"
-          }`}
-        />
-      </div>
+      </motion.div>
     </motion.div>
   );
 };

@@ -31,7 +31,30 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
         rel="noopener noreferrer"
         className="block group h-full"
       >
-        <div className="relative h-full p-6 group-hover:pt-10 shadow-xl dark:shadow-[#0c121d] transition-all duration-500 border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none group-hover:shadow-2xl overflow-hidden">
+        <motion.div 
+          className="relative h-full p-6 group-hover:pt-10 transition-all duration-300 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden"
+          animate={
+            isHovered
+              ? {
+                  boxShadow: [
+                    "0 0 20px rgba(13,148,136,0.3)",
+                  ],
+                }
+              : {
+                  boxShadow: "0 0 0px rgba(13,148,136,0)",
+                }
+          }
+          transition={{
+            duration: 1.5,
+            repeat: isHovered ? Infinity : 0,
+            ease: "easeInOut",
+          }}
+        >
+          {/* Border light effect */}
+          <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-transparent via-teal-400/30 to-transparent blur-sm" />
+          </div>
+          
           {/* Animated background grid */}
           <div className="absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden">
             <div className="absolute inset-0 bg-[linear-gradient(rgba(13,148,136,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(13,148,136,0.3)_1px,transparent_1px)] bg-[size:15px_15px]" />
@@ -115,34 +138,7 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
               {cert.description}
             </motion.p>
           </div>
-
-          {/* Corner geometric elements */}
-          <motion.div
-            className="absolute top-4 left-4 opacity-50 group-hover:opacity-100"
-            animate={isHovered ? { rotate: 90 } : { rotate: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="w-4 h-4">
-              <div className="absolute w-full h-0.5 bg-teal-400/70" />
-              <div className="absolute h-full w-0.5 bg-teal-400/70" />
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="absolute bottom-4 right-4 opacity-50 group-hover:opacity-100"
-            animate={isHovered ? { rotate: -90 } : { rotate: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="w-4 h-4">
-              <div className="absolute w-full h-0.5 bg-teal-400/70 bottom-0" />
-              <div className="absolute h-full w-0.5 bg-teal-400/70 right-0" />
-            </div>
-          </motion.div>
-
-          {/* Energy pulse at corners */}
-          <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-teal-400/10 to-transparent rounded-tr-[30px]" />
-          <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-cyan-400/10 to-transparent rounded-bl-[30px]" />
-        </div>
+        </motion.div>
       </a>
     </motion.div>
   );
@@ -218,7 +214,7 @@ export default function Certifications() {
           {/* Enhanced Search Bar */}
           <div className="relative max-w-2xl mx-auto">
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-teal-400/10 via-cyan-400/10 to-blue-400/10 rounded-lg opacity-0 hover:opacity-100 blur-xl transition-opacity duration-500"
+              className="absolute inset-0 bg-gradient-to-r from-teal-400/10 via-cyan-400/10 to-blue-400/10 rounded-lg opacity-0 hover:opacity-100 blur-xl transition-opacity duration-300"
               whileHover={{ scale: 1.02 }}
             />
             <div className="relative">

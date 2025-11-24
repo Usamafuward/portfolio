@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { DarkModeContext } from "@/context/DarkModeContext";
-import {
-  AiOutlineUp,
-  AiOutlineDownload,
-} from "react-icons/ai";
+import { AiOutlineUp, AiOutlineDownload } from "react-icons/ai";
 import { motion, useInView } from "framer-motion";
 import profile from "@/assets/Usama1.png";
 import SplitText from "@/components/ui/SplitText";
@@ -50,7 +47,8 @@ const Index = () => {
   const [setIsScrolled] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [isHovered, setIsHovered] = useState(false);
+  const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null);
+  const [hoveredEducationIndex, setHoveredEducationIndex] = useState(null);
   const educationRef = useRef(null);
   const isInView3 = useInView(educationRef, { once: true });
   const { skills } = portfolioData;
@@ -163,13 +161,13 @@ const Index = () => {
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 1, delay: 0.5 }}
               >
-                Computer Science Graduate and current AI/ML Engineer
-                Intern and Software Developer, with a strong passion for Software Developing, Machine
-                Learning, and Artificial Intelligence. Skilled in developing
-                efficient and innovative solutions for real-world projects and
-                building high-quality applications. Eager to tackle complex
-                challenges in software development and drive innovation within
-                the fields of AI and ML.
+                Computer Science Graduate and current AI/ML Engineer Intern and
+                Software Developer, with a strong passion for Software
+                Developing, Machine Learning, and Artificial Intelligence.
+                Skilled in developing efficient and innovative solutions for
+                real-world projects and building high-quality applications.
+                Eager to tackle complex challenges in software development and
+                drive innovation within the fields of AI and ML.
                 <motion.span
                   className="inline-block w-0.5 h-5 bg-teal-400 ml-1"
                   animate={{ opacity: [1, 0, 1] }}
@@ -374,27 +372,42 @@ const Index = () => {
                 variants={
                   index % 2 === 0 ? slideLeftVariants : slideRightVariants
                 }
-                transition={{ duration: 0.8, delay: index * 0.1, type: "spring" }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.1,
+                  type: "spring",
+                }}
+                onMouseEnter={() => setHoveredSkillIndex(index)}
+                onMouseLeave={() => setHoveredSkillIndex(null)}
               >
-                {/* Holographic glow */}
-                <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-teal-400/20 via-cyan-400/20 to-blue-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Main container with matching border style */}
-                <div className="relative h-full bg-[#b9f7d7] dark:bg-gray-700 backdrop-blur-xl border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 p-6 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden shadow-xl dark:shadow-[#0c121d] transition-all duration-300">
-                  {/* Animated background */}
-                  <div className="absolute inset-0 opacity-10">
-                    <motion.div
-                      className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(13,148,136,0.3)_0%,transparent_70%)]"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.1, 0.3, 0.1],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                    />
+                {/* Main container with matching border style and glass effect */}
+                <motion.div
+                  className="relative h-full overflow-hidden transition-all duration-300 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md p-6 rounded-[30px] rounded-tl-none rounded-br-none shadow-xl dark:shadow-[#0c121d] transform"
+                  animate={
+                    hoveredSkillIndex === index
+                      ? {
+                          boxShadow: [
+                            "0 0 20px rgba(13,148,136,0.3)",
+                          ],
+                        }
+                      : {
+                          boxShadow: "0 0 0px rgba(13,148,136,0)",
+                        }
+                  }
+                  transition={{
+                    duration: 1.5,
+                    repeat: hoveredSkillIndex === index ? Infinity : 0,
+                    ease: "easeInOut",
+                  }}
+                >
+                  {/* Border light effect */}
+                  <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-transparent via-teal-400/30 to-transparent blur-sm" />
+                  </div>
+                  
+                  {/* Animated background grid */}
+                  <div className="absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden">
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(13,148,136,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(13,148,136,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
                   </div>
 
                   {/* Circuit pattern */}
@@ -433,14 +446,18 @@ const Index = () => {
 
                   {/* Floating particles */}
                   <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
-                    {[...Array(3)].map((_, i) => (
+                    {[...Array(6)].map((_, i) => (
                       <motion.div
                         key={i}
-                        className="absolute w-1 h-1 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100"
+                        className="absolute w-1 h-1 bg-teal-400 rounded-full"
+                        style={{
+                          left: `${Math.random() * 50}%`,
+                          top: `${Math.random() * 50}%`,
+                        }}
                         animate={{
-                          x: [Math.random() * 200, Math.random() * 200],
-                          y: [Math.random() * 150, Math.random() * 150],
-                          opacity: [0, 0.6, 0],
+                          x: [Math.random() * 300, Math.random() * 300],
+                          y: [Math.random() * 200, Math.random() * 200],
+                          opacity: [0, 0.8, 0],
                         }}
                         transition={{
                           duration: Math.random() * 3 + 2,
@@ -533,32 +550,32 @@ const Index = () => {
                   </div>
 
                   <div className="absolute bottom-0 right-0 p-4">
-                  <div className="relative w-8 h-8">
-                    <motion.div
-                      className="absolute bottom-0 right-0 w-full h-0.5 bg-teal-400/60 group-hover:bg-teal-400"
-                      animate={{ scaleX: [0, 1, 0] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.5,
-                      }}
-                    />
-                    <motion.div
-                      className="absolute bottom-0 right-0 w-0.5 h-full bg-teal-400/60 group-hover:bg-teal-400"
-                      animate={{ scaleY: [0, 1, 0] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.5 + 0.5,
-                      }}
-                    />
+                    <div className="relative w-8 h-8">
+                      <motion.div
+                        className="absolute bottom-0 right-0 w-full h-0.5 bg-teal-400/60 group-hover:bg-teal-400"
+                        animate={{ scaleX: [0, 1, 0] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: index * 0.5,
+                        }}
+                      />
+                      <motion.div
+                        className="absolute bottom-0 right-0 w-0.5 h-full bg-teal-400/60 group-hover:bg-teal-400"
+                        animate={{ scaleY: [0, 1, 0] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: index * 0.5 + 0.5,
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
 
                   {/* Corner accents with theme compatibility */}
                   <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-teal-400/20 to-transparent rounded-tl-none" />
                   <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-cyan-400/20 to-transparent rounded-br-none" />
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </motion.div>
@@ -581,17 +598,65 @@ const Index = () => {
         </motion.h2>
         <motion.div
           variants={slideUpVariants}
-          className="h-auto w-full relative my-6 shadow-xl dark:shadow-[#0c121d] bg-[#b9f7d7] dark:bg-gray-700 dark:text-gray-200 border-2 border-white dark:border-gray-500 hover:border-teal-400 hover:dark:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none"
+          className="h-auto w-full relative my-6 group"
         >
-          <div className="">
-            <LogoWall
-              items={technologies}
-              direction="horizontal"
-              size="clamp(6rem, 1rem + 25vmin, 22rem)"
-              duration="60s"
-              bgAccentColor="#2DD4BF"
-            />
-          </div>
+          <motion.div
+            className="relative overflow-hidden transition-all duration-300 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-[30px] rounded-tl-none rounded-br-none shadow-xl dark:shadow-[#0c121d] transform"
+            whileHover={{
+              boxShadow: [
+                "0 0 20px rgba(13,148,136,0.3)",
+              ],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            {/* Border light effect */}
+            <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-transparent via-teal-400/30 to-transparent blur-sm" />
+            </div>
+            
+            {/* Animated background grid */}
+            <div className="absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden">
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(13,148,136,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(13,148,136,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
+            </div>
+
+            {/* Floating particles */}
+            <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
+              {[...Array(6)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-teal-400 rounded-full"
+                  style={{
+                    left: `${Math.random() * 50}%`,
+                    top: `${Math.random() * 50}%`,
+                  }}
+                  animate={{
+                    x: [Math.random() * 300, Math.random() * 300],
+                    y: [Math.random() * 200, Math.random() * 200],
+                    opacity: [0, 0.8, 0],
+                  }}
+                  transition={{
+                    duration: Math.random() * 3 + 2,
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                  }}
+                />
+              ))}
+            </div>
+
+            <div className="relative z-10">
+              <LogoWall
+                items={technologies}
+                direction="horizontal"
+                size="clamp(6rem, 1rem + 25vmin, 22rem)"
+                duration="60s"
+                bgAccentColor="#2DD4BF"
+              />
+            </div>
+          </motion.div>
         </motion.div>
       </motion.section>
 
@@ -617,8 +682,8 @@ const Index = () => {
               initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
               animate={isInView3 ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.3 }}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              onMouseEnter={() => setHoveredEducationIndex(index)}
+              onMouseLeave={() => setHoveredEducationIndex(null)}
             >
               {/* Holographic timeline connector */}
               {index < educations.length - 1 && (
@@ -630,11 +695,60 @@ const Index = () => {
                 />
               )}
 
-              {/* Energy pulse effect */}
-              <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-teal-400/10 via-cyan-400/10 to-blue-400/10 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Main container with matching border style and glass effect */}
+              <motion.div
+                className="relative overflow-hidden transition-all duration-300 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-[30px] rounded-tl-none rounded-br-none shadow-xl dark:shadow-[#0c121d] transform"
+                animate={
+                  hoveredEducationIndex === index
+                    ? {
+                        boxShadow: [
+                          "0 0 20px rgba(13,148,136,0.3)",
+                        ],
+                      }
+                    : {
+                        boxShadow: "0 0 0px rgba(13,148,136,0)",
+                      }
+                }
+                transition={{
+                  duration: 1.5,
+                  repeat: hoveredEducationIndex === index ? Infinity : 0,
+                  ease: "easeInOut",
+                }}
+              >
+                {/* Border light effect */}
+                <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-transparent via-teal-400/30 to-transparent blur-sm" />
+                </div>
+                
+                {/* Animated background grid */}
+                <div className="absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden">
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(13,148,136,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(13,148,136,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
+                </div>
 
-              {/* Main container with matching border style */}
-              <div className="relative bg-[#b9f7d7] dark:bg-gray-700 backdrop-blur-xl border-2 border-white dark:border-gray-500 hover:border-teal-600 dark:hover:border-teal-400 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden shadow-xl dark:shadow-[#0c121d] transition-all duration-300">
+                {/* Floating particles */}
+                <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-1 h-1 bg-teal-400 rounded-full"
+                      style={{
+                        left: `${Math.random() * 50}%`,
+                        top: `${Math.random() * 50}%`,
+                      }}
+                      animate={{
+                        x: [Math.random() * 300, Math.random() * 300],
+                        y: [Math.random() * 200, Math.random() * 200],
+                        opacity: [0, 0.8, 0],
+                      }}
+                      transition={{
+                        duration: Math.random() * 3 + 2,
+                        repeat: Infinity,
+                        delay: Math.random() * 2,
+                      }}
+                    />
+                  ))}
+                </div>
+
                 {/* Animated neural network background */}
                 <div className="absolute inset-0 opacity-15">
                   <svg
@@ -653,7 +767,7 @@ const Index = () => {
                         strokeWidth="1"
                         opacity="0.3"
                         initial={{ pathLength: 0 }}
-                        animate={{ pathLength: isHovered ? 1 : 0.5 }}
+                        animate={{ pathLength: hoveredEducationIndex === index ? 1 : 0.5 }}
                         transition={{ duration: 1.5, delay: i * 0.2 }}
                       />
                     ))}
@@ -676,7 +790,7 @@ const Index = () => {
                     <motion.div
                       className="relative w-14 h-14 bg-gradient-to-br from-teal-600 to-teal-500 dark:from-teal-400 dark:to-cyan-500 rounded-full flex items-center justify-center"
                       animate={{
-                        boxShadow: isHovered
+                        boxShadow: hoveredEducationIndex === index
                           ? [
                               "0 0 20px rgba(13,148,136,0.3)",
                               "0 0 40px rgba(13,148,136,0.6)",
@@ -768,7 +882,7 @@ const Index = () => {
                             key={i}
                             className="w-2 h-2 rounded-full bg-teal-400/30"
                             animate={
-                              isHovered
+                              hoveredEducationIndex === index
                                 ? {
                                     backgroundColor: [
                                       "rgba(13,148,136,0.3)",
@@ -781,7 +895,7 @@ const Index = () => {
                             transition={{
                               duration: 0.8,
                               delay: i * 0.1,
-                              repeat: isHovered ? Infinity : 0,
+                              repeat: hoveredEducationIndex === index ? Infinity : 0,
                             }}
                           />
                         ))}
@@ -798,7 +912,8 @@ const Index = () => {
                   <motion.div
                     className="w-20 h-20 bg-gradient-to-bl from-teal-400/10 to-transparent"
                     animate={{
-                      background: "linear-gradient(to bottom left, rgba(13,148,136,0.3), transparent)"
+                      background:
+                        "linear-gradient(to bottom left, rgba(13,148,136,0.3), transparent)",
                     }}
                     transition={{ duration: 0.3 }}
                   />
@@ -808,7 +923,8 @@ const Index = () => {
                   <motion.div
                     className="w-16 h-16 bg-gradient-to-tr from-cyan-400/10 to-transparent"
                     animate={{
-                      background: "linear-gradient(to top right, rgba(13,148,136,0.3), transparent)"
+                      background:
+                        "linear-gradient(to top right, rgba(13,148,136,0.3), transparent)",
                     }}
                     transition={{ duration: 0.3 }}
                   />
@@ -836,7 +952,7 @@ const Index = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

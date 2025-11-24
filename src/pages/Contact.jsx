@@ -169,119 +169,117 @@ export default function Contact() {
             }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="relative group border-2 border-white dark:border-gray-500 bg-[#b9f7d7] dark:bg-gray-700 shadow-xl dark:shadow-[#0c121d] p-8 rounded-lg overflow-hidden"
+            className="relative group"
           >
-            {/* Animated background grid */}
-            <div className="absolute inset-0 opacity-20 dark:opacity-10">
-              <div
-                className="absolute inset-0 bg-[length:20px_20px] animate-pulse"
-                style={{
-                  backgroundImage: `
-                    linear-gradient(to right, rgba(13, 148, 136, 0.3) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(13, 148, 136, 0.3) 1px, transparent 1px)
-                  `,
-                }}
-              />
-            </div>
-
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-
-            {/* Floating particles */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              {[...Array(10)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-1.5 h-1.5 bg-teal-400 rounded-full"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                  }}
-                  animate={{
-                    x: [0, Math.random() * 40 - 20],
-                    y: [0, Math.random() * 40 - 20],
-                    opacity: [0, 0.8, 0],
-                    scale: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: Math.random() * 3 + 2,
-                    repeat: Infinity,
-                    delay: Math.random() * 2,
-                    ease: "easeInOut",
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* Scan line effect */}
             <motion.div
-              className="absolute left-0 right-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-0 group-hover:opacity-100"
-              animate={isHovered ? { y: [0, 550, 0] } : { y: 0 }}
-              transition={{ duration: 2, repeat: Infinity }}
-              style={{
-                clipPath: "inset(0 0 0 0)",
+              className="relative overflow-hidden transition-all duration-300 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md p-8 rounded-[30px] rounded-tl-none rounded-br-none shadow-xl dark:shadow-[#0c121d] transform"
+              animate={
+                isHovered
+                  ? {
+                      boxShadow: [
+                        "0 0 20px rgba(13,148,136,0.3)",
+                      ],
+                    }
+                  : {
+                      boxShadow: "0 0 0px rgba(13,148,136,0)",
+                    }
+              }
+              transition={{
+                duration: 1.5,
+                repeat: isHovered ? Infinity : 0,
+                ease: "easeInOut",
               }}
-            />
-
-            {/* Corner elements */}
-            <div className="absolute top-0 left-0 p-4">
-              <div className="relative w-10 h-10">
-                <motion.div
-                  className="absolute top-0 left-0 w-full h-0.5 bg-teal-400/60"
-                  animate={{
-                    scaleX: [0, 1, 0],
-                    opacity: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: 0.5,
-                  }}
-                />
-                <motion.div
-                  className="absolute top-0 left-0 w-0.5 h-full bg-teal-400/60"
-                  animate={{
-                    scaleY: [0, 1, 0],
-                    opacity: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: 1,
-                  }}
-                />
+            >
+              {/* Border light effect */}
+              <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="absolute inset-0 rounded-[30px] rounded-tl-none rounded-br-none bg-gradient-to-r from-transparent via-teal-400/30 to-transparent blur-sm" />
               </div>
-            </div>
-
-            <div className="absolute bottom-0 right-0 p-4">
-              <div className="relative w-8 h-8">
-                <motion.div
-                  className="absolute bottom-0 right-0 w-full h-0.5 bg-teal-400/60"
-                  animate={{
-                    scaleX: isHovered ? [0, 1, 0] : 0,
-                    opacity: isHovered ? [0, 1, 0] : 0,
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: 0.5,
-                  }}
-                />
-                <motion.div
-                  className="absolute bottom-0 right-0 w-0.5 h-full bg-teal-400/60"
-                  animate={{
-                    scaleY: isHovered ? [0, 1, 0] : 0,
-                    opacity: isHovered ? [0, 1, 0] : 0,
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: 1,
-                  }}
-                />
+              
+              {/* Animated background grid */}
+              <div className="absolute inset-0 opacity-5 dark:opacity-10 rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(13,148,136,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(13,148,136,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
               </div>
-            </div>
 
-            <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
+              {/* Floating particles */}
+              <div className="absolute inset-0 overflow-hidden rounded-[30px] rounded-tl-none rounded-br-none">
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-teal-400 rounded-full"
+                    style={{
+                      left: `${Math.random() * 50}%`,
+                      top: `${Math.random() * 50}%`,
+                    }}
+                    animate={{
+                      x: [Math.random() * 300, Math.random() * 300],
+                      y: [Math.random() * 200, Math.random() * 200],
+                      opacity: [0, 0.8, 0],
+                    }}
+                    transition={{
+                      duration: Math.random() * 3 + 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 2,
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Scan line effect */}
+              <motion.div
+                className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-0 group-hover:opacity-100"
+                animate={isHovered ? { y: [0, 550, 0] } : {}}
+                transition={{ duration: 2.5, repeat: Infinity }}
+              />
+
+              {/* Corner elements */}
+              <div className="absolute bottom-0 right-0 p-4">
+                <div className="relative w-8 h-8">
+                  <motion.div
+                    className="absolute bottom-0 right-0 w-full h-0.5 bg-teal-400/60 group-hover:bg-teal-400"
+                    animate={{ scaleX: [0, 1, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: 0.5,
+                    }}
+                  />
+                  <motion.div
+                    className="absolute bottom-0 right-0 w-0.5 h-full bg-teal-400/60 group-hover:bg-teal-400"
+                    animate={{ scaleY: [0, 1, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: 1,
+                    }}
+                  />
+                </div>
+              </div>
+
+
+              <div className="absolute top-0 left-0 p-4">
+                <div className="relative w-8 h-8">
+                  <motion.div
+                    className="absolute top-0 left-0 w-full h-0.5 bg-teal-400/60 group-hover:bg-teal-400"
+                    animate={{ scaleX: [0, 1, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: 0.5,
+                    }}
+                  />
+                  <motion.div
+                    className="absolute top-0 left-0 w-0.5 h-full bg-teal-400/60 group-hover:bg-teal-400"
+                    animate={{ scaleY: [0, 1, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: 1,
+                    }}
+                  />
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Name
@@ -344,6 +342,7 @@ export default function Contact() {
                 )}
               </motion.button>
             </form>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
