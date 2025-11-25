@@ -572,9 +572,7 @@ const Index = () => {
                     </div>
                   </div>
 
-                  {/* Corner accents with theme compatibility */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-teal-400/20 to-transparent rounded-tl-none" />
-                  <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-cyan-400/20 to-transparent rounded-br-none" />
+         
                 </motion.div>
               </motion.div>
             ))}
@@ -908,27 +906,6 @@ const Index = () => {
                 </div>
 
                 {/* Corner geometric elements with theme compatibility */}
-                <div className="absolute top-0 right-0">
-                  <motion.div
-                    className="w-20 h-20 bg-gradient-to-bl from-teal-400/10 to-transparent"
-                    animate={{
-                      background:
-                        "linear-gradient(to bottom left, rgba(13,148,136,0.3), transparent)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-
-                <div className="absolute bottom-0 left-0">
-                  <motion.div
-                    className="w-16 h-16 bg-gradient-to-tr from-cyan-400/10 to-transparent"
-                    animate={{
-                      background:
-                        "linear-gradient(to top right, rgba(13,148,136,0.3), transparent)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
 
                 <div className="absolute bottom-0 right-0 p-4">
                   <div className="relative w-10 h-10">

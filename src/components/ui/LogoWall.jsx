@@ -138,13 +138,6 @@ function LogoWall({
           </div>
         </div>
 
-        {/* Bottom Right - Glitch effect */}
-        {/* <motion.div className="hidden xl:block absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-teal-600 animate-pulse" /> */}
-
-        {/* Corner gradient accents */}
-        <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-teal-400/20 to-transparent rounded-br-full" />
-        <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-teal-400/20 to-transparent rounded-tl-full" />
-
         {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(8)].map((_, i) => (
@@ -349,22 +342,6 @@ function LogoWall({
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Corner geometric elements */}
-      <div className="absolute top-4 right-4 z-20">
-        <motion.div
-          className="w-6 h-6 border-2 border-teal-400/60 rotate-45"
-          animate={{ rotate: [45, 225, 45] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
-      <div className="absolute bottom-4 left-4 z-20">
-        <motion.div
-          className="w-6 h-6 border-2 border-teal-400/60 rotate-45"
-          animate={{ rotate: [45, -135, 45] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-        />
       </div>
 
       {/* Enhanced styles */}
