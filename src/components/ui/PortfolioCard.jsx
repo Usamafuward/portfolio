@@ -50,7 +50,7 @@ const PortfolioCard = ({ card, darkMode }) => {
     >
       {/* Glass morphism card container */}
       <motion.div
-        className="relative overflow-hidden transition-all duration-300 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/60 dark:hover:border-teal-400/60 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-[40px] rounded-tl-none rounded-br-none shadow-xl"
+        className="relative overflow-hidden transition-all duration-300 border-4 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/60 dark:hover:border-teal-400/60 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-[40px] rounded-tl-none rounded-br-none shadow-xl"
         animate={
           isHovered
             ? {
@@ -111,7 +111,7 @@ const PortfolioCard = ({ card, darkMode }) => {
 
         <HashLink
           to={card.link}
-          className="flex flex-col justify-center h-[360px] text-center p-10 relative overflow-hidden rounded-[36px] rounded-tl-none rounded-br-none block"
+          className="flex flex-col justify-center h-[360px] text-center p-10 relative overflow-hidden rounded-[36px] rounded-tl-none rounded-br-none"
         >
           {/* Data stream lines */}
           <motion.div

@@ -32,7 +32,7 @@ const FuturisticCertificationCard = ({ cert, index, delay = 0 }) => {
         className="block group h-full"
       >
         <motion.div 
-          className="relative h-full p-6 group-hover:pt-10 transition-all duration-300 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden"
+          className="relative h-full p-6 transition-all duration-300 border-2 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-[30px] rounded-tl-none rounded-br-none overflow-hidden"
           animate={
             isHovered
               ? {
@@ -238,29 +238,41 @@ export default function Certifications() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             {organizations.map((org, index) => (
-              <motion.button
+              <motion.div
                 key={org}
-                onClick={() => setSelectedOrg(org)}
-                className={`px-4 py-2 rounded-full transition-all duration-300 shadow-xl dark:shadow-[#0c121d] relative overflow-hidden ${
-                  selectedOrg === org
-                    ? "bg-teal-600 dark:bg-teal-500 text-white shadow-lg shadow-teal-400/30"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-                }`}
+                className="relative group"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
               >
-                {/* Active button glow effect */}
-                {selectedOrg === org && (
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-cyan-400/20 rounded-full blur-lg"
-                    layoutId="activeFilter"
-                  />
-                )}
-                <span className="relative z-10">{org}</span>
-              </motion.button>
+                <motion.button
+                  onClick={() => setSelectedOrg(org)}
+                  className={`relative overflow-hidden px-4 py-2 transition-all duration-300 shadow-xl dark:shadow-[#0c121d] border-2 ${
+                    selectedOrg === org
+                      ? "bg-teal-600/90 dark:bg-teal-500/90 backdrop-blur-md text-white border-teal-400/50 dark:border-teal-300/50"
+                      : "bg-white/50 dark:bg-gray-800/50 backdrop-blur-md text-gray-600 dark:text-gray-300 border-teal-500/40 dark:border-teal-400/40 hover:border-teal-500/50 dark:hover:border-teal-400/50"
+                  } rounded-full`}
+                  transition={{
+                    duration: 1.5,
+                    ease: "easeInOut",
+                  }}
+                >
+                  {/* Border light effect */}
+                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-teal-400/30 to-transparent blur-sm" />
+                  </div>
+
+                  {/* Active button glow effect */}
+                  {selectedOrg === org && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-cyan-400/20 rounded-full blur-lg"
+                      layoutId="activeFilter"
+                    />
+                  )}
+
+                  <span className="relative z-10 font-medium">{org}</span>
+                </motion.button>
+              </motion.div>
             ))}
           </motion.div>
         </motion.div>
