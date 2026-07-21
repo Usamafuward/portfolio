@@ -19,11 +19,11 @@ import twelve from "@/assets/thumbnails/122.png";
 export const portfolioData = {
   personalInfo: {
     name: "Usama Puward",
-    title: "AI/ML Engineer & Software Developer",
+    title: "AI/SE Engineer & Software Developer",
     email: "usamafuward2001@gmail.com",
     phone: "+94 (76) 6260507",
     location: "Colombo, Sri Lanka",
-    bio: "Computer Science Graduate and current AI/ML Engineer Intern and Software Developer, with a strong passion for Software Developing, Machine Learning, and Artificial Intelligence. Skilled in developing efficient and innovative solutions for real-world projects and building high-quality applications. Eager to tackle complex challenges in software development and drive innovation within the fields of AI and ML.",
+    bio: "Computer Science Graduate and current AI/SE Engineer and Software Developer, with a strong passion for Software Developing, Machine Learning, and Artificial Intelligence. Skilled in developing efficient and innovative solutions for real-world projects and building high-quality applications. Eager to tackle complex challenges in software development and drive innovation within the fields of AI and ML.",
   },
 
   socialLinks: [
@@ -203,7 +203,7 @@ export const portfolioData = {
       title: "30 Days MasterClass in Artificial Intelligence",
       description:
         "This certifies successfully completed the 30 Days MasterClass in Artificial Intelligence conducted by NoviTech R&D Private Limited, provided comprehensive training in various aspects of artificial intelligence, equipping participants with the skills to apply AI techniques in real-world applications.",
-      to: "https://drive.google.com/file/d/1o_2N7RJvDmo-ElYJYf3UySRpm5jvvPP5/view?usp=sharing",
+      to: "https://drive.google.com/file/d/13UoHvS4MVml488xk3oTUJcm_Z4pzh8Ii/view?usp=sharing",
       organization: "NoviTech R&D Private Limited",
     },
     {
@@ -217,7 +217,7 @@ export const portfolioData = {
       title: "Azure Fundamentals Training",
       description:
         "Successfully completed the Azure Fundamentals Training organized by Styava on 22nd March 2025, gaining foundational knowledge of Microsoft Azure services and cloud computing",
-      to: "https://drive.google.com/file/d/1cDCI4o_jqNFtnAl9KSVbIPAgzR_D-ZXh/view?usp=sharing",
+      to: "https://drive.google.com/file/d/137dq4RbCMkcUrUhR7N9AfB97gxjbXxqk/view?usp=sharing",
       organization: "Styava",
     },
     {
@@ -445,10 +445,17 @@ export const portfolioData = {
 
   experiences: [
     {
-      title: "AI/ML Engineer",
+      title: "AI/SE Engineer",
       description:
-        "Actively contributing to transformative projects in AI, machine learning, and automation, leveraging data-driven insights to enhance business operations at Kainovation Technologies, focusing on data preprocessing, AI solution deployment, and optimizing intelligent systems for real-world applications",
-      duration: "November 2024 – Present",
+        "Actively contributing to transformative projects in AI, machine learning, and software engineering at Kainovation Technologies. Focused on the integration of AI models, full-stack software development, AI solution deployment, and optimizing intelligent systems for real-world production environments.",
+      duration: "June 2025 – Present",
+      company: "Kainovation Technologies",
+    },
+    {
+      title: "AI/ML Intern",
+      description:
+        "Worked on research and development of AI and machine learning projects, leveraging data-driven insights to enhance business operations. Focused on data preprocessing, pipeline building, exploratory data analysis, and assisting in the deployment of machine learning models.",
+      duration: "November 2024 – May 2025",
       company: "Kainovation Technologies",
     },
     {

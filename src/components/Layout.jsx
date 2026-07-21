@@ -395,7 +395,7 @@ const Layout = () => {
         </div>
 
         <p className="text-md text-gray-800 dark:text-gray-200 text-center py-4">
-          © 2024 Usama Puward | AI/ML Engineer & Software Developer
+          © 2026 Usama Puward | AI/ML Engineer & Software Developer
         </p>
       </footer>
       {isScrolled ? (
