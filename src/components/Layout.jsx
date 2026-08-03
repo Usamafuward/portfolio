@@ -283,8 +283,7 @@ const Layout = () => {
                 About Me
               </h3>
               <p className="text-center flex items-start text-gray-700 dark:text-gray-300">
-                Computer Science Graduate @ UCSC passionate about creating
-                innovative solutions and exploring new technologies.
+                AI/SE Engineer & Computer Science Graduate, passionate about building intelligent AI systems and scalable software.
               </p>
             </motion.div>
 
