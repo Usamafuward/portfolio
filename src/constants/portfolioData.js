@@ -15,6 +15,7 @@ import nine from "@/assets/thumbnails/9.png";
 import ten from "@/assets/thumbnails/10.png";
 import eleven from "@/assets/thumbnails/111.png";
 import twelve from "@/assets/thumbnails/122.png";
+import thirteen from "@/assets/thumbnails/13.png";
 
 export const portfolioData = {
   personalInfo: {
@@ -313,6 +314,24 @@ export const portfolioData = {
     },
   ],
   projects: [
+    {
+      title: "Tartuca - Restaurant & Delivery Platform",
+      description:
+        "A full-stack restaurant and food ordering monorepo platform featuring a customer portal for interactive menu exploration and Google Maps delivery address tracking, an admin back-office dashboard for live order tracking and menu CRUD operations, and a high-performance asynchronous FastAPI backend integrated with PostgreSQL and Auth0.",
+      to: "https://github.com/Usamafuward/tartuca_user.git",
+      technologies: [
+        "React",
+        "FastAPI",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "SQLAlchemy",
+        "Auth0",
+        "Vite",
+        "Google Maps",
+      ],
+      thumbnail: thirteen,
+      category: "Full-Stack",
+    },
     {
       title: "AI-Powered Multi-Agent Coding Assistant",
       description:
