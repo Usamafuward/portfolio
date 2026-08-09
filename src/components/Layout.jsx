@@ -102,7 +102,7 @@ const Layout = () => {
         }`}
       >
         <nav
-          className={`flex justify-between items-center dark:text-white ${
+          className={`flex justify-between items-center w-full max-w-[1920px] mx-auto dark:text-white ${
             isScrolled ? "py-4" : "py-6"
           } transition-all duration-300`}
         >
@@ -265,11 +265,11 @@ const Layout = () => {
         </nav>
       </header>
 
-      <main className="bg-transparent pb-8 dark:bg-transparent md:px-16 lg:px-32 pt-[100px] w-full transition-all duration-300 z-10">
+      <main className="bg-transparent pb-8 dark:bg-transparent md:px-16 lg:px-32 pt-[100px] w-full max-w-[1920px] mx-auto transition-all duration-300 z-10">
         <Outlet />
       </main>
 
-      <footer className="py-4 space-y-4 px-7 md:px-[92px] lg:px-[156px] bg-transparent dark:bg-transparent transition-all duration-300 z-10">
+      <footer className="py-4 space-y-4 px-7 md:px-[92px] lg:px-[156px] bg-transparent dark:bg-transparent w-full max-w-[1920px] mx-auto transition-all duration-300 z-10">
         <div className="mx-auto md:flex justify-between">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* About Section */}
