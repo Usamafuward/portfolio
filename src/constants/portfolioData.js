@@ -312,6 +312,13 @@ export const portfolioData = {
       to: "https://coursera.org/verify/CGZ88EILCMOB",
       organization: "Edureka",
     },
+    {
+      title: "Google 15 Free AI Tools Masterclass",
+      description:
+        "Successfully completed the Google 15 Free AI Tools Masterclass quiz on the AI Dude portal, demonstrating hands-on knowledge of Google's free AI tools.",
+      to: "https://drive.google.com/file/d/16ngTXWEk0_bCQ0JWhoBk4B4zlucWoKlp/view?usp=sharing",
+      organization: "AI Dude",
+    },
   ],
   projects: [
     {
