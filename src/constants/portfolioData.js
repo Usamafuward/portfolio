@@ -315,7 +315,7 @@ export const portfolioData = {
     {
       title: "Google 15 Free AI Tools Masterclass",
       description:
-        "Successfully completed the Google 15 Free AI Tools Masterclass quiz on the AI Dude portal, demonstrating hands-on knowledge of Google's free AI tools.",
+        "Successfully completed the Google 15 Free AI Tools Masterclass by AI Dude. This comprehensive program provided hands-on experience with a diverse suite of Google's free AI applications, focusing on leveraging these tools for enhanced productivity, creative problem-solving, and efficient workflow automation. Gained practical skills in applying artificial intelligence to real-world scenarios, demonstrating proficiency in navigating and utilizing Google's AI ecosystem effectively.",
       to: "https://drive.google.com/file/d/16ngTXWEk0_bCQ0JWhoBk4B4zlucWoKlp/view?usp=sharing",
       organization: "AI Dude",
     },
