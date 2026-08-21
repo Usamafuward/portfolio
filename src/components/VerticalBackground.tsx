@@ -101,7 +101,7 @@ export default function VerticalBackground({ word }: VerticalBackgroundProps) {
       {/* Hidden single cycle for accurate height measurement */}
       <div
         ref={singleMeasureRef}
-        className="absolute opacity-0 pointer-events-none flex flex-col items-center select-none"
+        className="absolute opacity-0 pointer-events-none flex flex-col items-center select-none gap-3 md:gap-6"
         aria-hidden="true"
       >
         {singleCycleLetters.map((letter, index) => (
@@ -118,7 +118,7 @@ export default function VerticalBackground({ word }: VerticalBackgroundProps) {
         initial="hidden"
         animate="visible"
         variants={letterContainerVariants}
-        className="flex flex-col items-center justify-start w-full pt-[15vh] gap-0"
+        className="flex flex-col items-center justify-start w-full pt-[15vh] gap-3 md:gap-6"
       >
         {repeatedLetters.map((letter, index) => (
           <motion.span
