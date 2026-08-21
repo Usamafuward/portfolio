@@ -109,8 +109,7 @@ MAJOR CERTIFICATIONS:
 
 export async function POST(req: Request) {
   try {
-    const apiKey =
-      process.env.GOOGLE_API_KEY || "AIzaSyC3BHRbKgQbEuVcM_0UezPUrVyz2Di6z1I";
+    const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
       return NextResponse.json(

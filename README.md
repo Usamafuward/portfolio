@@ -7,7 +7,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-13.1-black?style=for-the-badge&logo=framer&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Google_Gemini-2.5_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/GEMINI_Gemini-2.5_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)
 
 <p align="center">
   A futuristic, high-performance cyberpunk HUD developer portfolio for <strong>Usama Puward</strong> — AI/ML Engineer & Full-Stack Software Developer.
@@ -113,7 +113,7 @@ Ensure you have [Node.js](https://nodejs.org/) (v18.18 or higher recommended) an
 3. **Configure Environment Variables (Optional):**
    Create a `.env.local` file in the root directory if you want to use your own Gemini API key for the chatbot:
    ```env
-   GOOGLE_API_KEY=your_gemini_api_key_here
+   GEMINI_API_KEY=your_gemini_api_key_here
    ```
 
 4. **Run the development server:**
