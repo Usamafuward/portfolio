@@ -220,7 +220,7 @@ export default function Home() {
                   className="relative p-[1px] bg-primary/40 [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))] transition-colors duration-300 hover:bg-primary hover:shadow-[0_10px_30px_rgba(0,240,255,0.25)]"
                 >
                   <div className="bg-[#0a0c0e]/95 p-8 flex flex-col h-full [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))] transition-colors duration-300 hover:bg-[#0a0c0e]/90">
-                    <div className="mb-6 flex justify-between items-start">
+                    <div className="mb-6 flex flex-col sm:flex-row justify-between items-start gap-3 sm:gap-0">
                       <Icon className="text-[2.5rem] text-primary drop-shadow-[0_0_10px_rgba(0,240,255,0.5)]" />
                       <span className="text-[0.8rem] font-mono text-primary/70">
                         // {skill.category.toUpperCase().replace(/\s+/g, "_")}

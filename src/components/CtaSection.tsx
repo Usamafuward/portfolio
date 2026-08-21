@@ -54,7 +54,7 @@ export default function CtaSection() {
               >
                 <Link
                   href="/contact"
-                  className="inline-block bg-transparent text-primary border-2 border-primary py-4 px-8 font-mono font-bold text-[1.1rem] tracking-[2px] no-underline transition-all duration-300 relative overflow-hidden shadow-[0_0_10px_rgba(0,240,255,0.2),inset_0_0_10px_rgba(0,240,255,0.1)] hover:bg-primary hover:text-black hover:shadow-[0_0_20px_rgba(0,240,255,0.6),inset_0_0_10px_rgba(255,255,255,0.5)]"
+                  className="inline-block bg-transparent text-primary border-2 border-primary py-4 px-6 font-mono font-bold text-[1.1rem] tracking-[2px] no-underline transition-all duration-300 relative overflow-hidden shadow-[0_0_10px_rgba(0,240,255,0.2),inset_0_0_10px_rgba(0,240,255,0.1)] hover:bg-primary hover:text-black hover:shadow-[0_0_20px_rgba(0,240,255,0.6),inset_0_0_10px_rgba(255,255,255,0.5)]"
                 >
                   [ CONTACT ME ]<span className="animate-blink">_</span>
                 </Link>
