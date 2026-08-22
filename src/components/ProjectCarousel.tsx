@@ -46,6 +46,7 @@ type Project = {
 
 export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % projects.length);
@@ -69,12 +70,14 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   }, []);
 
   useEffect(() => {
+    if (isPaused) return;
+
     const interval = setInterval(() => {
       handleNext();
     }, 2000); // Auto-rotate every 2 seconds
 
     return () => clearInterval(interval);
-  }, [projects.length]);
+  }, [projects.length, isPaused]);
 
   const getCardStyle = (index: number) => {
     let diff = index - activeIndex;
@@ -170,7 +173,9 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       {/* Right Side: Stacked Cards */}
       <motion.div
         variants={rightVariants}
-        className="flex-[1.2] relative p-[1px] bg-primary/40 [clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,40px_100%,0_calc(100%-40px))] overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        className="flex-[1.2] relative p-[1px] bg-primary/40 [clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,40px_100%,0_calc(100%-40px))] overflow-hidden transition-colors duration-500 hover:bg-primary hover:shadow-[0_0_35px_rgba(0,240,255,0.3)]"
       >
         <div className="bg-[#0a0c0e]/95 w-full h-full p-4 pt-12 pb-20 lg:p-12 min-h-[400px] lg:min-h-[500px] relative flex items-center justify-center lg:justify-start shadow-[inset_0_0_50px_rgba(0,0,0,0.5)] [clip-path:polygon(0_0,calc(100%-39px)_0,100%_39px,100%_100%,39px_100%,0_calc(100%-39px))]">
           <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-4 z-20 lg:bottom-auto lg:top-8 lg:right-8 lg:left-auto">
@@ -200,8 +205,9 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
             {projects.map((project, idx) => (
               <div 
                 key={idx} 
-                className="absolute top-0 left-0 right-0 mx-auto lg:mx-0 lg:right-auto w-[240px] sm:w-[260px] lg:w-[300px] h-[300px] sm:h-[340px] lg:h-[380px] bg-primary/60 p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))] shadow-[0_30px_60px_rgba(0,0,0,0.8)] transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)] flex flex-col lg:origin-left origin-center"
+                className="absolute top-0 left-0 right-0 mx-auto lg:mx-0 lg:right-auto w-[240px] sm:w-[260px] lg:w-[300px] h-[300px] sm:h-[340px] lg:h-[380px] bg-primary/60 p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))] shadow-[0_30px_60px_rgba(0,0,0,0.8)] transition-[transform,opacity,filter,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] flex flex-col lg:origin-left origin-center cursor-pointer hover:bg-primary hover:shadow-[0_0_25px_rgba(0,240,255,0.7)]"
                 style={getCardStyle(idx)}
+                onClick={() => setActiveIndex(idx)}
               >
                 <div className="w-full h-full bg-[#0a0c0e] flex flex-col [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))] overflow-hidden">
                   <div className="relative w-full flex-1">

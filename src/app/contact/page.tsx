@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import VerticalBackground from "@/components/VerticalBackground";
 import { portfolioData } from "@/constants/portfolioData";
 import { motion, Variants } from "framer-motion";
+import { FaCheckCircle, FaExclamationTriangle, FaSpinner } from "react-icons/fa";
 
 const easeCustom = [0.22, 1, 0.36, 1] as const;
 
@@ -31,6 +33,78 @@ const formVariants: Variants = {
 };
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    if (status !== "idle") setStatus("idle");
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+      return;
+    }
+
+    setStatus("loading");
+
+    try {
+      const accessKey =
+        process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+        "11479c73-fc36-477a-be21-4ced8caa3ba5";
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          from_name: "Usama Puward Portfolio",
+          subject: `Portfolio Message from ${formData.name} (${formData.email})`,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      }
+    } catch (err) {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
+  };
+
+  const getButtonClasses = () => {
+    if (status === "success") {
+      return "bg-green-500/20 border-green-500 text-green-400 shadow-[0_0_25px_rgba(34,197,94,0.4)] hover:bg-green-500 hover:text-black";
+    }
+    if (status === "error") {
+      return "bg-red-500/20 border-red-500 text-red-400 shadow-[0_0_25px_rgba(239,68,68,0.4)] hover:bg-red-500 hover:text-black";
+    }
+    return "bg-primary/10 border-primary/30 text-primary hover:bg-primary hover:text-black hover:shadow-[0_0_20px_rgba(0,240,255,0.6)]";
+  };
+
   return (
     <>
       <VerticalBackground word="CONTACT" />
@@ -101,14 +175,21 @@ export default function Contact() {
             variants={formVariants}
             className="flex-[1.2] w-full max-w-[650px] lg:max-w-none mx-auto"
           >
-            <div className="relative p-[1px] bg-primary/40 [clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,40px_100%,0_calc(100%-40px))] overflow-hidden">
-              <form className="bg-[#0a0c0e]/95 w-full h-full p-8 md:p-12 flex flex-col gap-6 relative z-[2] [clip-path:polygon(0_0,calc(100%-39px)_0,100%_39px,100%_100%,39px_100%,0_calc(100%-39px))] shadow-[inset_0_0_50px_rgba(0,0,0,0.5)]">
+            <div className="relative p-[1px] bg-primary/40 [clip-path:polygon(0_0,calc(100%-40px)_0,100%_40px,100%_100%,40px_100%,0_calc(100%-40px))] overflow-hidden transition-colors duration-500 hover:bg-primary hover:shadow-[0_0_35px_rgba(0,240,255,0.3)]">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-[#0a0c0e]/95 w-full h-full p-8 md:p-12 flex flex-col gap-6 relative z-[2] [clip-path:polygon(0_0,calc(100%-39px)_0,100%_39px,100%_100%,39px_100%,0_calc(100%-39px))] shadow-[inset_0_0_50px_rgba(0,0,0,0.5)]"
+              >
                 <div className="flex flex-col gap-2">
                   <label className="text-[0.85rem] font-bold font-mono text-primary tracking-[1px]">
                     // IDENTIFICATION
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className="w-full p-4 bg-white/5 border border-primary/20 text-white font-mono text-[0.9rem] transition-all duration-300 focus:outline-none focus:border-primary focus:bg-primary/5 focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))]"
                     placeholder="ENTER_NAME..."
                   />
@@ -120,6 +201,10 @@ export default function Contact() {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="w-full p-4 bg-white/5 border border-primary/20 text-white font-mono text-[0.9rem] transition-all duration-300 focus:outline-none focus:border-primary focus:bg-primary/5 focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))]"
                     placeholder="ENTER_EMAIL..."
                   />
@@ -130,6 +215,10 @@ export default function Contact() {
                     // TRANSMISSION_PAYLOAD
                   </label>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                     className="w-full p-4 bg-white/5 border border-primary/20 text-white font-mono text-[0.9rem] transition-all duration-300 focus:outline-none focus:border-primary focus:bg-primary/5 focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))]"
                     placeholder="ENTER_MESSAGE..."
                     rows={5}
@@ -140,10 +229,29 @@ export default function Contact() {
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  type="button"
-                  className="w-full mt-4 bg-primary/10 border border-primary/30 text-primary font-mono font-bold tracking-[2px] text-[1rem] py-4 transition-colors duration-300 hover:bg-primary hover:text-black hover:shadow-[0_0_20px_rgba(0,240,255,0.6)] [clip-path:polygon(0_0,calc(100%-15px)_0,100%_15px,100%_100%,15px_100%,0_calc(100%-15px))] cursor-pointer"
+                  type="submit"
+                  disabled={status === "loading"}
+                  className={`w-full mt-2 border font-mono font-bold tracking-[2px] text-[1rem] py-4 transition-all duration-300 [clip-path:polygon(0_0,calc(100%-15px)_0,100%_15px,100%_100%,15px_100%,0_calc(100%-15px))] cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center gap-3 ${getButtonClasses()}`}
                 >
-                  INITIATE_TRANSFER
+                  {status === "loading" && (
+                    <>
+                      <FaSpinner className="animate-spin text-[1.1rem]" />
+                      TRANSMITTING...
+                    </>
+                  )}
+                  {status === "success" && (
+                    <>
+                      <FaCheckCircle className="text-[1.1rem]" />
+                      TRANSMISSION_SUCCESS
+                    </>
+                  )}
+                  {status === "error" && (
+                    <>
+                      <FaExclamationTriangle className="text-[1.1rem]" />
+                      TRANSMISSION_FAILED
+                    </>
+                  )}
+                  {status === "idle" && "INITIATE_TRANSFER"}
                 </motion.button>
               </form>
             </div>
@@ -153,3 +261,5 @@ export default function Contact() {
     </>
   );
 }
+
+

@@ -44,6 +44,7 @@ type Certificate = {
 
 export default function CertificateCarousel({ certificates }: { certificates: Certificate[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % certificates.length);
@@ -67,12 +68,14 @@ export default function CertificateCarousel({ certificates }: { certificates: Ce
   }, []);
 
   useEffect(() => {
+    if (isPaused) return;
+
     const interval = setInterval(() => {
       handleNext();
     }, 2000); // Auto-rotate every 2 seconds
 
     return () => clearInterval(interval);
-  }, [certificates.length]);
+  }, [certificates.length, isPaused]);
 
   const getCardStyle = (index: number) => {
     let diff = index - activeIndex;
@@ -145,7 +148,9 @@ export default function CertificateCarousel({ certificates }: { certificates: Ce
       {/* Left Side: Stacked Cards (animates from left to right) */}
       <motion.div
         variants={leftVariants}
-        className="flex-[1.2] relative p-[1px] bg-primary/40 [clip-path:polygon(0_40px,40px_0,100%_0,100%_calc(100%-40px),calc(100%-40px)_100%,0_100%)] overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        className="flex-[1.2] relative p-[1px] bg-primary/40 [clip-path:polygon(0_40px,40px_0,100%_0,100%_calc(100%-40px),calc(100%-40px)_100%,0_100%)] overflow-hidden transition-colors duration-500 hover:bg-primary hover:shadow-[0_0_35px_rgba(0,240,255,0.3)]"
       >
         <div className="bg-[#0a0c0e]/95 w-full h-full p-4 pt-12 pb-20 lg:p-12 min-h-[400px] lg:min-h-[500px] relative flex items-center justify-center lg:justify-start shadow-[inset_0_0_50px_rgba(0,0,0,0.5)] [clip-path:polygon(0_39px,39px_0,100%_0,100%_calc(100%-39px),calc(100%-39px)_100%,0_100%)]">
           <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-4 z-20 lg:bottom-auto lg:top-8 lg:left-8 lg:right-auto">
@@ -175,8 +180,9 @@ export default function CertificateCarousel({ certificates }: { certificates: Ce
             {certificates.map((cert, idx) => (
               <div 
                 key={idx} 
-                className="absolute top-0 left-0 right-0 mx-auto lg:mx-0 lg:left-auto lg:right-0 w-[240px] sm:w-[260px] lg:w-[300px] h-[300px] sm:h-[340px] lg:h-[380px] bg-primary/60 p-[1px] [clip-path:polygon(0_20px,20px_0,100%_0,100%_calc(100%-20px),calc(100%-20px)_100%,0_100%)] shadow-[0_30px_60px_rgba(0,0,0,0.8)] transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)] flex flex-col lg:origin-right origin-center" 
+                className="absolute top-0 left-0 right-0 mx-auto lg:mx-0 lg:left-auto lg:right-0 w-[240px] sm:w-[260px] lg:w-[300px] h-[300px] sm:h-[340px] lg:h-[380px] bg-primary/60 p-[1px] [clip-path:polygon(0_20px,20px_0,100%_0,100%_calc(100%-20px),calc(100%-20px)_100%,0_100%)] shadow-[0_30px_60px_rgba(0,0,0,0.8)] transition-[transform,opacity,filter,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] flex flex-col lg:origin-right origin-center cursor-pointer hover:bg-primary hover:shadow-[0_0_25px_rgba(0,240,255,0.7)]" 
                 style={getCardStyle(idx)}
+                onClick={() => setActiveIndex(idx)}
               >
                 <div className="w-full h-full bg-[#0a0c0e] flex flex-col [clip-path:polygon(0_19px,19px_0,100%_0,100%_calc(100%-19px),calc(100%-19px)_100%,0_100%)] overflow-hidden pt-8 md:pt-10 px-5 md:px-6 pb-5 md:pb-6 relative before:content-[''] before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-[40%] before:h-[2px] before:bg-primary before:shadow-[0_0_15px_rgba(0,240,255,0.8)]">
                   <div className="flex-1 flex items-center justify-center mb-3 md:mb-4 bg-[radial-gradient(circle,rgba(0,240,255,0.05)_0%,transparent_60%)]">
