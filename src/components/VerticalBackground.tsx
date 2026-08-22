@@ -124,7 +124,7 @@ export default function VerticalBackground({ word }: VerticalBackgroundProps) {
           <motion.span
             key={index}
             variants={letterVariants}
-            className="text-[35vw] md:text-[25vw] font-black leading-[0.8] text-transparent [-webkit-text-stroke:2px_rgba(0,240,255,0.08)] drop-shadow-[0_0_35px_rgba(0,240,255,0.12)] select-none"
+            className="text-[35vw] md:text-[25vw] font-black leading-[0.8] text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.05)] select-none"
           >
             {letter === " " ? "\u00A0" : letter}
           </motion.span>
