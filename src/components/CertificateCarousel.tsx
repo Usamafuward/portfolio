@@ -187,7 +187,7 @@ export default function CertificateCarousel({ certificates }: { certificates: Ce
                 <div className="w-full h-full bg-[#0a0c0e] flex flex-col [clip-path:polygon(0_19px,19px_0,100%_0,100%_calc(100%-19px),calc(100%-19px)_100%,0_100%)] overflow-hidden pt-8 md:pt-10 px-5 md:px-6 pb-5 md:pb-6 relative before:content-[''] before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-[40%] before:h-[2px] before:bg-primary before:shadow-[0_0_15px_rgba(0,240,255,0.8)]">
                   <div className="flex-1 flex items-center justify-center mb-3 md:mb-4 bg-[radial-gradient(circle,rgba(0,240,255,0.05)_0%,transparent_60%)]">
                     {cert.logo ? (
-                      <img src={cert.logo} alt={cert.organization} className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] object-contain rounded drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]" />
+                      <img src={cert.logo} alt={`${cert.organization} logo`} className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] object-contain rounded drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]" />
                     ) : (
                       <FaAward size={50} className="md:w-[60px] md:h-[60px]" color="var(--primary)" style={{ filter: 'drop-shadow(0 0 15px rgba(0,240,255,0.5))' }} />
                     )}
@@ -204,6 +204,7 @@ export default function CertificateCarousel({ certificates }: { certificates: Ce
                       href={cert.to} 
                       target="_blank" 
                       rel="noopener noreferrer" 
+                      aria-label={`Verify credential for ${cert.title} issued by ${cert.organization}`}
                       className="inline-block text-primary text-[0.8rem] md:text-[0.85rem] font-bold font-mono tracking-[1px] px-4 md:px-6 py-2 border border-primary/40 transition-colors duration-300 hover:bg-primary hover:text-black hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] [clip-path:polygon(0_10px,10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%)]"
                     >
                       VERIFY_CREDENTIAL

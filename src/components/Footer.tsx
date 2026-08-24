@@ -101,6 +101,7 @@ export default function Footer() {
                     href={social.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`${social.platform} Profile - Usama Puward`}
                     whileHover={{ y: -4, scale: 1.12 }}
                     whileTap={{ scale: 0.94 }}
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}

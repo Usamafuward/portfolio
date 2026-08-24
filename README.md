@@ -13,7 +13,7 @@
   A futuristic, high-performance cyberpunk HUD developer portfolio for <strong>Usama Puward</strong> — AI/ML Engineer & Full-Stack Software Developer.
 </p>
 
-[View Live Portfolio](#) • [Explore Projects](#-key-projects) • [Contact Me](#-connect-with-me)
+[View Live Portfolio](https://usamapuward.netlify.app/) • [Explore Projects](#-key-projects) • [Contact Me](#-connect-with-me)
 
 </div>
 
