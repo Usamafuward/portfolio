@@ -88,7 +88,7 @@ export default function HomeClient() {
               variants={fadeInUp}
               className="text-xl font-mono font-semibold tracking-[2px] text-primary mb-4 block"
             >
-              // SYS.INIT: USER_LOGIN
+              {"// SYS.INIT: USER_LOGIN"}
             </motion.span>
             <motion.h1
               variants={fadeInUp}
@@ -193,7 +193,7 @@ export default function HomeClient() {
             className="mb-12 flex flex-col justify-center text-center lg:text-left items-center lg:items-start relative pl-0 lg:pl-5 lg:before:content-[''] lg:before:absolute lg:before:left-0 lg:before:top-0 lg:before:h-full lg:before:w-[4px] lg:before:bg-primary lg:before:shadow-[0_0_10px_rgba(0,240,255,0.5)]"
           >
             <p className="text-primary font-mono text-[0.9rem] tracking-[2px] mb-2 font-bold">
-              // SYS.LOG: SKILLS_MATRIX
+              {"// SYS.LOG: SKILLS_MATRIX"}
             </p>
             <h2 className="text-[2.5rem] md:text-[3.5rem] font-black text-white leading-[1.1] uppercase font-['Arial_Black',-apple-system,sans-serif] tracking-[-1px]">
               TECHNICAL{" "}
@@ -226,7 +226,7 @@ export default function HomeClient() {
                     <div className="mb-6 flex flex-col sm:flex-row justify-between items-start gap-3 sm:gap-0">
                       <Icon className="text-[2.5rem] text-primary drop-shadow-[0_0_10px_rgba(0,240,255,0.5)]" />
                       <span className="text-[0.8rem] font-mono text-primary/70">
-                        // {skill.category.toUpperCase().replace(/\s+/g, "_")}
+                        {"// "}{skill.category.toUpperCase().replace(/\s+/g, "_")}
                       </span>
                     </div>
 
@@ -273,7 +273,7 @@ export default function HomeClient() {
         >
           <div className="mb-12 flex flex-col justify-center text-center lg:text-left items-center lg:items-start relative pl-0 lg:pl-5 lg:before:content-[''] lg:before:absolute lg:before:left-0 lg:before:top-0 lg:before:h-full lg:before:w-[4px] lg:before:bg-primary lg:before:shadow-[0_0_10px_rgba(0,240,255,0.5)]">
             <p className="text-primary font-mono text-[0.9rem] tracking-[2px] mb-2 font-bold">
-              // SYS.LOG: TECH_STACK
+              {"// SYS.LOG: TECH_STACK"}
             </p>
             <h2 className="text-[2.5rem] md:text-[3.5rem] font-black text-white leading-[1.1] uppercase font-['Arial_Black',-apple-system,sans-serif] tracking-[-1px]">
               CORE{" "}
@@ -288,7 +288,7 @@ export default function HomeClient() {
               <div className="flex w-full overflow-hidden relative [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] group py-16 md:py-20">
                 <div className="flex shrink-0 gap-16 md:gap-20 pr-16 md:pr-20 items-center animate-scrollLeft group-hover:[animation-play-state:paused]">
                   {portfolioData.technologies.map((tech, i) => {
-                    const src = typeof tech.imgUrl === "string" ? tech.imgUrl : (tech.imgUrl as any)?.src || "";
+                    const src = typeof tech.imgUrl === "string" ? tech.imgUrl : (tech.imgUrl as { src: string })?.src || "";
                     return (
                       <motion.div
                         key={`tech1-${i}`}
@@ -320,7 +320,7 @@ export default function HomeClient() {
                 </div>
                 <div className="flex shrink-0 gap-16 md:gap-20 pr-16 md:pr-20 items-center animate-scrollLeft group-hover:[animation-play-state:paused]">
                   {portfolioData.technologies.map((tech, i) => {
-                    const src = typeof tech.imgUrl === "string" ? tech.imgUrl : (tech.imgUrl as any)?.src || "";
+                    const src = typeof tech.imgUrl === "string" ? tech.imgUrl : (tech.imgUrl as { src: string })?.src || "";
                     return (
                       <motion.div
                         key={`tech2-${i}`}
@@ -367,7 +367,7 @@ export default function HomeClient() {
             className="mb-12 flex flex-col justify-center text-center lg:text-left items-center lg:items-start relative pl-0 lg:pl-5 lg:before:content-[''] lg:before:absolute lg:before:left-0 lg:before:top-0 lg:before:h-full lg:before:w-[4px] lg:before:bg-primary lg:before:shadow-[0_0_10px_rgba(0,240,255,0.5)]"
           >
             <p className="text-primary font-mono text-[0.9rem] tracking-[2px] mb-2 font-bold">
-              // SYS.LOG: ACADEMIC_RECORD
+              {"// SYS.LOG: ACADEMIC_RECORD"}
             </p>
             <h2 className="text-[2.5rem] md:text-[3.5rem] font-black text-white leading-[1.1] uppercase font-['Arial_Black',-apple-system,sans-serif] tracking-[-1px]">
               FORMAL{" "}
@@ -397,7 +397,7 @@ export default function HomeClient() {
                     </motion.div>
                     <div className="flex-1">
                       <span className="block md:hidden text-primary font-mono text-[0.85rem] mb-2">
-                        // {edu.year}
+                        {"// "}{edu.year}
                       </span>
                       <h3 className="text-[1.25rem] font-black mb-2 text-white uppercase">
                         {edu.degree}

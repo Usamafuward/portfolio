@@ -48,7 +48,7 @@ export default function Footer() {
         >
           <motion.div variants={columnVariants} className="w-full md:flex-1 text-center md:text-left">
             <h3 className="text-base font-mono font-bold tracking-[2px] mb-4 md:mb-6 text-primary">
-              // ABOUT_ME
+              {"// ABOUT_ME"}
             </h3>
             <p className="text-gray-400 text-[0.95rem] leading-[1.6] tracking-[2px] font-mono font-bold uppercase mx-auto md:mx-0 max-w-[400px] md:max-w-none">
               {">"} A Computer Science Graduate, passionate about building intelligent systems and scalable software.
@@ -57,7 +57,7 @@ export default function Footer() {
 
           <motion.div variants={columnVariants} className="w-full md:flex-1 text-center md:text-left">
             <h3 className="text-base font-mono font-bold tracking-[2px] mb-4 md:mb-6 text-primary">
-              // QUICK_LINKS
+              {"// QUICK_LINKS"}
             </h3>
             <ul className="list-none p-0 grid grid-cols-2 gap-y-2 gap-x-4 max-w-[300px] mx-auto md:mx-0 md:justify-start">
               <li className="flex items-center justify-center md:justify-start">
@@ -90,7 +90,7 @@ export default function Footer() {
 
           <motion.div variants={columnVariants} className="w-full md:flex-1 text-center md:text-left">
             <h3 className="text-base font-mono font-bold tracking-[2px] mb-4 md:mb-6 text-primary">
-              // CONNECT
+              {"// CONNECT"}
             </h3>
             <div className="flex gap-4 justify-between flex-wrap max-w-[300px] mx-auto md:mx-0 md:max-w-none">
               {portfolioData.socialLinks.map((social, idx) => {

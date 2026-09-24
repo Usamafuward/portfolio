@@ -64,7 +64,7 @@ export default function ExperiencesClient() {
           className="mb-10 md:mb-16 flex flex-col justify-center text-center lg:text-left items-center lg:items-start relative pl-0 lg:pl-5 lg:before:content-[''] lg:before:absolute lg:before:left-0 lg:before:top-0 lg:before:h-full lg:before:w-[4px] lg:before:bg-primary lg:before:shadow-[0_0_10px_rgba(0,240,255,0.5)]"
         >
           <p className="text-primary font-mono text-[0.9rem] md:text-lg tracking-[2px] mb-2 font-bold">
-            // SYS.LOG: CAREER_JOURNEY
+            {"// SYS.LOG: CAREER_JOURNEY"}
           </p>
           <h1 className="text-[2.5rem] md:text-[4.5rem] font-black text-white leading-[1.1] uppercase font-['Arial_Black',-apple-system,sans-serif] tracking-[-1px]">
             WORK{" "}
@@ -93,7 +93,7 @@ export default function ExperiencesClient() {
                 viewport={{ once: true, amount: 0.15 }}
                 variants={rowVariants}
                 className="relative flex items-stretch min-h-[150px]"
-                style={themeVars as any}
+                style={themeVars as React.CSSProperties}
               >
                 {/* Left Side: Duration (desktop lg+ only) */}
                 <motion.div
@@ -141,10 +141,10 @@ export default function ExperiencesClient() {
                     >
                       <div className="bg-[#0a0c0e]/95 p-6 h-full flex flex-col [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))] transition-colors duration-300 hover:bg-[#0a0c0e]/90">
                         <div className="text-[var(--box-header)] font-mono font-bold text-[0.9rem] tracking-[1px] mb-4">
-                          // {exp.company.toUpperCase()}
+                          {"// "}{exp.company.toUpperCase()}
                         </div>
                         <span className="block lg:hidden text-[var(--node-color)] font-mono text-[0.85rem] mb-4">
-                          // {exp.duration.toUpperCase()}
+                          {"// "}{exp.duration.toUpperCase()}
                         </span>
                         <div className="flex flex-col gap-3">
                           {exp.description.split(". ").map((sentence, idx) => {

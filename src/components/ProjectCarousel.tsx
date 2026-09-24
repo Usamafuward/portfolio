@@ -73,7 +73,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
     if (isPaused) return;
 
     const interval = setInterval(() => {
-      handleNext();
+      setActiveIndex((prev) => (prev + 1) % projects.length);
     }, 2000); // Auto-rotate every 2 seconds
 
     return () => clearInterval(interval);
@@ -151,7 +151,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
         variants={leftVariants}
         className="flex-1 flex flex-col justify-center max-w-full lg:max-w-[460px] text-center lg:text-left items-center lg:items-start relative pl-0 lg:pl-6 lg:before:content-[''] lg:before:absolute lg:before:left-0 lg:before:top-1/2 lg:before:-translate-y-1/2 lg:before:h-[80%] lg:before:w-[4px] lg:before:bg-primary lg:before:shadow-[0_0_10px_rgba(0,240,255,0.5)]"
       >
-        <p className="text-primary font-mono text-[0.9rem] tracking-[2px] mb-2 font-bold">// SYS.LOG: PORTFOLIO_PROJECTS</p>
+        <p className="text-primary font-mono text-[0.9rem] tracking-[2px] mb-2 font-bold">{"// SYS.LOG: PORTFOLIO_PROJECTS"}</p>
         <h2 className="text-[2rem] md:text-[3.5rem] font-black text-white leading-[1.1] uppercase font-['Arial_Black',-apple-system,sans-serif] tracking-[-1px] mb-2">
           FEATURED <br /> <span className="text-primary drop-shadow-[0_0_20px_rgba(0,240,255,0.4)]">PROJECTS</span>
         </h2>
@@ -222,10 +222,10 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-[#0a0c0e] to-100%"></div>
                   </div>
                   <div className="p-5 md:p-6 bg-[#0a0c0e] relative z-[2] flex flex-col border-t border-primary/20">
-                    <span className="block md:hidden text-primary font-mono text-[0.8rem] mb-1 break-all line-clamp-1">// {project.category.toUpperCase().replace(/\s+/g, '_')}</span>
+                    <span className="block md:hidden text-primary font-mono text-[0.8rem] mb-1 break-all line-clamp-1">{"// "}{project.category.toUpperCase().replace(/\s+/g, '_')}</span>
                     <h3 className="text-[1rem] md:text-[1.1rem] font-black mb-1 md:mb-2 text-white uppercase tracking-wide line-clamp-2 leading-tight">{project.title}</h3>
                     <div className="flex items-center gap-4 text-[0.9rem]">
-                      <span className="hidden md:inline-block text-primary font-bold font-mono tracking-[1px] text-[0.8rem] break-all line-clamp-1">// {project.category.toUpperCase().replace(/\s+/g, '_')}</span>
+                      <span className="hidden md:inline-block text-primary font-bold font-mono tracking-[1px] text-[0.8rem] break-all line-clamp-1">{"// "}{project.category.toUpperCase().replace(/\s+/g, '_')}</span>
                     </div>
                   </div>
                 </div>

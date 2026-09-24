@@ -240,7 +240,7 @@ export const portfolioData = {
       logo: "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128",
     },
     {
-      title: "Introduction to TenserFlow",
+      title: "Introduction to TensorFlow",
       description:
         "An online course authorized by DeepLearning.AI and offered through Coursera, focusing on using TensorFlow to develop models for artificial intelligence, machine learning, and deep learning applications.",
       to: "https://coursera.org/verify/4RPLXS251YLH",
@@ -388,7 +388,7 @@ export const portfolioData = {
       technologies: [
         "LangChain",
         "Google GEN AI",
-        "FIASS",
+        "FAISS",
         "Streamlit",
         "Python",
       ],

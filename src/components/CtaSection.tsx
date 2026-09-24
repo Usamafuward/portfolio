@@ -25,7 +25,7 @@ export default function CtaSection() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-primary font-mono font-bold text-[0.9rem] tracking-[2px] mb-4"
               >
-                // SYS.REQ: CONNECTION_ESTABLISHMENT
+                {"// SYS.REQ: CONNECTION_ESTABLISHMENT"}
               </motion.p>
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}

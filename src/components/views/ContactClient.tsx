@@ -115,17 +115,17 @@ export default function ContactClient() {
             className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left relative pl-0 lg:pl-5 lg:before:content-[''] lg:before:absolute lg:before:left-0 lg:before:top-0 lg:before:h-full lg:before:w-[4px] lg:before:bg-primary lg:before:shadow-[0_0_10px_rgba(0,240,255,0.5)] w-full max-w-[650px] lg:max-w-none"
           >
             <p className="text-primary font-mono text-[0.9rem] md:text-lg tracking-[2px] mb-2 font-bold">
-              // SYS.LOG: COMM_LINK_ACTIVE
+              {"// SYS.LOG: COMM_LINK_ACTIVE"}
             </p>
             <h1 className="text-[2.5rem] md:text-[3.5rem] font-black text-white leading-[1.1] uppercase font-['Arial_Black',-apple-system,sans-serif] tracking-[-1px] mb-6">
-              LET'S WORK <br />
+              {"LET'S WORK"} <br />
               <span className="text-primary drop-shadow-[0_0_20px_rgba(0,240,255,0.4)]">
                 TOGETHER
               </span>
             </h1>
             <div className="mb-8 w-[60px] h-[4px] bg-primary/80 block lg:hidden"></div>
             <p className="text-gray-400 leading-[1.6] mb-10 text-[1rem] font-mono max-w-[550px] lg:max-w-none">
-              &gt; Have a project in mind or just want to say hi? Feel free to reach out. I'm always
+              &gt; Have a project in mind or just want to say hi? Feel free to reach out. I&apos;m always
               open to discussing new projects, creative ideas or opportunities to be part of your
               visions.
             </p>
@@ -133,7 +133,7 @@ export default function ContactClient() {
             <div className="flex flex-col gap-6 w-full items-center lg:items-start">
               <div className="flex flex-col items-center lg:items-start">
                 <span className="text-primary font-bold font-mono text-[0.85rem] tracking-[1px] mb-2">
-                  // SECURE_EMAIL
+                  {"// SECURE_EMAIL"}
                 </span>
                 <a
                   href={`mailto:${portfolioData.personalInfo.email}`}
@@ -144,7 +144,7 @@ export default function ContactClient() {
               </div>
               <div className="flex flex-col items-center lg:items-start">
                 <span className="text-primary font-bold font-mono text-[0.85rem] tracking-[1px] mb-2">
-                  // DIRECT_LINE
+                  {"// DIRECT_LINE"}
                 </span>
                 <a
                   href={`tel:${portfolioData.personalInfo.phone.replace(/[^0-9+]/g, "")}`}
@@ -187,7 +187,7 @@ export default function ContactClient() {
               >
                 <div className="flex flex-col gap-2">
                   <label htmlFor="name-input" className="text-[0.85rem] font-bold font-mono text-primary tracking-[1px]">
-                    // IDENTIFICATION
+                    {"// IDENTIFICATION"}
                   </label>
                   <input
                     id="name-input"
@@ -203,7 +203,7 @@ export default function ContactClient() {
 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="email-input" className="text-[0.85rem] font-bold font-mono text-primary tracking-[1px]">
-                    // RETURN_ADDRESS
+                    {"// RETURN_ADDRESS"}
                   </label>
                   <input
                     id="email-input"
@@ -219,7 +219,7 @@ export default function ContactClient() {
 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="message-input" className="text-[0.85rem] font-bold font-mono text-primary tracking-[1px]">
-                    // TRANSMISSION_PAYLOAD
+                    {"// TRANSMISSION_PAYLOAD"}
                   </label>
                   <textarea
                     id="message-input"

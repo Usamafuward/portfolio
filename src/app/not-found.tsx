@@ -44,7 +44,7 @@ export default function NotFound() {
             className="inline-flex items-center gap-3 px-4 py-2 border border-primary/40 bg-primary/10 text-primary font-mono text-[0.85rem] tracking-[2px] mb-6 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))]"
           >
             <FaExclamationTriangle className="text-primary animate-pulse" />
-            <span>// SYS.ERR: 404_SECTOR_NOT_FOUND</span>
+            <span>{"// SYS.ERR: 404_SECTOR_NOT_FOUND"}</span>
           </motion.div>
 
           {/* Giant Cyberpunk 404 Display */}

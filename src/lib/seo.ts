@@ -129,8 +129,6 @@ export function generateProjectsSchema() {
 }
 
 export function generateCertificationsSchema() {
-  const siteUrl = getSiteUrl();
-
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",

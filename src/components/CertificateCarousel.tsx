@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { FaChevronLeft, FaChevronRight, FaAward } from "react-icons/fa";
 import { motion, Variants } from "framer-motion";
@@ -71,7 +72,7 @@ export default function CertificateCarousel({ certificates }: { certificates: Ce
     if (isPaused) return;
 
     const interval = setInterval(() => {
-      handleNext();
+      setActiveIndex((prev) => (prev + 1) % certificates.length);
     }, 2000); // Auto-rotate every 2 seconds
 
     return () => clearInterval(interval);
@@ -187,14 +188,23 @@ export default function CertificateCarousel({ certificates }: { certificates: Ce
                 <div className="w-full h-full bg-[#0a0c0e] flex flex-col [clip-path:polygon(0_19px,19px_0,100%_0,100%_calc(100%-19px),calc(100%-19px)_100%,0_100%)] overflow-hidden pt-8 md:pt-10 px-5 md:px-6 pb-5 md:pb-6 relative before:content-[''] before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-[40%] before:h-[2px] before:bg-primary before:shadow-[0_0_15px_rgba(0,240,255,0.8)]">
                   <div className="flex-1 flex items-center justify-center mb-3 md:mb-4 bg-[radial-gradient(circle,rgba(0,240,255,0.05)_0%,transparent_60%)]">
                     {cert.logo ? (
-                      <img src={cert.logo} alt={`${cert.organization} logo`} className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] object-contain rounded drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]" />
+                      <div className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] relative">
+                        <Image
+                          src={cert.logo}
+                          alt={`${cert.organization} logo`}
+                          fill
+                          unoptimized
+                          sizes="60px"
+                          className="object-contain rounded drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]"
+                        />
+                      </div>
                     ) : (
                       <FaAward size={50} className="md:w-[60px] md:h-[60px]" color="var(--primary)" style={{ filter: 'drop-shadow(0 0 15px rgba(0,240,255,0.5))' }} />
                     )}
                   </div>
                   <div className="text-center mb-4 md:mb-6 w-full px-2">
                     <h3 className="text-[1rem] md:text-[1.1rem] font-black mb-1 md:mb-2 text-white uppercase tracking-wide line-clamp-3 leading-tight">{cert.title}</h3>
-                    <span className="text-[0.75rem] md:text-[0.8rem] text-primary font-mono font-bold tracking-[1px] block break-all line-clamp-2">// {cert.organization.toUpperCase().replace(/\s+/g, '_')}</span>
+                    <span className="text-[0.75rem] md:text-[0.8rem] text-primary font-mono font-bold tracking-[1px] block break-all line-clamp-2">{"// "}{cert.organization.toUpperCase().replace(/\s+/g, '_')}</span>
                   </div>
                   <div className="text-center mt-auto">
                     <motion.a 
@@ -232,7 +242,7 @@ export default function CertificateCarousel({ certificates }: { certificates: Ce
         variants={rightVariants}
         className="flex-1 flex flex-col justify-center max-w-full lg:max-w-[460px] text-center lg:text-left items-center lg:items-start relative pl-0 lg:pl-6 lg:before:content-[''] lg:before:absolute lg:before:left-0 lg:before:top-1/2 lg:before:-translate-y-1/2 lg:before:h-[80%] lg:before:w-[4px] lg:before:bg-primary lg:before:shadow-[0_0_10px_rgba(0,240,255,0.5)]"
       >
-        <p className="text-primary font-mono text-[0.9rem] tracking-[2px] mb-2 font-bold">// SYS.LOG: CREDENTIALS</p>
+        <p className="text-primary font-mono text-[0.9rem] tracking-[2px] mb-2 font-bold">{"// SYS.LOG: CREDENTIALS"}</p>
         <h2 className="text-[2rem] md:text-[3.5rem] font-black text-white leading-[1.1] uppercase font-['Arial_Black',-apple-system,sans-serif] tracking-[-1px] mb-2 break-all">
           CREDENTIALS <br /> <span className="text-primary drop-shadow-[0_0_20px_rgba(0,240,255,0.4)] ">SPOTLIGHT</span>
         </h2>

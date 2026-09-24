@@ -25,6 +25,19 @@ const suggestedPrompts = [
   "How can I contact Usama?",
 ];
 
+let globalMessageCounter = 0;
+function createMessageId(): string {
+  globalMessageCounter += 1;
+  return `msg_${globalMessageCounter}_${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function getSystemTimestamp(): string {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
+}
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -49,7 +62,8 @@ export default function Chatbot() {
   useEffect(() => {
     if (isOpen) {
       scrollToBottom();
-      setTimeout(() => inputRef.current?.focus(), 150);
+      const timer = setTimeout(() => inputRef.current?.focus(), 150);
+      return () => clearTimeout(timer);
     }
   }, [isOpen, messages]);
 
@@ -58,16 +72,30 @@ export default function Chatbot() {
     if (!query || loading) return;
 
     const userMsg: Message = {
-      id: Date.now().toString(),
+      id: createMessageId(),
       role: "user",
       content: query,
-      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      timestamp: getSystemTimestamp(),
     };
 
     const newMessages = [...messages, userMsg];
     setMessages(newMessages);
     setInput("");
     setLoading(true);
+
+    const assistantMsgId = createMessageId();
+    const assistantTimestamp = getSystemTimestamp();
+
+    // Placeholder message for streaming response
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: assistantMsgId,
+        role: "assistant",
+        content: "",
+        timestamp: assistantTimestamp,
+      },
+    ]);
 
     try {
       const response = await fetch("/api/chat", {
@@ -78,28 +106,41 @@ export default function Chatbot() {
         }),
       });
 
-      const data = await response.json();
-
-      if (data.reply) {
-        const assistantMsg: Message = {
-          id: (Date.now() + 1).toString(),
-          role: "assistant",
-          content: data.reply,
-          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        };
-        setMessages((prev) => [...prev, assistantMsg]);
-      } else {
-        throw new Error(data.error || "No response received");
+      if (!response.ok || !response.body) {
+        throw new Error("Unable to establish neural link");
       }
-    } catch (err: any) {
-      const errorMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content:
-          "// SYS.ERR: Link connection timed out. Please verify connectivity or retry.",
-        timestamp: "SYS.ERR",
-      };
-      setMessages((prev) => [...prev, errorMsg]);
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+
+      while (!done) {
+        const { value, done: streamDone } = await reader.read();
+        done = streamDone;
+        if (value) {
+          const chunk = decoder.decode(value, { stream: !done });
+          setMessages((prev) =>
+            prev.map((msg) =>
+              msg.id === assistantMsgId
+                ? { ...msg, content: msg.content + chunk }
+                : msg
+            )
+          );
+        }
+      }
+    } catch {
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg.id === assistantMsgId
+            ? {
+                ...msg,
+                content:
+                  "// SYS.WARN: Neural response temporarily unavailable. Feel free to contact Usama directly at usamafuward2001@gmail.com.",
+                timestamp: "SYS.ERR",
+              }
+            : msg
+        )
+      );
     } finally {
       setLoading(false);
     }
@@ -118,7 +159,6 @@ export default function Chatbot() {
   };
 
   const formatMessageText = (text: string) => {
-    // Formatting with word wrapping and clean markdown tokens
     return text.split("\n").map((line, idx) => {
       if (!line.trim()) return <div key={idx} className="h-2" />;
 
@@ -157,7 +197,7 @@ export default function Chatbot() {
 
   return (
     <>
-      {/* Floating Chatbot Launcher Button - Compact & Sleek */}
+      {/* Floating Chatbot Launcher Button */}
       <div className="fixed bottom-6 right-4 sm:right-6 z-[99]">
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
@@ -165,7 +205,7 @@ export default function Chatbot() {
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 15 }}
           aria-label="Open AI Assistant"
-          className="relative group p-[2px] bg-primary/60 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.8)] transition-shadow duration-300"
+          className="relative group p-[2px] bg-primary/60 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.8)] transition-shadow duration-300 cursor-pointer"
         >
           <div className="bg-[#080a0b] p-3.5 flex items-center gap-2.5 [clip-path:polygon(0_0,calc(100%-9px)_0,100%_9px,100%_100%,9px_100%,0_calc(100%-9px))]">
             <div className="relative flex items-center justify-center">
@@ -196,11 +236,11 @@ export default function Chatbot() {
                   </div>
                   <div>
                     <h3 className="text-white font-mono font-bold text-[0.85rem] tracking-[1px] flex items-center gap-2">
-                      USAMA_AI <span className="text-[0.65rem] text-primary px-1.5 py-0.5 bg-primary/10 border border-primary/30 rounded">v2.5</span>
+                      USAMA_AI <span className="text-[0.65rem] text-primary px-1.5 py-0.5 bg-primary/10 border border-primary/30 rounded">STREAMING</span>
                     </h3>
                     <p className="text-[0.7rem] text-gray-400 font-mono flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"></span>
-                      PORTFOLIO KNOWLEDGE BASE ACTIVE
+                      PORTFOLIO NEURAL LINK ONLINE
                     </p>
                   </div>
                 </div>
@@ -225,7 +265,7 @@ export default function Chatbot() {
                 </div>
               </div>
 
-              {/* Chat Message List - Vertical-Only Sleek Scrollbar */}
+              {/* Chat Message List */}
               <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 flex flex-col gap-4 font-mono text-[0.85rem] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary/30 hover:[&::-webkit-scrollbar-thumb]:bg-primary/60 [&::-webkit-scrollbar-thumb]:rounded-full">
                 {messages.map((m) => (
                   <div
@@ -248,16 +288,23 @@ export default function Chatbot() {
                           : "bg-white/[0.04] border-l-2 border-l-primary border-y border-r border-white/5"
                       }`}
                     >
-                      {formatMessageText(m.content)}
+                      {m.content ? (
+                        formatMessageText(m.content)
+                      ) : (
+                        <div className="flex items-center gap-2 text-primary text-xs py-1">
+                          <FaCommentDots className="animate-pulse" />
+                          <span className="text-gray-400">Decoding transmission...</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
 
-                {/* Loading Indicator */}
-                {loading && (
+                {/* Loading State without answer yet */}
+                {loading && messages[messages.length - 1]?.content === "" && (
                   <div className="flex flex-col items-start w-full">
                     <span className="text-[0.7rem] font-bold text-primary mb-1">
-                      // USAMA_AI [THINKING]
+                      {"// USAMA_AI [THINKING]"}
                     </span>
                     <div className="p-3 bg-white/[0.04] border-l-2 border-l-primary border-white/5 flex items-center gap-2 text-primary text-xs">
                       <FaCommentDots className="animate-pulse" />

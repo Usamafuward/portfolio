@@ -30,7 +30,7 @@ FORMAL EDUCATION:
    - Focus: Software development, machine learning, AI, distributed systems, research projects.
 2. Secondary School Education (2012 - 2020)
    - Institution: Zahira College Mawanella
-   - Focus: GCE Ordinary Level & GCE Advanced Level (Physical Science Stream). Student prefect, academic and athletic accolades.
+   - Focus: GCE Ordinary Level & GCE Advanced Level (Physical Science Stream).
 
 PROFESSIONAL WORK EXPERIENCES:
 1. AI/SE Engineer (June 2025 – Present) | Kainovation Technologies
@@ -84,14 +84,6 @@ KEY PROJECTS:
    - Stack: Node.js, Express.js, JWT, RESTful API
    - Description: RESTful API with user authentication, concurrent async review submission, and session management.
    - Repo: https://github.com/Usamafuward/book-review-api.git
-9. Startup Company Website
-   - Stack: React, Next.js, Tailwind CSS
-   - Description: Modern corporate showcase for a software startup with blogs and client portals.
-   - Repo: https://github.com/Usamafuward/startup_company_website.git
-10. Django Blog
-    - Stack: Python, Django, PostgreSQL, HTML, CSS
-    - Description: Technology blogging and article sharing platform.
-    - Repo: https://github.com/Usamafuward/Django-blog.git
 
 MAJOR CERTIFICATIONS:
 - Meta React Specialization (Coursera / Meta)
@@ -107,17 +99,111 @@ MAJOR CERTIFICATIONS:
 - Introduction to Generative AI & Responsible AI (Coursera / Google Cloud)
 `;
 
+function generateLocalFallback(userQuery: string): string {
+  const q = userQuery.toLowerCase();
+
+  if (q.includes("project") || q.includes("build") || q.includes("portfolio") || q.includes("code") || q.includes("tartuca") || q.includes("agent") || q.includes("rag")) {
+    return `// SYS.RECALL: KEY_PROJECTS
+
+Here are **Usama Puward's** primary engineering projects:
+
+* **Tartuca - Restaurant & Delivery Platform**: Monorepo food ordering platform with Google Maps delivery tracking, admin dashboard, and high-performance async FastAPI backend with PostgreSQL & Auth0.
+* **AI-Powered Multi-Agent Coding Assistant**: Autonomous multi-agent coding framework using AutoGen, OpenAI GPT, FastAPI, FastHTML, and LangChain.
+* **RAG Pipeline for PDF Analysis**: Multi-modal conversational pipeline extracting text, tables, and images from PDFs with semantic question answering using LangChain, Google Gen AI, and FAISS.
+* **NLP Podcast Chatbot**: Transcript Q&A engine with speaker attribution and timestamp citations built using Flask, TF-IDF, and NLTK.
+* **Travel Point & Eats Robers**: Full-stack cross-platform apps using React Native, React, Node.js, Express, and MongoDB.
+
+You can inspect the codebases directly in the **/projects** sector!`;
+  }
+
+  if (q.includes("experience") || q.includes("work") || q.includes("job") || q.includes("career") || q.includes("company") || q.includes("kainovation")) {
+    return `// SYS.RECALL: CAREER_JOURNEY
+
+Usama's professional engineering timeline:
+
+* **AI/SE Engineer** (June 2025 - Present) at **Kainovation Technologies**: Production AI model integration, full-stack software development, and real-world system optimization.
+* **AI/ML Intern** (Nov 2024 - May 2025) at **Kainovation Technologies**: Machine learning research, data preprocessing pipelines, and exploratory data analysis.
+* **Software Developer** (Nov 2024 - Jan 2025) at **Edus Lanka**: Engineered the Mediman doctor-patient clinic online portal (booking, patient history, real-time communication).
+* **Full Stack Developer Intern** (Oct 2024 - Dec 2024) at **Unified Mentor India**: Web development, database management, and API design.
+* **Artificial Intelligence Intern** (June 2023 - July 2024) at **NoviTech R&D**: Applied ML solutions for industry challenges.
+
+View the full timeline and milestones in the **/experiences** sector!`;
+  }
+
+  if (q.includes("skill") || q.includes("tech") || q.includes("stack") || q.includes("language") || q.includes("tool") || q.includes("python") || q.includes("fastapi") || q.includes("react")) {
+    return `// SYS.RECALL: SKILLS_MATRIX
+
+Usama's core technical proficiencies:
+
+* **AI & Machine Learning (85%)**: Deep Learning, LLMs, RAG, Multi-Agent Systems (AutoGen, LangChain), TensorFlow, Scikit-learn, Computer Vision, NLP.
+* **Back-End Engineering (90%)**: FastAPI, Node.js, Express.js, Django, RESTful APIs, JWT Authentication, Microservices.
+* **Front-End Development (85%)**: Next.js, React, React Native, TypeScript, Tailwind CSS, FastHTML.
+* **Databases & DevOps (90%)**: PostgreSQL, MongoDB, MySQL, Docker, Linux, Git/GitHub.
+* **Cloud Platforms (60%)**: Microsoft Azure Cognitive Services & Cloud ML.`;
+  }
+
+  if (q.includes("education") || q.includes("degree") || q.includes("university") || q.includes("college") || q.includes("study") || q.includes("certificate") || q.includes("certification") || q.includes("meta") || q.includes("stanford")) {
+    return `// SYS.RECALL: ACADEMIC_CREDENTIALS
+
+* **Degree**: B.Sc. in Computer Science (2022 - 2025) from **University of Colombo School of Computing (UCSC)** with high honors in software systems and machine learning.
+* **Top Verified Certifications**:
+  * **Meta React Specialization** (Meta / Coursera)
+  * **Machine Learning Specialization** (Stanford & DeepLearning.AI)
+  * **Mastering Multi-Agent Development with AutoGen** (Packt)
+  * **Developing Back-End Apps with Node.js & Express** (IBM)
+  * **Artificial Intelligence on Microsoft Azure** & **Google Cloud LLMs Masterclass**
+
+Browse all 24 verified certifications in the **/certifications** sector!`;
+  }
+
+  if (q.includes("contact") || q.includes("email") || q.includes("hire") || q.includes("phone") || q.includes("reach") || q.includes("message") || q.includes("call")) {
+    return `// SYS.RECALL: DIRECT_COMM_LINK
+
+You can connect directly with Usama:
+
+* **Email**: [usamafuward2001@gmail.com](mailto:usamafuward2001@gmail.com)
+* **Phone**: +94 (76) 6260507 (Colombo, Sri Lanka)
+* **LinkedIn**: [linkedin.com/in/usama-puward](https://linkedin.com/in/usama-puward)
+* **GitHub**: [github.com/Usamafuward](https://github.com/Usamafuward)
+* **Direct Transmission**: Use the form on the **/contact** page!`;
+  }
+
+  return `Greetings! I am **USAMA_AI**, the neural assistant calibrated with Usama Puward's portfolio database.
+
+I can assist you with:
+* **Key Projects**: Tartuca, Multi-Agent Coding Assistant, RAG PDF Chatbot.
+* **Career Journey**: AI/SE roles at Kainovation Technologies and software engineering history.
+* **Technical Skills**: Machine learning architectures, FastAPI backends, and Next.js interfaces.
+* **Certifications & Education**: B.Sc. CS at UCSC and verified credentials from Meta, Stanford, and IBM.
+
+What would you like to know about Usama?`;
+}
+
+function streamFallbackText(text: string): Response {
+  const encoder = new TextEncoder();
+  const stream = new ReadableStream({
+    async start(controller) {
+      // Stream words smoothly with micro-delays
+      const words = text.split(" ");
+      for (let i = 0; i < words.length; i++) {
+        const chunk = (i === 0 ? "" : " ") + words[i];
+        controller.enqueue(encoder.encode(chunk));
+        await new Promise((resolve) => setTimeout(resolve, 15));
+      }
+      controller.close();
+    },
+  });
+
+  return new Response(stream, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "no-cache",
+    },
+  });
+}
+
 export async function POST(req: Request) {
   try {
-    const apiKey = process.env.GEMINI_AI_API_KEY;
-
-    if (!apiKey) {
-      return NextResponse.json(
-        { error: "Google API key is not configured." },
-        { status: 500 }
-      );
-    }
-
     const { messages } = await req.json();
 
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
@@ -125,6 +211,17 @@ export async function POST(req: Request) {
         { error: "A valid list of messages is required." },
         { status: 400 }
       );
+    }
+
+    const lastUserMessage =
+      [...messages].reverse().find((m: { role: string }) => m.role === "user")?.content || "";
+
+    const apiKey = process.env.GEMINI_AI_API_KEY;
+
+    // Resilient fallback if no API key is set
+    if (!apiKey) {
+      const fallbackReply = generateLocalFallback(lastUserMessage);
+      return streamFallbackText(fallbackReply);
     }
 
     const systemInstruction = `You are USAMA_AI, the official cyberpunk-themed AI companion and representative for Usama Puward's portfolio.
@@ -138,21 +235,19 @@ CORE OPERATIONAL RULES:
 1. ONLY ANSWER QUESTIONS ABOUT USAMA PUWARD:
    - You are exclusively programmed to discuss Usama Puward: his engineering skills, machine learning & AI projects, professional background, work experiences, education, certifications, contact info, tech stack, and portfolio work.
 2. STRICT REFUSAL FOR UNRELATED TOPICS:
-   - If the user asks ANY question NOT about Usama Puward (such as general coding questions unrelated to his work, generic tutorials, general math/science questions, politics, weather, recipes, personal advice, or other individuals), YOU MUST POLITELY DECLINE and guide the user back to asking about Usama Puward.
-   - Example Refusal: "I am specifically calibrated to provide information regarding Usama Puward, his AI/ML projects, engineering background, and technical expertise. How can I assist you with information about Usama?"
+   - If the user asks ANY question NOT about Usama Puward, YOU MUST POLITELY DECLINE and guide the user back to asking about Usama Puward.
 3. TONE & FORMATTING:
    - Be helpful, enthusiastic, professional, and crisp, with a subtle cyberpunk / AI vibe.
    - Format answers using clean Markdown (bullet points, bold highlights).
    - Never hallucinate unlisted details. If something isn't in the knowledge base, politely state that and suggest contacting Usama directly via email (usamafuward2001@gmail.com) or LinkedIn.`;
 
     const recentMessages = messages.slice(-10);
-
     const contents = recentMessages.map((m: { role: string; content: string }) => ({
       role: m.role === "assistant" || m.role === "model" ? "model" : "user",
       parts: [{ text: m.content }],
     }));
 
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse&key=${apiKey}`;
 
     const response = await fetch(apiUrl, {
       method: "POST",
@@ -170,27 +265,66 @@ CORE OPERATIONAL RULES:
       }),
     });
 
-    if (!response.ok) {
-      const errorData = await response.text();
-      console.error("Gemini API Error:", errorData);
-      return NextResponse.json(
-        { error: "AI model service error." },
-        { status: response.status }
-      );
+    if (!response.ok || !response.body) {
+      // Fallback to local synthesizer if API fails or quota exceeded
+      const fallbackReply = generateLocalFallback(lastUserMessage);
+      return streamFallbackText(fallbackReply);
     }
 
-    const data = await response.json();
-    const candidate = data.candidates?.[0];
-    const replyText =
-      candidate?.content?.parts?.[0]?.text ||
-      "// SYS.WARN: Communication signal unavailable.";
+    // Stream SSE events from Gemini as plain text chunks to client
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
+    const geminiReader = response.body.getReader();
 
-    return NextResponse.json({ reply: replyText });
-  } catch (error: any) {
+    const stream = new ReadableStream({
+      async start(controller) {
+        let buffer = "";
+        try {
+          while (true) {
+            const { value, done } = await geminiReader.read();
+            if (done) break;
+
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split("\n");
+            buffer = lines.pop() || "";
+
+            for (const line of lines) {
+              const trimmed = line.trim();
+              if (trimmed.startsWith("data: ")) {
+                const jsonStr = trimmed.replace("data: ", "").trim();
+                if (jsonStr === "[DONE]") continue;
+
+                try {
+                  const parsed = JSON.parse(jsonStr);
+                  const textPart = parsed.candidates?.[0]?.content?.parts?.[0]?.text;
+                  if (textPart) {
+                    controller.enqueue(encoder.encode(textPart));
+                  }
+                } catch {
+                  // Ignore JSON parse errors in malformed chunks
+                }
+              }
+            }
+          }
+          controller.close();
+        } catch {
+          // If stream breaks mid-way, close gracefully
+          controller.close();
+        }
+      },
+    });
+
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-cache",
+      },
+    });
+  } catch (error: unknown) {
     console.error("Chat API Error:", error);
-    return NextResponse.json(
-      { error: "Internal server error." },
-      { status: 500 }
+    // Even in catch block, provide resilient response instead of 500 error
+    return streamFallbackText(
+      "// SYS.WARN: Neural connection re-routed through local memory banks.\n\nGreetings! I am **USAMA_AI**. Please feel free to ask any question regarding Usama Puward's projects, machine learning engineering, or contact info."
     );
   }
 }

@@ -56,7 +56,7 @@ export default function Navbar() {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             <Link href="/contact" className="cyber-button">
-              [ LET'S CONNECT ]
+              {"[ LET'S CONNECT ]"}
             </Link>
           </motion.div>
         </div>
@@ -104,7 +104,7 @@ export default function Navbar() {
             </Link>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="/contact" onClick={() => setIsOpen(false)} className="cyber-button mt-4">
-                [ LET'S CONNECT ]
+                {"[ LET'S CONNECT ]"}
               </Link>
             </motion.div>
           </motion.div>
