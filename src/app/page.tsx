@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  verification: {
+    google: "iQhwawKc7TyDuoIWtBmUKSws0bq1Hn5zTAg0ByBNwE4",
+  },
   openGraph: {
     title: "Usama Puward | AI/ML Engineer & Full-Stack Developer",
     description:

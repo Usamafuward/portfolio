@@ -91,6 +91,9 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
   manifest: "/manifest.webmanifest",
+  verification: {
+    google: "iQhwawKc7TyDuoIWtBmUKSws0bq1Hn5zTAg0ByBNwE4",
+  },
 };
 
 export default function RootLayout({
