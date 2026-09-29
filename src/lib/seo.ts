@@ -82,6 +82,7 @@ export function generateWebSiteSchema() {
     publisher: {
       "@id": `${siteUrl}/#person`,
     },
+    image: `${siteUrl}/icon.png`,
   };
 }
 
