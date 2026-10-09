@@ -2,6 +2,7 @@ import { FaGithubSquare, FaGraduationCap, FaSchool } from "react-icons/fa";
 import { AiFillLinkedin, AiFillInstagram } from "react-icons/ai";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
+import type { StaticImageData } from "next/image";
 import one from "@/assets/thumbnails/1.png";
 import two from "@/assets/thumbnails/2.png";
 import three from "@/assets/thumbnails/3.png";
@@ -15,6 +16,170 @@ import ten from "@/assets/thumbnails/10.png";
 import eleven from "@/assets/thumbnails/11.png";
 import twelve from "@/assets/thumbnails/12.png";
 import thirteen from "@/assets/thumbnails/13.png";
+import fourteen from "@/assets/thumbnails/14.png";
+
+export type ProjectLinkType =
+  // Website buttons
+  | "user-site"
+  | "admin-site"
+  | "live-site"
+  | "user"
+  | "admin"
+  | "live"
+  // Repo buttons
+  | "frontend-repo"
+  | "backend-repo"
+  | "user-repo"
+  | "admin-repo"
+  | "mobile-repo"
+  | "mobile"
+  | "frontend"
+  | "backend"
+  | "github"
+  | "demo"
+  | "docs";
+
+export interface ProjectLink {
+  label: string;
+  url: string;
+  type?: ProjectLinkType | string;
+}
+
+export interface Project {
+  title: string;
+  description: string;
+  technologies: string[];
+  thumbnail: StaticImageData;
+  category: string;
+  to?: string;
+  links?: ProjectLink[];
+
+  // Website buttons
+  userSiteUrl?: string;
+  adminSiteUrl?: string;
+  liveSiteUrl?: string;
+  liveUrl?: string;
+  adminUrl?: string;
+  userLiveUrl?: string;
+  adminLiveUrl?: string;
+
+  // Repo buttons
+  frontendRepoUrl?: string;
+  backendRepoUrl?: string;
+  userRepoUrl?: string;
+  adminRepoUrl?: string;
+  githubUrl?: string;
+  frontendGithubUrl?: string;
+  backendGithubUrl?: string;
+  adminGithubUrl?: string;
+}
+
+export function getProjectLinks(project: {
+  to?: string;
+  links?: ProjectLink[];
+  userSiteUrl?: string;
+  adminSiteUrl?: string;
+  liveSiteUrl?: string;
+  liveUrl?: string;
+  adminUrl?: string;
+  userLiveUrl?: string;
+  adminLiveUrl?: string;
+  frontendRepoUrl?: string;
+  backendRepoUrl?: string;
+  userRepoUrl?: string;
+  adminRepoUrl?: string;
+  githubUrl?: string;
+  frontendGithubUrl?: string;
+  backendGithubUrl?: string;
+  adminGithubUrl?: string;
+}): ProjectLink[] {
+  if (project.links && project.links.length > 0) {
+    return project.links;
+  }
+
+  const result: ProjectLink[] = [];
+
+  // Website buttons
+  if (project.userSiteUrl || project.userLiveUrl) {
+    result.push({ label: "User Site", url: (project.userSiteUrl || project.userLiveUrl)!, type: "user-site" });
+  }
+  if (project.adminSiteUrl || project.adminLiveUrl) {
+    result.push({ label: "Admin Site", url: (project.adminSiteUrl || project.adminLiveUrl)!, type: "admin-site" });
+  }
+  if (project.liveSiteUrl || project.liveUrl) {
+    result.push({ label: "Live Site", url: (project.liveSiteUrl || project.liveUrl)!, type: "live-site" });
+  }
+  if (project.adminUrl) {
+    result.push({ label: "Admin Site", url: project.adminUrl, type: "admin-site" });
+  }
+
+  // Repo buttons
+  if (project.frontendRepoUrl || project.frontendGithubUrl) {
+    result.push({ label: "Frontend Repo", url: (project.frontendRepoUrl || project.frontendGithubUrl)!, type: "frontend-repo" });
+  }
+  if (project.backendRepoUrl || project.backendGithubUrl) {
+    result.push({ label: "Backend Repo", url: (project.backendRepoUrl || project.backendGithubUrl)!, type: "backend-repo" });
+  }
+  if (project.userRepoUrl) {
+    result.push({ label: "User Repo", url: project.userRepoUrl, type: "user-repo" });
+  }
+  if (project.adminRepoUrl || project.adminGithubUrl) {
+    result.push({ label: "Admin Repo", url: (project.adminRepoUrl || project.adminGithubUrl)!, type: "admin-repo" });
+  }
+  if (project.githubUrl) {
+    result.push({ label: "GitHub", url: project.githubUrl, type: "github" });
+  }
+
+  if (result.length > 0) {
+    return result;
+  }
+
+  if (project.to) {
+    const isGithub = project.to.toLowerCase().includes("github.com");
+    return [
+      {
+        label: isGithub ? "VIEW_PROJECT" : "LIVE_SITE",
+        url: project.to,
+        type: isGithub ? "github" : "live-site",
+      },
+    ];
+  }
+
+  return [];
+}
+
+export function categorizeProjectLinks(links: ProjectLink[]) {
+  const hosted: ProjectLink[] = [];
+  const code: ProjectLink[] = [];
+
+  links.forEach((link) => {
+    const type = (link.type || "").toLowerCase();
+    const label = link.label.toLowerCase();
+    const url = link.url.toLowerCase();
+
+    const isCode =
+      type === "github" ||
+      type === "frontend" ||
+      type === "backend" ||
+      type === "admin-repo" ||
+      type === "user-repo" ||
+      url.includes("github.com") ||
+      url.includes("gitlab.com") ||
+      url.includes(".git") ||
+      label.includes("repo") ||
+      label.includes("code") ||
+      (label.includes("github") && !label.includes("site") && !label.includes("live"));
+
+    if (isCode) {
+      code.push(link);
+    } else {
+      hosted.push(link);
+    }
+  });
+
+  return { hosted, code };
+}
+
 
 export const portfolioData = {
   personalInfo: {
@@ -84,7 +249,7 @@ export const portfolioData = {
   skills: [
     {
       category: "Front-End Development",
-      progress: 85,
+      progress: 95,
       techs: [
         "React",
         "Next",
@@ -348,8 +513,15 @@ export const portfolioData = {
     {
       title: "Tartuca - Restaurant & Delivery Platform",
       description:
-        "A full-stack restaurant and food ordering monorepo platform featuring a customer portal for interactive menu exploration and Google Maps delivery address tracking, an admin back-office dashboard for live order tracking and menu CRUD operations, and a high-performance asynchronous FastAPI backend integrated with PostgreSQL and Auth0.",
-      to: "https://github.com/Usamafuward/tartuca_user.git",
+        "A full-stack restaurant and food ordering platform featuring an interactive customer ordering portal, Google Maps delivery location tracking, and a live admin operations dashboard. Built with a high-performance FastAPI asynchronous backend, PostgreSQL database, and Auth0 secure identity management.",
+      to: "https://tartuca.vercel.app/",
+      links: [
+        { label: "User Site", url: "https://tartuca.vercel.app/", type: "user-site" },
+        { label: "Admin Site", url: "https://tartuca-admin.vercel.app/", type: "admin-site" },
+        { label: "User Repo", url: "https://github.com/Usamafuward/tartuca_user.git", type: "user-repo" },
+        { label: "Admin Repo", url: "https://github.com/Usamafuward/tartuca_admin.git", type: "admin-repo" },
+        { label: "Backend Repo", url: "https://github.com/Usamafuward/tartuca_back.git", type: "backend-repo" },
+      ],
       technologies: [
         "React",
         "FastAPI",
@@ -383,7 +555,7 @@ export const portfolioData = {
     {
       title: "RAG Pipeline for PDF Analysis (Chatbot)",
       description:
-        "This project is a RAG (Retrieval-Augmented Generation) pipeline that extracts and processes text, tables, and images from PDFs, enabling users to query the extracted information through a conversational interface. It combines multi-modal embeddings with a Google Generative AI-powered question-answering system.",
+        "An advanced multi-modal RAG conversational pipeline that extracts and processes text, structured tables, and diagram images from complex PDF documents. Combines multi-vector embeddings with Google Generative AI and FAISS indexing to deliver high-precision document synthesis and semantic querying.",
       to: "https://github.com/Usamafuward/Rag-Pipeline-For-PDF-Analysis.git",
       technologies: [
         "LangChain",
@@ -396,9 +568,37 @@ export const portfolioData = {
       category: "AI/ML",
     },
     {
+      title: "FS Cake Gallery Website",
+      description:
+        "A modern responsive bakery website built for FS Cake Gallery to showcase custom cakes, birthday and wedding cakes, bento cakes, cupcakes, and special event creations. It includes categorized galleries, customer testimonials, custom order functionality, WhatsApp integration, and local delivery information.",
+      to: "https://fscakegallery.vercel.app/",
+      links: [
+        {
+          label: "Live Site",
+          url: "https://fscakegallery.vercel.app/",
+          type: "live-site",
+        },
+        {
+          label: "GitHub",
+          url: "https://github.com/Usamafuward/fscakegallery.git",
+          type: "github",
+        },
+      ],
+      technologies: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vercel",
+        "WhatsApp Integration",
+      ],
+      thumbnail: fourteen,
+      category: "Frontend",
+    },
+    {
       title: "NLP Podcast Chatbot",
       description:
-        "An NLP-driven chatbot that interacts with podcast transcripts to answer questions, attribute responses to speakers, and provide YouTube links, enhancing user engagement and content access.",
+        "An intelligent NLP-powered conversational chatbot that analyzes podcast transcripts to answer listener queries with speaker attribution and precise timestamp navigation. Features natural language querying with TF-IDF semantic vector retrieval, VADER sentiment analysis, and direct YouTube chapter synchronization.",
       to: "https://github.com/Usamafuward/nlp-podcast-chatbot.git",
       technologies: ["Flask", "TF-IDF", "VADER", "NLTK"],
       thumbnail: three,
@@ -407,8 +607,25 @@ export const portfolioData = {
     {
       title: "Travel Point",
       description:
-        "A social media platform for travellers to share experiences, itineraries, and book accommodations. It also allows users to create and book all-inclusive travel packages for a seamless travel experience.",
-      to: "https://github.com/aamirfazeer/TravelPointMobile.git",
+        "A full-stack social travel and itinerary platform designed for explorers to share journeys, discover curated travel experiences, and reserve accommodations seamlessly. Combines a cross-platform React Native mobile client, an interactive React web portal, and a scalable FastAPI backend with PostgreSQL.",
+      to: "https://github.com/aamirfazeer/TravelPointMobile",
+      links: [
+        {
+          label: "Mobile Repo",
+          url: "https://github.com/aamirfazeer/TravelPointMobile",
+          type: "mobile-repo",
+        },
+        {
+          label: "Backend Repo",
+          url: "https://github.com/Usamafuward/travelpoint-mobile-server",
+          type: "backend-repo",
+        },
+        {
+          label: "Web Repo",
+          url: "https://github.com/aamirfazeer/TravelPoint",
+          type: "frontend-repo",
+        },
+      ],
       technologies: [
         "React",
         "ReactNative",
@@ -422,25 +639,45 @@ export const portfolioData = {
     {
       title: "Eats Robers",
       description:
-        "Eats Robers is a web app using React, Node.js, Express, MongoDB, and Mongoose that helps users find the perfect meal, featuring seamless payment options and exceptional customer service.",
+        "A modern food discovery and meal ordering platform engineered to connect hungry diners with premier local restaurants. Features interactive menu browsing, customized dish configurators, automated checkout and billing workflows, and a robust Node.js and Express backend powered by MongoDB and Mongoose.",
       to: "https://github.com/Usamafuward/eats-robers.git",
       technologies: ["React", "Node.js", "Express", "MongoDB", "Mongoose"],
       thumbnail: six,
       category: "Full-Stack",
     },
     {
-      title: "Mediman - Doctor Dashboard (sample) Frontend App",
+      title: "Nexcura Pro — Clinical Command & Physician Intelligence UI",
       description:
-        "Mediman is a doctor dashboard app that allows doctors to manage patient appointments (Online and Physical), view patient medical records, and prescribe medications, enhancing patient care and treatment outcomes.",
-      to: "https://github.com/Usamafuward/sample-mediman-doctor.git",
-      technologies: ["React", "Shadcn-UI", "Tailwind CSS"],
+        "A next-generation physician intelligence and clinical command dashboard featuring real-time shift capacity HUDs, emergency triage queues, and ICU bed management. Integrates an urgent diagnostic sentry with multi-zone reference range bars, ambient pharmacovigilance risk matrices, and teleconsultation rooms.",
+      to: "https://nexcura-doctor.vercel.app/",
+      links: [
+        {
+          label: "Live Site",
+          url: "https://nexcura-doctor.vercel.app/",
+          type: "live-site",
+        },
+        {
+          label: "GitHub",
+          url: "https://github.com/Usamafuward/nexcura-doctor",
+          type: "github",
+        },
+      ],
+      technologies: [
+        "React",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Radix UI",
+        "Lucide Icons",
+        "Vite",
+        "Vercel",
+      ],
       thumbnail: four,
       category: "Frontend",
     },
     {
       title: "Portfolio Website",
       description:
-        "A personal portfolio built with React that showcases my projects and skills in artificial intelligence, software developing and machine learning, providing an engaging platform for potential employers and collaborators.",
+        "A modern cyberpunk-themed personal portfolio built with Next.js, React, and Tailwind CSS to showcase software engineering, AI/ML systems, and full-stack solutions. Features fluid Framer Motion animations, comprehensive project case studies, automated SEO schemas, and an interactive intelligent AI assistant.",
       to: "https://github.com/Usamafuward/portfolio.git",
       technologies: ["React", "Tailwind CSS", "EmailJS"],
       thumbnail: five,
@@ -449,7 +686,7 @@ export const portfolioData = {
     {
       title: "Clubhub-Central",
       description:
-        "Club-Hub Central is a centralized platform developed with PHP, HTML, CSS, JavaScript, and MariaDB for the University of Colombo School of Computing clubs and societies, facilitating better communication and collaboration among members.",
+        "A centralized campus organization and management platform developed for University of Colombo School of Computing student clubs and societies. Facilitates seamless member registrations, event scheduling, role-based announcements, and administrative record management powered by PHP, JavaScript, and MariaDB.",
       to: "https://github.com/terance-edmonds/clubhub-central.git",
       technologies: ["PHP", "HTML", "SCSS", "JavaScript", "MariaDB"],
       thumbnail: nine,
@@ -458,7 +695,7 @@ export const portfolioData = {
     {
       title: "LangChain for LLM Application Development (coursera)",
       description:
-        "The project uses the LangChain framework to build applications with advanced language models (LLMs), focusing on key features like prompts, memory management, creating operation chains, document-based question answering, and developing LLMs as reasoning agents.",
+        "An advanced generative AI engineering project built with the LangChain framework and Python to develop production-grade LLM applications. Implements modular prompt templates, conversational memory buffers, sequential retrieval chains, document-based question answering, and autonomous reasoning agents.",
       to: "https://www.coursera.org/learn/langchain-for-llm-application-development-project",
       technologies: ["LangChain", "LLM", "OpenAI", "Python"],
       thumbnail: eight,
@@ -467,7 +704,7 @@ export const portfolioData = {
     {
       title: "Online Book Review Application",
       description:
-        "A comprehensive RESTful API for managing book reviews built with Node.js and Express.js. Features user authentication (JWT & Session), CRUD operations for reviews, async operations with Promises and async/await, and supports multiple concurrent users for seamless book review management.",
+        "A high-throughput RESTful API architecture engineered with Node.js and Express for managing large-scale literary reviews and book ratings. Features dual JWT and session authentication mechanisms, complete CRUD lifecycle endpoints, asynchronous promise chains, and robust multi-user concurrency support.",
       to: "https://github.com/Usamafuward/book-review-api.git",
       technologies: ["Node.js", "Express.js", "JWT", "RESTful API"],
       thumbnail: eleven,
@@ -476,7 +713,7 @@ export const portfolioData = {
     {
       title: "Startup Company Website",
       description:
-        "A professional website created for a startup software company to showcase its products, services, team, blogs, and clients. Built with React, Next.js, and Tailwind CSS, it delivers a modern, responsive, and engaging user experience tailored for startups.",
+        "A high-converting corporate website crafted for an emerging software venture to showcase core products, engineering services, leadership, and customer success stories. Engineered with Next.js, React, and Tailwind CSS, delivering lightning-fast load times, responsive UI patterns, and strong SEO visibility.",
       to: "https://github.com/Usamafuward/startup_company_website.git",
       technologies: ["React", "Next.js", "Tailwind CSS"],
       thumbnail: twelve,
@@ -485,7 +722,7 @@ export const portfolioData = {
     {
       title: "Django Blog",
       description:
-        "A blog application built with Django for publishing technology-related posts, providing a user-friendly interface for authors to share insights and engage with readers.",
+        "A dynamic publication platform and content management system developed with Django and PostgreSQL for authoring and sharing technology articles. Incorporates structured category taxonomy, markdown content formatting, user comment threads, search capabilities, and a responsive administrative publishing dashboard.",
       to: "https://github.com/Usamafuward/Django-blog.git",
       technologies: ["Python", "Django", "HTML", "CSS", "PostgreSQL"],
       thumbnail: ten,

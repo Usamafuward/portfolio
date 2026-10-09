@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { motion, Variants } from "framer-motion";
@@ -35,14 +35,7 @@ const containerVariants: Variants = {
   },
 };
 
-type Project = {
-  title: string;
-  description: string;
-  to: string;
-  technologies: string[];
-  thumbnail: StaticImageData;
-  category: string;
-};
+import { Project } from "@/constants/portfolioData";
 
 export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [activeIndex, setActiveIndex] = useState(0);

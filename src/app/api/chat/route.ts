@@ -71,16 +71,22 @@ KEY PROJECTS:
 5. Travel Point
    - Stack: React, React Native, FastAPI, PostgreSQL, Tailwind CSS
    - Description: Cross-platform social travel app for itinerary sharing, accommodation booking, and tour packages.
-   - Repo: https://github.com/aamirfazeer/TravelPointMobile.git
-6. Eats Robers
+   - Repos: Mobile Client (https://github.com/aamirfazeer/TravelPointMobile), Backend Server (https://github.com/Usamafuward/travelpoint-mobile-server), Web Client (https://github.com/aamirfazeer/TravelPoint)
+6. FS Cake Gallery Website
+   - Stack: Next.js, React, TypeScript, Tailwind CSS, Vercel, WhatsApp Integration
+   - Description: Custom bakery website for custom celebrations, cake galleries, WhatsApp orders, and delivery details.
+   - Live Site: https://fscakegallery.vercel.app/
+   - Repo: https://github.com/Usamafuward/fscakegallery.git
+7. Eats Robers
    - Stack: React, Node.js, Express, MongoDB, Mongoose
    - Description: Restaurant discovery and meal delivery platform with checkout management.
    - Repo: https://github.com/Usamafuward/eats-robers.git
-7. Mediman Doctor Dashboard
-   - Stack: React, Shadcn-UI, Tailwind CSS
-   - Description: Doctor clinic dashboard for online/physical appointment management and medical history tracking.
-   - Repo: https://github.com/Usamafuward/sample-mediman-doctor.git
-8. Online Book Review Application
+8. Nexcura Pro — Clinical Command & Physician Intelligence UI
+   - Stack: React, Tailwind CSS, Framer Motion, Radix UI, Lucide Icons, Vite
+   - Description: NextGen physician intelligence and hospital command platform with real-time shift capacity HUD, triage queues, telemetry diagnostic sentry with visual lab reference ranges, ambient neural pharmacovigilance with drug interaction risk matrices, and teleconsultations.
+   - Live Site: https://nexcura-doctor.vercel.app/
+   - Repo: https://github.com/Usamafuward/nexcura-doctor
+9. Online Book Review Application
    - Stack: Node.js, Express.js, JWT, RESTful API
    - Description: RESTful API with user authentication, concurrent async review submission, and session management.
    - Repo: https://github.com/Usamafuward/book-review-api.git

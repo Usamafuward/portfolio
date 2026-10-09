@@ -111,21 +111,27 @@ export function generateProjectsSchema() {
     "@type": "ItemList",
     name: "Key Engineering & AI Projects by Usama Puward",
     description: "Featured full-stack, machine learning, and AI application projects.",
-    itemListElement: portfolioData.projects.map((project, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "SoftwareSourceCode",
-        name: project.title,
-        description: project.description,
-        programmingLanguage: project.technologies,
-        codeRepository: project.to.startsWith("http") ? project.to : undefined,
-        url: project.to.startsWith("http") ? project.to : `${siteUrl}/projects`,
-        author: {
-          "@id": `${siteUrl}/#person`,
+    itemListElement: portfolioData.projects.map((project, index) => {
+      const links = project.links || [];
+      const primaryUrl = project.to || links[0]?.url || `${siteUrl}/projects`;
+      const codeRepo = links.find((l) => l.url.includes("github.com"))?.url || (project.to?.includes("github.com") ? project.to : undefined);
+
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "SoftwareSourceCode",
+          name: project.title,
+          description: project.description,
+          programmingLanguage: project.technologies,
+          codeRepository: codeRepo?.startsWith("http") ? codeRepo : undefined,
+          url: primaryUrl.startsWith("http") ? primaryUrl : `${siteUrl}/projects`,
+          author: {
+            "@id": `${siteUrl}/#person`,
+          },
         },
-      },
-    })),
+      };
+    }),
   };
 }
 
